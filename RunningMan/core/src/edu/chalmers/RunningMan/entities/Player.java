@@ -20,7 +20,6 @@ public class Player implements ILivingEntity {
 
     }
 
-
     @Override
     public int getHp() {
         return hp;

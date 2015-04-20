@@ -1,5 +1,9 @@
 package edu.chalmers.RunningMan.entities;
 
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+
 /**
  * Created by Armand on 2015-04-20.
  */
@@ -11,10 +15,17 @@ public class Enemy implements ILivingEntity {
     private int speed;
     private boolean isFlinching;
     private long flinchTime;
+    BodyDef bdef;
+    Body body;
+    FixtureDef fdef;
 
 
     public Enemy(int hp ){
         setHp(hp);
+        bdef = new BodyDef();
+        bdef.type = BodyDef.BodyType.KinematicBody;
+        body = world.createBody(bdef); // vi måste skapa en world i Level World world se
+        fdef = new FixtureDef();
     }
 
     @Override
