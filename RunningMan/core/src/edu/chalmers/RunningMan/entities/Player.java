@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 /**
- * Created by Kvist1 on 2015-04-20.
+ * Player model
  */
 public class Player {
 
@@ -10,7 +10,7 @@ public class Player {
 
     public Player(int hp, Weapon weapon) {
         this.hp = hp;
-        this.weapon = Weapon;
+        this.weapon = weapon;
     }
 
     public void move() {}
