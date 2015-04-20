@@ -47,4 +47,4 @@ public class Player implements ILivingEntity {
     public void takeDamage(int hpDecreased) {
         setHp(hp - hpDecreased);
     }
-}W
+}
