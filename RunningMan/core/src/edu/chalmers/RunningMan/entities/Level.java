@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import static edu.chalmers.RunningMan.utils.B2DVariables.PPM;
 
 /**
  * Created by JohanTobin on 2015-04-20.
