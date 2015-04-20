@@ -113,7 +113,7 @@ public class Player implements ILivingEntity {
     public void setDirection(Direction dir){
         this.direction = dir;
     }
-    
+
     @Override
     public int getHp() {
         return this.hp;
