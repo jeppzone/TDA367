@@ -139,6 +139,5 @@ public class Player implements ILivingEntity {
     @Override
     public void takeDamage(int hpDecreased) {
         setHp(hp - hpDecreased);
-    }
-
+    }   
 }
