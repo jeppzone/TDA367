@@ -133,7 +133,7 @@ public class Level {
         // set up box2d cam
         cam = new OrthographicCamera();
         // Waiting on V_WIDTH
-        cam.setToOrtho(false, RunningMan.V_WIDTH / PPM, RunningMan.V_HEIGHT / PPM);
+        //cam.setToOrtho(false, RunningMan.V_WIDTH / PPM, RunningMan.V_HEIGHT / PPM);
     }
 
     public void cameraView(){
