@@ -5,5 +5,4 @@ package edu.chalmers.RunningMan.entities;
  */
 public interface IVisitor {
 
-
 }

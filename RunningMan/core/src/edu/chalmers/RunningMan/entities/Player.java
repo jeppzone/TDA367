@@ -1,5 +1,8 @@
 package edu.chalmers.RunningMan.entities;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
  * A class to model a player
  */
@@ -8,31 +11,84 @@ public class Player extends AbstractLivingObject {
     private int killCount = 0;
     private int score = 0;
     private Weapon weapon;
-    private int velocityX;
-    private int velocityY;
-
+    private float velocityX;
+    private float velocityY;
+    private float oldX;
+    private boolean isOnGround;
+    private long lastMovement;
+    private MovingDirection movingDirection;
+    private FacingDirection facingDirection;
+    private PropertyChangeSupport pcs;
 
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         this.weapon = weapon;
+        facingDirection = FacingDirection.RIGHT;
+        pcs = new PropertyChangeSupport(this);
+    }
+
+    public enum MovingDirection{
+        RIGHT,
+        LEFT;
+    }
+
+    public enum FacingDirection{
+        RIGHT,
+        LEFT;
     }
 
     public int getScore(){
         return score;
     }
 
-    /**
-     * Method to check if player is in the air
-     * @return true if player is not in contact with any ground, false otherwise
-     */
+    public float getVelocityX(){
+        if(movingDirection == MovingDirection.RIGHT){
+            return 0.5f;
+        }else{
+            return -0.5f;
+        }
+    }
+
+    public float getVelocityY(){
+        return velocityY;
+    }
+
+    public void moveLeft(int delta){
+        movingDirection = MovingDirection.LEFT;
+        this.oldX = this.getPosition().getX();
+        setNewX(delta, getVelocityX());
+        facingDirection = FacingDirection.LEFT;
+        lastMovement = System.currentTimeMillis();
+    }
+
+    public void moveRight(int delta){
+        movingDirection = MovingDirection.RIGHT;
+        this.oldX = this.getPosition().getX();
+        setNewX(delta, getVelocityX());
+        facingDirection = FacingDirection.RIGHT;
+        lastMovement = System.currentTimeMillis();
+    }
+
+    public void jump(int delta){
+        if(isOnGround){
+            setVelocityY(-1f);
+            pcs.firePropertyChange("jump", null, null);
+            isOnGround = false;
+        }
+    }
+
+    public void die(){
+        pcs.firePropertyChange("die", null, null);
+    }
+
+    public void setVelocityY(float newVelocityY){
+        this.velocityY = newVelocityY;
+    }
 
     public void incrementScore(int amount){
         this.score += amount;
     }
 
-    /**
-     * A method to be called when player kills an enemy
-     */
     public void incrementKillCount() {
         this.killCount += 1;
     }
@@ -40,5 +96,13 @@ public class Player extends AbstractLivingObject {
 
     public void acceptVisitor(IVisitor visitor) {
 
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener pcs){
+        this.pcs.addPropertyChangeListener(pcs);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener pcs){
+        this.pcs.removePropertyChangeListener(pcs);
     }
 }

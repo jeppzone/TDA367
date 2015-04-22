@@ -1,5 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
+import java.beans.PropertyChangeListener;
+
 /**
  * Created by Jesper on 4/22/2015.
  */
@@ -39,4 +41,7 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
     public void takeDamage(int damage){
         setHp(this.hp - damage);
     }
+
+    public abstract void addPropertyChangeListener(PropertyChangeListener pcs);
+    public abstract void removePropertyChangeListener(PropertyChangeListener pcs);
 }
