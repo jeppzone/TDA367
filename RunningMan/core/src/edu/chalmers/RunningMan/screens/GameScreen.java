@@ -2,7 +2,9 @@ package edu.chalmers.RunningMan.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.graphics.GL20;
+import edu.chalmers.RunningMan.gameworld.GameRenderer;
+import edu.chalmers.RunningMan.gameworld.GameWorld;
 
 /**
  * Created by Kvist1 on 2015-04-22.
@@ -15,7 +17,7 @@ public class GameScreen implements Screen {
     public GameScreen() {
         Gdx.app.log("GameScreen", "Attached");
 
-        world = new GameWordl();
+        world = new GameWorld();
         renderer = new GameRenderer(world);
     }
 
@@ -23,7 +25,7 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
 
         // clear screen
-        Gdx.gl30.glClear(GL30.GL_COLOR_BUFFER_BIT);
+        Gdx.gl30.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // update world
         world.update(deltaTime);
