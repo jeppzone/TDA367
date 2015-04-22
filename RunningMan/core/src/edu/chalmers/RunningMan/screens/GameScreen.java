@@ -25,7 +25,7 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
 
         // clear screen
-        Gdx.gl30.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         // update world
         world.update(deltaTime);
