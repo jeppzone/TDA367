@@ -4,10 +4,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Player;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 /**
  * Created by JohanTobin on 2015-04-20.
  */
-public class PlayerView extends Actor {
+public class PlayerView extends Actor implements PropertyChangeListener {
 
     public PlayerView(Player pm ){
 
@@ -16,4 +19,10 @@ public class PlayerView extends Actor {
 
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
+
+
+    }
 }
