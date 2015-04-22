@@ -77,6 +77,10 @@ public class Player extends AbstractLivingObject {
         }
     }
 
+    public void applyForce(int deltaTime){
+        setVelocityY(Physics.getNewVelocity(getVelocityY(), deltaTime));
+    }
+
     public void die(){
         pcs.firePropertyChange("die", null, null);
     }
