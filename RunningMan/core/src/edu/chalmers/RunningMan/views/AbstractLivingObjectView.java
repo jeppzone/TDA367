@@ -9,7 +9,7 @@ import java.beans.*;
  */
 public abstract class AbstractLivingObjectView implements PropertyChangeListener {
 
-    private AbstractLivingObject alo;
+    protected AbstractLivingObject alo;
 
     public AbstractLivingObject getAlo(){
         return alo;

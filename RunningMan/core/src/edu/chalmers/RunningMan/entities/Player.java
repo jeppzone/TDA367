@@ -49,6 +49,14 @@ public class Player extends AbstractLivingObject {
         }
     }
 
+    public void update(){
+        if(lastMovement + 100 >= System.currentTimeMillis()){
+            pcs.firePropertyChange(movingDirection.toString(), null, getPosition());
+        }else{
+            pcs.firePropertyChange(facingDirection.toString(), null, getPosition());
+        }
+    }
+
     public float getVelocityY(){
         return velocityY;
     }
@@ -97,15 +105,16 @@ public class Player extends AbstractLivingObject {
         this.killCount += 1;
     }
 
-
+    @Override
     public void acceptVisitor(IVisitor visitor) {
-
     }
 
+    @Override
     public void addPropertyChangeListener(PropertyChangeListener pcs){
         this.pcs.addPropertyChangeListener(pcs);
     }
 
+    @Override
     public void removePropertyChangeListener(PropertyChangeListener pcs){
         this.pcs.removePropertyChangeListener(pcs);
     }
