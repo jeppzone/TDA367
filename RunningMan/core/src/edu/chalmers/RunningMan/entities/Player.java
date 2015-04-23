@@ -74,7 +74,7 @@ public class Player extends AbstractLivingObject {
         this.oldX = this.getPosition().getX();
         setNewX(delta, getVelocityX());
         facingDirection = FacingDirection.RIGHT;
-        lastMovement = System.currentTimeMillis();
+        lastMovement = System.currentTimeMillis();// getDeltaTime istället
     }
 
     public void jump(int delta){
