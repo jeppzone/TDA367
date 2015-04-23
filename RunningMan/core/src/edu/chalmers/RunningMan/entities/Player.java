@@ -15,16 +15,13 @@ public class Player extends AbstractLivingObject {
     private float velocityY;
     private float oldX;
     private boolean isOnGround;
-    private long lastMovement;
     private MovingDirection movingDirection;
     private FacingDirection facingDirection;
-    private PropertyChangeSupport pcs;
 
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         this.weapon = weapon;
         facingDirection = FacingDirection.RIGHT;
-        pcs = new PropertyChangeSupport(this);
     }
 
     public enum MovingDirection{
@@ -50,47 +47,40 @@ public class Player extends AbstractLivingObject {
     }
 
     public void update(){
-        if(lastMovement + 100 >= System.currentTimeMillis()){
-            pcs.firePropertyChange(movingDirection.toString(), null, getPosition());
-        }else{
-            pcs.firePropertyChange(facingDirection.toString(), null, getPosition());
-        }
+
     }
 
     public float getVelocityY(){
         return velocityY;
     }
 
-    public void moveLeft(int delta){
+    public void moveLeft(float deltaTime){
         movingDirection = MovingDirection.LEFT;
         this.oldX = this.getPosition().getX();
-        setNewX(delta, getVelocityX());
+        setNewX(deltaTime, getVelocityX());
         facingDirection = FacingDirection.LEFT;
-        lastMovement = System.currentTimeMillis();
     }
 
-    public void moveRight(int delta){
+    public void moveRight(float deltaTime){
         movingDirection = MovingDirection.RIGHT;
         this.oldX = this.getPosition().getX();
-        setNewX(delta, getVelocityX());
+        setNewX(deltaTime, getVelocityX());
         facingDirection = FacingDirection.RIGHT;
-        lastMovement = System.currentTimeMillis();// getDeltaTime istället
     }
 
-    public void jump(int delta){
+    public void jump(float deltaTime){
         if(isOnGround){
             setVelocityY(-1f);
-            pcs.firePropertyChange("jump", null, null);
             isOnGround = false;
         }
     }
 
-    public void applyForce(int deltaTime){
-        setVelocityY(Physics.getNewVelocity(getVelocityY(), deltaTime));
-    }
-
-    public void die(){
-        pcs.firePropertyChange("die", null, null);
+    public void applyForce(float deltaTime){
+        if(deltaTime < 0) {
+            setVelocityY(Physics.getNewVelocity(getVelocityY(), (int)deltaTime));
+            Position position = getPosition();
+            position.setY(Physics.getNewYPosition(position.getY(), getVelocityY(), deltaTime));
+        }
     }
 
     public void setVelocityY(float newVelocityY){
@@ -109,13 +99,4 @@ public class Player extends AbstractLivingObject {
     public void acceptVisitor(IVisitor visitor) {
     }
 
-    @Override
-    public void addPropertyChangeListener(PropertyChangeListener pcs){
-        this.pcs.addPropertyChangeListener(pcs);
-    }
-
-    @Override
-    public void removePropertyChangeListener(PropertyChangeListener pcs){
-        this.pcs.removePropertyChangeListener(pcs);
-    }
 }

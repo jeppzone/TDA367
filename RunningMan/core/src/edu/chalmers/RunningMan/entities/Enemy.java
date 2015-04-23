@@ -33,16 +33,6 @@ public class Enemy extends AbstractLivingObject {
     }
 
     @Override
-    public void addPropertyChangeListener(PropertyChangeListener pcs) {
-        this.pcs.addPropertyChangeListener(pcs);
-    }
-
-    @Override
-    public void removePropertyChangeListener(PropertyChangeListener pcs) {
-        this.pcs.addPropertyChangeListener(pcs);
-    }
-
-    @Override
     public void acceptVisitor(IVisitor visitor) {
 
     }
