@@ -15,14 +15,10 @@ import java.beans.PropertyChangeListener;
 /**
  * Created by JohanTobin on 2015-04-20.
  */
-public class PlayerView extends AbstractLivingObjectView {
+public class PlayerView{
 
     public PlayerView(Player pm){
         Image img = new Image();
     }
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
-    }
 }
