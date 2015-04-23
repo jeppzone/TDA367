@@ -25,22 +25,28 @@ public class PlayerController  {
         if(Input.isPressed(Input.JUMPBTN)) {
             System.out.println("jump");
             player.jump(deltaTime);
+            playerView.draw();
         } else if(Input.isDown(Input.RIGHTBTN)) {
             System.out.println("go right");
             player.moveRight(deltaTime);
+            playerView.draw();
         } else if(Input.isDown(Input.LEFTBTN)) {
             System.out.println("go left");
             player.moveLeft(deltaTime);
+            playerView.draw();
         } else if(Input.isPressed(Input.SHOOTBTN)) {
             // player.shoot(deltaTime);
+            playerView.draw();
         }
         player.applyForce(deltaTime);
 
     }
 
+
     public void update(float deltaTime) {
 
         handleKeyboardInput(deltaTime);
+        playerView.draw();
 
         // playerView.render();
     }
