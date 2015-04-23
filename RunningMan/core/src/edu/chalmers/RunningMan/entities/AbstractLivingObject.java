@@ -15,7 +15,7 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
         isDead = false;
     }
 
-    public void setNewX(int delta, float velocity){
+    public void setNewX(float delta, float velocity){
         setX(getPosition().getX() + velocity*delta);
     }
 
@@ -41,7 +41,5 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
     public void takeDamage(int damage){
         setHp(this.hp - damage);
     }
-
-    public abstract void addPropertyChangeListener(PropertyChangeListener pcs);
-    public abstract void removePropertyChangeListener(PropertyChangeListener pcs);
+    
 }
