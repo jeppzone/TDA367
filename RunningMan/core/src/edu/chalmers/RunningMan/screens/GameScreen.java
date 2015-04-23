@@ -3,7 +3,6 @@ package edu.chalmers.RunningMan.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import edu.chalmers.RunningMan.gameworld.GameRenderer;
 import edu.chalmers.RunningMan.gameworld.GameWorld;
 
 /**
@@ -12,13 +11,11 @@ import edu.chalmers.RunningMan.gameworld.GameWorld;
 public class GameScreen implements Screen {
 
     private GameWorld world;
-    private GameRenderer renderer;
 
     public GameScreen() {
-        Gdx.app.log("GameScreen", "Attached");
+        //Gdx.app.log("GameScreen", "Attached");
 
         world = new GameWorld();
-        renderer = new GameRenderer(world);
     }
 
     @Override
@@ -30,8 +27,6 @@ public class GameScreen implements Screen {
         // update world
         world.update(deltaTime);
 
-        // render world
-        renderer.render();
     }
 
     @Override
