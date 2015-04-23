@@ -68,7 +68,7 @@ public class Player extends AbstractLivingObject {
         facingDirection = FacingDirection.RIGHT;
     }
 
-    public void jump(int delta){
+    public void jump(float deltaTime){
         if(isOnGround){
             setVelocityY(-1f);
             isOnGround = false;
