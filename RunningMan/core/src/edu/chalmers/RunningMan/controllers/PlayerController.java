@@ -23,10 +23,13 @@ public class PlayerController  {
 
         // player jump
         if(Input.isPressed(Input.JUMPBTN)) {
+            System.out.println("Player position: " + player.getPosition().getY());
             System.out.println("jump");
+            System.out.println("Player position: " + player.getPosition().getY());
             player.jump(deltaTime);
             playerView.draw();
         } else if(Input.isDown(Input.RIGHTBTN)) {
+            System.out.println("Player position: " + player.getPosition().getX());
             System.out.println("go right");
             player.moveRight(deltaTime);
             playerView.draw();

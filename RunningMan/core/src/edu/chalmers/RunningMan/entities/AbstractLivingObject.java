@@ -19,6 +19,10 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
         setX(getPosition().getX() + velocity*delta);
     }
 
+    public void setNewY(float delta, float velocity){
+        setY(getPosition().getY() + velocity*delta);
+    }
+
     public int getHp(){
         return this.hp;
     }

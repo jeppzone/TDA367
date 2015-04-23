@@ -1,5 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
+import javafx.geometry.Pos;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -14,9 +16,10 @@ public class Player extends AbstractLivingObject {
     private float velocityX;
     private float velocityY;
     private float oldX;
-    private boolean isOnGround;
+    private boolean isOnGround = true;
     private MovingDirection movingDirection;
     private FacingDirection facingDirection;
+    private Gravity gravity = new Gravity(-3.82f);
 
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
@@ -40,9 +43,9 @@ public class Player extends AbstractLivingObject {
 
     public float getVelocityX(){
         if(movingDirection == MovingDirection.RIGHT){
-            return 0.5f;
+            return 15.5f;
         }else{
-            return -0.5f;
+            return -15.5f;
         }
     }
 
@@ -70,17 +73,15 @@ public class Player extends AbstractLivingObject {
 
     public void jump(float deltaTime){
         if(isOnGround){
-            setVelocityY(-1f);
             isOnGround = false;
+            setVelocityY(15f);
         }
     }
 
     public void applyForce(float deltaTime){
-        if(deltaTime < 0) {
-            setVelocityY(Physics.getNewVelocity(getVelocityY(), deltaTime));
-            Position position = getPosition();
-            position.setY(Physics.getNewYPosition(position.getY(), getVelocityY(), deltaTime));
-        }
+            setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
+            Position pos = getPosition();
+            pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
     }
 
     public void setVelocityY(float newVelocityY){
@@ -93,6 +94,10 @@ public class Player extends AbstractLivingObject {
 
     public void incrementKillCount() {
         this.killCount += 1;
+    }
+
+    public void handleCollision(AbstractPhysicalObject apo){
+
     }
 
     @Override
