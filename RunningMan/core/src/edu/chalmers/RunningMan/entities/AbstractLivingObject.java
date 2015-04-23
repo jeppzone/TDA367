@@ -41,5 +41,4 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
     public void takeDamage(int damage){
         setHp(this.hp - damage);
     }
-
 }

@@ -77,7 +77,7 @@ public class Player extends AbstractLivingObject {
 
     public void applyForce(float deltaTime){
         if(deltaTime < 0) {
-            setVelocityY(Physics.getNewVelocity(getVelocityY(), (int)deltaTime));
+            setVelocityY(Physics.getNewVelocity(getVelocityY(), deltaTime));
             Position position = getPosition();
             position.setY(Physics.getNewYPosition(position.getY(), getVelocityY(), deltaTime));
         }
