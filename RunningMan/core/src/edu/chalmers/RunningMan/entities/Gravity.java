@@ -12,7 +12,7 @@ public class Gravity {
     }
 
     public float getNewVelocity(float yVelocity, float delta){
-        final float TERMINAL_VELOCITY = 5f;
+        final float TERMINAL_VELOCITY = 300f;
         final float nextYVelocity =  yVelocity+this.getGravity() * delta;
         if(nextYVelocity > TERMINAL_VELOCITY){
             return TERMINAL_VELOCITY;

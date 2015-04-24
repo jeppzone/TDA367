@@ -35,6 +35,16 @@ public class Enemy extends AbstractLivingObject {
 
     @Override
     public void acceptVisitor(IVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public void visit(Enemy e){
+
+    }
+
+    @Override
+    public void visit(Player p){
 
     }
 }

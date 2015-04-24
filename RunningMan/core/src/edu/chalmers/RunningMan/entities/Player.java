@@ -19,7 +19,7 @@ public class Player extends AbstractLivingObject {
     private boolean isOnGround = true;
     private MovingDirection movingDirection;
     private FacingDirection facingDirection;
-    private Gravity gravity = new Gravity(-3.82f);
+    private Gravity gravity = new Gravity(-800f);
 
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
@@ -43,9 +43,9 @@ public class Player extends AbstractLivingObject {
 
     public float getVelocityX(){
         if(movingDirection == MovingDirection.RIGHT){
-            return 15.5f;
+            return 100f;
         }else{
-            return -15.5f;
+            return -100f;
         }
     }
 
@@ -58,30 +58,35 @@ public class Player extends AbstractLivingObject {
     }
 
     public void moveLeft(float deltaTime){
-        movingDirection = MovingDirection.LEFT;
-        this.oldX = this.getPosition().getX();
-        setNewX(deltaTime, getVelocityX());
-        facingDirection = FacingDirection.LEFT;
-    }
-
-    public void moveRight(float deltaTime){
-        movingDirection = MovingDirection.RIGHT;
-        this.oldX = this.getPosition().getX();
-        setNewX(deltaTime, getVelocityX());
-        facingDirection = FacingDirection.RIGHT;
-    }
-
-    public void jump(float deltaTime){
-        if(isOnGround){
-            isOnGround = false;
-            setVelocityY(15f);
+        if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
+            movingDirection = MovingDirection.LEFT;
+            this.oldX = this.getPosition().getX();
+            setNewX(deltaTime, getVelocityX());
+            facingDirection = FacingDirection.LEFT;
         }
     }
 
-    public void applyForce(float deltaTime){
-            setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
-            Position pos = getPosition();
-            pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
+    public void moveRight(float deltaTime){
+        if(getPosition().getY() == 0) {// replace with isOnGround when collisions are implemented
+            movingDirection = MovingDirection.RIGHT;
+            this.oldX = this.getPosition().getX();
+            setNewX(deltaTime, getVelocityX());
+            facingDirection = FacingDirection.RIGHT;
+        }
+    }
+
+    public void jump(float deltaTime){
+        if(getPosition().getY() == 0){// replace with isOnGround when collisions are implemented
+            //isOnGround = false;
+            setVelocityY(1000f);
+        }
+    }
+
+    public void applyForce(float deltaTime) {
+        setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
+        Position pos = getPosition();
+        pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
+
     }
 
     public void setVelocityY(float newVelocityY){
@@ -97,11 +102,21 @@ public class Player extends AbstractLivingObject {
     }
 
     public void handleCollision(AbstractPhysicalObject apo){
-
+        isOnGround = true;
     }
 
     @Override
     public void acceptVisitor(IVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public void visit(Enemy e){
+
+    }
+    @Override
+    public void visit(Player p){
+        // This will never be the case, since there's only one player
     }
 
 }
