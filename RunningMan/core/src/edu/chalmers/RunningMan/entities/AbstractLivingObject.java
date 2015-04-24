@@ -1,14 +1,14 @@
 package edu.chalmers.RunningMan.entities;
 
-import java.beans.PropertyChangeListener;
-
 /**
- * Created by Jesper on 4/22/2015.
+ * @author Jesper Olsson
  */
 public abstract class AbstractLivingObject extends AbstractPhysicalObject implements IVisitor {
+
     private int hp;
     private int maxHp;
-    private boolean isDead;
+    protected boolean isDead;
+
     public AbstractLivingObject(Size size, Position position, int maxHp) {
         super(size, position);
         this.hp = maxHp;
@@ -16,11 +16,8 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
     }
 
     public void setNewX(float delta, float velocity){
-        setX(getPosition().getX() + velocity*delta);
-    }
 
-    public void setNewY(float delta, float velocity){
-        setY(getPosition().getY() + velocity*delta);
+        setX(getPosition().getX() + velocity*delta);
     }
 
     public int getHp(){

@@ -1,12 +1,8 @@
 package edu.chalmers.RunningMan.entities;
 
-import javafx.geometry.Pos;
-
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-
 /**
  * A class to model a player
+ * @author Jesper Olsson
  */
 public class Player extends AbstractLivingObject {
 
@@ -27,11 +23,17 @@ public class Player extends AbstractLivingObject {
         facingDirection = FacingDirection.RIGHT;
     }
 
+    /**
+     * Enum to represent the different horizontal directions a player can move
+     */
     public enum MovingDirection{
         RIGHT,
         LEFT;
     }
 
+    /**
+     * Enum to represent the different directions a player cna be faced
+     */
     public enum FacingDirection{
         RIGHT,
         LEFT;
@@ -49,14 +51,15 @@ public class Player extends AbstractLivingObject {
         }
     }
 
-    public void update(){
-
-    }
-
     public float getVelocityY(){
         return velocityY;
     }
 
+    /**
+     * Method to make the player move to the left.
+     * This can only be done if player is on the ground
+     * @param deltaTime the time difference
+     */
     public void moveLeft(float deltaTime){
         if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
             movingDirection = MovingDirection.LEFT;
@@ -65,7 +68,11 @@ public class Player extends AbstractLivingObject {
             facingDirection = FacingDirection.LEFT;
         }
     }
-
+    /**
+     * Method to make the player move to the right.
+     * This can only be done if player is on the ground
+     * @param deltaTime the time difference
+     */
     public void moveRight(float deltaTime){
         if(getPosition().getY() == 0) {// replace with isOnGround when collisions are implemented
             movingDirection = MovingDirection.RIGHT;
@@ -74,7 +81,11 @@ public class Player extends AbstractLivingObject {
             facingDirection = FacingDirection.RIGHT;
         }
     }
-
+    /**
+     * Method to make the player jump.
+     * This can only be done if player is on the ground
+     * @param deltaTime the time difference
+     */
     public void jump(float deltaTime){
         if(getPosition().getY() == 0){// replace with isOnGround when collisions are implemented
             //isOnGround = false;
@@ -82,6 +93,11 @@ public class Player extends AbstractLivingObject {
         }
     }
 
+    /**
+     * Method to apply gravity force to the player.
+     * This is called every time a player moves
+     * @param deltaTime the time difference
+     */
     public void applyForce(float deltaTime) {
         setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
         Position pos = getPosition();
@@ -93,14 +109,18 @@ public class Player extends AbstractLivingObject {
         this.velocityY = newVelocityY;
     }
 
-    public void incrementScore(int amount){
-        this.score += amount;
-    }
-
+    /**
+     * Method to increment the players kill count.
+     * This is done whenever the player kills an enemy
+     */
     public void incrementKillCount() {
         this.killCount += 1;
     }
 
+    /**
+     * Method to handle collisions between player and another object on the map
+     * @param apo the object to collide with
+     */
     public void handleCollision(AbstractPhysicalObject apo){
         isOnGround = true;
     }

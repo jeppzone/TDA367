@@ -1,22 +1,24 @@
 package edu.chalmers.RunningMan.entities;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 /**
- * Created by Jesper on 4/22/2015.
+ * A class to represent a moving enemy.
+ * @author Jesper
  */
 public class Enemy extends AbstractLivingObject {
 
-    private PropertyChangeSupport pcs;
     private float velocity;
 
     public Enemy(Position position, Size size){
         super(size, position, 10);
-        pcs = new PropertyChangeSupport(this);
-        velocity = 0.25f;
+        velocity = -2f;
     }
 
+    /**
+     * Method to make the enemy move.
+     * Will change direction if it reaches the end of the screen
+     * @param delta the time difference
+     */
     public void move(int delta){
         setNewX(delta, velocity);
         if(getPosition().getX() == 0){
@@ -24,6 +26,11 @@ public class Enemy extends AbstractLivingObject {
         }
     }
 
+    /**
+     * Makes the enenmy move in the opposite direction
+     * This method is called whenever an enemy is not able to move
+     * in it's current direction
+     */
     public void changeDirection(){
         this.velocity = -1 * this.velocity;
     }
@@ -31,7 +38,6 @@ public class Enemy extends AbstractLivingObject {
     public float getVelocity(){
         return this.velocity;
     }
-
 
     @Override
     public void acceptVisitor(IVisitor visitor) {
