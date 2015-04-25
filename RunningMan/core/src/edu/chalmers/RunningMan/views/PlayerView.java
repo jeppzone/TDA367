@@ -30,7 +30,7 @@ public class PlayerView{
 
     public void draw(){
         spriteBatch.begin();
-        spriteBatch.draw(stand, player.getPosition().getX(),player.getPosition().getY());
+        spriteBatch.draw(stand, player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
         spriteBatch.end();
 
     }

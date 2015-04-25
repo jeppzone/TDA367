@@ -1,6 +1,8 @@
 package edu.chalmers.RunningMan.entities;
 
 
+import edu.chalmers.RunningMan.screens.GameScreen;
+
 /**
  * A class to represent a moving enemy.
  * @author Jesper
@@ -9,9 +11,9 @@ public class Enemy extends AbstractLivingObject {
 
     private float velocity;
 
-    public Enemy(Position position, Size size){
-        super(size, position, 10);
-        velocity = -2f;
+    public Enemy(Position position, Size size, int maxHp){
+        super(size, position, maxHp);
+        velocity = -100f;
     }
 
     /**
@@ -19,9 +21,9 @@ public class Enemy extends AbstractLivingObject {
      * Will change direction if it reaches the end of the screen
      * @param delta the time difference
      */
-    public void move(int delta){
+    public void move(float delta){
         setNewX(delta, velocity);
-        if(getPosition().getX() == 0){
+        if(getPosition().getX() == 0 || getPosition().getX() > 400){//Not dynamically suitable
             changeDirection();
         }
     }
