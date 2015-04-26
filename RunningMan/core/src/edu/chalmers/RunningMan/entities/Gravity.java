@@ -1,5 +1,8 @@
 package edu.chalmers.RunningMan.entities;
 
+/**
+ * A class to represent the Gravity Force
+ */
 public class Gravity {
     private final float GRAVITY_CONSTANT;
 

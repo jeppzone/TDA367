@@ -31,6 +31,11 @@ public abstract class AbstractPhysicalObject implements IVisitable {
         this.position.setY(y);
     }
 
+    /**
+     * A Method to fetch the hitbox of a physical object
+     * @return a rectangle that represents the area of an object
+     * that may collide with other objects
+     */
     public Rectangle getHitbox(){
         return new Rectangle(Math.round(position.getX()), Math.round(position.getY()),
                 Math.round(size.getWidth()), Math.round(size.getHeight()));

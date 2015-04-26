@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 /**
- * Created by Jesper on 4/22/2015.
+ * @author Jesper Olsson
  */
 public interface IVisitor {
     public void visit(Enemy e);
