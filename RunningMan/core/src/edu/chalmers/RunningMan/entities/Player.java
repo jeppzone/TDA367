@@ -163,4 +163,8 @@ public class Player extends AbstractLivingObject {
         // This will never be the case, since there's only one player
     }
 
+    public void visit(Obstacle g){
+        handleCollision(g);
+    }
+
 }

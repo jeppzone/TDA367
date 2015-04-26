@@ -6,4 +6,5 @@ package edu.chalmers.RunningMan.entities;
 public interface IVisitor {
     public void visit(Enemy e);
     public void visit(Player p);
+    public void visit(Obstacle g);
 }

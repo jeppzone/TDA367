@@ -1,8 +1,6 @@
 package edu.chalmers.RunningMan.entities;
 
 
-import edu.chalmers.RunningMan.screens.GameScreen;
-
 /**
  * A class to represent a moving enemy.
  * @author Jesper
@@ -51,6 +49,11 @@ public class Enemy extends AbstractLivingObject {
         if(this != e) {
             changeDirection();
         }
+    }
+
+    @Override
+    public void visit(Obstacle g){
+        changeDirection();
     }
 
     @Override
