@@ -91,7 +91,7 @@ public class Player extends AbstractLivingObject {
             //isOnGround = false;
             float velocityX = getVelocityX();
             setVelocityY(1000f);
-            setNewX(velocityX, deltaTime);
+            setNewX(deltaTime, velocityX);
         }
     }
 
@@ -125,6 +125,23 @@ public class Player extends AbstractLivingObject {
      */
     public void handleCollision(AbstractPhysicalObject apo){
         isOnGround = true;
+        Position pos = getPosition();
+        float playerX = pos.getX();
+        float playerY = pos.getY();
+        Size size = getSize();
+        float playerWidth = size.getWidth();
+        float playerHeight = size.getHeight();
+
+        Position objPos = apo.getPosition();
+        float objX = objPos.getX();
+        float objY = objPos.getY();
+        Size objSize = apo.getSize();
+        float objWidth = objSize.getWidth();
+        float objHeight = objSize.getHeight();
+
+        if(playerX <= objX || playerX + playerWidth >= objX){
+            pos.setY(oldX);
+        }
     }
 
     @Override
@@ -134,7 +151,7 @@ public class Player extends AbstractLivingObject {
 
     @Override
     public void visit(Enemy e){
-
+        handleCollision(e);
     }
     @Override
     public void visit(Player p){

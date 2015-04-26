@@ -1,4 +1,7 @@
 package edu.chalmers.RunningMan.entities;
+
+import java.awt.*;
+
 /**
  * @author Jesper Olsson
  */
@@ -26,6 +29,11 @@ public abstract class AbstractPhysicalObject implements IVisitable {
 
     public void setY(float y){
         this.position.setY(y);
+    }
+
+    public Rectangle getHitbox(){
+        return new Rectangle(Math.round(position.getX()), Math.round(position.getY()),
+                Math.round(size.getWidth()), Math.round(size.getHeight()));
     }
 
     public void setPosition(Position position){

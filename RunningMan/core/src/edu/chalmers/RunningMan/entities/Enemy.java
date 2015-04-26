@@ -48,11 +48,11 @@ public class Enemy extends AbstractLivingObject {
 
     @Override
     public void visit(Enemy e){
-
+        changeDirection();
     }
 
     @Override
     public void visit(Player p){
-
+        changeDirection();
     }
 }
