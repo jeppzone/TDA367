@@ -136,11 +136,16 @@ public class Player extends AbstractLivingObject {
         float objX = objPos.getX();
         float objY = objPos.getY();
         Size objSize = apo.getSize();
-        float objWidth = objSize.getWidth();
         float objHeight = objSize.getHeight();
 
         if(playerX <= objX || playerX + playerWidth >= objX){
-            pos.setY(oldX);
+            pos.setX(oldX);
+        }else if(playerY <= objY + objHeight && getVelocityY() > 0 ){
+            pos.setY(playerHeight + objY);
+            setVelocityY(0f);
+        }else if(playerY <= objY && getVelocityY() > 0){
+            pos.setY(objY - playerHeight);
+            setVelocityY(0f);
         }
     }
 
@@ -151,7 +156,7 @@ public class Player extends AbstractLivingObject {
 
     @Override
     public void visit(Enemy e){
-        handleCollision(e);
+        isDead = true;
     }
     @Override
     public void visit(Player p){

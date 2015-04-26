@@ -5,10 +5,11 @@ import java.util.List;
 
 /**
  * A class to model a level
+ * @author Jesper Olsson
  */
 public class Level {
-    private List<AbstractPhysicalObject> mapObjects;
-    private String levelName;
+    private final List<AbstractPhysicalObject> mapObjects;
+    private final String levelName;
 
     public Level(List<AbstractPhysicalObject> mapObjects, Player player, String levelName){
         this.mapObjects = mapObjects;

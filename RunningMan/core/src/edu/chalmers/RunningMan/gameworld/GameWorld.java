@@ -5,10 +5,15 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import edu.chalmers.RunningMan.controllers.EnemyController;
+import edu.chalmers.RunningMan.controllers.LevelController;
 import edu.chalmers.RunningMan.controllers.PlayerController;
 import edu.chalmers.RunningMan.entities.*;
 import edu.chalmers.RunningMan.views.EnemyView;
+import edu.chalmers.RunningMan.views.LevelView;
 import edu.chalmers.RunningMan.views.PlayerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static edu.chalmers.RunningMan.utils.Constants.V_HEIGHT;
 import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
@@ -19,17 +24,21 @@ import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
 public class GameWorld {
 
     private OrthographicCamera cam;
-
+    private List<AbstractPhysicalObject> mapObjects;
     private PlayerController playerController;
     private Player player;
     private PlayerView playerView;
     private Enemy enemy;
     private EnemyView enemyView;
     private EnemyController enemyController;
+    private Level level;
+    private LevelView levelView;
+    private LevelController levelController;
 
     public GameWorld() {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
+        mapObjects = new ArrayList<AbstractPhysicalObject>();
 
         player = new Player(new Weapon(), new Position(0,0), new Size(100,100), 100);
         playerView = new PlayerView(player);
@@ -39,12 +48,18 @@ public class GameWorld {
         enemyView = new EnemyView(enemy);
         enemyController = new EnemyController(enemy, enemyView);
 
+        mapObjects.add(enemy);
+
+        level = new Level(mapObjects, player, "Beach");
+        levelView = new LevelView(level);
+        levelController = new LevelController(level, levelView);
+
     }
 
     public void update(float deltaTime) {
 
         //Gdx.app.log("GameWorld", "update");
-
+        levelController.update();
         playerController.update(deltaTime);
         enemyController.update(deltaTime);
     }
