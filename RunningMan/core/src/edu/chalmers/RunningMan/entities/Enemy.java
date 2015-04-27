@@ -64,4 +64,8 @@ public class Enemy extends AbstractLivingObject {
     public void visit(Bullet b){
         // Enemy shall be hurt
     }
+    
+    public void visit(Steroid s){
+        //Nothing should happen with the enemy in this case
+    }
 }

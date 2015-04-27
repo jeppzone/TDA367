@@ -45,9 +45,9 @@ public class Player extends AbstractLivingObject {
 
     public float getVelocityX(){
         if(movingDirection == MovingDirection.RIGHT){
-            return 100f;
+            return this.velocityX;
         }else{
-            return -100f;
+            return -this.velocityX;
         }
     }
 
@@ -61,12 +61,12 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void moveLeft(float deltaTime){
-        if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
+        //if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
             movingDirection = MovingDirection.LEFT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             facingDirection = FacingDirection.LEFT;
-        }
+        //}
     }
     /**
      * Method to make the player move to the right.
@@ -74,12 +74,12 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void moveRight(float deltaTime){
-        if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
+        //if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
             movingDirection = MovingDirection.RIGHT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             facingDirection = FacingDirection.RIGHT;
-        }
+        //}
     }
     /**
      * Method to make the player jump.
@@ -106,7 +106,9 @@ public class Player extends AbstractLivingObject {
         pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
 
     }
-
+    public void setVelocityX(float newVelocityX){
+        this.velocityX = newVelocityX;
+    }
     public void setVelocityY(float newVelocityY){
         this.velocityY = newVelocityY;
     }
@@ -166,6 +168,9 @@ public class Player extends AbstractLivingObject {
 
     public void visit(Obstacle g){
         handleCollision(g);
+    }
+    public void visit(Steroid s){
+        setVelocityX(2*this.getVelocityX());
     }
 
     @Override

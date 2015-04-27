@@ -27,11 +27,11 @@ public class PlayerController  {
             System.out.println("jump");
             System.out.println("Player position: " + player.getPosition().getY());
             player.jump(deltaTime);
-        } else if(Input.isDown(Input.RIGHTBTN)) {
+        } else if(Input.isPressed(Input.RIGHTBTN)) {
             System.out.println("Player position: " + player.getPosition().getX());
             System.out.println("go right");
             player.moveRight(deltaTime);
-        } else if(Input.isDown(Input.LEFTBTN)) {
+        } else if(Input.isPressed(Input.LEFTBTN)) {
             System.out.println("go left");
             player.moveLeft(deltaTime);
         } else if(Input.isPressed(Input.SHOOTBTN)) {

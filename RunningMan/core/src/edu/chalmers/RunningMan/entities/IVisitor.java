@@ -8,4 +8,5 @@ public interface IVisitor {
     void visit(Player p);
     void visit(Obstacle g);
     void visit(Bullet b);
+    void visit(Steroid s);
 }
