@@ -125,18 +125,18 @@ public class Player extends AbstractLivingObject {
      */
     public void handleCollision(AbstractPhysicalObject apo){
         isOnGround = true;
-        Position pos = getPosition();
-        float playerX = pos.getX();
-        float playerY = pos.getY();
-        Size size = getSize();
-        float playerWidth = size.getWidth();
-        float playerHeight = size.getHeight();
+        final Position pos = getPosition();
+        final float playerX = pos.getX();
+        final float playerY = pos.getY();
+        final Size size = getSize();
+        final float playerWidth = size.getWidth();
+        final float playerHeight = size.getHeight();
 
-        Position objPos = apo.getPosition();
-        float objX = objPos.getX();
-        float objY = objPos.getY();
-        Size objSize = apo.getSize();
-        float objHeight = objSize.getHeight();
+        final Position objPos = apo.getPosition();
+        final float objX = objPos.getX();
+        final float objY = objPos.getY();
+        final Size objSize = apo.getSize();
+        final float objHeight = objSize.getHeight();
 
         if(playerX <= objX || playerX + playerWidth >= objX){
             pos.setX(oldX);
