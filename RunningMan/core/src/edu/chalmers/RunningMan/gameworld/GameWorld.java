@@ -40,7 +40,7 @@ public class GameWorld {
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
         mapObjects = new ArrayList<AbstractPhysicalObject>();
 
-        player = new Player(new Weapon(), new Position(0,0), new Size(100,100), 100);
+        player = new Player(new Weapon(), new Position(0,0), new Size(50,50), 100);
         playerView = new PlayerView(player);
         playerController = new PlayerController(player, playerView);
 

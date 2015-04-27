@@ -157,6 +157,7 @@ public class Player extends AbstractLivingObject {
     @Override
     public void visit(Enemy e){
         isDead = true;
+        System.out.println("Collision with enemy");
     }
     @Override
     public void visit(Player p){
