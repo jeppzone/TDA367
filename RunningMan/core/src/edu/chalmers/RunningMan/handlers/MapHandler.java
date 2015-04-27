@@ -67,10 +67,11 @@ public class MapHandler implements IMapHandler {
 
         MapObjects badassenemy = tiledMap.getLayers().get("badassenemy").getObjects();
 
-
+        /*
         for(int i = 0; ){
             livingObjects.add(badassenemy.)
         }
+        */
 
     }
 
@@ -80,7 +81,7 @@ public class MapHandler implements IMapHandler {
         waterLayer.getWidth();
         
 
-        TiledMapTileLayer.Cell cell = waterLayer.getCell(col,row);
+        //TiledMapTileLayer.Cell cell = waterLayer.getCell(col,row);
 
         final int layerAmount = tiledMap.getLayers().getCount();
 
@@ -90,7 +91,7 @@ public class MapHandler implements IMapHandler {
         Array<MapObject> objects = new Array<MapObject>();
         for (MapObject obj : groundLayer.getObjects()) {
             if ("Ground".equals(obj.getProperties().get("type", String.class)) ) {
-                physicalObjects.add(obj);
+                //physicalObjects.add(obj);
             }
         }
 

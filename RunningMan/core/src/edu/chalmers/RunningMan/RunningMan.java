@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chalmers.RunningMan.entities.Player;
+import edu.chalmers.RunningMan.entities.Weapon;
 import edu.chalmers.RunningMan.handlers.InputProcessor;
 import edu.chalmers.RunningMan.screens.GameScreen;
 
@@ -22,7 +24,7 @@ public class RunningMan extends Game {
 	@Override
 	public void create () {
 
-        Gdx.app.log("ZBGame", "created");
+        Gdx.app.log("RunningMan Game", "created");
 
         Gdx.input.setInputProcessor(new InputProcessor());
 
