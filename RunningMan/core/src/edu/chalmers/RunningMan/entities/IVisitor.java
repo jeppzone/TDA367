@@ -7,4 +7,5 @@ public interface IVisitor {
     void visit(Enemy e);
     void visit(Player p);
     void visit(Obstacle g);
+    void visit(Bullet b);
 }

@@ -60,4 +60,8 @@ public class Enemy extends AbstractLivingObject {
     public void visit(Player p){
         //Nothing should happen with the enemy in this case
     }
+    @Override
+    public void visit(Bullet b){
+        // Enemy shall be hurt
+    }
 }

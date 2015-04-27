@@ -168,4 +168,9 @@ public class Player extends AbstractLivingObject {
         handleCollision(g);
     }
 
+    @Override
+    public void visit(Bullet b){
+        //Nothing shall happen here
+    }
+
 }
