@@ -79,7 +79,7 @@ public class PlayerTest extends Assert{
 
     @Test
     public void testVisitSteroid(){
-        
+
     }
 
     @Test

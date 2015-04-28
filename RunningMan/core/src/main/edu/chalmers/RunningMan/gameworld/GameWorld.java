@@ -8,6 +8,7 @@ import edu.chalmers.RunningMan.entities.*;
 import edu.chalmers.RunningMan.views.EnemyView;
 import edu.chalmers.RunningMan.views.LevelView;
 import edu.chalmers.RunningMan.views.PlayerView;
+import edu.chalmers.RunningMan.views.SteroidView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public class GameWorld {
     private Level level;
     private LevelView levelView;
     private LevelController levelController;
+    private Steroid steroid;
+    private SteroidView steroidView;
 
     public GameWorld() {
         cam = new OrthographicCamera();
@@ -45,6 +48,10 @@ public class GameWorld {
         enemyView = new EnemyView(enemy);
         enemyController = new EnemyController(enemy, enemyView);
 
+        steroid = new Steroid(new Position(100, 0), new Size(50, 50));
+        steroidView = new SteroidView(steroid);
+
+        mapObjects.add(steroid);
         mapObjects.add(enemy);
 
         level = new Level(mapObjects, player, "Beach");
@@ -57,6 +64,7 @@ public class GameWorld {
 
         //Gdx.app.log("GameWorld", "update");
         levelController.update();
+        steroidView.draw();
         playerController.update(deltaTime);
         enemyController.update(deltaTime);
     }

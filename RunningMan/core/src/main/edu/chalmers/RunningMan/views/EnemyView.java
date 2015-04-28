@@ -8,7 +8,7 @@ import edu.chalmers.RunningMan.entities.Enemy;
 /**
  * Created by Jesper on 4/25/2015.
  */
-public class EnemyView {
+public class    EnemyView {
     private final Enemy enemy;
     private final SpriteBatch sb;
     private final Texture stand;

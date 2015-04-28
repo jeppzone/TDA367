@@ -21,7 +21,7 @@ public class Player extends AbstractLivingObject {
         super(size, position, maxHp);
         this.weapon = weapon;
         facingDirection = FacingDirection.RIGHT;
-        velocityX = 300f;
+        this.velocityX = 200f;
     }
 
     /**
@@ -45,7 +45,7 @@ public class Player extends AbstractLivingObject {
     }
 
     public float getVelocityX(){
-        if(movingDirection == MovingDirection.RIGHT){
+        if(movingDirection == MovingDirection.RIGHT) {
             return this.velocityX;
         }else{
             return -this.velocityX;
@@ -108,7 +108,7 @@ public class Player extends AbstractLivingObject {
 
     }
     public void setVelocityX(float newVelocityX){
-        this.velocityX = newVelocityX;
+       this.velocityX = newVelocityX;
     }
     public void setVelocityY(float newVelocityY){
         this.velocityY = newVelocityY;
@@ -171,7 +171,7 @@ public class Player extends AbstractLivingObject {
         handleCollision(g);
     }
     public void visit(Steroid s){
-        setVelocityX(2*this.getVelocityX());
+        setVelocityX(1.5f*this.velocityX);
     }
 
     @Override

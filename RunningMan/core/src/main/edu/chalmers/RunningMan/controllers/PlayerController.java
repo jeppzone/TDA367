@@ -22,16 +22,10 @@ public class PlayerController  {
 
         // player jump
         if(Input.isPressed(Input.JUMPBTN)) {
-            System.out.println("Player position: " + player.getPosition().getY());
-            System.out.println("jump");
-            System.out.println("Player position: " + player.getPosition().getY());
             player.jump(deltaTime);
         } else if(Input.isPressed(Input.RIGHTBTN)) {
-            System.out.println("Player position: " + player.getPosition().getX());
-            System.out.println("go right");
             player.moveRight(deltaTime);
         } else if(Input.isPressed(Input.LEFTBTN)) {
-            System.out.println("go left");
             player.moveLeft(deltaTime);
         } else if(Input.isPressed(Input.SHOOTBTN)) {
             // player.shoot(deltaTime);
