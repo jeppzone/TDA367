@@ -7,7 +7,7 @@ import edu.chalmers.RunningMan.views.EnemyView;
  * A class for controlling enemies
  * @Author Jesper Olsson
  */
-public class EnemyController implements IController {
+public class EnemyController implements IEntityController {
     private Enemy enemy;
     private EnemyView enemyView;
 

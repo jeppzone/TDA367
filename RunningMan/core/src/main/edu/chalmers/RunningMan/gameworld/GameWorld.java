@@ -33,13 +33,13 @@ public class GameWorld {
     private Steroid steroid;
     private SteroidView steroidView;
     private SteroidController steroidController;
-    private List<IController> controllers;
+    private List<IEntityController> controllers;
 
     public GameWorld() {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
         mapObjects = new ArrayList<AbstractPhysicalObject>();
-        controllers = new ArrayList<IController>();
+        controllers = new ArrayList<IEntityController>();
 
         player = new Player(new Weapon(), new Position(0,0), new Size(50,50), 100);
         playerView = new PlayerView(player);
@@ -71,7 +71,7 @@ public class GameWorld {
     public void update(float deltaTime) {
 
         //Gdx.app.log("GameWorld", "update");
-        for(IController controller: controllers){
+        for(IEntityController controller: controllers){
             controller.update(deltaTime);
         }
     }

@@ -7,7 +7,7 @@ import edu.chalmers.RunningMan.views.PlayerView;
 /**
  * Created by JohanTobin on 2015-04-20.
  */
-public class PlayerController implements IController{
+public class PlayerController implements IEntityController {
 
     private Player player;
     private PlayerView playerView;
