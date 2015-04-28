@@ -171,7 +171,8 @@ public class Player extends AbstractLivingObject {
         handleCollision(g);
     }
     public void visit(Steroid s){
-        setVelocityX(1.5f*this.velocityX);
+        setVelocityX(2f*this.velocityX);
+        System.out.println("Collision with steroid");
     }
 
     @Override

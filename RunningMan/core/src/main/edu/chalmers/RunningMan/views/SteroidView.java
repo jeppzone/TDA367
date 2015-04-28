@@ -22,4 +22,5 @@ public class SteroidView {
         sb.draw(texture, steroid.getPosition().getX(), steroid.getPosition().getY(), steroid.getSize().getWidth(), steroid.getSize().getHeight());
         sb.end();
     }
+
 }

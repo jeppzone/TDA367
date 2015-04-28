@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 /**
- * Created by Jesper on 4/28/2015.
+ * @author Jesper Olsson
  */
 public abstract class AbstractCollectibleObject extends AbstractPhysicalObject {
     protected boolean pickedUp;

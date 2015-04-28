@@ -6,7 +6,7 @@ import edu.chalmers.RunningMan.views.EnemyView;
 /**
  * Created by Jesper on 4/25/2015.
  */
-public class EnemyController {
+public class EnemyController implements IController {
     private Enemy enemy;
     private EnemyView enemyView;
 

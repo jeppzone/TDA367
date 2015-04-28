@@ -6,7 +6,7 @@ import edu.chalmers.RunningMan.views.LevelView;
 /**
  * A class to represent the Controller of a level
  */
-public class LevelController {
+public class LevelController implements IController {
     private Level level;
     private LevelView levelView;
 
@@ -15,7 +15,7 @@ public class LevelController {
         this.levelView = levelView;
     }
 
-    public void update(){
+    public void update(float deltaTime){
         level.checkCollisions();
         levelView.draw();
     }

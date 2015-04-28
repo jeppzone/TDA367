@@ -1,9 +1,7 @@
 package edu.chalmers.RunningMan.gameworld;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import edu.chalmers.RunningMan.controllers.EnemyController;
-import edu.chalmers.RunningMan.controllers.LevelController;
-import edu.chalmers.RunningMan.controllers.PlayerController;
+import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
 import edu.chalmers.RunningMan.views.EnemyView;
 import edu.chalmers.RunningMan.views.LevelView;
@@ -34,11 +32,14 @@ public class GameWorld {
     private LevelController levelController;
     private Steroid steroid;
     private SteroidView steroidView;
+    private SteroidController steroidController;
+    private List<IController> controllers;
 
     public GameWorld() {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
         mapObjects = new ArrayList<AbstractPhysicalObject>();
+        controllers = new ArrayList<IController>();
 
         player = new Player(new Weapon(), new Position(0,0), new Size(50,50), 100);
         playerView = new PlayerView(player);
@@ -50,22 +51,28 @@ public class GameWorld {
 
         steroid = new Steroid(new Position(100, 0), new Size(50, 50));
         steroidView = new SteroidView(steroid);
-
-        mapObjects.add(steroid);
-        mapObjects.add(enemy);
+        steroidController = new SteroidController(steroid, steroidView);
 
         level = new Level(mapObjects, player, "Beach");
         levelView = new LevelView(level);
         levelController = new LevelController(level, levelView);
+
+        controllers.add(playerController);
+        controllers.add(enemyController);
+        controllers.add(steroidController);
+        controllers.add(levelController);
+
+        mapObjects.add(steroid);
+        mapObjects.add(enemy);
+
 
     }
 
     public void update(float deltaTime) {
 
         //Gdx.app.log("GameWorld", "update");
-        levelController.update();
-        steroidView.draw();
-        playerController.update(deltaTime);
-        enemyController.update(deltaTime);
+        for(IController controller: controllers){
+            controller.update(deltaTime);
+        }
     }
 }
