@@ -14,7 +14,7 @@ public class Steroid extends AbstractCollectibleObject {
     @Override
     public void acceptVisitor(IVisitor visitor)
     {
-        if(!isPickedUp()) {
+        if(!isPickedUp() && visitor instanceof Player) {
             visitor.visit(this);
             setPickedUp(true);
         }
