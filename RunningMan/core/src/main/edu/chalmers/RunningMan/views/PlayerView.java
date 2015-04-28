@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chalmers.RunningMan.entities.Player;
 
 
-
-
 public class PlayerView{
 
     private final Player player;

@@ -1,8 +1,5 @@
 package edu.chalmers.RunningMan.gameworld;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import edu.chalmers.RunningMan.controllers.EnemyController;
 import edu.chalmers.RunningMan.controllers.LevelController;
