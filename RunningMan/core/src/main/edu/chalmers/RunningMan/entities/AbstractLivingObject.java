@@ -1,6 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 /**
+ * Abstract class for Living Objects
  * @author Jesper Olsson
  */
 public abstract class AbstractLivingObject extends AbstractPhysicalObject implements IVisitor {

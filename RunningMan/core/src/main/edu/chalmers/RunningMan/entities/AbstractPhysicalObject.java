@@ -3,6 +3,7 @@ package edu.chalmers.RunningMan.entities;
 import java.awt.*;
 
 /**
+ * Abstract class for physical objects
  * @author Jesper Olsson
  */
 public abstract class AbstractPhysicalObject implements IVisitable {

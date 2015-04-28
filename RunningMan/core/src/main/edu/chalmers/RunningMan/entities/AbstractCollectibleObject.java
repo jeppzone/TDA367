@@ -1,6 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 /**
+ * Abstract class for collectible objects
  * @author Jesper Olsson
  */
 public abstract class AbstractCollectibleObject extends AbstractPhysicalObject {

@@ -4,7 +4,8 @@ import edu.chalmers.RunningMan.entities.Steroid;
 import edu.chalmers.RunningMan.views.SteroidView;
 
 /**
- * Created by Jesper on 4/28/2015.
+ * A class for controlling Steroids
+ * @author Jesper Olsson
  */
 public class SteroidController implements IController {
     private Steroid steroid;

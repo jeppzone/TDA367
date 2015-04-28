@@ -5,6 +5,7 @@ import edu.chalmers.RunningMan.views.LevelView;
 
 /**
  * A class to represent the Controller of a level
+ * @author Jesper Olsson
  */
 public class LevelController implements IController {
     private Level level;
