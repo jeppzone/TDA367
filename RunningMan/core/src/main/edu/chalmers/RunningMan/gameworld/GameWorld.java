@@ -49,7 +49,7 @@ public class GameWorld {
         enemyView = new EnemyView(enemy);
         enemyController = new EnemyController(enemy, enemyView);
 
-        steroid = new Steroid(new Position(100, 0), new Size(50, 50));
+        steroid = new Steroid(new Position(400, 0), new Size(50, 50));
         steroidView = new SteroidView(steroid);
         steroidController = new SteroidController(steroid, steroidView);
 

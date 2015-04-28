@@ -21,7 +21,13 @@ public class PlayerController implements IController{
 
 
         // player jump
-        if(Input.isPressed(Input.JUMPBTN)) {
+        if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.RIGHTBTN)) {
+            player.jump(deltaTime);
+            player.moveRight(deltaTime);
+        } else if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.LEFTBTN)){
+            player.jump(deltaTime);
+            player.moveLeft(deltaTime);
+        } else if(Input.isPressed(Input.JUMPBTN)){
             player.jump(deltaTime);
         } else if(Input.isPressed(Input.RIGHTBTN)) {
             player.moveRight(deltaTime);

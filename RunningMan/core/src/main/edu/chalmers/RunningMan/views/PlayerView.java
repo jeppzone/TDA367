@@ -15,9 +15,6 @@ public class PlayerView{
     //private final TextureRegion standingRight;
     private final Texture stand;
 
-
-
-
     public PlayerView(Player player){
         this.player = player;
        // this.sprite = sprite;;
@@ -26,7 +23,7 @@ public class PlayerView{
         spriteBatch = new SpriteBatch();
     }
 
-    public void draw(){
+    public void draw() {
         spriteBatch.begin();
         spriteBatch.draw(stand, player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
         spriteBatch.end();

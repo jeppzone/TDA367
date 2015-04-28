@@ -88,8 +88,8 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void jump(float deltaTime){
-        if(getPosition().getY() == 0){// replace with isOnGround when collisions are implemented
-            //isOnGround = false;
+        if(getPosition().getY() == 0) {// replace with isOnGround when collisions are implemented
+            isOnGround = false;
             float velocityX = getVelocityX();
             setVelocityY(1000f);
             setNewX(deltaTime, velocityX);
