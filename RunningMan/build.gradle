@@ -4,14 +4,13 @@ buildscript {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
+        testCompile 'junit:junit4.11'
     }
 }
 
 allprojects {
-    apply plugin: "eclipse"
+    apply plugin: "intellij"
     apply plugin: "idea"
-    apply plugin: 'pmd'
-    apply plugin: 'findbugs'
 
     version = '1.0'
     ext {
@@ -28,15 +27,18 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
+
 }
 
 project(":core") {
     apply plugin: "java"
-
-
+    apply plugin: "idea"
+    apply plugin: 'pmd'
+    apply plugin: 'findbugs'
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+        testCompile "junit:junit:+"
     }
 }
 
@@ -49,9 +51,10 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+        testCompile 'junit:junit4.11'
     }
 }
 
-tasks.eclipse.doLast {
+tasks.intellij.doLast {
     delete ".project"
 }

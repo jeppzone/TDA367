@@ -21,6 +21,7 @@ public class Player extends AbstractLivingObject {
         super(size, position, maxHp);
         this.weapon = weapon;
         facingDirection = FacingDirection.RIGHT;
+        velocityX = 300f;
     }
 
     /**
