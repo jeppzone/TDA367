@@ -8,82 +8,82 @@ import org.junit.Test;
 public class PlayerTest extends Assert{
 
     @Test
-    public void testGetScore() throws Exception {
+    public void testGetScore(){
 
     }
 
     @Test
-    public void testGetVelocityX() throws Exception {
+    public void testGetVelocityX(){
 
     }
 
     @Test
-    public void testGetVelocityY() throws Exception {
+    public void testGetVelocityY(){
 
     }
 
     @Test
-    public void testMoveLeft() throws Exception {
+    public void testMoveLeft(){
 
     }
 
     @Test
-    public void testMoveRight() throws Exception {
+    public void testMoveRight(){
 
     }
 
     @Test
-    public void testJump() throws Exception {
+    public void testJump(){
 
     }
 
     @Test
-    public void testApplyForce() throws Exception {
+    public void testApplyForce(){
 
     }
 
     @Test
-    public void testSetVelocityX() throws Exception {
+    public void testSetVelocityX(){
 
     }
 
     @Test
-    public void testSetVelocityY() throws Exception {
+    public void testSetVelocityY(){
 
     }
 
     @Test
-    public void testIncrementKillCount() throws Exception {
+    public void testIncrementKillCount(){
 
     }
 
     @Test
-    public void testHandleCollision() throws Exception {
+    public void testHandleCollision(){
 
     }
 
     @Test
-    public void testAcceptVisitor() throws Exception {
+    public void testAcceptVisitor(){
 
     }
 
     @Test
-    public void testVisit() throws Exception {
+    public void testVisitEnemy(){
 
     }
 
     @Test
-    public void testVisit1() throws Exception {
+    public void testVisitObstacle(){
 
     }
 
     @Test
-    public void testVisit2() throws Exception {
+    public void testVisitSteroid(){
 
     }
 
     @Test
-    public void testVisit3() throws Exception {
+    public void testVisitBullet(){
 
     }
 }
