@@ -7,6 +7,11 @@ public class Size {
     private float width;
     private float height;
 
+    public Size(float size) {
+        this.width = size;
+        this.height = size;
+    }
+
     public Size(float width, float height){
         this.width = width;
         this.height = height;
