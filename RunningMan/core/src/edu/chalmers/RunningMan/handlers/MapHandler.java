@@ -7,10 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
-import edu.chalmers.RunningMan.entities.AbstractPhysicalObject;
-import edu.chalmers.RunningMan.entities.Enemy;
-import edu.chalmers.RunningMan.entities.Position;
-import edu.chalmers.RunningMan.entities.Size;
+import edu.chalmers.RunningMan.entities.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -96,9 +93,9 @@ public class MapHandler implements IMapHandler {
                 if(groundCell != null && groundCell.getTile() != null) {
                     physicalObjects.add(new Enemy(position, size, 100));
                 } else if(enemyCell != null && enemyCell.getTile() != null) {
-                    //physicalObjects.add(new Enemy(position, size));
+                    physicalObjects.add(new Enemy(position, size, 100));
                 } else if(steroidCell != null && steroidCell.getTile() != null) {
-                    //physicalObjects.add(new Steroid(position, size));
+                    physicalObjects.add(new Steroid(position, size));
                 } else if(startPositionCell != null && startPositionCell.getTile() != null) {
                     playerStartPosition = position;
                     playerStartPosition.setY(position.getY() + 10);
