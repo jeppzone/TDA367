@@ -125,6 +125,14 @@ public class Player extends AbstractLivingObject {
         this.killCount += 1;
     }
 
+    public MovingDirection getMovingDirection(){
+        return movingDirection;
+    }
+
+    public FacingDirection getFacingDirection(){
+        return facingDirection;
+    }
+
     /**
      * Method to handle collisions between player and another object on the map
      * @param apo the object to collide with
@@ -185,7 +193,7 @@ public class Player extends AbstractLivingObject {
     }
 
     public void visit(Ground g) {
-
+        handleCollision(g);
     }
 
 }
