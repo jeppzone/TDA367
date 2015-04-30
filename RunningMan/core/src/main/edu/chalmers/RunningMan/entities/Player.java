@@ -178,4 +178,8 @@ public class Player extends AbstractLivingObject {
         //Nothing shall happen here
     }
 
+    public void visit(Ground g) {
+
+    }
+
 }

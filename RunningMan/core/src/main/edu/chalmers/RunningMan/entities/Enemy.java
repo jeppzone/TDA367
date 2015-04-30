@@ -1,6 +1,5 @@
 package edu.chalmers.RunningMan.entities;
 
-
 /**
  * A class to represent a moving enemy.
  * @author Jesper
@@ -67,5 +66,9 @@ public class Enemy extends AbstractLivingObject {
     
     public void visit(Steroid s){
         //Nothing should happen with the enemy in this case
+    }
+
+    public void visit(Ground g) {
+
     }
 }

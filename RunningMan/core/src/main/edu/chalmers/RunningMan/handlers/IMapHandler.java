@@ -1,14 +1,19 @@
 package edu.chalmers.RunningMan.handlers;
 
+import edu.chalmers.RunningMan.entities.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.entities.Position;
 
+import java.util.List;
+
 /**
- * Created by JohanTobin on 2015-04-22.
+ * A interface for map handlers
  */
 public interface IMapHandler {
 
-    Position getStartPosition();
+    public List<AbstractPhysicalObject> getPhysicalObjectsList();
 
-    void loadLevel(String levelName);
+    public Position getPlayerStartPosition();
+
+    public void loadLevel(String levelName) throws MapHandlerException;
 
 }

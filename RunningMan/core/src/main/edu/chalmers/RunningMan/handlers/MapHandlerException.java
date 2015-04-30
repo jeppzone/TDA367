@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.handlers;
 
 /**
- * Created by JohanTobin on 2015-04-24.
+ * An Exception class for MapHandler
  */
 public class MapHandlerException extends Exception {
 
