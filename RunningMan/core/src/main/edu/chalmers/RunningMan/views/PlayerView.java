@@ -1,32 +1,60 @@
 package edu.chalmers.RunningMan.views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import edu.chalmers.RunningMan.entities.Player;
 
-
-public class PlayerView{
+/**
+ * A class to represent the view of the Player.
+ */
+public class PlayerView {
 
     private final Player player;
-    //private final Sprite sprite;
     private final SpriteBatch spriteBatch;
-    //private final TextureRegion standingLeft;
-    //private final TextureRegion standingRight;
-    private final Texture stand;
+
+    private final Texture walkSheet;
+    private TextureRegion[] walkFrames;
+    private Animation walkAnimation;
+
+    private float stateTime;
 
     public PlayerView(Player player){
         this.player = player;
-       // this.sprite = sprite;;
-        stand = new Texture(Gdx.files.internal("core/assets/testPic.png"));
-      //  sprite = new Sprite();
+
+        walkSheet = new Texture("core/assets/walk_sheet_soldier.png");
+        walkFrames = TextureRegion.split(walkSheet, 58, 60)[0];
+        walkAnimation = new Animation(1/12f, walkFrames);
+
         spriteBatch = new SpriteBatch();
     }
 
+    /**
+     * Draws the player
+     */
     public void draw() {
         spriteBatch.begin();
-        spriteBatch.draw(stand, player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
+        spriteBatch.draw(getCurrentFrame(), player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
         spriteBatch.end();
+
+    }
+
+    /**
+     * Get the current frame to be drawn
+     * @return currentFrame
+     */
+    private TextureRegion getCurrentFrame() {
+        stateTime += Gdx.graphics.getDeltaTime();
+
+        if(player.isOnGround()) {
+            return walkAnimation.getKeyFrame(stateTime, true);
+        } else {
+            // TODO get frame for jump movement, not walkAnimation frame
+            return walkAnimation.getKeyFrame(stateTime, true);
+        }
 
     }
 
