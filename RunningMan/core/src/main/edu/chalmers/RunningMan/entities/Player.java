@@ -56,6 +56,10 @@ public class Player extends AbstractLivingObject {
         return velocityY;
     }
 
+    public boolean isOnGround() {
+        return isOnGround;
+    }
+
     /**
      * Method to make the player move to the left.
      * This can only be done if player is on the ground
@@ -108,6 +112,7 @@ public class Player extends AbstractLivingObject {
     public void setVelocityX(float newVelocityX){
        this.velocityX = newVelocityX;
     }
+
     public void setVelocityY(float newVelocityY){
         this.velocityY = newVelocityY;
     }
@@ -168,6 +173,7 @@ public class Player extends AbstractLivingObject {
     public void visit(Obstacle g){
         handleCollision(g);
     }
+
     public void visit(Steroid s){
         setVelocityX(2f*this.velocityX);
         System.out.println("Collision with steroid");
