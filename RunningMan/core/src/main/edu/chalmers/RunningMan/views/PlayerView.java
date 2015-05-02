@@ -1,7 +1,6 @@
 package edu.chalmers.RunningMan.views;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,18 +15,35 @@ public class PlayerView {
     private final Player player;
     private final SpriteBatch spriteBatch;
 
-    private final Texture walkSheet;
-    private TextureRegion[] walkFrames;
-    private Animation walkAnimation;
+    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture;
+    private TextureRegion[] walkRightSprites, walkLeftSprites;
+    private TextureRegion jumpRightSprite, jumpLeftSprite;
+    private Animation walkRightAnimation, walkLeftAnimation;
+
+    private final static String SPRITE_WALK_RIGHT_SHEET = "core/assets/walk_right_sheet_soldier.png";
+    private final static String SPRITE_WALK_LEFT_SHEET = "core/assets/walk_left_sheet_soldier.png";
+    private final static String SPRITE_JUMP_RIGHT = "core/assets/jump_right_soldier.png";
+    private final static String SPRITE_JUMP_LEFT = "core/assets/jump_left_soldier.png";
 
     private float stateTime;
 
     public PlayerView(Player player){
         this.player = player;
 
-        walkSheet = new Texture("core/assets/walk_sheet_soldier.png");
-        walkFrames = TextureRegion.split(walkSheet, 58, 60)[0];
-        walkAnimation = new Animation(1/12f, walkFrames);
+        walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
+        walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
+        jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
+        jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
+
+        // TODO how to decide height and width on sprites without hard code it?
+        walkRightSprites = TextureRegion.split(walkRightSheet, 58, 60)[0];
+        walkLeftSprites = TextureRegion.split(walkLeftSheet, 58, 60)[0];
+        jumpRightSprite = new TextureRegion(jumpRightTexture, 58, 60);
+        jumpLeftSprite = new TextureRegion(jumpLeftTexture, 58, 60);
+
+        // the float argument decides the speed of the animation
+        walkRightAnimation = new Animation(1/12f, walkRightSprites);
+        walkLeftAnimation = new Animation(1/12f, walkLeftSprites);
 
         spriteBatch = new SpriteBatch();
     }
@@ -37,25 +53,48 @@ public class PlayerView {
      */
     public void draw() {
         spriteBatch.begin();
-        spriteBatch.draw(getCurrentFrame(), player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
+        spriteBatch.draw(getCurrentSprite(), player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
         spriteBatch.end();
 
     }
 
     /**
-     * Get the current frame to be drawn
+     * Get the current sprite to be drawn
      * @return currentFrame
      */
-    private TextureRegion getCurrentFrame() {
+    private TextureRegion getCurrentSprite() {
         stateTime += Gdx.graphics.getDeltaTime();
 
-        if(player.isOnGround()) {
-            return walkAnimation.getKeyFrame(stateTime, true);
-        } else {
-            // TODO get frame for jump movement, not walkAnimation frame
-            return walkAnimation.getKeyFrame(stateTime, true);
+        switch (player.getPlayerState()) {
+
+            case MOVING_RIGHT:
+                System.out.println("MOVING_RIGHT");
+                return walkRightAnimation.getKeyFrame(stateTime, true);
+
+            case MOVING_LEFT:
+                System.out.println("MOVING_LEFT");
+                return walkLeftAnimation.getKeyFrame(stateTime, true);
+
+            case FACING_RIGHT:
+                System.out.println("FACING_RIGHT");
+                return walkRightSprites[0];
+
+            case FACING_LEFT:
+                System.out.println("FACING_LEFT");
+                return walkLeftSprites[5];
+
+            case JUMPING_RIGHT:
+                System.out.println("JUMPING_RIGHT");
+                return jumpRightSprite;
+
+            case JUMPING_LEFT:
+                System.out.println("JUMPING_LEFT");
+                return jumpLeftSprite;
+
+            default:
+                // default case will not appear
+                return walkRightAnimation.getKeyFrame(stateTime, true);
         }
 
     }
-
 }

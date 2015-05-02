@@ -19,7 +19,6 @@ public class PlayerController implements IEntityController {
 
     public void handleKeyboardInput(float deltaTime){
 
-
         // player jump
         if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.RIGHTBTN)) {
             player.jump(deltaTime);
@@ -44,8 +43,9 @@ public class PlayerController implements IEntityController {
     public void update(float deltaTime) {
 
         handleKeyboardInput(deltaTime);
+
+        player.update();
         playerView.draw();
 
-        // playerView.render();
     }
 }

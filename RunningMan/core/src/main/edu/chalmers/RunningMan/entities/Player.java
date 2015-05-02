@@ -6,38 +6,39 @@ package edu.chalmers.RunningMan.entities;
  */
 public class Player extends AbstractLivingObject {
 
+    private final int LAST_MOVE_LEFT = -1;
+    private final int LAST_MOVE_RIGHT = 1;
+
     private int killCount = 0;
     private int score = 0;
     private Weapon weapon;
-    private float velocityX;
+
+    private float velocityX = 200f;
     private float velocityY;
     private float oldX;
+
     private boolean isOnGround = true;
-    private MovingDirection movingDirection;
-    private FacingDirection facingDirection;
     private Gravity gravity = new Gravity(-800f);
+
+    private PlayerState playerState = PlayerState.FACING_RIGHT;
+    private int lastMovedDirection = LAST_MOVE_RIGHT;
+    private long lastTimeMoved;
 
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         this.weapon = weapon;
-        facingDirection = FacingDirection.RIGHT;
-        this.velocityX = 200f;
     }
 
     /**
-     * Enum to represent the different horizontal directions a player can move
+     * Enum to represent the different movement states a player can be in
      */
-    public enum MovingDirection{
-        RIGHT,
-        LEFT;
-    }
-
-    /**
-     * Enum to represent the different directions a player cna be faced
-     */
-    public enum FacingDirection{
-        RIGHT,
-        LEFT;
+    public enum PlayerState {
+        FACING_RIGHT,
+        FACING_LEFT,
+        MOVING_RIGHT,
+        MOVING_LEFT,
+        JUMPING_RIGHT,
+        JUMPING_LEFT;
     }
 
     public int getScore(){
@@ -45,7 +46,7 @@ public class Player extends AbstractLivingObject {
     }
 
     public float getVelocityX(){
-        if(movingDirection == MovingDirection.RIGHT) {
+        if(playerState == PlayerState.MOVING_RIGHT) {
             return this.velocityX;
         }else{
             return -this.velocityX;
@@ -60,6 +61,46 @@ public class Player extends AbstractLivingObject {
         return isOnGround;
     }
 
+    public PlayerState getPlayerState(){
+        return playerState;
+    }
+
+    /**
+     * Updates the current player state.
+     */
+    public void update() {
+
+        // if jumping to the right
+        if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
+            playerState = PlayerState.JUMPING_RIGHT;
+        }
+
+        // if jumping to the left
+        else if(!isOnGround() && lastMovedDirection == LAST_MOVE_LEFT) {
+            playerState = PlayerState.JUMPING_LEFT;
+        }
+
+        // if player does move
+        else if(lastTimeMoved + 150 >= System.currentTimeMillis()){
+
+            if(lastMovedDirection == LAST_MOVE_RIGHT) {
+                playerState = PlayerState.MOVING_RIGHT;
+            } else {
+                playerState = PlayerState.MOVING_LEFT;
+            }
+        }
+
+        // if player standing still
+        else {
+
+            if(lastMovedDirection == LAST_MOVE_RIGHT) {
+                playerState = PlayerState.FACING_RIGHT;
+            } else {
+                playerState = PlayerState.FACING_LEFT;
+            }
+        }
+    }
+
     /**
      * Method to make the player move to the left.
      * This can only be done if player is on the ground
@@ -67,12 +108,14 @@ public class Player extends AbstractLivingObject {
      */
     public void moveLeft(float deltaTime){
         //if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
-            movingDirection = MovingDirection.LEFT;
+            playerState = PlayerState.MOVING_LEFT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
-            facingDirection = FacingDirection.LEFT;
+            lastTimeMoved = System.currentTimeMillis();
+            lastMovedDirection = LAST_MOVE_LEFT;
         //}
     }
+    
     /**
      * Method to make the player move to the right.
      * This can only be done if player is on the ground
@@ -80,19 +123,21 @@ public class Player extends AbstractLivingObject {
      */
     public void moveRight(float deltaTime){
         //if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
-            movingDirection = MovingDirection.RIGHT;
+            playerState = PlayerState.MOVING_RIGHT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
-            facingDirection = FacingDirection.RIGHT;
+            lastTimeMoved = System.currentTimeMillis();
+            lastMovedDirection = LAST_MOVE_RIGHT;
         //}
     }
+
     /**
      * Method to make the player jump.
      * This can only be done if player is on the ground
      * @param deltaTime the time difference
      */
     public void jump(float deltaTime){
-        if(getPosition().getY() == 0) {// replace with isOnGround when collisions are implemented
+        if(getPosition().getY() == 0) {// TODO replace with isOnGround when collisions are implemented
             isOnGround = false;
             setVelocityY(1000f);
         }
@@ -109,6 +154,7 @@ public class Player extends AbstractLivingObject {
         pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
 
     }
+
     public void setVelocityX(float newVelocityX){
        this.velocityX = newVelocityX;
     }
@@ -123,14 +169,6 @@ public class Player extends AbstractLivingObject {
      */
     public void incrementKillCount() {
         this.killCount += 1;
-    }
-
-    public MovingDirection getMovingDirection(){
-        return movingDirection;
-    }
-
-    public FacingDirection getFacingDirection(){
-        return facingDirection;
     }
 
     /**
@@ -173,6 +211,7 @@ public class Player extends AbstractLivingObject {
         isDead = true;
         System.out.println("Collision with enemy");
     }
+
     @Override
     public void visit(Player p){
         // This will never be the case, since there's only one player
