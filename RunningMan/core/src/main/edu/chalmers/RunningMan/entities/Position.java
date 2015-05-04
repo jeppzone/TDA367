@@ -46,5 +46,18 @@ public class Position {
         }
     }
 
-    //TODO HashCode & Equals?
+    public int hashCode(){
+        return 17 * Float.floatToIntBits(getX()) * Float.floatToIntBits(getY());
+    }
+
+    public boolean equals(Object rhs){
+        if(this == rhs){
+            return true;
+        }else if(rhs == null || rhs.getClass() != getClass()){
+            return false;
+        }else{
+            Position tmp = (Position)rhs;
+            return getX() == tmp.getX() && getY() == tmp.getY();
+        }
+    }
 }
