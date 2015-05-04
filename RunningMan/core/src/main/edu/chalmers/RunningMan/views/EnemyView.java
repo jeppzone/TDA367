@@ -18,7 +18,6 @@ public class EnemyView {
 
     private final static String SPRITE_ENEMY_WALK_LEFT_SHEET = "core/assets/enemyleft.png";
     private final static String SPRITE_ENEMY_WALK_RIGHT_SHEET = "core/assets/enemyright.png";
-    private final static String SPRITE_ENEMY_WALK_RIGHT_SHEET = "core/assets/enemystanding.png";
 
 
     private TextureRegion[] enemyWalkLeftSprites,enemyWalkRightSprites;
