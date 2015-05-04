@@ -7,10 +7,25 @@ package edu.chalmers.RunningMan.entities;
 public class Enemy extends AbstractLivingObject {
 
     private float velocity;
+    private EnemyState enemyState = EnemyState.MOVING_LEFT;
 
     public Enemy(Position position, Size size, int maxHp){
         super(size, position, maxHp);
         velocity = -100f;
+    }
+
+    /**
+     * Enum to represent the different movement states a enemy can be in
+     */
+    public enum EnemyState {
+        FACING_RIGHT,
+        FACING_LEFT,
+        STANDING,
+        MOVING_RIGHT,
+        MOVING_LEFT,
+    }
+    public EnemyState getEnemyState(){
+        return enemyState;
     }
 
     /**
@@ -32,6 +47,13 @@ public class Enemy extends AbstractLivingObject {
      */
     public void changeDirection(){
         this.velocity = -1 * this.velocity;
+        if(velocity > 0){
+            enemyState = enemyState.MOVING_RIGHT;
+        }else if (velocity < 0){
+            enemyState = enemyState.MOVING_LEFT;
+        }else{
+            enemyState = enemyState.STANDING;
+        }
     }
 
     public float getVelocity(){

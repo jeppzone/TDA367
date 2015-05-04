@@ -45,7 +45,7 @@ public class GameWorld {
         playerView = new PlayerView(player);
         playerController = new PlayerController(player, playerView);
 
-        enemy = new Enemy(new Position(300,0), new Size(30,30), 10);
+        enemy = new Enemy(new Position(300,0), new Size(30,60), 10);
         enemyView = new EnemyView(enemy);
         enemyController = new EnemyController(enemy, enemyView);
 
