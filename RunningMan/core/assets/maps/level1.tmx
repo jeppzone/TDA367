@@ -3,9 +3,12 @@
  <tileset firstgid="1" name="blocks" tilewidth="16" tileheight="16">
   <image source="blocks.png" width="96" height="32"/>
  </tileset>
+ <tileset firstgid="13" name="tile_test" tilewidth="16" tileheight="16">
+  <image source="../tile_test.png" width="16" height="16"/>
+ </tileset>
  <layer name="ground" width="50" height="14">
   <data encoding="base64" compression="zlib">
-   eJztxbEJADAIAEFjk+w/sa4gpLC4g+cjAAD46XQ5+Fa3e4NvVWQAAG0=
+   eJxjYBgFo2AUjIJRMApGwUgFvGh4qAF09w8W/xBy1yimLwYAfXsFsQ==
   </data>
  </layer>
  <layer name="startPosition" width="50" height="14">
@@ -15,12 +18,12 @@
  </layer>
  <layer name="enemies" width="50" height="14">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAPwaCvAAAQ==
+   eJztzjEJAAAMA7A+8295MkohUZAEAGDHtQPMeRX0AAY=
   </data>
  </layer>
  <layer name="steroids" width="50" height="14">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAPwaCvAAAQ==
+   eJxjYBgFo2AUjIJRMAroC5gG2gGjYBSMghEFABPYAAM=
   </data>
  </layer>
 </map>

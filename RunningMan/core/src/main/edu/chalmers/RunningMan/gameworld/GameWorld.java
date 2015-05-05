@@ -115,8 +115,19 @@ public class GameWorld {
                 Ground ground = (Ground) apo;
                 GroundView groundView = new GroundView(ground);
                 controllers.add(new GroundController(ground, groundView));
+            } else if(apo.getClass() == Enemy.class) {
+                Enemy enemy = (Enemy) apo;
+                EnemyView enemyView = new EnemyView(enemy);
+                controllers.add(new EnemyController(enemy, enemyView));
+            } else if(apo.getClass() == Steroid.class) {
+                Steroid steroid = (Steroid) apo;
+                SteroidView steroidView = new SteroidView(steroid);
+                controllers.add(new SteroidController(steroid, steroidView));
+            } else if(apo.getClass() == Obstacle.class) {
+                Obstacle obstacle = (Obstacle) apo;
+                ObstacleView obstacleView = new ObstacleView(obstacle);
+                controllers.add(new ObstacleController(obstacle, obstacleView));
             }
-
         }
     }
 }
