@@ -33,7 +33,6 @@ public class GameWorld implements IBulletCollection {
     private ObstacleView obstacleView;
     private ObstacleController obstacleController;
     private Level level;
-    private LevelView levelView;
     private LevelController levelController;
     private Steroid steroid;
     private SteroidView steroidView;
@@ -116,11 +115,12 @@ public class GameWorld implements IBulletCollection {
             player = new Player(weapon, new Position(0,0), new Size(50,50), 100);
             playerView = new PlayerView(player);
             level = new Level(mapHandler.getPhysicalObjectsList(), player, "level1");
-            levelView = new LevelView(level, mapHandler);
+            levelController = new LevelController(level);
             addPhysicalObjectViews(mapHandler.getPhysicalObjectsList());
             playerController = new PlayerController(player, playerView);
             controllers.add(playerController);
             controllers.add(bulletController);
+            controllers.add(levelController);
 
         } catch(MapHandlerException e) {
 

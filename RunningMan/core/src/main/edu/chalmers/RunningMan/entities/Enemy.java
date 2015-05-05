@@ -92,6 +92,6 @@ public class Enemy extends AbstractLivingObject {
     }
 
     public void visit(Ground g) {
-
+        changeDirection();
     }
 }

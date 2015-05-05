@@ -154,9 +154,9 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void jump(float deltaTime){
-        if(getPosition().getY() == 0) {// TODO replace with isOnGround when collisions are implemented
-            isOnGround = false;
+        if(isOnGround) {
             setVelocityY(1000f);
+            isOnGround = false;
         }
     }
     /**
@@ -177,9 +177,11 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void applyForce(float deltaTime) {
-        setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
-        Position pos = getPosition();
-        pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
+        if(!isOnGround) {
+            setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
+            Position pos = getPosition();
+            pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
+        }
 
     }
 
@@ -210,7 +212,6 @@ public class Player extends AbstractLivingObject {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
-        isOnGround = true;
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
@@ -224,14 +225,15 @@ public class Player extends AbstractLivingObject {
         final Size objSize = apo.getSize();
         final float objHeight = objSize.getHeight();
 
-        if(playerX <= objX || playerX + playerWidth >= objX){
-            pos.setX(oldX);
-        }else if(playerY <= objY + objHeight && getVelocityY() > 0 ){
-            pos.setY(playerHeight + objY);
+        if(playerY <= objY + objHeight && getVelocityY() < 0 ) {
+            pos.setY(objHeight + objY);
             setVelocityY(0f);
+            isOnGround = true;
         }else if(playerY <= objY && getVelocityY() > 0){
             pos.setY(objY - playerHeight);
             setVelocityY(0f);
+        }else if(playerX <= objX || playerX + playerWidth >= objX) {
+            pos.setX(oldX);
         }
     }
 
