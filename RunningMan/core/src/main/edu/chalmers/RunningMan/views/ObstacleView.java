@@ -16,6 +16,7 @@ public class ObstacleView  {
     public ObstacleView(Obstacle obstacle){
         this.obstacle = obstacle;
         sb = new SpriteBatch();
+        rockObstacle = new Texture(Gdx.files.internal("core/assets/rockobstacle.png"));
     }
 
     /**
