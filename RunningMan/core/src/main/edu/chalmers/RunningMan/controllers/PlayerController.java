@@ -4,8 +4,9 @@ import edu.chalmers.RunningMan.entities.Player;
 import edu.chalmers.RunningMan.handlers.Input;
 import edu.chalmers.RunningMan.views.PlayerView;
 
+
 /**
- * Created by JohanTobin on 2015-04-20.
+ * A class for controlling player
  */
 public class PlayerController implements IEntityController {
 

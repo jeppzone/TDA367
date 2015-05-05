@@ -26,6 +26,9 @@ public class GameWorld {
     private Enemy enemy;
     private EnemyView enemyView;
     private EnemyController enemyController;
+    private Obstacle obstacle;
+    private ObstacleView obstacleView;
+    private ObstacleController obstacleController;
     private Level level;
     private LevelView levelView;
     private LevelController levelController;
@@ -48,9 +51,13 @@ public class GameWorld {
         playerView = new PlayerView(player);
         playerController = new PlayerController(player, playerView);
 
-        enemy = new Enemy(new Position(300,0), new Size(30,30), 10);
+        enemy = new Enemy(new Position(300,0), new Size(30,60), 10);
         enemyView = new EnemyView(enemy);
         enemyController = new EnemyController(enemy, enemyView);
+
+        obstacle = new Obstacle(new Position(500, 0), new Size(60,60));
+        obstacleView = new ObstacleView(obstacle);
+        obstacleController = new ObstacleController(obstacle,obstacleView);
 
         steroid = new Steroid(new Position(400, 0), new Size(50, 50));
         steroidView = new SteroidView(steroid);
@@ -64,12 +71,15 @@ public class GameWorld {
         controllers.add(enemyController);
         controllers.add(steroidController);
         controllers.add(levelController);
+        controllers.add(obstacleController);
 
         mapObjects.add(steroid);
         mapObjects.add(enemy);
         */
 
         loadLevel();
+        //mapObjects.add(obstacle);
+
     }
 
     public void update(float deltaTime) {

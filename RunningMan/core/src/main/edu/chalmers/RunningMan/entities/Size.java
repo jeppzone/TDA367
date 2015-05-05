@@ -38,5 +38,18 @@ public class Size {
         return this.width * this.height;
     }
 
-    //TODO Hashcode & Equals?
+    public int hashCode(){
+        return 17 * Float.floatToIntBits(getWidth()) * Float.floatToIntBits(getHeight());
+    }
+
+    public boolean equals(Object rhs){
+        if(this == rhs){
+            return true;
+        }else if(rhs == null || rhs.getClass() != getClass()){
+            return false;
+        }else{
+            Size tmp = (Size) rhs;
+            return tmp.getWidth() == getWidth() && tmp.getHeight() == getHeight();
+        }
+    }
 }
