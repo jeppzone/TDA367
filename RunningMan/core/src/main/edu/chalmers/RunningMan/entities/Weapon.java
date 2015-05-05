@@ -4,27 +4,30 @@ package edu.chalmers.RunningMan.entities;
  * kommer behöva göra en abstrakt klass sen pga att följa designprinciper
  * Weapon model
  */
-public class Weapon {
+
+public class Weapon extends AbstractPhysicalObject {
 
     private Bullet bullet;
-    boolean IsFired;
-    double fireRate;
+    private final IBulletCollection bulletCollection;
+    private final float FIRE_DELAY = 500f;
 
-    public enum MovingDirection{
-        RIGHT,
-        LEFT;
+    public Weapon(Size size, Position position, IBulletCollection bulletCollection){
+        super(size, position);
+        this.bulletCollection = bulletCollection;
     }
 
-    public enum FacingDirection{
-        RIGHT,
-        LEFT;
+    public void shoot(Position position){
+        bulletCollection.createBullet(position);
+        //timern startas
+    }
+    public float getfireDelay(){
+        return FIRE_DELAY;
     }
 
+    @Override
+    public void acceptVisitor(IVisitor visitor) {
+        // This method doesn't do anything
 
-
-
-
-
-
+    }
 
 }

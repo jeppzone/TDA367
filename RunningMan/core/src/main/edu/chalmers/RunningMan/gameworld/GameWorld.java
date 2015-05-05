@@ -16,11 +16,14 @@ import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
 /**
  * Created by JohanTobin on 2015-04-22.
  */
-public class GameWorld {
+public class GameWorld implements IBulletCollection {
 
     private OrthographicCamera cam;
     private List<AbstractPhysicalObject> mapObjects;
+    private List<Bullet> bullets;
+    private BulletController bulletController;
     private PlayerController playerController;
+    private Weapon weapon;
     private Player player;
     private PlayerView playerView;
     private Enemy enemy;
@@ -40,14 +43,16 @@ public class GameWorld {
     private List<Enemy> enemies;
     private List<Ground> grounds;
 
+
+
     public GameWorld() {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
-        mapObjects = new ArrayList<AbstractPhysicalObject>();
-        controllers = new ArrayList<IEntityController>();
+        mapObjects = new ArrayList<>();
+        controllers = new ArrayList<>();
 
-        /* // test code
-        player = new Player(new Weapon(), new Position(0,0), new Size(50,50), 100);
+
+        /*
         playerView = new PlayerView(player);
         playerController = new PlayerController(player, playerView);
 
@@ -71,14 +76,24 @@ public class GameWorld {
         controllers.add(enemyController);
         controllers.add(steroidController);
         controllers.add(levelController);
+
         controllers.add(obstacleController);
 
         mapObjects.add(steroid);
         mapObjects.add(enemy);
         */
 
+
         loadLevel();
         //mapObjects.add(obstacle);
+
+    }
+
+    /**
+     * Creates a bullet and adds it to the GameWorld
+     */
+    public void createBullet(Position position){
+        bullets.add(new Bullet(new Size(1,1),position, player.getFacingDirection()));
 
     }
 
@@ -95,13 +110,17 @@ public class GameWorld {
 
         try {
             mapHandler = new MapHandler("level1");
-            player = new Player(new Weapon(), mapHandler.getPlayerStartPosition(), new Size(50, 50), 100);
+            bullets = new ArrayList<>();
+            bulletController = new BulletController(bullets);
+            weapon = new Weapon(new Size(1,1),new Position(0,0), this);
+            player = new Player(weapon, new Position(0,0), new Size(50,50), 100);
             playerView = new PlayerView(player);
             level = new Level(mapHandler.getPhysicalObjectsList(), player, "level1");
             levelView = new LevelView(level, mapHandler);
             addPhysicalObjectViews(mapHandler.getPhysicalObjectsList());
             playerController = new PlayerController(player, playerView);
             controllers.add(playerController);
+            controllers.add(bulletController);
 
         } catch(MapHandlerException e) {
 

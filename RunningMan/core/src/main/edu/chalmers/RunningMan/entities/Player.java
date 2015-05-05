@@ -1,5 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
+import edu.chalmers.RunningMan.utils.PlayerState;
+
 /**
  * A class to model a player
  * @author Jesper Olsson
@@ -14,11 +16,19 @@ public class Player extends AbstractLivingObject {
     private Weapon weapon;
 
     private float velocityX = 200f;
+
+    private Bullet bullet;
     private float velocityY;
     private float oldX;
 
     private boolean isOnGround = true;
+    private PlayerState facingDirection;
     private Gravity gravity = new Gravity(-800f);
+    private static float time = 0;
+    private static float passedTime= 0;
+    private long previousFiredBulletTime = 0;
+    private boolean hasShot = false;
+
 
     private PlayerState playerState = PlayerState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
@@ -27,24 +37,17 @@ public class Player extends AbstractLivingObject {
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         this.weapon = weapon;
+        facingDirection = PlayerState.FACING_RIGHT;
+
     }
 
-    /**
-     * Enum to represent the different movement states a player can be in
-     */
-    public enum PlayerState {
-        FACING_RIGHT,
-        FACING_LEFT,
-        MOVING_RIGHT,
-        MOVING_LEFT,
-        JUMPING_RIGHT,
-        JUMPING_LEFT;
-    }
+
+
 
     public int getScore(){
         return score;
     }
-
+    //Detta kan ändras
     public float getVelocityX(){
         if(playerState == PlayerState.MOVING_RIGHT) {
             return this.velocityX;
@@ -68,7 +71,17 @@ public class Player extends AbstractLivingObject {
     /**
      * Updates the current player state.
      */
-    public void update() {
+    public void update(float deltaTime) {
+
+        if(hasShot){
+            passedTime += 1000*deltaTime;
+
+            if(passedTime >= weapon.getfireDelay()){
+                hasShot = false;
+                passedTime = 0;
+            }
+
+        }
 
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
@@ -113,7 +126,9 @@ public class Player extends AbstractLivingObject {
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_LEFT;
-        //}
+
+            facingDirection = PlayerState.FACING_LEFT;
+
     }
     
     /**
@@ -128,7 +143,9 @@ public class Player extends AbstractLivingObject {
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_RIGHT;
-        //}
+
+            facingDirection = PlayerState.FACING_RIGHT;
+
     }
 
     /**
@@ -142,6 +159,17 @@ public class Player extends AbstractLivingObject {
             setVelocityY(1000f);
         }
     }
+    /**
+     * Method to make the player shoot, has a delay of 0.5 seconds
+     *
+     */
+    public void shoot(){
+        if(!hasShot){
+            weapon.shoot(new Position(getPosition()));;
+            hasShot =true;
+        }
+    }
+
 
     /**
      * Method to apply gravity force to the player.
@@ -169,6 +197,12 @@ public class Player extends AbstractLivingObject {
      */
     public void incrementKillCount() {
         this.killCount += 1;
+    }
+
+
+
+    public PlayerState getFacingDirection(){
+        return facingDirection;
     }
 
     /**

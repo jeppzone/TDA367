@@ -84,6 +84,7 @@ public class Enemy extends AbstractLivingObject {
     @Override
     public void visit(Bullet b){
         // Enemy shall be hurt
+        b = null; // bullet disappears after hitting an enemy
     }
     
     public void visit(Steroid s){
