@@ -10,7 +10,8 @@ public class Obstacle extends AbstractPhysicalObject {
     }
 
     @Override
-    public void acceptVisitor(IVisitor visitor) {
+    public void acceptVisitor(IVisitor visitor)
+    {
         visitor.visit(this);
     }
 }
