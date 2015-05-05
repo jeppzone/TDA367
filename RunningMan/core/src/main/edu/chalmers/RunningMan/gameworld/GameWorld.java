@@ -49,42 +49,7 @@ public class GameWorld implements IBulletCollection {
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
         mapObjects = new ArrayList<>();
         controllers = new ArrayList<>();
-
-
-        /*
-        playerView = new PlayerView(player);
-        playerController = new PlayerController(player, playerView);
-
-        enemy = new Enemy(new Position(300,0), new Size(30,60), 10);
-        enemyView = new EnemyView(enemy);
-        enemyController = new EnemyController(enemy, enemyView);
-
-        obstacle = new Obstacle(new Position(500, 0), new Size(60,60));
-        obstacleView = new ObstacleView(obstacle);
-        obstacleController = new ObstacleController(obstacle,obstacleView);
-
-        steroid = new Steroid(new Position(400, 0), new Size(50, 50));
-        steroidView = new SteroidView(steroid);
-        steroidController = new SteroidController(steroid, steroidView);
-
-        level = new Level(mapObjects, player, "Beach");
-        levelView = new LevelView(level);
-        levelController = new LevelController(level, levelView);
-
-        controllers.add(playerController);
-        controllers.add(enemyController);
-        controllers.add(steroidController);
-        controllers.add(levelController);
-
-        controllers.add(obstacleController);
-
-        mapObjects.add(steroid);
-        mapObjects.add(enemy);
-        */
-
-
         loadLevel();
-        //mapObjects.add(obstacle);
 
     }
 
