@@ -3,10 +3,9 @@ package edu.chalmers.RunningMan.gameworld;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
-import edu.chalmers.RunningMan.views.EnemyView;
-import edu.chalmers.RunningMan.views.LevelView;
-import edu.chalmers.RunningMan.views.PlayerView;
-import edu.chalmers.RunningMan.views.SteroidView;
+import edu.chalmers.RunningMan.handlers.MapHandler;
+import edu.chalmers.RunningMan.handlers.MapHandlerException;
+import edu.chalmers.RunningMan.views.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +33,9 @@ public class GameWorld {
     private SteroidView steroidView;
     private SteroidController steroidController;
     private List<IEntityController> controllers;
+    private MapHandler mapHandler;
+    private List<Enemy> enemies;
+    private List<Ground> grounds;
 
     public GameWorld() {
         cam = new OrthographicCamera();
@@ -41,6 +43,7 @@ public class GameWorld {
         mapObjects = new ArrayList<AbstractPhysicalObject>();
         controllers = new ArrayList<IEntityController>();
 
+        /* // test code
         player = new Player(new Weapon(), new Position(0,0), new Size(50,50), 100);
         playerView = new PlayerView(player);
         playerController = new PlayerController(player, playerView);
@@ -64,15 +67,46 @@ public class GameWorld {
 
         mapObjects.add(steroid);
         mapObjects.add(enemy);
+        */
 
-
+        loadLevel();
     }
 
     public void update(float deltaTime) {
 
         //Gdx.app.log("GameWorld", "update");
-        for(IEntityController controller: controllers){
+        for(IEntityController controller : controllers) {
             controller.update(deltaTime);
+        }
+
+    }
+
+    public final void loadLevel() {
+
+        try {
+            mapHandler = new MapHandler("level1");
+            player = new Player(new Weapon(), mapHandler.getPlayerStartPosition(), new Size(50, 50), 100);
+            playerView = new PlayerView(player);
+            level = new Level(mapHandler.getPhysicalObjectsList(), player, "level1");
+            levelView = new LevelView(level, mapHandler);
+            addPhysicalObjectViews(mapHandler.getPhysicalObjectsList());
+            playerController = new PlayerController(player, playerView);
+            controllers.add(playerController);
+
+        } catch(MapHandlerException e) {
+
+        }
+    }
+
+    public void addPhysicalObjectViews(List<AbstractPhysicalObject> apoList) {
+        enemies = new ArrayList<Enemy>();
+        for(final AbstractPhysicalObject apo: apoList) {
+            if(apo.getClass() == Ground.class) {
+                Ground ground = (Ground) apo;
+                GroundView groundView = new GroundView(ground);
+                controllers.add(new GroundController(ground, groundView));
+            }
+
         }
     }
 }
