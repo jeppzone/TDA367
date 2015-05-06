@@ -5,5 +5,5 @@ package edu.chalmers.RunningMan.entities;
  */
 public interface IBulletCollection {
 
-    void createBullet(Position position);
+    void placeBullet();
 }

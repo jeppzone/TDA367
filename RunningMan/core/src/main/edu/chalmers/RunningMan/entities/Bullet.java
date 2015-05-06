@@ -34,7 +34,6 @@ public class Bullet extends AbstractPhysicalObject implements IVisitor  {
      * @param deltaTime the time difference
      */
     public void moveBullet(float deltaTime){
-            System.out.println("BulletMoving");
             setX(getPosition().getX() + getBulletSpeed() * deltaTime);
     }
     @Override

@@ -56,10 +56,23 @@ public class GameWorld implements IBulletCollection {
     }
 
     /**
-     * Creates a bullet and adds it to the GameWorld
+     * Places a bullet correctly in front of the gun when a bullet is fired
      */
-    public void createBullet(Position position){
-        bullets.add(new Bullet(new Size(10,10),position, player.getFacingDirection()));
+    public void placeBullet(){
+        if(player.getFacingDirection().xDirection > 0)
+            createBullet(24);
+        else
+            createBullet(-34);
+    }
+
+    /**
+     * A helper class for placeBullet(), creates the bullet on the position where the bullet is supposed to be placed
+     * @param pos a value that changes depends on the players facing direction
+     */
+    private void createBullet(int pos){
+        bullets.add(new Bullet(new Size(10, 10),
+                new Position(player.getPosition().getX() + pos +(player.getSize().getWidth())/2,player.getPosition().getY()- 6 +(player.getSize().getHeight())/2),
+                player.getFacingDirection()));
     }
 
     public void update(float deltaTime) {

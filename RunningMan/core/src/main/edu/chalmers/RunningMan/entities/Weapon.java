@@ -16,8 +16,8 @@ public class Weapon extends AbstractPhysicalObject {
         this.bulletCollection = bulletCollection;
     }
 
-    public void shoot(Position position){
-        bulletCollection.createBullet(position);
+    public void shoot(){
+        bulletCollection.placeBullet();
         //timern startas
     }
     public float getfireDelay(){

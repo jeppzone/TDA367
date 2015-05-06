@@ -160,9 +160,10 @@ public class Player extends AbstractLivingObject {
      * Method to make the player shoot, has a delay of 0.5 seconds
      *
      */
+
     public void shoot(){
         if(!hasShot){
-            weapon.shoot(new Position(getPosition()));;
+            weapon.shoot();
             hasShot =true;
         }
     }
