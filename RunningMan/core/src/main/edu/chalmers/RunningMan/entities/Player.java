@@ -19,8 +19,9 @@ public class Player extends AbstractLivingObject {
 
     private float velocityY;
     private float oldX;
-
-    private boolean isOnGround = true;
+    private int firstCounter = 0;
+    private int secondConter = 0;
+    private boolean isOnGround = false;
     private PlayerState facingDirection;
     private Gravity gravity = new Gravity(-800f);
     private static float time = 0;
@@ -174,11 +175,9 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void applyForce(float deltaTime) {
-        if(!isOnGround) {
             setVelocityY(gravity.getNewVelocity(velocityY, deltaTime));
             Position pos = getPosition();
             pos.setY(gravity.getNewYPosition(pos.getY(), getVelocityY(), deltaTime));
-        }
 
     }
 
@@ -207,6 +206,7 @@ public class Player extends AbstractLivingObject {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
+        System.out.println("HANDLE COLLISION");
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
@@ -221,13 +221,13 @@ public class Player extends AbstractLivingObject {
         final float objHeight = objSize.getHeight();
 
         if(playerY <= objY + objHeight && getVelocityY() < 0 ) {
-            pos.setY(objHeight + objY);
+            pos.setY(objHeight + objY - 1);
             setVelocityY(0f);
             isOnGround = true;
         }else if(playerY <= objY && getVelocityY() > 0){
             pos.setY(objY - playerHeight);
             setVelocityY(0f);
-        }else if(playerX <= objX || playerX + playerWidth >= objX) {
+        }else if((playerX <= objX || playerX + playerWidth >= objX) && playerY < objHeight + objY - 1) {
             pos.setX(oldX);
         }
     }

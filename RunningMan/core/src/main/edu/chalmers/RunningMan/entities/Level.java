@@ -26,6 +26,8 @@ public class Level {
             if(thisApo instanceof IVisitor){
                 for(AbstractPhysicalObject otherApo: mapObjects){
                     if(isColliding(thisApo.getHitbox(), otherApo.getHitbox())){
+                        System.out.println(thisApo.getClass());
+                        System.out.println(otherApo.getClass());
                         IVisitor visitor = (IVisitor) thisApo;
                         otherApo.acceptVisitor(visitor);
                     }
@@ -48,7 +50,7 @@ public class Level {
     private boolean isColliding(Rectangle thisObject, Rectangle otherObject){
         if(thisObject == null ||otherObject == null){
             return false;
-        }else if(thisObject == otherObject){
+        }else if(thisObject.equals(otherObject)){
             return false;
         }else{
             return thisObject.intersects(otherObject);
