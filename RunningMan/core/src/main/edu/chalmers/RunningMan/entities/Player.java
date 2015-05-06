@@ -219,15 +219,16 @@ public class Player extends AbstractLivingObject {
         final float objY = objPos.getY();
         final Size objSize = apo.getSize();
         final float objHeight = objSize.getHeight();
+        final float newHeight = objHeight + objY - 1;
 
         if(playerY <= objY + objHeight && getVelocityY() < 0 ) {
-            pos.setY(objHeight + objY - 1);
+            pos.setY(newHeight);
             setVelocityY(0f);
             isOnGround = true;
         }else if(playerY <= objY && getVelocityY() > 0){
             pos.setY(objY - playerHeight);
             setVelocityY(0f);
-        }else if((playerX <= objX || playerX + playerWidth >= objX) && playerY < objHeight + objY - 1) {
+        }else if((playerX <= objX || playerX + playerWidth >= objX) && playerY < newHeight) {
             pos.setX(oldX);
         }
     }
