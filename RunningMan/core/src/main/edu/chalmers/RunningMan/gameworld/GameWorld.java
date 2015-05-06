@@ -16,12 +16,14 @@ import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
 /**
  * Created by JohanTobin on 2015-04-22.
  */
+
 public class GameWorld implements IBulletCollection {
 
     private OrthographicCamera cam;
     private List<AbstractPhysicalObject> mapObjects;
     private List<Bullet> bullets;
     private BulletController bulletController;
+    private BulletView bulletView;
     private PlayerController playerController;
     private Weapon weapon;
     private Player player;
@@ -57,8 +59,7 @@ public class GameWorld implements IBulletCollection {
      * Creates a bullet and adds it to the GameWorld
      */
     public void createBullet(Position position){
-        bullets.add(new Bullet(new Size(1,1),position, player.getFacingDirection()));
-
+        bullets.add(new Bullet(new Size(10,10),position, player.getFacingDirection()));
     }
 
     public void update(float deltaTime) {
@@ -73,9 +74,11 @@ public class GameWorld implements IBulletCollection {
     public final void loadLevel() {
 
         try {
+
             mapHandler = new MapHandler("level1");
             bullets = new ArrayList<>();
-            bulletController = new BulletController(bullets);
+            bulletView = new BulletView(bullets);
+            bulletController = new BulletController(bullets, bulletView);
             weapon = new Weapon(new Size(1,1),new Position(0,0), this);
             player = new Player(weapon, new Position(0,0), new Size(50,50), 100);
             playerView = new PlayerView(player);

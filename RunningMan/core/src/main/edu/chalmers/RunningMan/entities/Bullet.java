@@ -3,7 +3,7 @@ package edu.chalmers.RunningMan.entities;
 import edu.chalmers.RunningMan.utils.PlayerState;
 
 /**
- * Created by Armand on 2015-04-27.
+ * A class to represent the bullet
  */
 
 public class Bullet extends AbstractPhysicalObject implements IVisitor  {
@@ -17,8 +17,12 @@ public class Bullet extends AbstractPhysicalObject implements IVisitor  {
         this.playerState = playerState;
     }
 
+    /**
+     * Gets the bulletspeed, negative or positive depending on direction
+     * @return bulletspeed
+     */
     public float getBulletSpeed(){
-        return BULLET_SPEED;
+        return BULLET_SPEED * playerState.xDirection;
     }
 
     private void setBulletGone(){
@@ -31,7 +35,7 @@ public class Bullet extends AbstractPhysicalObject implements IVisitor  {
      */
     public void moveBullet(float deltaTime){
             System.out.println("BulletMoving");
-            setX(getPosition().getX() + playerState.xDirection * getBulletSpeed() * deltaTime);
+            setX(getPosition().getX() + getBulletSpeed() * deltaTime);
     }
     @Override
     public void acceptVisitor(IVisitor visitor) {

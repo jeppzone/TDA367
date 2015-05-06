@@ -1,8 +1,8 @@
 package edu.chalmers.RunningMan.controllers;
 
+
 import edu.chalmers.RunningMan.entities.Enemy;
 import edu.chalmers.RunningMan.views.EnemyView;
-
 /**
  * A class for controlling enemies
  * @Author Jesper Olsson
