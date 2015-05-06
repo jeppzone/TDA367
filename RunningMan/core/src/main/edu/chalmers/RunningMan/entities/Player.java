@@ -17,7 +17,6 @@ public class Player extends AbstractLivingObject {
 
     private float velocityX = 200f;
 
-    private Bullet bullet;
     private float velocityY;
     private float oldX;
 
@@ -41,13 +40,10 @@ public class Player extends AbstractLivingObject {
 
     }
 
-
-
-
     public int getScore(){
         return score;
     }
-    //Detta kan ändras
+
     public float getVelocityX(){
         if(playerState == PlayerState.MOVING_RIGHT) {
             return this.velocityX;
@@ -159,6 +155,7 @@ public class Player extends AbstractLivingObject {
             isOnGround = false;
         }
     }
+
     /**
      * Method to make the player shoot, has a delay of 0.5 seconds
      *
@@ -169,7 +166,6 @@ public class Player extends AbstractLivingObject {
             hasShot =true;
         }
     }
-
 
     /**
      * Method to apply gravity force to the player.
@@ -200,8 +196,6 @@ public class Player extends AbstractLivingObject {
     public void incrementKillCount() {
         this.killCount += 1;
     }
-
-
 
     public PlayerState getFacingDirection(){
         return facingDirection;
