@@ -96,7 +96,7 @@ public class MapHandler implements IMapHandler {
                 if(groundCell != null && groundCell.getTile() != null) {
                     physicalObjects.add(new Ground(position, size));
                 } else if(enemyCell != null && enemyCell.getTile() != null) {
-                    physicalObjects.add(new Enemy(position, size, 100));
+                    physicalObjects.add(new Enemy(position, new Size(45, 55), 100));
                 } else if(steroidCell != null && steroidCell.getTile() != null) {
                     physicalObjects.add(new Steroid(position, size));
                 } else if(startPositionCell != null && startPositionCell.getTile() != null) {
