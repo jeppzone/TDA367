@@ -52,10 +52,11 @@ public class PlayerView {
      * Draws the player
      */
     public void draw() {
-        spriteBatch.begin();
-        spriteBatch.draw(getCurrentSprite(), player.getPosition().getX(),player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
-        spriteBatch.end();
-
+        if(!player.isDead()) {
+            spriteBatch.begin();
+            spriteBatch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
+            spriteBatch.end();
+        }
     }
 
     /**
