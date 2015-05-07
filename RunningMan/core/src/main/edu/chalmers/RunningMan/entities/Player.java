@@ -152,7 +152,7 @@ public class Player extends AbstractLivingObject {
      */
     public void jump(float deltaTime){
         if(isOnGround) {
-            setVelocityY(1000f);
+            setVelocityY(300f);
             isOnGround = false;
         }
     }
