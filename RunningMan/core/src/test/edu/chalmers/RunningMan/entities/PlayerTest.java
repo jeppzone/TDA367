@@ -134,5 +134,4 @@ public class PlayerTest extends Assert{
         player.visit(steroid);
         assertTrue(Math.abs(player.getVelocityX()) > velocityX);
     }
-
 }

@@ -86,12 +86,19 @@ public class Enemy extends AbstractLivingObject {
         // Enemy shall be hurt
         b = null; // bullet disappears after hitting an enemy
     }
-    
+
+    @Override
     public void visit(Steroid s){
         //Nothing should happen with the enemy in this case
     }
 
+    @Override
     public void visit(Ground g) {
         changeDirection();
+    }
+
+    @Override
+    public void visit(FinishObject f){
+        //Nothing should happen here
     }
 }

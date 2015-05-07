@@ -47,7 +47,7 @@ public class Level {
      * @return true if the two objects hitboxes are intersecting
      * and they are not the same object, false otherwise
      */
-    private boolean isColliding(Rectangle thisObject, Rectangle otherObject){
+    public boolean isColliding(Rectangle thisObject, Rectangle otherObject){
         if(thisObject == null ||otherObject == null){
             return false;
         }else if(thisObject.equals(otherObject)){

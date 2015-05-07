@@ -19,8 +19,7 @@ public class Player extends AbstractLivingObject {
 
     private float velocityY;
     private float oldX;
-    private int firstCounter = 0;
-    private int secondConter = 0;
+    private boolean finishedLevel = false;
     private boolean isOnGround = false;
     private PlayerState facingDirection;
     private Gravity gravity = new Gravity(-800f);
@@ -266,5 +265,7 @@ public class Player extends AbstractLivingObject {
     public void visit(Ground g) {
         handleCollision(g);
     }
-
+    public void visit(FinishObject f){
+        finishedLevel = true;
+    }
 }

@@ -85,4 +85,5 @@ public class LevelTest extends Assert {
 
         assertEquals(velocityBeforeCollision, enemy.getVelocity(), 0);
     }
+
 }
