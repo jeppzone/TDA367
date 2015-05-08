@@ -67,7 +67,7 @@ public class PlayerTest extends Assert{
     public void testSetVelocityY(){
         final float velocityX = 3f;
         player.setVelocityX(velocityX);
-        assertEquals(velocityX, player.getVelocityX(), 0);
+        assertEquals(velocityX, Math.abs(player.getVelocityX()), 0);
     }
 
     @Test
@@ -102,6 +102,7 @@ public class PlayerTest extends Assert{
     @Test
     public void testJumpVelocity(){
         final float velocityY = player.getVelocityY();
+        player.setOnGround(true);
         player.jump(DELTATIME);
         assertTrue(player.getVelocityY() > velocityY);
     }

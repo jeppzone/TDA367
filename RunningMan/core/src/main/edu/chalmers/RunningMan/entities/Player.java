@@ -51,7 +51,9 @@ public class Player extends AbstractLivingObject {
             return -this.velocityX;
         }
     }
-
+    public void setOnGround(boolean isOnGround){
+        this.isOnGround = isOnGround;
+    }
     public float getVelocityY(){
         return velocityY;
     }
