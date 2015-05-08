@@ -43,6 +43,6 @@ public class GravityTest extends Assert {
     public void testGetMaximumVelocity(){
         final float velocityY = 400f;
 
-        assertEquals(gravity.getNewVelocity(velocityY, deltaTime), 350f, 0.01f);
+        assertEquals(gravity.getNewVelocity(velocityY, deltaTime), 30S0f, 0.01f);
     }
 }
