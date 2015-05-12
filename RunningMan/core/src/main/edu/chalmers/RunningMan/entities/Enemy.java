@@ -83,8 +83,9 @@ public class Enemy extends AbstractLivingObject {
     }
     @Override
     public void visit(Bullet b){
-        // Enemy shall be hurt
-        b = null; // bullet disappears after hitting an enemy
+        // Enemy shall be hurt or killed
+        isDead = true;
+       // bullet disappears after hitting an enemy
     }
 
     @Override

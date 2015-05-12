@@ -45,9 +45,11 @@ public class EnemyView {
      * Draws the enemy
      */
     public void draw(){
-        sb.begin();
-        sb.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
-        sb.end();
+        if(!enemy.isDead()) {
+            sb.begin();
+            sb.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
+            sb.end();
+        }
     }
 
     /**
