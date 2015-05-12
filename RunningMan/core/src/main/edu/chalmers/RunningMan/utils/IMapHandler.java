@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.handlers;
+package edu.chalmers.RunningMan.utils;
 
 import edu.chalmers.RunningMan.entities.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.entities.Position;

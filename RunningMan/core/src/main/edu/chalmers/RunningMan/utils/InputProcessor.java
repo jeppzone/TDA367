@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.handlers;
+package edu.chalmers.RunningMan.utils;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;

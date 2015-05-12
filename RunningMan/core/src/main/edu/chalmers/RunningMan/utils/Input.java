@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.handlers;
+package edu.chalmers.RunningMan.utils;
 
 /**
  * A class to handle the input from the keyboard

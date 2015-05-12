@@ -1,9 +1,5 @@
-package edu.chalmers.RunningMan.handlers;
+package edu.chalmers.RunningMan.utils;
 
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
-import edu.chalmers.RunningMan.handlers.IMapHandler;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;

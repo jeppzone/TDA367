@@ -3,8 +3,8 @@ package edu.chalmers.RunningMan.gameworld;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
-import edu.chalmers.RunningMan.handlers.MapHandler;
-import edu.chalmers.RunningMan.handlers.MapHandlerException;
+import edu.chalmers.RunningMan.utils.MapHandler;
+import edu.chalmers.RunningMan.utils.MapHandlerException;
 import edu.chalmers.RunningMan.views.*;
 
 import java.util.ArrayList;

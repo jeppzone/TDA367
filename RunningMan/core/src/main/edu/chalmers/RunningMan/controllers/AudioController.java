@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.handlers.AudioHandler;
+import edu.chalmers.RunningMan.utils.AudioHandler;
 
 /**
  * Created by JohanTobin on 2015-05-06.
