@@ -1,7 +1,5 @@
 package edu.chalmers.RunningMan.entities;
 
-import edu.chalmers.RunningMan.utils.PlayerState;
-
 /**
  * A class to model a player
  * @author Jesper Olsson

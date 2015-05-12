@@ -1,7 +1,6 @@
 package edu.chalmers.RunningMan.entities;
 
 import com.badlogic.gdx.Gdx;
-import edu.chalmers.RunningMan.utils.PlayerState;
 
 /**
  * A class to represent the bullet

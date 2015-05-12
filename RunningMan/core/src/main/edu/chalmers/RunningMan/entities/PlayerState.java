@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.utils;
+package edu.chalmers.RunningMan.entities;
 
 
 public enum PlayerState {
