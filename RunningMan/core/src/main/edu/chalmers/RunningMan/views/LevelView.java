@@ -49,8 +49,6 @@ public class LevelView extends Stage{
         for(Actor actor: views){
             actor.draw(batch, Gdx.graphics.getDeltaTime());
         }
-
-
     }
 
 }
