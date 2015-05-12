@@ -11,10 +11,9 @@ public class Level {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
 
-    public Level(List<AbstractPhysicalObject> mapObjects, Player player, String levelName){
+    public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
-        mapObjects.add(player);
     }
 
     /**

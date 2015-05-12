@@ -11,15 +11,13 @@ import edu.chalmers.RunningMan.entities.Pit;
 /**
  * Created by Kvist1 on 2015-05-12.
  */
-public class PitView extends Actor implements IView {
+public class PitView extends Actor{
 
     private Pit pit;
-    private SpriteBatch sb;
     private Texture texture;
 
     public PitView(Pit pit) {
         this.pit = pit;
-        sb = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("core/assets/pitfall.png"));
     }
 

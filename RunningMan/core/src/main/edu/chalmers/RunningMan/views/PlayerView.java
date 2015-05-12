@@ -12,10 +12,9 @@ import edu.chalmers.RunningMan.entities.Player;
 /**
  * A class to represent the view of the Player.
  */
-public class PlayerView extends Actor implements IView {
+public class PlayerView extends Actor{
 
     private final Player player;
-    private final SpriteBatch spriteBatch;
 
     private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture;
     private TextureRegion[] walkRightSprites, walkLeftSprites;
@@ -47,7 +46,6 @@ public class PlayerView extends Actor implements IView {
         walkRightAnimation = new Animation(1/12f, walkRightSprites);
         walkLeftAnimation = new Animation(1/12f, walkLeftSprites);
 
-        spriteBatch = new SpriteBatch();
     }
 
     /**

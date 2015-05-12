@@ -11,15 +11,13 @@ import edu.chalmers.RunningMan.entities.Ground;
 /**
  * Created by Kvist1 on 2015-05-04.
  */
-public class GroundView extends Actor implements IView {
+public class GroundView extends Actor{
 
     private Ground ground;
-    private SpriteBatch sb;
     private Texture texture;
 
     public GroundView(Ground ground) {
         this.ground = ground;
-        sb = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("core/assets/tile_test.png"));
     }
 

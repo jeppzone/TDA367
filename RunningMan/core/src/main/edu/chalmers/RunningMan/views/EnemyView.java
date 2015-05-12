@@ -12,9 +12,8 @@ import edu.chalmers.RunningMan.entities.Enemy;
 /**
  * A class to represent the view of the enemy.
  */
-public class EnemyView extends Actor implements IView {
+public class EnemyView extends Actor{
     private final Enemy enemy;
-    private final SpriteBatch sb;
 
     private final Texture enemyWalkingleft, enemyWalkingright;
 
@@ -38,8 +37,6 @@ public class EnemyView extends Actor implements IView {
 
         enemyWalkLeftAnimation = new Animation(1/12f, enemyWalkLeftSprites);
         enemyWalkRightAnimation = new Animation(1/12f, enemyWalkRightSprites);
-
-        sb = new SpriteBatch();
 
     }
 
