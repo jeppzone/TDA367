@@ -69,27 +69,21 @@ public class PlayerView {
         switch (player.getPlayerState()) {
 
             case MOVING_RIGHT:
-                System.out.println("MOVING_RIGHT");
                 return walkRightAnimation.getKeyFrame(stateTime, true);
 
             case MOVING_LEFT:
-                System.out.println("MOVING_LEFT");
                 return walkLeftAnimation.getKeyFrame(stateTime, true);
 
             case FACING_RIGHT:
-                System.out.println("FACING_RIGHT");
                 return walkRightSprites[0];
 
             case FACING_LEFT:
-                System.out.println("FACING_LEFT");
                 return walkLeftSprites[5];
 
             case JUMPING_RIGHT:
-                System.out.println("JUMPING_RIGHT");
                 return jumpRightSprite;
 
             case JUMPING_LEFT:
-                System.out.println("JUMPING_LEFT");
                 return jumpLeftSprite;
 
             default:

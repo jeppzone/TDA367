@@ -26,8 +26,6 @@ public class Level {
             if(thisApo instanceof IVisitor){
                 for(AbstractPhysicalObject otherApo: mapObjects){
                     if(isColliding(thisApo.getHitbox(), otherApo.getHitbox())){
-                        System.out.println(thisApo.getClass());
-                        System.out.println(otherApo.getClass());
                         IVisitor visitor = (IVisitor) thisApo;
                         otherApo.acceptVisitor(visitor);
                     }
