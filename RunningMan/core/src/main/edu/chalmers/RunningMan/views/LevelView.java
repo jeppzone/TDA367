@@ -25,21 +25,27 @@ public class LevelView extends Stage{
         this.views = views;
         views.add(bulletView);
         playerView = new PlayerView(player);
+        initCamera();
+    }
+
+    private void initCamera(){
         camera = new OrthographicCamera();
         getViewport().setCamera(camera);
         camera.setToOrtho(false);
-        System.out.println(Gdx.graphics.getWidth() + " " + Gdx.graphics.getHeight());
     }
 
-    public void draw(){
-        batch = getBatch();
-        playerView.draw(batch, Gdx.graphics.getDeltaTime());
-        System.out.println(player.getPosition().getX());
+    private void updateCamera(){
         if(player.getPosition().getX() > 320) {
             camera.position.set(player.getPosition().getX(), Gdx.graphics.getHeight() / 2, 0);
         }
         camera.update();
         batch.setProjectionMatrix(camera.combined);
+    }
+
+    public void draw(){
+        batch = getBatch();
+        playerView.draw(batch, Gdx.graphics.getDeltaTime());
+        updateCamera();
         for(Actor actor: views){
             actor.draw(batch, Gdx.graphics.getDeltaTime());
         }

@@ -1,6 +1,5 @@
 package edu.chalmers.RunningMan.entities;
 
-import com.badlogic.gdx.Gdx;
 import edu.chalmers.RunningMan.utils.PlayerState;
 
 /**
@@ -22,6 +21,7 @@ public class Player extends AbstractLivingObject {
     private float oldX;
     private boolean finishedLevel = false;
     private boolean isOnGround = false;
+    private boolean hasLandedFirsTime = false;
     private PlayerState facingDirection;
     private Gravity gravity = new Gravity(-800f);
     private static float time = 0;
@@ -119,13 +119,12 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void moveLeft(float deltaTime){
-        if(getPosition().getX() > 5) {
+        if(hasLandedFirsTime) {
             playerState = PlayerState.MOVING_LEFT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_LEFT;
-
             facingDirection = PlayerState.FACING_LEFT;
         }
     }
@@ -136,14 +135,14 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void moveRight(float deltaTime){
-        //if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
+        if(hasLandedFirsTime) {
             playerState = PlayerState.MOVING_RIGHT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_RIGHT;
-
             facingDirection = PlayerState.FACING_RIGHT;
+        }
 
     }
 
@@ -208,6 +207,7 @@ public class Player extends AbstractLivingObject {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
+        hasLandedFirsTime = true;
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
@@ -232,6 +232,10 @@ public class Player extends AbstractLivingObject {
         }else if((playerX <= objX || playerX + playerWidth >= objX) && playerY < newHeight) {
             pos.setX(oldX);
         }
+    }
+
+    public boolean hasFinishedLevel(){
+        return finishedLevel;
     }
 
     @Override

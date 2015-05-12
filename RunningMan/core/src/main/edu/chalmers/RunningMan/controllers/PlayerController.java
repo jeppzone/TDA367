@@ -34,7 +34,7 @@ public class PlayerController implements IEntityController {
             player.moveRight(deltaTime);
         } else if(Input.isPressed(Input.LEFTBTN)) {
             player.moveLeft(deltaTime);
-        } else if(Input.isPressed(Input.SHOOTBTN)) {
+        } if(Input.isPressed(Input.SHOOTBTN)) {
             player.shoot();
         }
         player.applyForce(deltaTime);
