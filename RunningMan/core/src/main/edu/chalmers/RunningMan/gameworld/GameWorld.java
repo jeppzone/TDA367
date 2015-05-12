@@ -43,6 +43,7 @@ public class GameWorld implements IBulletCollection {
     private MapHandler mapHandler;
     private List<Enemy> enemies;
     private List<Ground> grounds;
+    private List<Pit> pitfalls;
 
 
 
@@ -111,7 +112,12 @@ public class GameWorld implements IBulletCollection {
     public void addPhysicalObjectViews(List<AbstractPhysicalObject> apoList) {
         enemies = new ArrayList<Enemy>();
         for(final AbstractPhysicalObject apo: apoList) {
-            if(apo.getClass() == Ground.class) {
+
+            if(apo.getClass() == Pit.class) {
+                Pit pit = (Pit) apo;
+                PitView pitView = new PitView(pit);
+                controllers.add(new PitController(pit, pitView));
+            } else if(apo.getClass() == Ground.class) {
                 Ground ground = (Ground) apo;
                 GroundView groundView = new GroundView(ground);
                 controllers.add(new GroundController(ground, groundView));

@@ -79,6 +79,7 @@ public class MapHandler implements IMapHandler {
         TiledMapTileLayer enemiesLayer = (TiledMapTileLayer) tileMap.getLayers().get("enemies");
         TiledMapTileLayer steroidsLayer = (TiledMapTileLayer) tileMap.getLayers().get("steroids");
         TiledMapTileLayer startPositionLayer = (TiledMapTileLayer) tileMap.getLayers().get("startPosition");
+        TiledMapTileLayer pitLayer = (TiledMapTileLayer) tileMap.getLayers().get("pitfalls");
 
         // go through all the cells in all the layers (all map cells)
         for(int row = 0; row < mapHeight; row++) {
@@ -91,9 +92,12 @@ public class MapHandler implements IMapHandler {
                 TiledMapTileLayer.Cell enemyCell = enemiesLayer.getCell(col, row);
                 TiledMapTileLayer.Cell steroidCell = steroidsLayer.getCell(col, row);
                 TiledMapTileLayer.Cell startPositionCell = startPositionLayer.getCell(col, row);
+                TiledMapTileLayer.Cell pitCell = pitLayer.getCell(col, row);
 
                 // check if cell exists
-                if(groundCell != null && groundCell.getTile() != null) {
+                if(pitCell != null && pitCell.getTile() != null) {
+                    physicalObjects.add(new Pit(position, size));
+                } else if(groundCell != null && groundCell.getTile() != null) {
                     physicalObjects.add(new Ground(position, size));
                 } else if(enemyCell != null && enemyCell.getTile() != null) {
                     physicalObjects.add(new Enemy(position, new Size(45, 55), 100));

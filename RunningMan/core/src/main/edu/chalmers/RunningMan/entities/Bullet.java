@@ -85,4 +85,9 @@ public class Bullet extends AbstractPhysicalObject implements IVisitor  {
     public void visit(FinishObject f){
         //Nothing should happen here
     }
+
+    @Override
+    public void visit(Pit pit) {
+        //Nothing should happen here
+    }
 }

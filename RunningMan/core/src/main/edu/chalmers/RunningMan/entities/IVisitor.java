@@ -11,4 +11,5 @@ public interface IVisitor {
     void visit(Steroid s);
     void visit(Ground g);
     void visit(FinishObject f);
+    void visit(Pit pit);
 }

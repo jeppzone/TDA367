@@ -101,4 +101,9 @@ public class Enemy extends AbstractLivingObject {
     public void visit(FinishObject f){
         //Nothing should happen here
     }
+
+    @Override
+    public void visit(Pit pit) {
+        // enemy dies
+    }
 }

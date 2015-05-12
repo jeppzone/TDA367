@@ -207,7 +207,6 @@ public class Player extends AbstractLivingObject {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
-        System.out.println("HANDLE COLLISION");
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
@@ -242,7 +241,6 @@ public class Player extends AbstractLivingObject {
     @Override
     public void visit(Enemy e){
         isDead = true;
-        System.out.println("Collision with enemy");
     }
 
     @Override
@@ -255,8 +253,7 @@ public class Player extends AbstractLivingObject {
     }
 
     public void visit(Steroid s){
-        setVelocityX(2f*this.velocityX);
-        System.out.println("Collision with steroid");
+        setVelocityX(2f * this.velocityX);
     }
 
     @Override
@@ -267,7 +264,14 @@ public class Player extends AbstractLivingObject {
     public void visit(Ground g) {
         handleCollision(g);
     }
+
     public void visit(FinishObject f){
         finishedLevel = true;
+    }
+
+    @Override
+    public void visit(Pit pit) {
+        handleCollision(pit);
+        isDead = true;
     }
 }
