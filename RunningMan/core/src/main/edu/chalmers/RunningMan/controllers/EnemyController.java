@@ -18,6 +18,6 @@ public class EnemyController implements IEntityController {
 
     public void update(float deltaTime){
         enemy.move(deltaTime);
-        enemyView.draw();
+        //enemyView.draw();
     }
 }

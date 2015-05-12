@@ -19,6 +19,6 @@ public class PitController implements IEntityController {
 
     @Override
     public void update(float deltaTime) {
-        pitView.draw();
+        //pitView.draw();
     }
 }

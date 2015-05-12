@@ -1,5 +1,6 @@
 package edu.chalmers.RunningMan.entities;
 
+import com.badlogic.gdx.Gdx;
 import edu.chalmers.RunningMan.utils.PlayerState;
 
 /**
@@ -118,7 +119,7 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void moveLeft(float deltaTime){
-        //if(getPosition().getY() == 0) { // replace with isOnGround when collisions are implemented
+        if(getPosition().getX() > 5) {
             playerState = PlayerState.MOVING_LEFT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
@@ -126,7 +127,7 @@ public class Player extends AbstractLivingObject {
             lastMovedDirection = LAST_MOVE_LEFT;
 
             facingDirection = PlayerState.FACING_LEFT;
-
+        }
     }
     
     /**

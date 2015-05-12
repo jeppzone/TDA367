@@ -22,7 +22,7 @@ public class BulletController implements IEntityController {
     public void update(float deltaTime) {
         for(Bullet bullet: bullets){
             bullet.moveBullet(deltaTime);
-            bulletView.draw();
+            //bulletView.draw();
         }
 
     }

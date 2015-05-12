@@ -1,6 +1,7 @@
 package edu.chalmers.RunningMan.gameworld;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
 import edu.chalmers.RunningMan.handlers.MapHandler;
@@ -47,6 +48,8 @@ public class GameWorld implements IBulletCollection {
     private List<Enemy> enemies;
     private List<Ground> grounds;
     private List<Pit> pitfalls;
+    private List<Actor> actors;
+    private OverView overView;
 
 
 
@@ -55,6 +58,7 @@ public class GameWorld implements IBulletCollection {
         cam.setToOrtho(false, V_WIDTH, V_HEIGHT);
         mapObjects = new ArrayList<>();
         controllers = new ArrayList<>();
+        actors = new ArrayList<>();
         loadLevel();
 
     }
@@ -75,7 +79,7 @@ public class GameWorld implements IBulletCollection {
      */
     private void createBullet(int pos){
         bullets.add(new Bullet(new Size(10, 10),
-                new Position(player.getPosition().getX() + pos +(player.getSize().getWidth())/2,player.getPosition().getY()- 6 +(player.getSize().getHeight())/2),
+                new Position(player.getPosition().getX() + pos + (player.getSize().getWidth()) / 2, player.getPosition().getY() - 6 + (player.getSize().getHeight()) / 2),
                 player.getFacingDirection()));
     }
 
@@ -85,6 +89,7 @@ public class GameWorld implements IBulletCollection {
         for(IEntityController controller : controllers) {
             controller.update(deltaTime);
         }
+        overView.draw();
 
     }
 
@@ -103,9 +108,11 @@ public class GameWorld implements IBulletCollection {
             levelController = new LevelController(level,bullets);
             addPhysicalObjectViews(mapHandler.getPhysicalObjectsList());
             playerController = new PlayerController(player, playerView);
+            overView = new OverView(actors, player);
             controllers.add(playerController);
             controllers.add(bulletController);
             controllers.add(levelController);
+            actors.add(bulletView);
 
         } catch(MapHandlerException e) {
 
@@ -120,18 +127,22 @@ public class GameWorld implements IBulletCollection {
                 Pit pit = (Pit) apo;
                 PitView pitView = new PitView(pit);
                 controllers.add(new PitController(pit, pitView));
+                actors.add(pitView);
             } else if(apo.getClass() == Ground.class) {
                 Ground ground = (Ground) apo;
                 GroundView groundView = new GroundView(ground);
                 controllers.add(new GroundController(ground, groundView));
+                actors.add(groundView);
             } else if(apo.getClass() == Enemy.class) {
                 Enemy enemy = (Enemy) apo;
                 EnemyView enemyView = new EnemyView(enemy);
                 controllers.add(new EnemyController(enemy, enemyView));
+                actors.add(enemyView);
             } else if(apo.getClass() == Steroid.class) {
                 Steroid steroid = (Steroid) apo;
                 SteroidView steroidView = new SteroidView(steroid);
                 controllers.add(new SteroidController(steroid, steroidView));
+                actors.add(steroidView);
             } else if(apo.getClass() == Obstacle.class) {
                 Obstacle obstacle = (Obstacle) apo;
                 ObstacleView obstacleView = new ObstacleView(obstacle);

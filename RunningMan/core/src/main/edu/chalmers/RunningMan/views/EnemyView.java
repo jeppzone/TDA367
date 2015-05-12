@@ -3,14 +3,16 @@ package edu.chalmers.RunningMan.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Enemy;
 
 /**
  * A class to represent the view of the enemy.
  */
-public class EnemyView {
+public class EnemyView extends Actor{
     private final Enemy enemy;
     private final SpriteBatch sb;
 
@@ -44,12 +46,10 @@ public class EnemyView {
     /**
      * Draws the enemy
      */
-    public void draw(){
-        if(!enemy.isDead()) {
-            sb.begin();
-            sb.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
-            sb.end();
-        }
+    public void draw(Batch batch, float deltaTime){
+        batch.begin();
+        batch.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
+        batch.end();
     }
 
     /**

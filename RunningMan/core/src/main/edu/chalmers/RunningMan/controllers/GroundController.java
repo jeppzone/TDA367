@@ -18,6 +18,6 @@ public class GroundController implements IEntityController {
 
     @Override
     public void update(float deltaTime) {
-        groundView.draw();
+        //groundView.draw();
     }
 }
