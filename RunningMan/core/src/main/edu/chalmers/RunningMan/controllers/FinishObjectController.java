@@ -16,6 +16,9 @@ public class FinishObjectController implements IEntityController{
     }
 
     public void update(float deltaTime){
+        if(finishObject.getFlyaway()){
+            finishObject.move(deltaTime);
+        }
         finishObjectView.draw();
     }
 }
