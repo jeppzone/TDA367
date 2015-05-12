@@ -5,13 +5,11 @@ package edu.chalmers.RunningMan.entities;
  */
 public class FinishObject extends AbstractPhysicalObject {
 
+    public FinishObject(Position position, Size size){
+        super(size, position);
+    }
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor. visit(this);
     }
-
-    public FinishObject(Size size, Position position){
-        super(size, position);
-    }
-
 }
