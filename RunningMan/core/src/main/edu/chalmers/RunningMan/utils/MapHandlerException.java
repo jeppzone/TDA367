@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.handlers;
+package edu.chalmers.RunningMan.utils;
 
 /**
  * An Exception class for MapHandler

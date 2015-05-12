@@ -4,8 +4,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import edu.chalmers.RunningMan.handlers.InputProcessor;
-import edu.chalmers.RunningMan.screens.GameScreen;
+import edu.chalmers.RunningMan.utils.InputProcessor;
+import edu.chalmers.RunningMan.gameworld.GameScreen;
 
 public class RunningMan extends Game {
 
