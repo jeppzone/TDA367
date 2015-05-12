@@ -5,13 +5,22 @@ package edu.chalmers.RunningMan.entities;
  */
 public class FinishObject extends AbstractPhysicalObject {
 
+    private boolean flyaway;
+
+    public FinishObject(Position position, Size size){
+        super(size, position);
+    }
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor. visit(this);
+        flyaway = true;
+    }
+    public void move(float delta){
+        float velocity = 200;
+        setX(getPosition().getX() + velocity*delta);
     }
 
-    public FinishObject(Size size, Position position){
-        super(size, position);
+    public boolean getFlyaway(){
+        return flyaway;
     }
-
 }

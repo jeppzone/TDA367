@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Player;
@@ -16,15 +15,16 @@ public class PlayerView extends Actor{
 
     private final Player player;
 
-    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture;
-    private TextureRegion[] walkRightSprites, walkLeftSprites;
+    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture, deadTexture;
+    private TextureRegion[] walkRightSprites, walkLeftSprites,deathSprite;
     private TextureRegion jumpRightSprite, jumpLeftSprite;
-    private Animation walkRightAnimation, walkLeftAnimation;
+    private Animation walkRightAnimation, walkLeftAnimation,dieAnimation;
 
     private final static String SPRITE_WALK_RIGHT_SHEET = "core/assets/walk_right_sheet_soldier.png";
     private final static String SPRITE_WALK_LEFT_SHEET = "core/assets/walk_left_sheet_soldier.png";
     private final static String SPRITE_JUMP_RIGHT = "core/assets/jump_right_soldier.png";
     private final static String SPRITE_JUMP_LEFT = "core/assets/jump_left_soldier.png";
+    private final static String SPRITE_DEAD = "core/assets/soldierdie.png";
 
     private float stateTime;
 
@@ -35,24 +35,28 @@ public class PlayerView extends Actor{
         walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
         jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
         jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
+        deadTexture = new Texture(SPRITE_DEAD);
 
         // TODO how to decide height and width on sprites without hard code it?
         walkRightSprites = TextureRegion.split(walkRightSheet, 58, 60)[0];
         walkLeftSprites = TextureRegion.split(walkLeftSheet, 58, 60)[0];
         jumpRightSprite = new TextureRegion(jumpRightTexture, 58, 60);
         jumpLeftSprite = new TextureRegion(jumpLeftTexture, 58, 60);
+        deathSprite = TextureRegion.split(deadTexture,58,60)[0];
 
         // the float argument decides the speed of the animation
         walkRightAnimation = new Animation(1/12f, walkRightSprites);
         walkLeftAnimation = new Animation(1/12f, walkLeftSprites);
+        dieAnimation = new Animation(1/6f, deathSprite);
 
     }
 
     /**
      * Draws the player
      */
+
     public void draw(Batch batch, float deltaTime) {
-        if(!player.isDead()) {
+        if (!player.isDead()) {
             batch.begin();
             batch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
             batch.end();
@@ -65,6 +69,10 @@ public class PlayerView extends Actor{
      */
     private TextureRegion getCurrentSprite() {
         stateTime += Gdx.graphics.getDeltaTime();
+
+        if (player.isDead()) {
+            return dieAnimation.getKeyFrame(stateTime, false);
+        }
 
         switch (player.getPlayerState()) {
 
@@ -85,7 +93,6 @@ public class PlayerView extends Actor{
 
             case JUMPING_LEFT:
                 return jumpLeftSprite;
-
             default:
                 // default case will not appear
                 return walkRightAnimation.getKeyFrame(stateTime, true);
