@@ -35,12 +35,15 @@ public class GameWorld implements IBulletCollection {
 
 
     public GameWorld() {
+        startLevel();
+    }
+
+    public void startLevel(){
         loadLevel();
         controllers = factory.getControllers();
         controllers.add(playerController);
         controllers.add(levelController);
         controllers.add(bulletController);
-
     }
 
     /**
@@ -64,9 +67,12 @@ public class GameWorld implements IBulletCollection {
     }
 
     public void update(float deltaTime) {
-
-        for(IEntityController controller : controllers) {
-            controller.update(deltaTime);
+        if(!player.hasFinishedLevel()) {
+            for (IEntityController controller : controllers) {
+                controller.update(deltaTime);
+            }
+        }else{
+            startLevel();
         }
     }
 
@@ -91,7 +97,7 @@ public class GameWorld implements IBulletCollection {
             levelController = new LevelController(level, levelView);
 
         } catch(MapHandlerException e) {
-            System.out.println("TJena");
+            System.out.println("loadLevel in GameWorld");
         }
     }
 
