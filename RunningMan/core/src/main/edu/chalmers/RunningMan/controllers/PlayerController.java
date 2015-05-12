@@ -45,7 +45,7 @@ public class PlayerController implements IEntityController {
     public void update(float deltaTime) {
         handleKeyboardInput(deltaTime);
         player.update(deltaTime);
-        playerView.draw();
+        //playerView.draw();
 
     }
 }

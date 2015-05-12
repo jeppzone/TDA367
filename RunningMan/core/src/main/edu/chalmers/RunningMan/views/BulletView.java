@@ -2,9 +2,11 @@ package edu.chalmers.RunningMan.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Bullet;
 import edu.chalmers.RunningMan.utils.PlayerState;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * A class to represent the view of the bullet.
  */
 
-public class BulletView {
+public class BulletView extends Actor implements IView {
     private final List<Bullet> bullets;
     private final SpriteBatch sb;
 
@@ -47,13 +49,13 @@ public class BulletView {
     /**
      * Draws the bullet
      */
-    public void draw(){
-        sb.begin();
+    public void draw(Batch batch, float deltaTime){
+        batch.begin();
         for(Bullet bullet: bullets) {
-            sb.draw(getCurrentSprite(bullet), bullet.getPosition().getX(), bullet.getPosition().getY(), bullet.getSize().getWidth(), bullet.getSize().getHeight());
+            batch.draw(getCurrentSprite(bullet), bullet.getPosition().getX(), bullet.getPosition().getY(), bullet.getSize().getWidth(), bullet.getSize().getHeight());
         }
 
-        sb.end();
+        batch.end();
     }
 
     /**

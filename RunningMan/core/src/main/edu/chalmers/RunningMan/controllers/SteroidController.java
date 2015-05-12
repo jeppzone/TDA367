@@ -18,7 +18,7 @@ public class SteroidController implements IEntityController {
 
     public void update(float deltaTime){
         if(!steroid.isPickedUp()){
-            steroidView.draw();
+            //steroidView.draw();
         }
     }
 }

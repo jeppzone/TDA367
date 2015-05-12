@@ -3,14 +3,16 @@ package edu.chalmers.RunningMan.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Player;
 
 /**
  * A class to represent the view of the Player.
  */
-public class PlayerView {
+public class PlayerView extends Actor implements IView {
 
     private final Player player;
     private final SpriteBatch spriteBatch;
@@ -51,11 +53,11 @@ public class PlayerView {
     /**
      * Draws the player
      */
-    public void draw() {
+    public void draw(Batch batch, float deltaTime) {
         if(!player.isDead()) {
-            spriteBatch.begin();
-            spriteBatch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
-            spriteBatch.end();
+            batch.begin();
+            batch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
+            batch.end();
         }
     }
 
