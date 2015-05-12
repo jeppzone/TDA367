@@ -16,9 +16,8 @@ import java.util.List;
  * A class to represent the view of the bullet.
  */
 
-public class BulletView extends Actor implements IView {
+public class BulletView extends Actor{
     private final List<Bullet> bullets;
-    private final SpriteBatch sb;
 
     private final Texture bulletLeft, bulletRight;
 
@@ -41,8 +40,6 @@ public class BulletView extends Actor implements IView {
 
         bulletLeftAnimation = new Animation(1/12f, bulletLeftSprites);
         bulletRightAnimation = new Animation(1/12f, bulletRightSprites);
-
-        sb = new SpriteBatch();
 
     }
 

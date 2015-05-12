@@ -2,6 +2,7 @@ package edu.chalmers.RunningMan.controllers;
 
 import edu.chalmers.RunningMan.entities.Bullet;
 import edu.chalmers.RunningMan.entities.Level;
+import edu.chalmers.RunningMan.views.LevelView;
 
 import java.util.List;
 
@@ -11,11 +12,11 @@ import java.util.List;
  */
 public class LevelController implements IEntityController {
     private Level level;
-    private List<Bullet> bullets;
+    private LevelView levelView;
 
-    public LevelController(Level level, List<Bullet> bullets){
+    public LevelController(Level level, LevelView levelView){
         this.level = level;
-        this.bullets = bullets;
+        this.levelView = levelView;
     }
 
     /**

@@ -15,7 +15,6 @@ import edu.chalmers.RunningMan.entities.Player;
 public class PlayerView extends Actor{
 
     private final Player player;
-    private final SpriteBatch spriteBatch;
 
     private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture, deadTexture;
     private TextureRegion[] walkRightSprites, walkLeftSprites,deathSprite;
@@ -51,7 +50,6 @@ public class PlayerView extends Actor{
         walkLeftAnimation = new Animation(1/12f, walkLeftSprites);
         dieAnimation = new Animation(1/6f, deathSprite);
 
-        spriteBatch = new SpriteBatch();
     }
 
     /**
