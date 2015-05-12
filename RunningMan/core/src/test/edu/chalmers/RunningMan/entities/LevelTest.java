@@ -17,12 +17,15 @@ public class LevelTest extends Assert {
     private Player player;
     private final String name = "Beach";
     private List<AbstractPhysicalObject> mapObjects;
+    private List<Bullet> bullets;   //OBS bullets are not being tested yet
+
 
     @Before
     public void setUp(){
         this.player = new Player(null, new Position(400, 0), new Size(50,50),100);
         mapObjects = new ArrayList<>();
         this.level = new Level(mapObjects, player, name);
+        bullets = new ArrayList<>();
     }
 
     @Test
@@ -67,7 +70,7 @@ public class LevelTest extends Assert {
         mapObjects1.add(obstacle);
         mapObjects1.add(enemy);
         final Level level1 = new Level(mapObjects1, player, name);
-        level1.checkCollisions();
+        level1.checkCollisions(bullets);
 
         assertNotEquals(velocityBeforeCollision, enemy.getVelocity());
     }
@@ -81,7 +84,7 @@ public class LevelTest extends Assert {
         mapObjects1.add(obstacle);
         mapObjects1.add(enemy);
         final Level level1 = new Level(mapObjects1, player, name);
-        level1.checkCollisions();
+        level1.checkCollisions(bullets);
 
         assertEquals(velocityBeforeCollision, enemy.getVelocity(), 0);
     }

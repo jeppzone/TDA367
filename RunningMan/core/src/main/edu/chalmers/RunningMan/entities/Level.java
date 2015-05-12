@@ -1,6 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,21 +11,25 @@ import java.util.List;
 public class Level {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
+    private List<AbstractPhysicalObject> levelObjects;
 
     public Level(List<AbstractPhysicalObject> mapObjects, Player player, String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
         mapObjects.add(player);
+        levelObjects = new ArrayList<>();
     }
 
     /**
      * Method to be called continuously to check for
      * collisions all over the level
      */
-    public void checkCollisions(){
-        for(AbstractPhysicalObject thisApo: mapObjects){
+    public void checkCollisions(List<Bullet> bullets){
+        levelObjects.addAll(mapObjects);
+        levelObjects.addAll(bullets);
+        for(AbstractPhysicalObject thisApo: levelObjects){
             if(thisApo instanceof IVisitor){
-                for(AbstractPhysicalObject otherApo: mapObjects){
+                for(AbstractPhysicalObject otherApo: levelObjects){
                     if(isColliding(thisApo.getHitbox(), otherApo.getHitbox())){
                         IVisitor visitor = (IVisitor) thisApo;
                         otherApo.acceptVisitor(visitor);
@@ -32,6 +37,7 @@ public class Level {
                 }
             }
         }
+        levelObjects.clear();
     }
 
     public String getLevelName(){

@@ -1,5 +1,6 @@
 package edu.chalmers.RunningMan.entities;
 
+import com.badlogic.gdx.Gdx;
 import edu.chalmers.RunningMan.utils.PlayerState;
 
 /**
@@ -36,6 +37,11 @@ public class Bullet extends AbstractPhysicalObject implements IVisitor  {
     public void moveBullet(float deltaTime){
             setX(getPosition().getX() + getBulletSpeed() * deltaTime);
     }
+
+    public boolean isOutOfBounds(){
+        return Gdx.graphics.getWidth() < getPosition().getX() ||getPosition().getX() < 1 ;
+    }
+
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor.visit(this);

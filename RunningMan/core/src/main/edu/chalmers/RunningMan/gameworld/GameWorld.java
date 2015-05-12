@@ -100,7 +100,7 @@ public class GameWorld implements IBulletCollection {
             player = new Player(weapon, new Position(200,400), new Size(50,50), 100);
             playerView = new PlayerView(player);
             level = new Level(mapHandler.getPhysicalObjectsList(), player, "level1");
-            levelController = new LevelController(level);
+            levelController = new LevelController(level,bullets);
             addPhysicalObjectViews(mapHandler.getPhysicalObjectsList());
             playerController = new PlayerController(player, playerView);
             controllers.add(playerController);
