@@ -46,6 +46,11 @@ public class Factory {
             } else if(apo.getClass() == Obstacle.class) {
                 Obstacle obstacle = (Obstacle) apo;
                 ObstacleView obstacleView = new ObstacleView(obstacle);
+                actors.add(obstacleView);
+            }else if(apo.getClass() == FinishObject.class){
+                FinishObject finishObject = (FinishObject) apo;
+                FinishObjectView finishObjectView = new FinishObjectView(finishObject);
+                actors.add(finishObjectView);
             }
         }
     }

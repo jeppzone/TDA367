@@ -3,12 +3,13 @@ package edu.chalmers.RunningMan.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Obstacle;
 
 /**
  * A class to represent the view of obstacle objects.
  */
-public class ObstacleView  {
+public class ObstacleView extends Actor {
     private final Obstacle obstacle;
     private final SpriteBatch sb;
     private final Texture rockObstacle;
