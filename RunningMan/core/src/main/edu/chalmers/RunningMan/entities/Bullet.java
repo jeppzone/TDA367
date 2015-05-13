@@ -1,5 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
+import com.badlogic.gdx.Gdx;
+
 /**
  * A class to represent the bullet
  */
@@ -9,6 +11,7 @@ public class Bullet extends AbstractPhysicalObject{
     private final float BULLET_SPEED = 400f;
     private boolean bulletExists = true;
     private final PlayerState playerState;
+    private float initialXPosition = getPosition().getX();
 
     public Bullet(Size size, Position position, PlayerState playerState){
         super(size,position);
@@ -36,7 +39,8 @@ public class Bullet extends AbstractPhysicalObject{
     }
 
     public boolean isOutOfBounds(){
-        return getPosition().getX() < 1 ;
+        return getPosition().getX() < 1 || Math.abs(getPosition().getX() - initialXPosition)
+                > Gdx.graphics.getWidth() ;
     }
 
     @Override
