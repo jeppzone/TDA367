@@ -11,10 +11,12 @@ import java.util.List;
 public class Level {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
+    private static int enemiesKilled;
 
     public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
+        this.enemiesKilled = 0;
     }
 
     /**
@@ -57,6 +59,7 @@ public class Level {
                             mapObjects.remove(enemy);
                             bulletSize--;
                             objectSize--;
+                            enemiesKilled++;
                         } else if (object.getClass() == Ground.class ||
                                 object.getClass() == Obstacle.class) {
                             bullets.remove(bullet);
@@ -66,6 +69,10 @@ public class Level {
                 }
             }
         }
+    }
+
+    public static int getEnemiesKilled(){
+        return enemiesKilled;
     }
 
     public String getLevelName(){

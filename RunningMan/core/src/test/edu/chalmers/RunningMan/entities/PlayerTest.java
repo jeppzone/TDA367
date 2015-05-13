@@ -117,11 +117,6 @@ public class PlayerTest extends Assert{
     }
 
     @Test
-    public void testIncrementKillCount(){
-        player.incrementKillCount();
-    }
-
-    @Test
     public void testSteroidPickedUp(){
         final Steroid steroid = new Steroid(position, size);
         steroid.acceptVisitor(player);

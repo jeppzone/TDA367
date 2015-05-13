@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
  * A class to represent the bullet
  */
 
-public class Bullet extends AbstractPhysicalObject implements IVisitor  {
+public class Bullet extends AbstractPhysicalObject{
 
     private final float BULLET_SPEED = 400f;
     private boolean bulletExists = true;
@@ -46,53 +46,4 @@ public class Bullet extends AbstractPhysicalObject implements IVisitor  {
         visitor.visit(this);
     }
 
-    @Override
-    public void visit(Enemy e) {
-        //Call for some animation of the anime dying here
-        //e.dieAnim();
-
-        //Destroy the enemy Object
-        e = null;
-
-        // Enemy will disappear, in EnemyClass the bullet will disappear.
-    }
-
-    @Override
-    public void visit(Player p) {
-        //not possible
-    }
-
-    @Override
-    public void visit(Obstacle g) {
-        // bullet shall disappear in the obstacle.visit(Bullet b)
-
-    }
-
-    @Override
-    public void visit(Bullet b) {
-        //nothing should happen
-
-    }
-
-    @Override
-    public void visit(Steroid s) {
-        //nothing should happen
-
-    }
-
-    @Override
-    public void visit(Ground g) {
-        //not possible
-
-    }
-
-    @Override
-    public void visit(FinishObject f){
-        //Nothing should happen here
-    }
-
-    @Override
-    public void visit(Pit pit) {
-        //Nothing should happen here
-    }
 }

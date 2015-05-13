@@ -9,7 +9,6 @@ public class Player extends AbstractLivingObject {
     private final int LAST_MOVE_LEFT = -1;
     private final int LAST_MOVE_RIGHT = 1;
 
-    private int killCount = 0;
     private int score = 0;
     private Weapon weapon;
 
@@ -36,6 +35,10 @@ public class Player extends AbstractLivingObject {
         this.weapon = weapon;
         facingDirection = PlayerState.FACING_RIGHT;
 
+    }
+
+    public int getKillCount(){
+        return Level.getEnemiesKilled();
     }
 
     public int getScore(){
@@ -68,7 +71,6 @@ public class Player extends AbstractLivingObject {
      * Updates the current player state.
      */
     public void update(float deltaTime) {
-
         if(hasShot){
             passedTime += 1000*deltaTime;
 
@@ -185,14 +187,6 @@ public class Player extends AbstractLivingObject {
 
     public void setVelocityY(float newVelocityY){
         this.velocityY = newVelocityY;
-    }
-
-    /**
-     * Method to increment the players kill count.
-     * This is done whenever the player kills an enemy
-     */
-    public void incrementKillCount() {
-        this.killCount += 1;
     }
 
     public PlayerState getFacingDirection(){
