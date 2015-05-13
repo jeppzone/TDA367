@@ -48,7 +48,7 @@ public class Level {
         int objectSize = mapObjects.size();
         for (int i = 0; i < bulletSize; i++) {
             for (int j = 0; j < objectSize; j++) {
-                if (bulletSize > 0 && objectSize > 0) {
+                if (bulletSize > i && objectSize > j) {
                     final Bullet bullet = bullets.get(i);
                     final AbstractPhysicalObject object = mapObjects.get(j);
                     if (isColliding(bullet.getHitbox(), object.getHitbox())) {
