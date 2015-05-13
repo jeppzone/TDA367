@@ -12,7 +12,7 @@ public class Player extends AbstractLivingObject {
     private int score = 0;
     private Weapon weapon;
 
-    private float velocityX = 200f;
+    private float velocityX = 120f;
     private float velocityY;
     private float oldX;
 
