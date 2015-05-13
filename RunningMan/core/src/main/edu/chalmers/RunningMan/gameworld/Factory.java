@@ -49,9 +49,9 @@ public class Factory {
                 actors.add(obstacleView);
             }else if(apo.getClass() == Helicopter.class){
                 Helicopter finishObject = (Helicopter) apo;
-                FinishObjectView finishObjectView = new FinishObjectView(finishObject);
-                actors.add(finishObjectView);
-                controllers.add(new FinishObjectController(finishObject, finishObjectView));
+                HelicopterView helicopterView = new HelicopterView(finishObject);
+                actors.add(helicopterView);
+                controllers.add(new HelicopterController(finishObject, helicopterView));
             }
         }
     }

@@ -12,7 +12,7 @@ import edu.chalmers.RunningMan.entities.Helicopter;
 /**
  * Created by Jesper on 5/7/2015.
  */
-public class FinishObjectView extends Actor {
+public class HelicopterView extends Actor {
     private Helicopter finishObject;
     private float stateTime;
     private final SpriteBatch sb;
@@ -21,7 +21,7 @@ public class FinishObjectView extends Actor {
     private Animation chopperHoverAnimation;
     private final static String SPRITE_CHOPPERHOVER = "core/assets/chopperhover.png";
 
-    public FinishObjectView(Helicopter finishObject){
+    public HelicopterView(Helicopter finishObject){
         this.finishObject = finishObject;
 
         chopperHover = new Texture(SPRITE_CHOPPERHOVER);
