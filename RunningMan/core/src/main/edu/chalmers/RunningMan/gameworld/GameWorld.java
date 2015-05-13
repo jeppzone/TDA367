@@ -92,12 +92,12 @@ public class GameWorld implements IBulletCollection {
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
             level = new Level(mapObjects,"level1");
-            levelController = new LevelController(level,bullets,player);
+            levelController = new LevelController(level,bullets);
             playerController = new PlayerController(player, playerView);
             factory = new Factory(mapObjects);
             views = factory.getViews();
             levelView = new LevelView(views, player, bulletView);
-            levelController = new LevelController(level, bullets, player);
+            levelController = new LevelController(level, bullets);
 
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");
