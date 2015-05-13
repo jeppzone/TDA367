@@ -38,11 +38,6 @@ public class Bullet extends AbstractPhysicalObject{
             setX(getPosition().getX() + getBulletSpeed() * deltaTime);
     }
 
-    public boolean isOutOfBounds(){
-        return getPosition().getX() < 1 || Math.abs(getPosition().getX() - initialXPosition)
-                > Gdx.graphics.getWidth() ;
-    }
-
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor.visit(this);

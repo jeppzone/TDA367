@@ -1,5 +1,6 @@
 package edu.chalmers.RunningMan.gameworld;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
@@ -32,6 +33,7 @@ public class GameWorld implements IBulletCollection {
     private List<Actor> views;
     private Factory factory;
 
+
     public GameWorld() {
         startLevel();
     }
@@ -53,6 +55,7 @@ public class GameWorld implements IBulletCollection {
         else
             createBullet(-34);
     }
+
 
     /**
      * A helper class for placeBullet(), creates the bullet on the position where the bullet is supposed to be placed
@@ -89,12 +92,12 @@ public class GameWorld implements IBulletCollection {
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
             level = new Level(mapObjects,"level1");
-            levelController = new LevelController(level,bullets);
+            levelController = new LevelController(level,bullets,player);
             playerController = new PlayerController(player, playerView);
             factory = new Factory(mapObjects);
             views = factory.getViews();
             levelView = new LevelView(views, player, bulletView);
-            levelController = new LevelController(level, bullets);
+            levelController = new LevelController(level, bullets, player);
 
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");
