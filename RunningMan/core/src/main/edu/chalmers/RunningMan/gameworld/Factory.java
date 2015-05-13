@@ -51,6 +51,7 @@ public class Factory {
                 FinishObject finishObject = (FinishObject) apo;
                 FinishObjectView finishObjectView = new FinishObjectView(finishObject);
                 actors.add(finishObjectView);
+                controllers.add(new FinishObjectController(finishObject, finishObjectView));
             }
         }
     }
