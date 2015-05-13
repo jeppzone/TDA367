@@ -1,7 +1,5 @@
 package edu.chalmers.RunningMan.entities;
 
-import com.badlogic.gdx.Gdx;
-
 /**
  * A class to represent the bullet
  */
@@ -38,7 +36,7 @@ public class Bullet extends AbstractPhysicalObject{
     }
 
     public boolean isOutOfBounds(){
-        return Gdx.graphics.getWidth() < getPosition().getX() ||getPosition().getX() < 1 ;
+        return getPosition().getX() < 1 ;
     }
 
     @Override
