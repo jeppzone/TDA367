@@ -54,7 +54,7 @@ public class Level {
                             final Enemy enemy = (Enemy) object;
                             enemy.visit(bullet);
                             bullets.remove(bullet);
-                            mapObjects.remove(mapObjects);
+                            mapObjects.remove(enemy);
                             bulletSize--;
                             objectSize--;
                         } else if (object.getClass() == Ground.class ||
