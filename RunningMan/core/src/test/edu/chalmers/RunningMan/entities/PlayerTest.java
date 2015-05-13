@@ -85,12 +85,18 @@ public class PlayerTest extends Assert{
         player.moveLeft(DELTATIME);
         assertTrue(player.getVelocityX() < 0);
     }
+
     @Test
     public void testMoveLeftPosition(){
         final float posX = player.getPosition().getX();
         player.moveLeft(DELTATIME);
-        System.out.println(posX + " , " + player.getPosition().getX());
         assertTrue(player.getPosition().getX() < posX);
+    }
+
+    @Test
+    public void testMoveLeftPlayerState(){
+        player.moveLeft(DELTATIME);
+        assertTrue(player.getPlayerState() == PlayerState.MOVING_LEFT);
     }
 
     @Test
@@ -105,6 +111,13 @@ public class PlayerTest extends Assert{
         player.moveRight(DELTATIME);
         assertTrue(player.getPosition().getX() > posX);
     }
+
+    @Test
+    public void testMoveRightPlayerState(){
+        player.moveRight(DELTATIME);
+        assertTrue(player.getPlayerState() == PlayerState.MOVING_RIGHT);
+    }
+
     @Test
     public void testJumpVelocity(){
         final float velocityY = player.getVelocityY();
@@ -137,9 +150,29 @@ public class PlayerTest extends Assert{
         assertTrue(Math.abs(player.getVelocityX()) > velocityX);
     }
 
-    @Test public void testFinishLevel(){
+    @Test
+    public void testVisistEnemy(){
+        final Enemy enemy = new Enemy(position, size, 10);
+        player.visit(enemy);
+        assertTrue(player.isDead());
+    }
+
+    @Test
+    public void testFinishLevel(){
         final Helicopter helicopter = new Helicopter(position, size);
         player.visit(helicopter);
         assertTrue(player.hasFinishedLevel());
     }
+
+    @Test
+    public void testPlayerMovingWhenFinishedLevel(){
+        final Helicopter helicopter = new Helicopter(new Position
+                (position.getX() + 10, position.getY()), size);
+        float initialX = position.getX();
+        helicopter.acceptVisitor(player);
+        player.visit(helicopter);
+        float newX = player.getPosition().getX();
+        assertTrue(newX > initialX);
+    }
+
 }
