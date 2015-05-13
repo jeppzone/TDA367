@@ -11,24 +11,22 @@ import java.util.List;
 public class Level {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
-    private List<AbstractPhysicalObject> levelObjects;
 
     public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
-        levelObjects = new ArrayList<>();
     }
 
     /**
      * Method to be called continuously to check for
      * collisions all over the level
      */
-    public void checkCollisions(List<Bullet> bullets){
-        levelObjects.addAll(mapObjects);
-        levelObjects.addAll(bullets);
-        for(AbstractPhysicalObject thisApo: levelObjects){
+
+    public void checkCollisions(List<Bullet> bullets) {
+        checkBulletCollisions(bullets);
+        for(AbstractPhysicalObject thisApo: mapObjects){
             if(thisApo instanceof IVisitor){
-                for(AbstractPhysicalObject otherApo: levelObjects){
+                for(AbstractPhysicalObject otherApo: mapObjects){
                     if(isColliding(thisApo.getHitbox(), otherApo.getHitbox())){
                         IVisitor visitor = (IVisitor) thisApo;
                         otherApo.acceptVisitor(visitor);
@@ -36,8 +34,37 @@ public class Level {
                 }
             }
         }
-        levelObjects.clear();
     }
+
+    public void checkBulletCollisions(List<Bullet> bullets){
+        int bulletSize = bullets.size();
+        int objectSize = mapObjects.size();
+        for (int i = 0; i < bulletSize; i++) {
+            for (int j = 0; j < objectSize; j++) {
+                if (bulletSize > 0 && objectSize > 0) {
+                    final Bullet bullet = bullets.get(i);
+                    final AbstractPhysicalObject object = mapObjects.get(j);
+                    if (isColliding(bullet.getHitbox(), object.getHitbox())) {
+                        if (object instanceof Enemy) {
+                            final Enemy enemy = (Enemy) object;
+                            enemy.visit(bullet);
+                            bullets.remove(bullet);
+                            mapObjects.remove(mapObjects);
+                            bulletSize--;
+                            objectSize--;
+                        } else if (object.getClass() == Ground.class ||
+                                object.getClass() == Obstacle.class) {
+                            bullets.remove(bullet);
+                            bulletSize--;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
 
     public String getLevelName(){
         return levelName;

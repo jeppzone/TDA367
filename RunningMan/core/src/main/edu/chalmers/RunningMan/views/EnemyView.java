@@ -44,9 +44,11 @@ public class EnemyView extends Actor{
      * Draws the enemy
      */
     public void draw(Batch batch, float deltaTime){
-        batch.begin();
-        batch.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
-        batch.end();
+        if(!enemy.isDead()) {
+            batch.begin();
+            batch.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
+            batch.end();
+        }
     }
 
     /**

@@ -69,6 +69,7 @@ public class GameWorld implements IBulletCollection {
             for (IEntityController controller : controllers) {
                 controller.update(deltaTime);
             }
+            levelView.draw();
         }else{
             startLevel();
         }
@@ -88,6 +89,7 @@ public class GameWorld implements IBulletCollection {
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
             level = new Level(mapObjects,"level1");
+            levelController = new LevelController(level,bullets);
             playerController = new PlayerController(player, playerView);
             factory = new Factory(mapObjects);
             views = factory.getViews();
