@@ -11,7 +11,7 @@ import java.awt.*;
  */
 public class PlayerTest extends Assert{
     private Player player;
-    private Position position = new Position(50f, 0f);
+    private Position position = new Position(50f, 20f);
     private final Size size = new Size(10f, 10f);
     private Weapon weapon;
     private static final float DELTATIME = 2f;
@@ -21,6 +21,11 @@ public class PlayerTest extends Assert{
     public void setUp(){
         killCount = 0;
         player = new Player(weapon, position, size, 100 );
+        //Needs to be done to set hasLandedFirstTime true
+        final float groundPosY = position.getY() - 10f;
+        final float groundPosX = position.getX();
+        final Ground ground = new Ground(new Position(groundPosX, groundPosY), size);
+        player.visit(ground);
     }
     @Test
     public void testGetPosition(){
@@ -84,6 +89,7 @@ public class PlayerTest extends Assert{
     public void testMoveLeftPosition(){
         final float posX = player.getPosition().getX();
         player.moveLeft(DELTATIME);
+        System.out.println(posX + " , " + player.getPosition().getX());
         assertTrue(player.getPosition().getX() < posX);
     }
 
@@ -129,5 +135,11 @@ public class PlayerTest extends Assert{
         final float velocityX = Math.abs(player.getVelocityX());
         player.visit(steroid);
         assertTrue(Math.abs(player.getVelocityX()) > velocityX);
+    }
+
+    @Test public void testFinishLevel(){
+        final Helicopter helicopter = new Helicopter(position, size);
+        player.visit(helicopter);
+        assertTrue(player.hasFinishedLevel());
     }
 }

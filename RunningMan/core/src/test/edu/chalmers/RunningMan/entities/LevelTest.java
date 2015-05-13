@@ -25,6 +25,7 @@ public class LevelTest extends Assert {
         this.player = new Player(null, new Position(400, 0), new Size(50,50),100);
         mapObjects = new ArrayList<>();
         this.level = new Level(mapObjects, name);
+         bullets = new ArrayList<>();
     }
 
     @Test
@@ -71,7 +72,7 @@ public class LevelTest extends Assert {
         final Level level1 = new Level(mapObjects1,name);
         level1.checkCollisions(bullets);
 
-        //assertNotEquals(velocityBeforeCollision, enemy.getVelocity());
+        assertNotEquals(velocityBeforeCollision, enemy.getVelocity());
     }
 
     @Test
@@ -83,9 +84,9 @@ public class LevelTest extends Assert {
         mapObjects1.add(obstacle);
         mapObjects1.add(enemy);
         final Level level1 = new Level(mapObjects1, name);
-        //level1.checkCollisions(bullets);
+        level1.checkCollisions(bullets);
 
-        //assertEquals(velocityBeforeCollision, enemy.getVelocity(), 0);
+        assertEquals(velocityBeforeCollision, enemy.getVelocity(), 0);
     }
 
 }
