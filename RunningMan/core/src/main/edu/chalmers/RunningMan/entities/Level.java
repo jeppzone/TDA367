@@ -36,6 +36,11 @@ public class Level {
         }
     }
 
+    /**
+     * Method to check whether bullets are colliding with
+     * any objects
+     * @param bullets
+     */
     public void checkBulletCollisions(List<Bullet> bullets){
         int bulletSize = bullets.size();
         int objectSize = mapObjects.size();
@@ -62,9 +67,6 @@ public class Level {
             }
         }
     }
-
-
-
 
     public String getLevelName(){
         return levelName;
