@@ -1,7 +1,5 @@
 package edu.chalmers.RunningMan.entities;
 
-import java.util.Timer;
-
 /**
  * A class to model a player
  * @author Jesper Olsson
@@ -263,7 +261,7 @@ public class Player extends AbstractLivingObject {
         handleCollision(g);
     }
 
-    public void visit(FinishObject f){
+    public void visit(Helicopter f){
         setX(f.getPosition().getX());
         setY(f.getPosition().getY() - 20);
         finishedLevel = true;

@@ -99,7 +99,7 @@ public class Enemy extends AbstractLivingObject {
     }
 
     @Override
-    public void visit(FinishObject f){
+    public void visit(Helicopter f){
         //Nothing should happen here
     }
 

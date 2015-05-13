@@ -10,6 +10,6 @@ public interface IVisitor {
     void visit(Bullet b);
     void visit(Steroid s);
     void visit(Ground g);
-    void visit(FinishObject f);
+    void visit(Helicopter f);
     void visit(Pit pit);
 }

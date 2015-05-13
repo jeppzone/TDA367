@@ -3,11 +3,11 @@ package edu.chalmers.RunningMan.entities;
 /**
  * Created by Jesper on 5/7/2015.
  */
-public class FinishObject extends AbstractPhysicalObject {
+public class Helicopter extends AbstractPhysicalObject {
 
     private boolean flyaway;
 
-    public FinishObject(Position position, Size size){
+    public Helicopter(Position position, Size size){
         super(size, position);
     }
     @Override

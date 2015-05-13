@@ -7,13 +7,13 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.entities.FinishObject;
+import edu.chalmers.RunningMan.entities.Helicopter;
 
 /**
  * Created by Jesper on 5/7/2015.
  */
 public class FinishObjectView extends Actor {
-    private FinishObject finishObject;
+    private Helicopter finishObject;
     private float stateTime;
     private final SpriteBatch sb;
     private final Texture chopperHover;
@@ -21,7 +21,7 @@ public class FinishObjectView extends Actor {
     private Animation chopperHoverAnimation;
     private final static String SPRITE_CHOPPERHOVER = "core/assets/chopperhover.png";
 
-    public FinishObjectView(FinishObject finishObject){
+    public FinishObjectView(Helicopter finishObject){
         this.finishObject = finishObject;
 
         chopperHover = new Texture(SPRITE_CHOPPERHOVER);
