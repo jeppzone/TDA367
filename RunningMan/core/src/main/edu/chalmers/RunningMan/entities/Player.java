@@ -14,17 +14,16 @@ public class Player extends AbstractLivingObject {
     private Weapon weapon;
 
     private float velocityX = 200f;
-
     private float velocityY;
     private float oldX;
+
     private boolean finishedLevel = false;
     private boolean isOnGround = false;
     private boolean hasLandedFirsTime = false;
+
     private PlayerState facingDirection;
     private Gravity gravity = new Gravity(-800f);
-    private static float time = 0;
-    private static float passedTime= 0;
-    private long previousFiredBulletTime = 0;
+    private static float passedTime = 0;
     private boolean hasShot = false;
 
 
