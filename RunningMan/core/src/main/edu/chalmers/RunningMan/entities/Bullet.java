@@ -41,7 +41,7 @@ public class Bullet extends AbstractPhysicalObject{
 
     public boolean isOutOfBounds(){
         return getPosition().getX() < 1 || Math.abs(getPosition().getX() - initialXPosition)
-                > Gdx.graphics.getWidth() ;
+                > Gdx.graphics.getWidth()/2 ;
     }
 
 

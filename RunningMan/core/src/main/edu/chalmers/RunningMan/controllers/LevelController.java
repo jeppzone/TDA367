@@ -17,12 +17,10 @@ import java.util.List;
 public class LevelController implements IEntityController {
     private Level level;
     private List<Bullet> bullets;
-    private Player player;
 
     public LevelController(Level level, List<Bullet> bullets){
         this.level = level;
         this.bullets = bullets;
-        this.player = player;
     }
 
     /**
