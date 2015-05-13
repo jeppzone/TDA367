@@ -65,14 +65,14 @@ public class GameWorld implements IBulletCollection {
     }
 
     public void update(float deltaTime) {
-        if(!player.hasFinishedLevel() && !player.isDead()) {
+        //if(!player.hasFinishedLevel() && !player.isDead()) {
             for (IEntityController controller : controllers) {
                 controller.update(deltaTime);
-            }
+           }
             levelView.draw();
-        }else{
-            startLevel();
-        }
+        //}else{
+            //startLevel();
+        //}
     }
 
     public final void loadLevel() {
