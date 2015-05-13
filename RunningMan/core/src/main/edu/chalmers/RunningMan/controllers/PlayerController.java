@@ -43,7 +43,6 @@ public class PlayerController implements IEntityController {
 
 
     public void update(float deltaTime) {
-        System.out.println(deltaTime);
         handleKeyboardInput(deltaTime);
         player.update(deltaTime);
         playerView.draw();

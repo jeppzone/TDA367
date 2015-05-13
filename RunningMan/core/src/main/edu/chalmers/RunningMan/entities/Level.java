@@ -24,24 +24,42 @@ public class Level {
      * Method to be called continuously to check for
      * collisions all over the level
      */
-    public void checkCollisions(List<Bullet> bullets){
-        levelObjects.addAll(mapObjects);
-        levelObjects.addAll(bullets);
-        for(AbstractPhysicalObject thisApo: levelObjects){
+
+    public void checkCollisions(List<Bullet> bullets) {
+        checkBulletCollisions(bullets);
+        for(AbstractPhysicalObject thisApo: mapObjects){
             if(thisApo instanceof IVisitor){
-                for(AbstractPhysicalObject otherApo: levelObjects){
+                for(AbstractPhysicalObject otherApo: mapObjects){
                     if(isColliding(thisApo.getHitbox(), otherApo.getHitbox())){
-                       /*
-                        System.out.println(thisApo.getClass());
-                        System.out.println(otherApo.getClass());*/
                         IVisitor visitor = (IVisitor) thisApo;
                         otherApo.acceptVisitor(visitor);
                     }
                 }
             }
         }
-        levelObjects.clear();
     }
+
+    public void checkBulletCollisions(List<Bullet> bullets) {
+
+        for (int i = 0; i < bullets.size(); i++) {
+            for (int j = 0; j < mapObjects.size(); j++) {
+                if (mapObjects.get(j) instanceof IVisitor) {
+
+                    if (isColliding(bullets.get(i).getHitbox(), mapObjects.get(j).getHitbox())) {
+                        if (mapObjects.get(j) instanceof AbstractLivingObject) {
+
+                            bullets.remove(i);
+                            mapObjects.remove(j);
+                        } else if (bullets.get(i).getClass().equals(Obstacle.class) || bullets.get(i).getClass().equals(Ground.class)) {
+                            bullets.remove(i);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
 
     public String getLevelName(){
         return levelName;

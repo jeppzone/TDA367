@@ -34,6 +34,9 @@ public class GameWorld implements IBulletCollection {
     private Obstacle obstacle;
     private ObstacleView obstacleView;
     private ObstacleController obstacleController;
+    private FinishObject finishObject;
+    private FinishObjectView finishObjectView;
+    private FinishObjectController finishObjectController;
     private Level level;
     private LevelController levelController;
     private Steroid steroid;
@@ -133,6 +136,10 @@ public class GameWorld implements IBulletCollection {
                 Obstacle obstacle = (Obstacle) apo;
                 ObstacleView obstacleView = new ObstacleView(obstacle);
                 controllers.add(new ObstacleController(obstacle, obstacleView));
+            } else if (apo.getClass() == FinishObject.class) {
+                FinishObject finishObject = (FinishObject) apo;
+                FinishObjectView finishObjectView = new FinishObjectView(finishObject);
+                controllers.add(new FinishObjectController(finishObject, finishObjectView));
             }
         }
     }

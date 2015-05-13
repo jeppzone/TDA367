@@ -61,18 +61,14 @@ public class EnemyView {
 
         switch (enemy.getEnemyState()) {
             case MOVING_RIGHT:
-                System.out.println("ENEMY_MOVING_RIGHT");
                 return enemyWalkRightAnimation.getKeyFrame(stateTime, true);
             case MOVING_LEFT:
-                System.out.println("ENEMY_MOVING_LEFT");
                 return enemyWalkLeftAnimation.getKeyFrame(stateTime, true);
             case STANDING:
-                System.out.println("STANDING");
                 //nothing yet
                 return enemyWalkLeftAnimation.getKeyFrame(stateTime, true);
             default:
                 // default case will not appear
-                System.out.println("ENEMY_MOVING_LEFT");
                 return enemyWalkLeftAnimation.getKeyFrame(stateTime, true);
         }
     }

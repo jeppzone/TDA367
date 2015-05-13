@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Timer;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import edu.chalmers.RunningMan.entities.Player;
 
 /**
@@ -15,15 +17,16 @@ public class PlayerView {
     private final Player player;
     private final SpriteBatch spriteBatch;
 
-    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture;
-    private TextureRegion[] walkRightSprites, walkLeftSprites;
+    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture, deadTexture;
+    private TextureRegion[] walkRightSprites, walkLeftSprites,deathSprite;
     private TextureRegion jumpRightSprite, jumpLeftSprite;
-    private Animation walkRightAnimation, walkLeftAnimation;
+    private Animation walkRightAnimation, walkLeftAnimation,dieAnimation;
 
     private final static String SPRITE_WALK_RIGHT_SHEET = "core/assets/walk_right_sheet_soldier.png";
     private final static String SPRITE_WALK_LEFT_SHEET = "core/assets/walk_left_sheet_soldier.png";
     private final static String SPRITE_JUMP_RIGHT = "core/assets/jump_right_soldier.png";
     private final static String SPRITE_JUMP_LEFT = "core/assets/jump_left_soldier.png";
+    private final static String SPRITE_DEAD = "core/assets/soldierdie.png";
 
     private float stateTime;
 
@@ -34,16 +37,19 @@ public class PlayerView {
         walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
         jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
         jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
+        deadTexture = new Texture(SPRITE_DEAD);
 
         // TODO how to decide height and width on sprites without hard code it?
         walkRightSprites = TextureRegion.split(walkRightSheet, 58, 60)[0];
         walkLeftSprites = TextureRegion.split(walkLeftSheet, 58, 60)[0];
         jumpRightSprite = new TextureRegion(jumpRightTexture, 58, 60);
         jumpLeftSprite = new TextureRegion(jumpLeftTexture, 58, 60);
+        deathSprite = TextureRegion.split(deadTexture,58,60)[0];
 
         // the float argument decides the speed of the animation
         walkRightAnimation = new Animation(1/12f, walkRightSprites);
         walkLeftAnimation = new Animation(1/12f, walkLeftSprites);
+        dieAnimation = new Animation(1/6f, deathSprite);
 
         spriteBatch = new SpriteBatch();
     }
@@ -52,11 +58,10 @@ public class PlayerView {
      * Draws the player
      */
     public void draw() {
-        if(!player.isDead()) {
-            spriteBatch.begin();
-            spriteBatch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
-            spriteBatch.end();
-        }
+
+        spriteBatch.begin();
+        spriteBatch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
+        spriteBatch.end();
     }
 
     /**
@@ -66,32 +71,29 @@ public class PlayerView {
     private TextureRegion getCurrentSprite() {
         stateTime += Gdx.graphics.getDeltaTime();
 
+        if (player.isDead()) {
+            return dieAnimation.getKeyFrame(stateTime, false);
+        }
+
         switch (player.getPlayerState()) {
 
             case MOVING_RIGHT:
-                System.out.println("MOVING_RIGHT");
                 return walkRightAnimation.getKeyFrame(stateTime, true);
 
             case MOVING_LEFT:
-                System.out.println("MOVING_LEFT");
                 return walkLeftAnimation.getKeyFrame(stateTime, true);
 
             case FACING_RIGHT:
-                System.out.println("FACING_RIGHT");
                 return walkRightSprites[0];
 
             case FACING_LEFT:
-                System.out.println("FACING_LEFT");
                 return walkLeftSprites[5];
 
             case JUMPING_RIGHT:
-                System.out.println("JUMPING_RIGHT");
                 return jumpRightSprite;
 
             case JUMPING_LEFT:
-                System.out.println("JUMPING_LEFT");
                 return jumpLeftSprite;
-
             default:
                 // default case will not appear
                 return walkRightAnimation.getKeyFrame(stateTime, true);

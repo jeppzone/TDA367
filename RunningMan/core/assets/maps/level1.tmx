@@ -34,4 +34,9 @@
    eJxjYBgFo2AUjIJRMApGwSgYBaOAeoAPCx5IAAAwIABH
   </data>
  </layer>
+ <layer name="finishlevel" width="50" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRAAKcA+2AUTAKRsEoGAU0AQA/0AAK
+  </data>
+ </layer>
 </map>
