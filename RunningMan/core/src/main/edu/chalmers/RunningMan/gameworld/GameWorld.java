@@ -34,6 +34,7 @@ public class GameWorld  {
     private List<Actor> views;
     private Factory factory;
     private AudioController audioController;
+    private HudView hudView;
 
     public GameWorld() {
         startLevel();
@@ -56,6 +57,7 @@ public class GameWorld  {
                 controller.update(deltaTime);
            }
             levelView.draw();
+            hudView.draw();
         //}else{
         //    startLevel();
         //}
@@ -85,6 +87,7 @@ public class GameWorld  {
             levelView = new LevelView(views, player, bulletView);
             audioController.playMusic();
             levelController = new LevelController(level, weapon.getBullets());
+            hudView = new HudView(level);
 
 
         } catch(MapHandlerException e) {
