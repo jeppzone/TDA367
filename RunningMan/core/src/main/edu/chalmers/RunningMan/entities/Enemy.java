@@ -8,6 +8,7 @@ public class Enemy extends AbstractLivingObject {
 
     private float velocity;
     private EnemyState enemyState = EnemyState.MOVING_LEFT;
+    private boolean isShotInback, isShotInFront;
 
     public Enemy(Position position, Size size, int maxHp){
         super(size, position, maxHp);
@@ -58,6 +59,14 @@ public class Enemy extends AbstractLivingObject {
         }
     }
 
+    public boolean isShotInback(){
+        return this.isShotInback;
+    }
+
+    public boolean isShotInFront(){
+        return this.isShotInFront;
+    }
+
     public float getVelocity(){
         return this.velocity;
     }
@@ -86,7 +95,12 @@ public class Enemy extends AbstractLivingObject {
     @Override
     public void visit(Bullet b){
         // Enemy shall be hurt or killed
-        isDead = true;
+        if(b.getBulletSpeed()*velocity < 0){
+            isShotInFront = true;
+        }else{
+            isShotInback = true;
+        }
+        velocity = 0;
        // bullet disappears after hitting an enemy
     }
 

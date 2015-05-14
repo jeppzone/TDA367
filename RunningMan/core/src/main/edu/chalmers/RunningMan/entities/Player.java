@@ -33,6 +33,8 @@ public class Player extends AbstractLivingObject {
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
 
+    public boolean isDeadByPitfall;
+
     public Player(Weapon weapon, Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         this.weapon = weapon;
@@ -66,6 +68,10 @@ public class Player extends AbstractLivingObject {
 
     public boolean isOnGround() {
         return isOnGround;
+    }
+
+    public boolean isDeadByPitfall(){
+        return isDeadByPitfall;
     }
 
     public PlayerState getPlayerState(){

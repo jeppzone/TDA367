@@ -8,7 +8,7 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
 
     private int hp;
     private int maxHp;
-    protected boolean isDead, isDeadByPitfall;
+    protected boolean isDead;
 
     public AbstractLivingObject(Size size, Position position, int maxHp) {
         super(size, position);
@@ -27,10 +27,6 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
 
     public boolean isDead(){
         return this.isDead;
-    }
-
-    public boolean isDeadByPitfall(){
-        return this.isDeadByPitfall;
     }
 
     public void setHp(int newHp){

@@ -15,28 +15,35 @@ import edu.chalmers.RunningMan.entities.Enemy;
 public class EnemyView extends Actor{
     private final Enemy enemy;
 
-    private final Texture enemyWalkingleft, enemyWalkingright;
+    private final Texture enemyWalkingleft, enemyWalkingright, enemyShotInBack,enemyShotInFront;
 
     private final static String SPRITE_ENEMY_WALK_LEFT_SHEET = "core/assets/enemyleft.png";
     private final static String SPRITE_ENEMY_WALK_RIGHT_SHEET = "core/assets/enemyright.png";
+    private final static String SPRITE_ENEMY_SHOT_IN_BACK = "core/assets/enemyshotinback.png";
+    private final static String SPRITE_ENEMY_SHOT_IN_FRONT = "core/assets/enemyshotinfront.png";
 
+    private TextureRegion[] enemyWalkLeftSprites,enemyWalkRightSprites, enemyShotInFrontSprite,enemyShotInBackSprite;
+    private Animation enemyWalkLeftAnimation,enemyWalkRightAnimation,enemyShotInBackAnimation,enemyShotInFrontAnimation;
 
-    private TextureRegion[] enemyWalkLeftSprites,enemyWalkRightSprites;
-    private Animation enemyWalkLeftAnimation,enemyWalkRightAnimation;
-
-    private float stateTime;
+    private float stateTime, deathTime;
 
     public EnemyView(Enemy enemy){
         this.enemy = enemy;
 
         enemyWalkingleft = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_LEFT_SHEET));
         enemyWalkingright = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_RIGHT_SHEET));
+        enemyShotInBack = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_BACK));
+        enemyShotInFront = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_FRONT));
 
         enemyWalkLeftSprites = TextureRegion.split(enemyWalkingleft, 63, 90)[0];
         enemyWalkRightSprites = TextureRegion.split(enemyWalkingright,63,90)[0];
+        enemyShotInBackSprite = TextureRegion.split(enemyShotInBack,63,90)[0];
+        enemyShotInFrontSprite = TextureRegion.split(enemyShotInFront,70,90)[0];
 
         enemyWalkLeftAnimation = new Animation(1/12f, enemyWalkLeftSprites);
         enemyWalkRightAnimation = new Animation(1/12f, enemyWalkRightSprites);
+        enemyShotInBackAnimation = new Animation(1/6f, enemyShotInBackSprite);
+        enemyShotInFrontAnimation = new Animation(1/6f, enemyShotInFrontSprite);
 
     }
 
@@ -44,11 +51,9 @@ public class EnemyView extends Actor{
      * Draws the enemy
      */
     public void draw(Batch batch, float deltaTime){
-        if(!enemy.isDead()) {
-            batch.begin();
-            batch.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
-            batch.end();
-        }
+        batch.begin();
+        batch.draw(getCurrentSprite(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getSize().getWidth(), enemy.getSize().getHeight());
+        batch.end();
     }
 
     /**
@@ -57,6 +62,16 @@ public class EnemyView extends Actor{
      */
     private TextureRegion getCurrentSprite() {
         stateTime += Gdx.graphics.getDeltaTime();
+
+        if(enemy.isShotInback()){
+            stateTime = 0;
+            deathTime += Gdx.graphics.getDeltaTime();
+            return enemyShotInBackAnimation.getKeyFrame(deathTime, false);
+        }else if(enemy.isShotInFront()){
+            stateTime = 0;
+            deathTime += Gdx.graphics.getDeltaTime();
+            return enemyShotInFrontAnimation.getKeyFrame(deathTime, false);
+        }
 
         switch (enemy.getEnemyState()) {
             case MOVING_RIGHT:
