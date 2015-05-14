@@ -20,7 +20,7 @@ public class Steroid extends AbstractPowerUp {
         if(!isPickedUp() && visitor instanceof Player) {
             visitor.visit(this);
             setPickedUp(true);
-            time = new Time();
+            time = new Time(10);
         }
     }
 

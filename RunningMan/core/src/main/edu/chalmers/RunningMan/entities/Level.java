@@ -19,7 +19,7 @@ public class Level {
         this.mapObjects = mapObjects;
         this.levelName = levelName;
         this.enemiesKilled = 0;
-        time = new Time();
+        time = new Time(MAX_TIME);
     }
 
     /**

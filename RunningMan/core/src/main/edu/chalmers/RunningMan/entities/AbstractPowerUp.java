@@ -10,7 +10,6 @@ public abstract class AbstractPowerUp extends AbstractPhysicalObject implements 
     public AbstractPowerUp(Size size, Position position){
         super(size ,position);
         setPickedUp(false);
-        time = new Time();
     }
     public void setPickedUp(boolean pickedUp){
         this.pickedUp = pickedUp;
