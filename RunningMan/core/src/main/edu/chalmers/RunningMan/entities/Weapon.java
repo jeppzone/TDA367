@@ -5,29 +5,21 @@ package edu.chalmers.RunningMan.entities;
  * Weapon model
  */
 
-public class Weapon extends AbstractPhysicalObject {
+public class Weapon{
 
-    private Bullet bullet;
     private final IBulletCollection bulletCollection;
     private final float FIRE_DELAY = 500f;
 
-    public Weapon(Size size, Position position, IBulletCollection bulletCollection){
-        super(size, position);
+    public Weapon(IBulletCollection bulletCollection){
         this.bulletCollection = bulletCollection;
     }
 
     public void shoot(){
         bulletCollection.placeBullet();
-        //timern startas
     }
     public float getfireDelay(){
         return FIRE_DELAY;
     }
 
-    @Override
-    public void acceptVisitor(IVisitor visitor) {
-        // This method doesn't do anything
-
-    }
 
 }
