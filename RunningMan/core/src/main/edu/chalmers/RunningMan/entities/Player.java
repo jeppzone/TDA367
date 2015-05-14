@@ -1,5 +1,8 @@
 package edu.chalmers.RunningMan.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A class to model a player
  * @author Jesper Olsson
@@ -8,7 +11,7 @@ public class Player extends AbstractLivingObject {
 
     private final int LAST_MOVE_LEFT = -1;
     private final int LAST_MOVE_RIGHT = 1;
-
+    private static final int MAX_POWERUP_TIME = 10;
     private int score = 0;
     private Weapon weapon;
 
@@ -24,8 +27,8 @@ public class Player extends AbstractLivingObject {
     private Gravity gravity = new Gravity(-800f);
     private static float passedTime = 0;
     private boolean hasShot = false;
-
-
+    private List<AbstractPowerUp> powerUps;
+    private Time time;
     private PlayerState playerState = PlayerState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
@@ -34,6 +37,8 @@ public class Player extends AbstractLivingObject {
         super(size, position, maxHp);
         this.weapon = weapon;
         facingDirection = PlayerState.FACING_RIGHT;
+        time = new Time();
+        powerUps = new ArrayList<>();
 
     }
 
@@ -71,6 +76,7 @@ public class Player extends AbstractLivingObject {
      * Updates the current player state.
      */
     public void update(float deltaTime) {
+        checkPowerUpsTime(deltaTime);
         if(hasShot){
             passedTime += 1000*deltaTime;
 
@@ -225,6 +231,20 @@ public class Player extends AbstractLivingObject {
         }
     }
 
+    private void checkPowerUpsTime(float deltaTime){
+        List<AbstractPowerUp> removedPowerUps = new ArrayList<>();
+        for(AbstractPowerUp powerUp: powerUps){
+            powerUp.updateTime(deltaTime);
+            if(powerUp.getTime().getTimeInteger() > MAX_POWERUP_TIME) {
+                if (powerUp instanceof Steroid) {
+                    setVelocityX(getVelocityX()/2f);
+                    removedPowerUps.add(powerUp);
+                }
+            }
+        }
+        powerUps.removeAll(removedPowerUps);
+    }
+
     public boolean hasFinishedLevel(){
         return finishedLevel;
     }
@@ -244,12 +264,15 @@ public class Player extends AbstractLivingObject {
         // This will never be the case, since there's only one player
     }
 
+    @Override
     public void visit(Obstacle g){
         handleCollision(g);
     }
 
+    @Override
     public void visit(Steroid s){
-        setVelocityX(2f * this.velocityX);
+        powerUps.add(s);
+        setVelocityX(2f*getVelocityX());
     }
 
     @Override
@@ -257,10 +280,12 @@ public class Player extends AbstractLivingObject {
         //Nothing shall happen here
     }
 
+    @Override
     public void visit(Ground g) {
         handleCollision(g);
     }
 
+    @Override
     public void visit(Helicopter f){
         setX(f.getPosition().getX());
         setY(f.getPosition().getY() - 20);
