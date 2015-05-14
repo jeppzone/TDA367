@@ -2,17 +2,17 @@ mainmenu_buttonsheet.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-exit
+buttondown
   rotate: false
   xy: 2, 2
-  size: 368, 92
-  orig: 368, 92
+  size: 221, 73
+  orig: 221, 73
   offset: 0, 0
   index: -1
-newgame
+buttonup
   rotate: false
-  xy: 372, 2
-  size: 368, 90
-  orig: 368, 90
+  xy: 225, 2
+  size: 221, 73
+  orig: 221, 73
   offset: 0, 0
   index: -1

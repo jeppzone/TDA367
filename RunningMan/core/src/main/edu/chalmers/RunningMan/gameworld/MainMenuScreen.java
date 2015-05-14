@@ -1,5 +1,6 @@
 package edu.chalmers.RunningMan.gameworld;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -16,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chalmers.RunningMan.RunningMan;
 
 /**
@@ -54,9 +57,9 @@ public class MainMenuScreen implements Screen {
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         // create fonts
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/black.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
         FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 50;
+        parameter.size = 70;
         parameter.color = Color.BLACK;
         blackFont = generator.generateFont(parameter); // font size 12 pixels
         parameter.color = Color.WHITE;
@@ -65,18 +68,18 @@ public class MainMenuScreen implements Screen {
 
         // create button style
         TextButtonStyle textButtonPlayStyle = new TextButtonStyle();
-        textButtonPlayStyle.up = skin.getDrawable("newgame");
-        textButtonPlayStyle.down = skin.getDrawable("newgame"); // TODO change to buttonExit down picture
+        textButtonPlayStyle.up = skin.getDrawable("buttonup");
+        textButtonPlayStyle.down = skin.getDrawable("buttondown"); // TODO change to buttonExit down picture
         textButtonPlayStyle.pressedOffsetX = 1;
         textButtonPlayStyle.pressedOffsetY = -1;
-        textButtonPlayStyle.font = whiteFont;
+        textButtonPlayStyle.font = blackFont;
 
         TextButtonStyle textButtonExitStyle = new TextButtonStyle();
-        textButtonExitStyle.up = skin.getDrawable("exit");
-        textButtonExitStyle.down = skin.getDrawable("exit"); // TODO change to buttonExit down picture
+        textButtonExitStyle.up = skin.getDrawable("buttonup");
+        textButtonExitStyle.down = skin.getDrawable("buttonup"); // TODO change to buttonExit down picture
         textButtonExitStyle.pressedOffsetX = 1;
         textButtonExitStyle.pressedOffsetY = -1;
-        textButtonExitStyle.font = whiteFont;
+        textButtonExitStyle.font = blackFont;
 
         // create buttons
         buttonPlay = new TextButton("PLAY", textButtonPlayStyle);
@@ -88,13 +91,14 @@ public class MainMenuScreen implements Screen {
         buttonExit.pad(20);
 
         // create heading
-        LabelStyle labelStyle = new LabelStyle(whiteFont, Color.WHITE);
-        heading = new Label(game.TITLE, labelStyle);
+        heading = new Label(game.TITLE, new LabelStyle(whiteFont, Color.WHITE));
 
         // add to table
         table.add(heading);
+        table.getCell(heading).spaceBottom(30);
         table.row();
         table.add(buttonPlay);
+        table.getCell(buttonPlay).spaceBottom(15);
         table.row();
         table.add(buttonExit);
         //table.debug();
@@ -120,9 +124,11 @@ public class MainMenuScreen implements Screen {
             Gdx.app.exit();
         }
 
+
         if(buttonPlay.isPressed()) {
             game.setScreen(game.gameScreen);
         }
+
 
         stage.act(delta);
 
@@ -136,7 +142,6 @@ public class MainMenuScreen implements Screen {
      */
     @Override
     public void resize(int width, int height) {
-
     }
 
     /**
@@ -169,5 +174,9 @@ public class MainMenuScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
+        atlas.dispose();
+        whiteFont.dispose();
+        blackFont.dispose();
+        skin.dispose();
     }
 }

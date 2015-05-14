@@ -22,12 +22,12 @@
  </layer>
  <layer name="startPosition" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzgEJAAAIA7Dbv7QlDoJsCZYAAAAAAAAAAAAAAAAAAAAAAAAAAADQMNcBAAAAAAB4YAGE0AAC
+   eJztzkEJAAAIBLDD/qENcQ9BtgRLAAAAAAAAAAAA4I+5DgAAAAAAAAAAAAAAAAAAAAAAUFn58AAD
   </data>
  </layer>
  <layer name="enemies" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt3LsNACAIBUC0cf+NncFvNNy1EEJJXkEEAADwu7ZYBwAAAAAAAAAAAAAAAGBMOdQLAAAAAORQN8+bzSHllwAAebkF73jlL+wrewAAwIgOHUUAJA==
+   eJzt3LENACAIBECs3H9jZwCjwXjXQvEl+YIIAADgdXNzDgAAAAAAAAAAAAAAAEDOOLQLAAAAAFBR7SH1lwAA/3IL3tHlL2yXHAAAkLEA7p4AIg==
   </data>
  </layer>
  <layer name="steroids" width="500" height="14">
