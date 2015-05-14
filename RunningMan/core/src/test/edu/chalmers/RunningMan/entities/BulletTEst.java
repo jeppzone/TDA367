@@ -1,9 +1,25 @@
 package edu.chalmers.RunningMan.entities;
 
-import org.junit.Assert;
+import junit.framework.TestCase;
 
 /**
- * Created by Armand on 2015-05-13.
+ * Created by Armand on 2015-05-14.
  */
-public class BulletTest extends Assert {
+public class BulletTest extends TestCase {
+
+    public void testGetBulletSpeed(){
+
+    }
+
+    public void testMoveBullet(){
+
+    }
+
+    public void testIsOutOfBounds(){
+
+    }
+
+    public void testAcceptVisitor(){
+
+    }
 }

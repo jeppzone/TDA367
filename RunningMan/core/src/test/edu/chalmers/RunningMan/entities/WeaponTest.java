@@ -1,16 +1,17 @@
 package edu.chalmers.RunningMan.entities;
 
-import org.junit.Assert;
-import org.junit.Before;
-
-import javax.xml.ws.BindingType;
+import junit.framework.TestCase;
 
 /**
- * Created by Armand on 2015-05-13.
+ * Created by Armand on 2015-05-14.
  */
-public class WeaponTest extends Assert {
-    private Weapon weapon;
-    private Size size;
-    private Position position;
-    
+public class WeaponTest extends TestCase {
+
+    public void testShoot(){
+
+    }
+
+    public void testGetfireDelay(){
+
+    }
 }

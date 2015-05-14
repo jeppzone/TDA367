@@ -25,7 +25,7 @@ public class LevelTest extends Assert {
         this.player = new Player(null, new Position(400, 0), new Size(50,50),100);
         mapObjects = new ArrayList<>();
         this.level = new Level(mapObjects, name);
-         bullets = new ArrayList<>();
+        bullets = new ArrayList<>();
     }
 
     @Test
