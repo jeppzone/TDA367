@@ -6,7 +6,6 @@ package edu.chalmers.RunningMan.entities;
  */
 public abstract class AbstractPowerUp extends AbstractPhysicalObject implements ICollectible {
     protected boolean pickedUp;
-    protected Time time;
     public AbstractPowerUp(Size size, Position position){
         super(size ,position);
         setPickedUp(false);
@@ -17,17 +16,11 @@ public abstract class AbstractPowerUp extends AbstractPhysicalObject implements 
     public boolean isPickedUp(){
         return pickedUp;
     }
-    public void updateTime(float deltaTime){
-        if(isPickedUp()){
-            time.update(deltaTime);
-        }
-    }
+    public abstract void updateTime(float deltaTime);
 
     public abstract boolean isTimeUp();
 
-    public Time getTime(){
-        return time;
-    }
+    public abstract Time getTime();
     abstract public void acceptVisitor(IVisitor visitor);
 
 }

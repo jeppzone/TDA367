@@ -24,11 +24,15 @@ public class Steroid extends AbstractPowerUp {
         }
     }
 
-    public boolean isTimeUp(){
-        return getTime().getTimeInteger() >= MAX_TIME;
+    public void updateTime(float deltaTime){
+        time.update(deltaTime);
     }
 
     public Time getTime(){
         return time;
+    }
+
+    public boolean isTimeUp(){
+        return getTime().getTimeInteger() >= MAX_TIME;
     }
 }

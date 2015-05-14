@@ -27,7 +27,6 @@ public class Player extends AbstractLivingObject  {
     private Gravity gravity = new Gravity(-800f);
     private List<AbstractPowerUp> powerUps;
 
-    private Time time;
     private LivingState livingState = LivingState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
@@ -38,7 +37,6 @@ public class Player extends AbstractLivingObject  {
     public Player(Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         facingDirection = LivingState.FACING_RIGHT;
-        time = new Time();
         powerUps = new ArrayList<>();
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
