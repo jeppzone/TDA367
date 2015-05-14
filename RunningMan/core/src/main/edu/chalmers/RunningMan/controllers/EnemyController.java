@@ -18,6 +18,9 @@ public class EnemyController implements IEntityController {
 
     public void update(float deltaTime){
         enemy.move(deltaTime);
+        if(enemy.getPosition().getX() < 1){
+            enemy.changeDirection();
+        }
         //enemyView.draw();
     }
 }
