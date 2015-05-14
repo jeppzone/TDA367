@@ -87,7 +87,7 @@ public class GameWorld  {
             levelView = new LevelView(views, player, bulletView);
             audioController.playMusic();
             levelController = new LevelController(level, weapon.getBullets());
-            hudView = new HudView(level);
+            hudView = new HudView(level, player);
 
 
         } catch(MapHandlerException e) {

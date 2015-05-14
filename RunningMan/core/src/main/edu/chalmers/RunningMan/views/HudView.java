@@ -3,7 +3,6 @@ package edu.chalmers.RunningMan.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import edu.chalmers.RunningMan.entities.Level;
 import edu.chalmers.RunningMan.entities.Player;
@@ -14,11 +13,14 @@ import edu.chalmers.RunningMan.entities.Player;
 public class HudView extends Stage {
 
     private TimeView timeView;
+    private KillCountView killCountView;
+    private Player player;
     private OrthographicCamera camera;
     private Batch batch;
 
-    public HudView(Level level){
+    public HudView(Level level, Player player){
         timeView = new TimeView(level.getTime());
+        killCountView = new KillCountView(player);
         initCamera();
     }
 
@@ -38,6 +40,7 @@ public class HudView extends Stage {
         final float deltaTime = Gdx.graphics.getDeltaTime();
         batch = getBatch();
         timeView.draw(batch, deltaTime);
+        killCountView.draw(batch, deltaTime);
         updateCamera();
     }
 }
