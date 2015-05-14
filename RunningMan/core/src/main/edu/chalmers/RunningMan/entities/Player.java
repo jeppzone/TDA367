@@ -270,6 +270,6 @@ public class Player extends AbstractLivingObject {
     @Override
     public void visit(Pit pit) {
         handleCollision(pit);
-        isDead = true;
+        isDeadByPitfall = true;
     }
 }

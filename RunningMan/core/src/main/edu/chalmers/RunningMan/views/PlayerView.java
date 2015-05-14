@@ -16,18 +16,19 @@ public class PlayerView extends Actor{
 
     private final Player player;
 
-    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture, deadTexture;
-    private TextureRegion[] walkRightSprites, walkLeftSprites,deathSprite;
+    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture, deadTexture,deadByPitfallTexture;
+    private TextureRegion[] walkRightSprites, walkLeftSprites,deathSprite,deathByPitfallSprite;
     private TextureRegion jumpRightSprite, jumpLeftSprite;
-    private Animation walkRightAnimation, walkLeftAnimation,dieAnimation;
+    private Animation walkRightAnimation, walkLeftAnimation,dieAnimation,dieByPitfallAnimation;
 
     private final static String SPRITE_WALK_RIGHT_SHEET = "core/assets/walk_right_sheet_soldier.png";
     private final static String SPRITE_WALK_LEFT_SHEET = "core/assets/walk_left_sheet_soldier.png";
     private final static String SPRITE_JUMP_RIGHT = "core/assets/jump_right_soldier.png";
     private final static String SPRITE_JUMP_LEFT = "core/assets/jump_left_soldier.png";
     private final static String SPRITE_DEAD = "core/assets/soldierdie.png";
+    private final static String SPRITE_DEAD_BY_PITFALL = "core/assets/soldierdiebypitfall.png";
 
-    private float stateTime;
+    private float stateTime,deathTime;
 
     public PlayerView(Player player){
         this.player = player;
@@ -37,6 +38,7 @@ public class PlayerView extends Actor{
         jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
         jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
         deadTexture = new Texture(SPRITE_DEAD);
+        deadByPitfallTexture = new Texture(SPRITE_DEAD_BY_PITFALL);
 
         // TODO how to decide height and width on sprites without hard code it?
         walkRightSprites = TextureRegion.split(walkRightSheet, 58, 60)[0];
@@ -44,11 +46,13 @@ public class PlayerView extends Actor{
         jumpRightSprite = new TextureRegion(jumpRightTexture, 58, 60);
         jumpLeftSprite = new TextureRegion(jumpLeftTexture, 58, 60);
         deathSprite = TextureRegion.split(deadTexture,58,60)[0];
+        deathByPitfallSprite = TextureRegion.split(deadByPitfallTexture, 58,60)[0];
 
         // the float argument decides the speed of the animation
         walkRightAnimation = new Animation(1/12f, walkRightSprites);
         walkLeftAnimation = new Animation(1/12f, walkLeftSprites);
         dieAnimation = new Animation(1/6f, deathSprite);
+        dieByPitfallAnimation = new Animation(1/6f,deathByPitfallSprite);
 
     }
 
@@ -57,11 +61,9 @@ public class PlayerView extends Actor{
      */
 
     public void draw(Batch batch, float deltaTime) {
-        if(!player.isDead()) {
-            batch.begin();
-            batch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
-            batch.end();
-        }
+        batch.begin();
+        batch.draw(getCurrentSprite(), player.getPosition().getX(), player.getPosition().getY(), player.getSize().getWidth(), player.getSize().getHeight());
+        batch.end();
     }
 
     /**
@@ -72,7 +74,15 @@ public class PlayerView extends Actor{
         stateTime += Gdx.graphics.getDeltaTime();
 
         if (player.isDead()) {
-            return dieAnimation.getKeyFrame(stateTime, false);
+            stateTime = 0;
+            deathTime += Gdx.graphics.getDeltaTime();
+            return dieAnimation.getKeyFrame(deathTime, false);
+
+        } else if(player.isDeadByPitfall()){
+            stateTime = 0;
+            deathTime += Gdx.graphics.getDeltaTime();
+            return dieByPitfallAnimation.getKeyFrame(deathTime,false);
+            
         }
 
         switch (player.getPlayerState()) {
