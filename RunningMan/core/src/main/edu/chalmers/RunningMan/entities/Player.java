@@ -13,7 +13,6 @@ public class Player extends AbstractLivingObject  {
 
     private final int LAST_MOVE_LEFT = -1;
     private final int LAST_MOVE_RIGHT = 1;
-    private static final int MAX_POWERUP_TIME = 10;
     private int score = 0;
 
     private float velocityX = 120f;
@@ -61,7 +60,7 @@ public class Player extends AbstractLivingObject  {
     }
 
     public float getVelocityX(){
-        if(playerState == PlayerState.MOVING_RIGHT) {
+        if(playerState == PlayerState.MOVING_RIGHT || facingDirection == PlayerState.FACING_RIGHT) {
             return this.velocityX;
         }else{
             return -this.velocityX;
@@ -90,6 +89,7 @@ public class Player extends AbstractLivingObject  {
      * Updates the current player state.
      */
     public void update(float deltaTime) {
+        System.out.println(isOnGround);
         checkPowerUpsTime(deltaTime);
 
         // if jumping to the right
@@ -200,7 +200,9 @@ public class Player extends AbstractLivingObject  {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
+        System.out.println(getVelocityX());
         hasLandedFirsTime = true;
+        isOnGround = true;
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
@@ -231,9 +233,10 @@ public class Player extends AbstractLivingObject  {
         List<AbstractPowerUp> removedPowerUps = new ArrayList<>();
         for(AbstractPowerUp powerUp: powerUps){
             powerUp.updateTime(deltaTime);
-            if(powerUp.getTime().getTimeInteger() > MAX_POWERUP_TIME) {
+            if(powerUp.isTimeUp()) {
                 if (powerUp instanceof Steroid) {
-                    setVelocityX(getVelocityX()/2f);
+                    setVelocityX(getVelocityX() / 2f);
+
                     removedPowerUps.add(powerUp);
                 }
             }
