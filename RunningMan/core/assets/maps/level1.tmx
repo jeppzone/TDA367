@@ -11,7 +11,7 @@
  </tileset>
  <layer name="ground" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2tENgCAMQEEWcP91HcHYFlrNXcKv+veosBYAAAAAAMBZV2ABADndXdVzAMiZMCvrOQDETfn/recAEFN5pp3tsZ4DwHvV99Syz9NzAHhn4t1zPQdgqomzaKTlu5sendvtAQDY7alRXXfIs2vnt01+HgD/UNm/iq52rh1OzP+d5wkAzKDn39wnrOZ3AzDLDSLJDqE=
+   eJzt2tENgCAMQEEWcP91HcHQFijmLuFX/XtUGAMAAAAAAGCvJ7AAgJzTXdVzAMjpMCvrOQDEdfn/recAEFN5pp3tsZ4DwLzqe2rZ5+k5AMzpePdczwHoquMsGmn56qZH53Z7AABW+2rUqTvk2bXy2zo/D4B/qOxfRVdPrhV2zP8nzxMA6EHP79wnjAvebU8BsM8LN7IPMA==
   </data>
  </layer>
  <layer name="startPosition" width="500" height="14">
@@ -21,7 +21,7 @@
  </layer>
  <layer name="enemies" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjERAAAIA7Hi3zQSGDiYEgHfJgAAAAAAAAAAAAAAAAAAAAAAAAAAAFyr5+60d/UHAAAAAAC2GslYAAU=
+   eJzt1qERAAAIAzFg/6HxaK4q8V/dKgAAAAAAAAAAAAAAAAAAAAAAAAAAAFLmea/DHQDA9f1vAAAAYAHmkAAH
   </data>
  </layer>
  <layer name="steroids" width="500" height="14">
@@ -31,7 +31,7 @@
  </layer>
  <layer name="pitfalls" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt3LEJADAMA7BckP/P7dTNY6CkSODd+ABXAQAAAOzXrwsAAAAAAAAAAAAAAAAAAAAAAHxg6svFJwwAAAAbdQhZ2moiAHAdjT8BpQ==
+   eJzt3MEJADAIA0AncP9xu4BPabXcQd4GB0gEAAAAwH75ugAAAAAAAAAAAAAAAAAAAAAAwAe6tlxswgAAALBRFqFW/aoj028DcM8Bf+AC2Q==
   </data>
  </layer>
  <layer name="finishlevel" width="500" height="14">

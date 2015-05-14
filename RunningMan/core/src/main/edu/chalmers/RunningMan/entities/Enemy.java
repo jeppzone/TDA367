@@ -35,9 +35,11 @@ public class Enemy extends AbstractLivingObject {
      */
     public void move(float delta){
         setNewX(delta, velocity);
+        /*
         if(getPosition().getX() == 0 || getPosition().getX() > 400){//Not dynamically suitable
             changeDirection();
         }
+        */
     }
 
     /**
