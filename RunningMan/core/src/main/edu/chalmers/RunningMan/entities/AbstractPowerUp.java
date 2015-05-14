@@ -24,6 +24,8 @@ public abstract class AbstractPowerUp extends AbstractPhysicalObject implements 
         }
     }
 
+    public abstract boolean isTimeUp();
+
     public Time getTime(){
         return time;
     }

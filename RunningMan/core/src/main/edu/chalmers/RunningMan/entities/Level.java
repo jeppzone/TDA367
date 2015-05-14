@@ -12,11 +12,14 @@ public class Level {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
     private static int enemiesKilled;
+    private static final int MAX_TIME = 100;
+    private Time time;
 
     public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
         this.enemiesKilled = 0;
+        time = new Time();
     }
 
     /**
@@ -69,6 +72,14 @@ public class Level {
                 }
             }
         }
+    }
+
+    public void updateLevelTime(float deltaTime){
+        time.update(deltaTime);
+    }
+
+    public boolean isTimeUp(){
+        return time.getTimeInteger() >= MAX_TIME;
     }
 
     public static int getEnemiesKilled(){

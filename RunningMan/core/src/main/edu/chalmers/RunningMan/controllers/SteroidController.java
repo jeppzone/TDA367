@@ -19,7 +19,6 @@ public class SteroidController implements IEntityController {
     public void update(float deltaTime){
         if(steroid.isPickedUp()){
            steroid.getTime().update(deltaTime);
-            System.out.println(steroid.getTime().toString());
         }
     }
 }

@@ -7,6 +7,7 @@ package edu.chalmers.RunningMan.entities;
 
 public class Steroid extends AbstractPowerUp {
 
+    private static final int MAX_TIME = 10;
     private Time time;
 
     public Steroid(Position position, Size size){
@@ -21,6 +22,10 @@ public class Steroid extends AbstractPowerUp {
             setPickedUp(true);
             time = new Time();
         }
+    }
+
+    public boolean isTimeUp(){
+        return getTime().getTimeInteger() >= MAX_TIME;
     }
 
     public Time getTime(){
