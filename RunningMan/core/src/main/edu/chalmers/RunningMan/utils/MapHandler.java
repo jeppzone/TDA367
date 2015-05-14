@@ -76,6 +76,7 @@ public class MapHandler implements IMapHandler {
         TiledMapTileLayer steroidsLayer = (TiledMapTileLayer) tileMap.getLayers().get("steroids");
         TiledMapTileLayer startPositionLayer = (TiledMapTileLayer) tileMap.getLayers().get("startPosition");
         TiledMapTileLayer pitLayer = (TiledMapTileLayer) tileMap.getLayers().get("pitfalls");
+        TiledMapTileLayer obstacleLayer = (TiledMapTileLayer) tileMap.getLayers().get("obstacles");
         TiledMapTileLayer finishLayer = (TiledMapTileLayer) tileMap.getLayers().get("finishlevel");
 
         // go through all the cells in all the layers (all map cells)
@@ -91,6 +92,7 @@ public class MapHandler implements IMapHandler {
                 TiledMapTileLayer.Cell startPositionCell = startPositionLayer.getCell(col, row);
                 TiledMapTileLayer.Cell pitCell = pitLayer.getCell(col, row);
                 TiledMapTileLayer.Cell finishCell = finishLayer.getCell(col, row);
+                TiledMapTileLayer.Cell obstacleCell = obstacleLayer.getCell(col,row);
 
                 // check if cell exists
                 if(pitCell != null && pitCell.getTile() != null) {
@@ -103,6 +105,8 @@ public class MapHandler implements IMapHandler {
                     physicalObjects.add(new Enemy(position, new Size(45, 55), 100));
                 } else if(steroidCell != null && steroidCell.getTile() != null) {
                     physicalObjects.add(new Steroid(position, size));
+                } else if(obstacleCell != null && obstacleCell.getTile() != null) {
+                    physicalObjects.add(new Obstacle(position, size));
                 } else if(startPositionCell != null && startPositionCell.getTile() != null) {
                     playerStartPosition = position;
                     playerStartPosition.setY(position.getY() + 10);

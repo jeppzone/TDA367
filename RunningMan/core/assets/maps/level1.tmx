@@ -8,10 +8,16 @@
  </tileset>
  <tileset firstgid="14" name="pitfall" tilewidth="16" tileheight="16">
   <image source="../pitfall.png" width="16" height="16"/>
+  <terraintypes>
+   <terrain name="rock" tile="-1"/>
+  </terraintypes>
+ </tileset>
+ <tileset firstgid="15" name="obstacles" tilewidth="16" tileheight="16">
+  <image source="../rockobstacle.png" width="600" height="291"/>
  </tileset>
  <layer name="ground" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2tENgCAMQEEWcP91HcHQFijmLuFX/XtUGAMAAAAAAGCvJ7AAgJzTXdVzAMjpMCvrOQDEdfn/recAEFN5pp3tsZ4DwLzqe2rZ5+k5AMzpePdczwHoquMsGmn56qZH53Z7AABW+2rUqTvk2bXy2zo/D4B/qOxfRVdPrhV2zP8nzxMA6EHP79wnjAvebU8BsM8LN7IPMA==
+   eJzt2VtuwzAMBMBeoPe/bg/QByKE4pL1DKDfhJbMpeN8fAAAAAAAt30WLwCgV/UsN8+BBBnEk1XP5WQvea6A59L/PNmN39nmOdBtyrtC+UPCrffmyXfy6V4G+k34/2/Cs8QW9qbWzZlrngNdUlnzah18Z2/qnMzbLXu+vX7g3IQc+w/52WXL3pzOyIrVVecG2+uHyX7ro2R/TcmxihqekldVZzLlPJMzvfO5odv2+mGqv/oo1WMTcqyrhql5dnKN1Wdyax+Ss/xkT7qeGVK21w9dKnMgnX3JHEvU0HWdr3z2T991ep+8U1+19P25tQ9u2F4/dKnMgXQ2bVvvSuZ1cr/S52ZZMNEXTPYt9g==
   </data>
  </layer>
  <layer name="startPosition" width="500" height="14">
@@ -21,22 +27,27 @@
  </layer>
  <layer name="enemies" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1qERAAAIAzFg/6HxaK4q8V/dKgAAAAAAAAAAAAAAAAAAAAAAAAAAAFLmea/DHQDA9f1vAAAAYAHmkAAH
+   eJzt3LsNACAIBUC0cf+NncFvNNy1EEJJXkEEAADwu7ZYBwAAAAAAAAAAAAAAAGBMOdQLAAAAAORQN8+bzSHllwAAebkF73jlL+wrewAAwIgOHUUAJA==
   </data>
  </layer>
  <layer name="steroids" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7A9+LeMhX0kpFXQBAAAAOC3uQ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUFO14ABg==
+   eJztzjENAAAIA7A9fPjXiwwCaRU0AQAAAPittgMAAAAAAAAAAAAAAAAAAAAAAAAAwBm9HQAAADLGfgAS
   </data>
  </layer>
  <layer name="pitfalls" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt3MEJADAIA0AncP9xu4BPabXcQd4GB0gEAAAAwH75ugAAAAAAAAAAAAAAAAAAAAAAwAe6tlxswgAAALBRFqFW/aoj028DcM8Bf+AC2Q==
+   eJzt0sEJACAMA8BM0P3HdQF9FMV+7iDvhNIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAkpoeAAAAAINqE3p2N+zkR8dN92v+DOBsAa6AAoU=
   </data>
  </layer>
  <layer name="finishlevel" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzkEJAAAIBLAD+3c2w70E2RIsAQAAAAAAAAAAAAAAAAAAAD6b6wAAAAAAAAAAAAAAQGEB9GwABA==
+   eJztziEBAAAIA7Ab+ldGPwGCLcESAAAAAAAAgDbXAQAAAAAAAAAAAAAAAAAAAAAAAADgrQUC9gAG
+  </data>
+ </layer>
+ <layer name="obstacles" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt20EKgzAQBdD0ADmCp+mVPZ6CXSh0IxSVmY6+B38ZmEXgk4S0BgAAVDQFrwMAAAAAAAAAAAAAgMr6GgD+0/jJ+5U9xW8i/2j5D5ZrKLIngRrG7AEgUW9553J9DgDX0OdApDl7gAepci/PcX0n0fQ5PM8d+nz6ylnbe/iWK+nzWBlv+Ht9Ht3p+hwAgCwLdk4PNg==
   </data>
  </layer>
 </map>

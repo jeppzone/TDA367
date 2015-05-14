@@ -2,6 +2,7 @@ package edu.chalmers.RunningMan.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Obstacle;
@@ -23,9 +24,9 @@ public class ObstacleView extends Actor {
     /**
      * Draws the object
      */
-    public void draw(){
-        sb.begin();
-        sb.draw(rockObstacle, obstacle.getPosition().getX(), obstacle.getPosition().getY(), obstacle.getSize().getWidth(), obstacle.getSize().getHeight());
-        sb.end();
+    public void draw(Batch batch, float deltaTime){
+        batch.begin();
+        batch.draw(rockObstacle, obstacle.getPosition().getX(), obstacle.getPosition().getY(), obstacle.getSize().getWidth(), obstacle.getSize().getHeight());
+        batch.end();
     }
 }
