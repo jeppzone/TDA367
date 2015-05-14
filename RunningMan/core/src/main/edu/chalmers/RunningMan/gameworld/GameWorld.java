@@ -64,9 +64,13 @@ public class GameWorld  {
     public final void loadLevel() {
 
         try {
+            audioController = new AudioController();
+            audioController.playStartLevel();
             mapHandler = new MapHandler("level1");
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
+            player.addPropertyChangeListener(audioController);
             weapon = new Weapon(player);
+            weapon.addPropertyChangeListener(audioController);
             bulletView = new BulletView(weapon.getBullets());
             bulletController = new BulletController(weapon.getBullets(), bulletView);
             weaponController = new WeaponController(weapon);
@@ -79,7 +83,6 @@ public class GameWorld  {
             factory = new Factory(mapObjects);
             views = factory.getViews();
             levelView = new LevelView(views, player, bulletView);
-            audioController = new AudioController();
             audioController.playMusic();
             levelController = new LevelController(level, weapon.getBullets());
 

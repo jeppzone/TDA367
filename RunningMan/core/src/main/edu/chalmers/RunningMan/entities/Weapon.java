@@ -3,7 +3,8 @@ package edu.chalmers.RunningMan.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeListener;
 
 public class Weapon implements IBulletCollection{
 
@@ -12,11 +13,12 @@ public class Weapon implements IBulletCollection{
     private final float FIRE_DELAY = 500f;
     private boolean hasShot = false;
     private static float passedTime = 0;
+    private final PropertyChangeSupport propertyChangeSupport;
 
     public Weapon(Player player){
         this.player = player;
         bullets = new ArrayList<>();
-
+        propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
     public float getfireDelay(){
@@ -27,6 +29,13 @@ public class Weapon implements IBulletCollection{
         return bullets;
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.removePropertyChangeListener(listener);
+    }
     /**
      * Method to make the player shoot, has a delay of 0.5 seconds
      *
@@ -35,6 +44,7 @@ public class Weapon implements IBulletCollection{
         if(!hasShot){
             placeBullet();
             hasShot =true;
+            propertyChangeSupport.firePropertyChange("shoot", null, null);
         }
     }
 

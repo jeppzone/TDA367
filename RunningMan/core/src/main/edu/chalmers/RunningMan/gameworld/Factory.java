@@ -13,13 +13,13 @@ public class Factory {
     private List<AbstractPhysicalObject> mapObjects;
     private List<Actor> actors;
     private List<IEntityController> controllers;
-    private AudioController audio;
+    private AudioController audioController;
 
     public Factory(List<AbstractPhysicalObject> mapObjects){
         this.mapObjects = mapObjects;
         actors = new ArrayList<>();
         controllers = new ArrayList<>();
-        audio = new AudioController();
+        audioController = new AudioController();
         addViewsAndControllers();
     }
 
@@ -38,7 +38,7 @@ public class Factory {
                 actors.add(groundView);
             } else if(apo.getClass() == Enemy.class) {
                 Enemy enemy = (Enemy) apo;
-                enemy.addPropertyChangeListener(audio);
+                enemy.addPropertyChangeListener(audioController);
                 EnemyView enemyView = new EnemyView(enemy);
                 controllers.add(new EnemyController(enemy, enemyView));
                 actors.add(enemyView);

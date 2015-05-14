@@ -58,7 +58,7 @@ public class AudioHandler {
         enemyShotInBack.play();
     }
 
-    public void  playSteroidSound (){
+    public void  playSteroidPickUpSound (){
         steroid.play();
     }
 

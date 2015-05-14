@@ -2,6 +2,8 @@ package edu.chalmers.RunningMan.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeListener;
 
 /**
  * A class to model a player
@@ -32,13 +34,22 @@ public class Player extends AbstractLivingObject  {
     private long lastTimeMoved;
     public boolean isDeadByPitfall;
 
-
+    private final PropertyChangeSupport propertyChangeSupport;
 
     public Player(Position position, Size size, int maxHp) {
         super(size, position, maxHp);
         facingDirection = PlayerState.FACING_RIGHT;
         time = new Time();
         powerUps = new ArrayList<>();
+        propertyChangeSupport = new PropertyChangeSupport(this);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
     public int getKillCount(){
@@ -154,6 +165,7 @@ public class Player extends AbstractLivingObject  {
         if(isOnGround) {
             setVelocityY(300f);
             isOnGround = false;
+            propertyChangeSupport.firePropertyChange("jump", null, null);
         }
     }
 
@@ -241,6 +253,7 @@ public class Player extends AbstractLivingObject  {
     @Override
     public void visit(Enemy e){
         isDead = true;
+        propertyChangeSupport.firePropertyChange("suicide", null, null);
     }
 
     @Override
@@ -257,6 +270,7 @@ public class Player extends AbstractLivingObject  {
     public void visit(Steroid s){
         powerUps.add(s);
         setVelocityX(2f*getVelocityX());
+        propertyChangeSupport.firePropertyChange("pickupsteroid", null, null);
     }
 
     @Override
@@ -280,5 +294,6 @@ public class Player extends AbstractLivingObject  {
     public void visit(Pit pit) {
         handleCollision(pit);
         isDeadByPitfall = true;
+        propertyChangeSupport.firePropertyChange("die", null, null);
     }
 }
