@@ -22,7 +22,7 @@ public class Bullet extends AbstractPhysicalObject{
      * Gets the bulletspeed, negative or positive depending on direction
      * @return bulletspeed
      */
-    public float getBulletSpeed(){
+    public float getVelocity(){
         return BULLET_SPEED * livingState.xDirection;
     }
 
@@ -35,7 +35,7 @@ public class Bullet extends AbstractPhysicalObject{
      * @param deltaTime the time difference
      */
     public void moveBullet(float deltaTime){
-            setX(getPosition().getX() + getBulletSpeed() * deltaTime);
+            setX(getPosition().getX() + getVelocity() * deltaTime);
     }
 
 

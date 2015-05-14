@@ -60,7 +60,7 @@ public class BulletView extends Actor{
     private TextureRegion getCurrentSprite(Bullet bullet) {
         stateTime += Gdx.graphics.getDeltaTime();
 
-        if(bullet.getBulletSpeed() > 0){
+        if(bullet.getVelocity() > 0){
             System.out.println("SHOOTING_RIGHT");
             return bulletLeftAnimation.getKeyFrame(stateTime, true);
 

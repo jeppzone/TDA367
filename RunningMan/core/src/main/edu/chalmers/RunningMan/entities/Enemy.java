@@ -103,7 +103,7 @@ public class Enemy extends AbstractLivingObject {
     @Override
     public void visit(Bullet b){
         // Enemy shall be hurt or killed
-        if(b.getBulletSpeed()*velocity < 0){
+        if(b.getVelocity()*velocity < 0){
             isShotInFront = true;
             propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
         }else{

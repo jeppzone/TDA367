@@ -21,6 +21,7 @@ public class BulletTest extends Assert {
     private Bullet bullet;
     private Size size;
     private Weapon weapon;
+    private static final float DELTATIME = 5f;
 
     @Before
     public void setUp(){
@@ -28,20 +29,21 @@ public class BulletTest extends Assert {
         position = new Position(10,10);
         player = new Player(position,size,100);
         weapon = new Weapon(player);
-        this.bullet = new Bullet(size, position,player.getLivingState());
-        LivingState livingState = LivingState.FACING_RIGHT;
     }
 
     public void testGetBulletSpeed(){
-        assertFalse(400f == bullet.getBulletSpeed());
+        bullet = new Bullet(size,player.getPosition(),player.getLivingState());
+        assertFalse(400f == bullet.getVelocity());
     }
-/*
-    public void testMoveBullet(){
-        float tmp = bullet.getPosition().getX();
-        player.
-        bullet.moveBullet(100);
+
+    public void testMoveBulletRight(){
+        player.moveRight(DELTATIME);
+        bullet = new Bullet(size,player.getPosition(),player.getLivingState());
+        float pos = bullet.getPosition().getX();
+        bullet.moveBullet(DELTATIME);
+        assertTrue(bullet.getPosition().getX()>  pos);
     }
-*/
+
     public void testIsOutOfBounds(){
 
     }
