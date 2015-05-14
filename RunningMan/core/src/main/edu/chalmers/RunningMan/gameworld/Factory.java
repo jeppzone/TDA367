@@ -1,5 +1,6 @@
 package edu.chalmers.RunningMan.gameworld;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
@@ -12,11 +13,13 @@ public class Factory {
     private List<AbstractPhysicalObject> mapObjects;
     private List<Actor> actors;
     private List<IEntityController> controllers;
+    private AudioController audio;
 
     public Factory(List<AbstractPhysicalObject> mapObjects){
         this.mapObjects = mapObjects;
         actors = new ArrayList<>();
         controllers = new ArrayList<>();
+        audio = new AudioController();
         addViewsAndControllers();
     }
 
@@ -35,6 +38,7 @@ public class Factory {
                 actors.add(groundView);
             } else if(apo.getClass() == Enemy.class) {
                 Enemy enemy = (Enemy) apo;
+                enemy.addPropertyChangeListener(audio);
                 EnemyView enemyView = new EnemyView(enemy);
                 controllers.add(new EnemyController(enemy, enemyView));
                 actors.add(enemyView);

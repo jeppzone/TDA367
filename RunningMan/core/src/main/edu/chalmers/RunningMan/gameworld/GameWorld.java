@@ -1,5 +1,6 @@
 package edu.chalmers.RunningMan.gameworld;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
@@ -32,7 +33,7 @@ public class GameWorld implements IBulletCollection {
     private LevelView levelView;
     private List<Actor> views;
     private Factory factory;
-
+    private AudioController audioController;
 
     public GameWorld() {
         startLevel();
@@ -98,6 +99,8 @@ public class GameWorld implements IBulletCollection {
             views = factory.getViews();
             levelView = new LevelView(views, player, bulletView);
             levelController = new LevelController(level, bullets);
+            audioController = new AudioController();
+            audioController.playMusic();
 
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");

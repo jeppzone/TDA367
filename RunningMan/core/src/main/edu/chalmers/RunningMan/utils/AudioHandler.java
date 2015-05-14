@@ -13,7 +13,8 @@ public class AudioHandler {
     private Sound jump;
     private Sound shoot;
     private Sound die;
-    private Sound killed;
+    private Sound enemyShotInFront;
+    private Sound enemyShotInBack;
     private Sound steroid;
     private Sound startLevel;
     private Music levelMusic;
@@ -23,13 +24,18 @@ public class AudioHandler {
     }
 
     private void loadAudio() {
-        jump = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "jump.wav"));
-        shoot = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "shoot.wav"));
-        die = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "die.wav"));
-        killed = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "killed.wav"));
-        steroid = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.wav"));
-        startLevel = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
-        levelMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
+        try {
+            jump = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "jump.wav"));
+            shoot = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "shoot.mp3"));
+            die = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "die.mp3"));
+            enemyShotInFront = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinfront.mp3"));
+            enemyShotInBack = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinback.mp3"));
+            steroid = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.mp3"));
+            startLevel = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
+            levelMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
+        }catch (Exception e){
+
+        }
     }
 
     public void playJumpSound() {
@@ -44,11 +50,15 @@ public class AudioHandler {
         die.play();
     }
 
-    public void playKilledSound() {
-        die.play();
+    public void playEnemyShotInFrontSound() {
+        enemyShotInFront.play();
     }
 
-    public void  playSteroid (){
+    public void playEnemyShotInBackSound(){
+        enemyShotInBack.play();
+    }
+
+    public void  playSteroidSound (){
         steroid.play();
     }
 

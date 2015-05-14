@@ -67,10 +67,12 @@ public class EnemyView extends Actor{
             stateTime = 0;
             deathTime += Gdx.graphics.getDeltaTime();
             return enemyShotInBackAnimation.getKeyFrame(deathTime, false);
+
         }else if(enemy.isShotInFront()){
             stateTime = 0;
             deathTime += Gdx.graphics.getDeltaTime();
             return enemyShotInFrontAnimation.getKeyFrame(deathTime, false);
+
         }
 
         switch (enemy.getEnemyState()) {

@@ -1,5 +1,8 @@
 package edu.chalmers.RunningMan.entities;
 
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyChangeListener;
+
 /**
  * A class to represent a moving enemy.
  * @author Jesper
@@ -10,9 +13,20 @@ public class Enemy extends AbstractLivingObject {
     private EnemyState enemyState = EnemyState.MOVING_LEFT;
     private boolean isShotInback, isShotInFront;
 
+    private final PropertyChangeSupport propertyChangeSupport;
+
     public Enemy(Position position, Size size, int maxHp){
         super(size, position, maxHp);
         velocity = -100f;
+        propertyChangeSupport = new PropertyChangeSupport(this);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
     /**
@@ -97,8 +111,10 @@ public class Enemy extends AbstractLivingObject {
         // Enemy shall be hurt or killed
         if(b.getBulletSpeed()*velocity < 0){
             isShotInFront = true;
+            propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
         }else{
             isShotInback = true;
+            propertyChangeSupport.firePropertyChange("enemyshotinback", null, null);
         }
         velocity = 0;
        // bullet disappears after hitting an enemy
