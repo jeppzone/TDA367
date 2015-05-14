@@ -78,6 +78,14 @@ public class Level {
         time.update(deltaTime);
     }
 
+    /**
+     *
+     * @return the time object of this class
+     */
+    public Time getTime(){
+        return time;
+    }
+
     public boolean isTimeUp(){
         return time.getTimeInteger() >= MAX_TIME;
     }

@@ -83,6 +83,7 @@ public class GameWorld  {
             audioController.playMusic();
             levelController = new LevelController(level, weapon.getBullets());
 
+
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");
         }
