@@ -3,7 +3,9 @@ package edu.chalmers.RunningMan.gameworld;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import edu.chalmers.RunningMan.RunningMan;
 import edu.chalmers.RunningMan.gameworld.GameWorld;
+import edu.chalmers.RunningMan.utils.InputProcessor;
 
 /**
  * Created by Kvist1 on 2015-04-22.
@@ -11,10 +13,12 @@ import edu.chalmers.RunningMan.gameworld.GameWorld;
 public class GameScreen implements Screen {
 
     private GameWorld world;
+    private RunningMan game;
 
-    public GameScreen() {
+    public GameScreen(RunningMan game) {
         //Gdx.app.log("GameScreen", "Attached");
-
+        super();
+        this.game = game;
         world = new GameWorld();
     }
 
@@ -37,6 +41,8 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         Gdx.app.log("GameScreen", "show called");
+        Gdx.input.setInputProcessor(new InputProcessor());
+
     }
 
     @Override

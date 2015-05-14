@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chalmers.RunningMan.gameworld.MainMenuScreen;
 import edu.chalmers.RunningMan.utils.InputProcessor;
 import edu.chalmers.RunningMan.gameworld.GameScreen;
 
@@ -15,28 +16,18 @@ public class RunningMan extends Game {
     public static final float STEP = 1 / 60f;
     private float accum;
 
-    private SpriteBatch batch;
-    private OrthographicCamera cam;
-
+    public GameScreen gameScreen;
+    public MainMenuScreen mainMenuScreen;
 
 	@Override
 	public void create () {
 
         Gdx.app.log("RunningMan Game", "created");
 
-        Gdx.input.setInputProcessor(new InputProcessor());
+        gameScreen = new GameScreen(this);
+        mainMenuScreen = new MainMenuScreen(this);
 
-        // TODO set screen to menu when menu is implemented
-        setScreen(new GameScreen());
+        setScreen(mainMenuScreen);
 
 	}
-
-
-    public SpriteBatch getSpriteBatch() {
-        return batch;
-    }
-
-    public OrthographicCamera getCamera() {
-        return cam;
-    }
 }

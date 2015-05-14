@@ -1,0 +1,18 @@
+mainmenu_buttonsheet.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+exit
+  rotate: false
+  xy: 2, 2
+  size: 368, 92
+  orig: 368, 92
+  offset: 0, 0
+  index: -1
+newgame
+  rotate: false
+  xy: 372, 2
+  size: 368, 90
+  orig: 368, 90
+  offset: 0, 0
+  index: -1
