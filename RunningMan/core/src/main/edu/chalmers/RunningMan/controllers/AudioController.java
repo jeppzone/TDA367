@@ -10,7 +10,10 @@ import java.beans.PropertyChangeListener;
  */
 public class AudioController implements PropertyChangeListener {
 
-    public AudioHandler audio;
+    private AudioHandler audio;
+    private boolean hasPlayedHelicopter = false;
+    private boolean hasPlayedDie = false;
+    private boolean hasPlayedSuicide = false;
 
     public AudioController(){
         audio = new AudioHandler();
@@ -36,10 +39,12 @@ public class AudioController implements PropertyChangeListener {
         if("jump".equals(propertyName)){
             audio.playJumpSound();
         }
-        if("suicide".equals(propertyName)){
+        if("suicide".equals(propertyName) && !hasPlayedSuicide){
+            hasPlayedSuicide = true;
             audio.playShootSound();
         }
-        if("die".equals(propertyName)){
+        if("die".equals(propertyName) && !hasPlayedDie){
+            hasPlayedDie = true;
             audio.playDieSound();
         }
         if("pickupsteroid".equals(propertyName)){
@@ -47,6 +52,10 @@ public class AudioController implements PropertyChangeListener {
         }
         if("shoot".equals(propertyName)){
             audio.playShootSound();
+        }
+        if("helicopter".equals(propertyName) && !hasPlayedHelicopter){
+            hasPlayedHelicopter = true;
+            audio.playHelicopterSound();
         }
     }
 }

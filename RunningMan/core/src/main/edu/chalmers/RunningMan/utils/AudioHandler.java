@@ -17,6 +17,7 @@ public class AudioHandler {
     private Sound enemyShotInBack;
     private Sound steroid;
     private Sound startLevel;
+    private Sound helicopter;
     private Music levelMusic;
 
     public AudioHandler() {
@@ -32,6 +33,7 @@ public class AudioHandler {
             enemyShotInBack = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinback.mp3"));
             steroid = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.mp3"));
             startLevel = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
+            helicopter = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "helicopter.mp3"));
             levelMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
         }catch (Exception e){
 
@@ -66,7 +68,12 @@ public class AudioHandler {
         startLevel.play();
     }
 
+    public void playHelicopterSound(){
+        helicopter.play();
+    }
+
     public void playMusic(){
+        levelMusic.setVolume(0.5f);
         levelMusic.play();
     }
 }

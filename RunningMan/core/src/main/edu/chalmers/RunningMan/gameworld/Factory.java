@@ -52,10 +52,11 @@ public class Factory {
                 ObstacleView obstacleView = new ObstacleView(obstacle);
                 actors.add(obstacleView);
             }else if(apo.getClass() == Helicopter.class){
-                Helicopter finishObject = (Helicopter) apo;
-                HelicopterView helicopterView = new HelicopterView(finishObject);
+                Helicopter helicopter = (Helicopter) apo;
+                helicopter.addPropertyChangeListener(audioController);
+                HelicopterView helicopterView = new HelicopterView(helicopter);
                 actors.add(helicopterView);
-                controllers.add(new HelicopterController(finishObject, helicopterView));
+                controllers.add(new HelicopterController(helicopter, helicopterView));
             }
         }
     }
