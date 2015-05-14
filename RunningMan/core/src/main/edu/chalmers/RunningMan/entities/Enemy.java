@@ -10,7 +10,7 @@ import java.beans.PropertyChangeListener;
 public class Enemy extends AbstractLivingObject {
 
     private float velocity;
-    private EnemyState enemyState = EnemyState.MOVING_LEFT;
+    private LivingState enemyState = LivingState.MOVING_LEFT;
     private boolean isShotInback, isShotInFront;
 
     private final PropertyChangeSupport propertyChangeSupport;
@@ -32,14 +32,8 @@ public class Enemy extends AbstractLivingObject {
     /**
      * Enum to represent the different movement states a enemy can be in
      */
-    public enum EnemyState {
-        FACING_RIGHT,
-        FACING_LEFT,
-        STANDING,
-        MOVING_RIGHT,
-        MOVING_LEFT,
-    }
-    public EnemyState getEnemyState(){
+
+    public LivingState getEnemyState(){
         return enemyState;
     }
 

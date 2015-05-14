@@ -23,12 +23,12 @@ public class Player extends AbstractLivingObject  {
     private boolean isOnGround = false;
     private boolean hasLandedFirsTime = false;
 
-    private PlayerState facingDirection;
+    private LivingState facingDirection;
     private Gravity gravity = new Gravity(-800f);
     private List<AbstractPowerUp> powerUps;
 
     private Time time;
-    private PlayerState playerState = PlayerState.FACING_RIGHT;
+    private LivingState livingState = LivingState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
     public boolean isDeadByPitfall;
@@ -37,7 +37,7 @@ public class Player extends AbstractLivingObject  {
 
     public Player(Position position, Size size, int maxHp) {
         super(size, position, maxHp);
-        facingDirection = PlayerState.FACING_RIGHT;
+        facingDirection = LivingState.FACING_RIGHT;
         time = new Time();
         powerUps = new ArrayList<>();
         propertyChangeSupport = new PropertyChangeSupport(this);
@@ -60,7 +60,8 @@ public class Player extends AbstractLivingObject  {
     }
 
     public float getVelocityX(){
-        if(playerState == PlayerState.MOVING_RIGHT || facingDirection == PlayerState.FACING_RIGHT) {
+
+        if(livingState == LivingState.MOVING_RIGHT ||facingDirection == LivingState.FACING_RIGHT) {
             return this.velocityX;
         }else{
             return -this.velocityX;
@@ -81,8 +82,8 @@ public class Player extends AbstractLivingObject  {
         return isDeadByPitfall;
     }
 
-    public PlayerState getPlayerState(){
-        return playerState;
+    public LivingState getLivingState(){
+        return livingState;
     }
 
     /**
@@ -94,21 +95,21 @@ public class Player extends AbstractLivingObject  {
 
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
-            playerState = PlayerState.JUMPING_RIGHT;
+            livingState = LivingState.JUMPING_RIGHT;
         }
 
         // if jumping to the left
         else if(!isOnGround() && lastMovedDirection == LAST_MOVE_LEFT) {
-            playerState = PlayerState.JUMPING_LEFT;
+            livingState = LivingState.JUMPING_LEFT;
         }
 
         // if player does move
         else if(lastTimeMoved + 150 >= System.currentTimeMillis()){
 
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
-                playerState = PlayerState.MOVING_RIGHT;
+                livingState = LivingState.MOVING_RIGHT;
             } else {
-                playerState = PlayerState.MOVING_LEFT;
+                livingState = LivingState.MOVING_LEFT;
             }
         }
 
@@ -116,9 +117,9 @@ public class Player extends AbstractLivingObject  {
         else {
 
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
-                playerState = PlayerState.FACING_RIGHT;
+                livingState = LivingState.FACING_RIGHT;
             } else {
-                playerState = PlayerState.FACING_LEFT;
+                livingState = LivingState.FACING_LEFT;
             }
         }
     }
@@ -130,12 +131,12 @@ public class Player extends AbstractLivingObject  {
      */
     public void moveLeft(float deltaTime){
         if(hasLandedFirsTime) {
-            playerState = PlayerState.MOVING_LEFT;
+            livingState = LivingState.MOVING_LEFT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_LEFT;
-            facingDirection = PlayerState.FACING_LEFT;
+            facingDirection = LivingState.FACING_LEFT;
         }
     }
     
@@ -146,12 +147,12 @@ public class Player extends AbstractLivingObject  {
      */
     public void moveRight(float deltaTime){
         if(hasLandedFirsTime) {
-            playerState = PlayerState.MOVING_RIGHT;
+            livingState = LivingState.MOVING_RIGHT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_RIGHT;
-            facingDirection = PlayerState.FACING_RIGHT;
+            facingDirection = LivingState.FACING_RIGHT;
         }
 
     }
@@ -191,7 +192,7 @@ public class Player extends AbstractLivingObject  {
         this.velocityY = newVelocityY;
     }
 
-    public PlayerState getFacingDirection(){
+    public LivingState getFacingDirection(){
         return facingDirection;
     }
 
@@ -272,7 +273,7 @@ public class Player extends AbstractLivingObject  {
     @Override
     public void visit(Steroid s){
         powerUps.add(s);
-        setVelocityX(2f*getVelocityX());
+        setVelocityX(2f * getVelocityX());
         propertyChangeSupport.firePropertyChange("pickupsteroid", null, null);
     }
 

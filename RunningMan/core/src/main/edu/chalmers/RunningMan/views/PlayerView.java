@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Player;
@@ -85,7 +84,7 @@ public class PlayerView extends Actor{
             
         }
 
-        switch (player.getPlayerState()) {
+        switch (player.getLivingState()) {
 
             case MOVING_RIGHT:
                 return walkRightAnimation.getKeyFrame(stateTime, true);

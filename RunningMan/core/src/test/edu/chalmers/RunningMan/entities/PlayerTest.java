@@ -96,7 +96,7 @@ public class PlayerTest extends Assert{
     @Test
     public void testMoveLeftPlayerState(){
         player.moveLeft(DELTATIME);
-        assertTrue(player.getPlayerState() == PlayerState.MOVING_LEFT);
+        assertTrue(player.getLivingState() == LivingState.MOVING_LEFT);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class PlayerTest extends Assert{
     @Test
     public void testMoveRightPlayerState(){
         player.moveRight(DELTATIME);
-        assertTrue(player.getPlayerState() == PlayerState.MOVING_RIGHT);
+        assertTrue(player.getLivingState() == LivingState.MOVING_RIGHT);
     }
 
     @Test

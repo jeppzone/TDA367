@@ -10,12 +10,12 @@ public class Bullet extends AbstractPhysicalObject{
 
     private final float BULLET_SPEED = 400f;
     private boolean bulletExists = true;
-    private final PlayerState playerState;
+    private final LivingState livingState;
     private float initialXPosition = getPosition().getX();
 
-    public Bullet(Size size, Position position, PlayerState playerState){
+    public Bullet(Size size, Position position, LivingState livingState){
         super(size,position);
-        this.playerState = playerState;
+        this.livingState = livingState;
     }
 
     /**
@@ -23,7 +23,7 @@ public class Bullet extends AbstractPhysicalObject{
      * @return bulletspeed
      */
     public float getBulletSpeed(){
-        return BULLET_SPEED * playerState.xDirection;
+        return BULLET_SPEED * livingState.xDirection;
     }
 
     private void setBulletGone(){
