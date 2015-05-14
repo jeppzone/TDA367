@@ -16,13 +16,13 @@ import java.util.List;
  * Created by JohanTobin on 2015-04-22.
  */
 
-public class GameWorld implements IBulletCollection {
+public class GameWorld  {
 
-    private List<Bullet> bullets;
     private BulletController bulletController;
     private BulletView bulletView;
     private PlayerController playerController;
     private Weapon weapon;
+    private WeaponController weaponController;
     private Player player;
     private PlayerView playerView;
     private Level level;
@@ -45,28 +45,10 @@ public class GameWorld implements IBulletCollection {
         controllers.add(playerController);
         controllers.add(levelController);
         controllers.add(bulletController);
-    }
-
-    /**
-     * Places a bullet correctly in front of the gun when a bullet is fired
-     */
-    public void placeBullet(){
-        if(player.getFacingDirection().xDirection > 0)
-            createBullet(24);
-        else
-            createBullet(-34);
+        controllers.add(weaponController);
     }
 
 
-    /**
-     * A helper class for placeBullet(), creates the bullet on the position where the bullet is supposed to be placed
-     * @param pos a value that changes depends on the players facing direction
-     */
-    private void createBullet(int pos){
-        bullets.add(new Bullet(new Size(10, 10),
-                new Position(player.getPosition().getX() + pos + (player.getSize().getWidth()) / 2, player.getPosition().getY() - 6 + (player.getSize().getHeight()) / 2),
-                player.getFacingDirection()));
-    }
 
     public void update(float deltaTime) {
         //if(/*!player.hasFinishedLevel() &&*/ !player.isDead()) {
@@ -82,25 +64,24 @@ public class GameWorld implements IBulletCollection {
     public final void loadLevel() {
 
         try {
-
             mapHandler = new MapHandler("level1");
-            bullets = new ArrayList<>();
-            bulletView = new BulletView(bullets);
-            bulletController = new BulletController(bullets, bulletView);
-            weapon = new Weapon(this);
-            player = new Player(weapon, new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
+            player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
+            weapon = new Weapon(player);
+            bulletView = new BulletView(weapon.getBullets());
+            bulletController = new BulletController(weapon.getBullets(), bulletView);
+            weaponController = new WeaponController(weapon);
             playerView = new PlayerView(player);
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
             level = new Level(mapObjects,"level1");
-            levelController = new LevelController(level,bullets);
+            levelController = new LevelController(level,weapon.getBullets());
             playerController = new PlayerController(player, playerView);
             factory = new Factory(mapObjects);
             views = factory.getViews();
             levelView = new LevelView(views, player, bulletView);
-            levelController = new LevelController(level, bullets);
             audioController = new AudioController();
             audioController.playMusic();
+            levelController = new LevelController(level, weapon.getBullets());
 
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");

@@ -20,7 +20,7 @@ public class PlayerTest extends Assert{
     @Before
     public void setUp(){
         killCount = 0;
-        player = new Player(weapon, position, size, 100 );
+        player = new Player(position, size, 100 );
         //Needs to be done to set hasLandedFirstTime true
         final float groundPosY = position.getY() - 10f;
         final float groundPosX = position.getX();

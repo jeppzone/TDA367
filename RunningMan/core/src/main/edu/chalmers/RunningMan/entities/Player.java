@@ -7,13 +7,12 @@ import java.util.List;
  * A class to model a player
  * @author Jesper Olsson
  */
-public class Player extends AbstractLivingObject {
+public class Player extends AbstractLivingObject  {
 
     private final int LAST_MOVE_LEFT = -1;
     private final int LAST_MOVE_RIGHT = 1;
     private static final int MAX_POWERUP_TIME = 10;
     private int score = 0;
-    private Weapon weapon;
 
     private float velocityX = 120f;
     private float velocityY;
@@ -25,23 +24,21 @@ public class Player extends AbstractLivingObject {
 
     private PlayerState facingDirection;
     private Gravity gravity = new Gravity(-800f);
-    private static float passedTime = 0;
-    private boolean hasShot = false;
     private List<AbstractPowerUp> powerUps;
+
     private Time time;
     private PlayerState playerState = PlayerState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
-
     public boolean isDeadByPitfall;
 
-    public Player(Weapon weapon, Position position, Size size, int maxHp) {
+
+
+    public Player(Position position, Size size, int maxHp) {
         super(size, position, maxHp);
-        this.weapon = weapon;
         facingDirection = PlayerState.FACING_RIGHT;
         time = new Time();
         powerUps = new ArrayList<>();
-
     }
 
     public int getKillCount(){
@@ -83,15 +80,6 @@ public class Player extends AbstractLivingObject {
      */
     public void update(float deltaTime) {
         checkPowerUpsTime(deltaTime);
-        if(hasShot){
-            passedTime += 1000*deltaTime;
-
-            if(passedTime >= weapon.getfireDelay()){
-                hasShot = false;
-                passedTime = 0;
-            }
-
-        }
 
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
@@ -169,17 +157,7 @@ public class Player extends AbstractLivingObject {
         }
     }
 
-    /**
-     * Method to make the player shoot, has a delay of 0.5 seconds
-     *
-     */
 
-    public void shoot(){
-        if(!hasShot){
-            weapon.shoot();
-            hasShot =true;
-        }
-    }
 
     /**
      * Method to apply gravity force to the player.
