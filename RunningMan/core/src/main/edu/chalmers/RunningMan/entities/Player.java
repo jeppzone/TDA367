@@ -38,14 +38,26 @@ public class Player extends AbstractLivingObject  {
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
+    /**
+     * Adds a Property change listener to the player
+     * @param listener
+     */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.propertyChangeSupport.addPropertyChangeListener(listener);
     }
 
+    /**
+     * Removes a PropertyChangeListener from the player
+     * @param listener
+     */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         this.propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
+    /**
+     *
+     * @return the number of enemies that the player has killed on this level
+     */
     public int getKillCount(){
         return Level.getEnemiesKilled();
     }
@@ -54,6 +66,10 @@ public class Player extends AbstractLivingObject  {
         return score;
     }
 
+    /**
+     * The current X-velocity of the player
+     * @return a negative value if player is moving left, positive otherwise
+     */
     public float getVelocityX(){
 
         if(lastMovedDirection == LAST_MOVE_RIGHT ) {
@@ -62,27 +78,51 @@ public class Player extends AbstractLivingObject  {
             return -this.velocityX;
         }
     }
+
+    /**
+     * Tells the player if it is on ground or not
+     * @param isOnGround true if player is on ground, false otherwise
+     */
     public void setOnGround(boolean isOnGround){
         this.isOnGround = isOnGround;
     }
+
+    /**
+     *
+     * @return the current Y-velocity of the player
+     */
     public float getVelocityY(){
         return this.velocityY;
     }
 
+    /**
+     *
+     * @return true if player is on ground, false otherwise
+     */
     public boolean isOnGround() {
         return isOnGround;
     }
 
+    /**
+     * Method to tell if the player has been killed by falling down into a pit
+     * @return
+     */
     public boolean isDeadByPitfall(){
         return isDeadByPitfall;
     }
 
+    /**
+     *
+     * @return the current state of the player so that the view will know
+     * what animation to use
+     */
     public AnimationState getAnimationState(){
         return animationState;
     }
 
     /**
-     * Updates the current player state.
+     * Updates the current player state
+     * @param deltaTime the difference in tme
      */
     public void update(float deltaTime) {
         checkPowerUpsTime(deltaTime);
@@ -90,25 +130,20 @@ public class Player extends AbstractLivingObject  {
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
             animationState = AnimationState.JUMPING_RIGHT;
         }
-
         // if jumping to the left
         else if(!isOnGround() && lastMovedDirection == LAST_MOVE_LEFT) {
             animationState = AnimationState.JUMPING_LEFT;
         }
-
         // if player does move
         else if(lastTimeMoved + 150 >= System.currentTimeMillis()){
-
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
                 animationState = AnimationState.MOVING_RIGHT;
             } else {
                 animationState = AnimationState.MOVING_LEFT;
             }
         }
-
         // if player standing still
         else {
-
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
                 animationState = AnimationState.FACING_RIGHT;
             } else {
@@ -172,14 +207,26 @@ public class Player extends AbstractLivingObject  {
 
     }
 
+    /**
+     * Sets a new X-velocity for the player
+     * @param newVelocityX the new velocity, should always be >= 0
+     */
     public void setVelocityX(float newVelocityX){
        this.velocityX = newVelocityX;
     }
 
+    /**
+     * Sets a new Y-velocity for the player
+     * @param newVelocityY the new velocity
+     */
     public void setVelocityY(float newVelocityY){
         this.velocityY = newVelocityY;
     }
 
+    /**
+     * Gets the last direction that the player moved in. Initially set to 1
+     * @return 1 if last movement was right, -1 if it was left
+     */
     public int getLastMovedDirection(){
         return lastMovedDirection;
     }
@@ -216,6 +263,10 @@ public class Player extends AbstractLivingObject  {
         }
     }
 
+    /**
+     * Method to check if the time of the player's powerups are done
+     * @param deltaTime the time difference
+     */
     private void checkPowerUpsTime(float deltaTime){
         List<AbstractPowerUp> removedPowerUps = new ArrayList<>();
         for(AbstractPowerUp powerUp: powerUps){
@@ -231,6 +282,10 @@ public class Player extends AbstractLivingObject  {
         powerUps.removeAll(removedPowerUps);
     }
 
+    /**
+     * Method to check if player has finished the current level
+     * @return true if player has reached the helicopter, false otherwise
+     */
     public boolean hasFinishedLevel(){
         return finishedLevel;
     }
