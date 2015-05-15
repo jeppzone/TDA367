@@ -24,18 +24,11 @@ public class PlayerController implements IEntityController {
         // player jump
         if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.RIGHTBTN)) {
             player.jump(deltaTime);
-            if (player.canMoveInAir()) {
-                player.moveRight(deltaTime);
-            } else {
-                player.applyForce(deltaTime);
-            }
-        } else if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.LEFTBTN)){
+            player.moveRight(deltaTime);
+
+        }else if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.LEFTBTN)){
             player.jump(deltaTime);
-            if(player.canMoveInAir()){
                 player.moveLeft(deltaTime);
-            }else{
-                player.applyForce(deltaTime);
-            }
         } else if(Input.isPressed(Input.JUMPBTN)){
             player.jump(deltaTime);
         } else if(Input.isPressed(Input.RIGHTBTN)) {

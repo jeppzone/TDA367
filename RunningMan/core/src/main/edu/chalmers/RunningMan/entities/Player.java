@@ -123,7 +123,7 @@ public class Player extends AbstractLivingObject  {
             }
         }
     }
-    
+
     /**
      * Method to make the player move to the left.
      * This can only be done if player is on the ground
