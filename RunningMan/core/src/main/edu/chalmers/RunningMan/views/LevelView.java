@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import edu.chalmers.RunningMan.entities.Level;
@@ -38,7 +39,10 @@ public class LevelView extends Stage{
 
     private void updateCamera(){
         if(player.getPosition().getX() > 320) {
-            camera.position.set(player.getPosition().getX(), Gdx.graphics.getHeight() / 2, 0);
+            final float lerp = 0.1f;
+            Vector3 position = getCamera().position;
+            position.x+= (player.getPosition().getX() - position.x)*lerp;
+            position.y = (Gdx.graphics.getHeight()/2);
         }
         camera.update();
         batch.setProjectionMatrix(camera.combined);
