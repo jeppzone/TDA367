@@ -52,7 +52,7 @@ public class Weapon implements IBulletCollection{
      * Places a bullet correctly in front of the gun when a bullet is fired
      */
     public void placeBullet(){
-        if(player.getFacingDirection().xDirection > 0)
+        if(player.getLastMovedDirection() > 0)
             createBullet(24);
         else
             createBullet(-34);
@@ -67,7 +67,7 @@ public class Weapon implements IBulletCollection{
         bullets.add(new Bullet(new Size(10, 10),
                 new Position(player.getPosition().getX() + pos + (player.getSize().getWidth()) / 2,
                         player.getPosition().getY() - 6 + (player.getSize().getHeight()) / 2),
-                player.getFacingDirection()));
+                player.getLastMovedDirection()));
     }
 
     public void update(float deltaTime) {

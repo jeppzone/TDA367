@@ -16,7 +16,7 @@ public class BulletTest extends Assert {
     Om bullet rör sig åt ett viss håll ska player ha en viss state
     Det ska inte gå att skjuta oftate än weapons delay
 */
-    private LivingState livingState;
+    private AnimationState animationState;
     private Player player;
     private Position position;
     private Bullet bullet;
@@ -46,20 +46,20 @@ public class BulletTest extends Assert {
 
         player.moveLeft(DELTATIME);
         player.moveRight(DELTATIME);
-        bullet = new Bullet(size, player.getPosition(), player.getLivingState());
+        bullet = new Bullet(size, player.getPosition(), player.getLastMovedDirection());
     }
 
     public void setBulletDirLeft() {
 
         player.moveRight(DELTATIME);
         player.moveLeft(DELTATIME);
-        bullet = new Bullet(size, player.getPosition(), player.getLivingState());
+        bullet = new Bullet(size, player.getPosition(), player.getLastMovedDirection());
     }
 
 
     @Test(expected = NullPointerException.class)
     public void SetBulletNull(){
-        bullet = new Bullet(null,null,null);
+        bullet = new Bullet(null,null,0);
         bullet.getPosition();
     }
 
@@ -81,7 +81,7 @@ public class BulletTest extends Assert {
     public void BulletVelocityPrecision(){
 
         setBulletDirRight();
-        bullet = new Bullet(size,player.getPosition(),player.getLivingState());
+        bullet = new Bullet(size,player.getPosition(),player.getLastMovedDirection());
         assertTrue(Math.abs(400f - bullet.getVelocity()) < EPS);
     }
 

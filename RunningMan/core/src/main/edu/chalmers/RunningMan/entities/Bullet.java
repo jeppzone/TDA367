@@ -10,12 +10,12 @@ public class Bullet extends AbstractPhysicalObject{
 
     private final float BULLET_SPEED = 400f;
     private boolean bulletExists = true;
-    private final LivingState livingState;
+    private final int lastMovedDirection;
     private float initialXPosition = getPosition().getX();
 
-    public Bullet(Size size, Position position, LivingState livingState){
+    public Bullet(Size size, Position position, int lastMovedDirection){
         super(size,position);
-        this.livingState = livingState;
+        this.lastMovedDirection = lastMovedDirection;
     }
 
     /**
@@ -23,7 +23,7 @@ public class Bullet extends AbstractPhysicalObject{
      * @return bulletspeed
      */
     public float getVelocity(){
-        return BULLET_SPEED * livingState.xDirection;
+        return BULLET_SPEED * lastMovedDirection;
     }
 
     private void setBulletGone(){
@@ -43,8 +43,6 @@ public class Bullet extends AbstractPhysicalObject{
         return getPosition().getX() < 1 || Math.abs(getPosition().getX() - initialXPosition)
                 > Gdx.graphics.getWidth()/2 ;
     }
-
-
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor.visit(this);

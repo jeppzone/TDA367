@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
 
-public enum LivingState {
+public enum AnimationState {
 
     FACING_RIGHT(1),
     FACING_LEFT(-1),
@@ -14,7 +14,7 @@ public enum LivingState {
 
     public final int xDirection; // -1 moving backwords, 1 moving forward
 
-    private LivingState(final int xDirection){
+    private AnimationState(final int xDirection){
         this.xDirection = xDirection;
     }
 

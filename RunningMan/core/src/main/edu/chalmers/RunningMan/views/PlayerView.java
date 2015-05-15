@@ -84,7 +84,7 @@ public class PlayerView extends Actor{
             
         }
 
-        switch (player.getLivingState()) {
+        switch (player.getAnimationState()) {
 
             case MOVING_RIGHT:
                 return walkRightAnimation.getKeyFrame(stateTime, true);
