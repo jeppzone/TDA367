@@ -132,11 +132,12 @@ public class Player extends AbstractLivingObject  {
     public void moveLeft(float deltaTime){
         if(hasLandedFirsTime) {
             livingState = LivingState.MOVING_LEFT;
+            facingDirection = LivingState.FACING_LEFT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_LEFT;
-            facingDirection = LivingState.FACING_LEFT;
+
         }
     }
     

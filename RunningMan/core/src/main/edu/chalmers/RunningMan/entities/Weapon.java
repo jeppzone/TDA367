@@ -65,7 +65,8 @@ public class Weapon implements IBulletCollection{
     private void createBullet(int pos){
         System.out.println(bullets);
         bullets.add(new Bullet(new Size(10, 10),
-                new Position(player.getPosition().getX() + pos + (player.getSize().getWidth()) / 2, player.getPosition().getY() - 6 + (player.getSize().getHeight()) / 2),
+                new Position(player.getPosition().getX() + pos + (player.getSize().getWidth()) / 2,
+                        player.getPosition().getY() - 6 + (player.getSize().getHeight()) / 2),
                 player.getFacingDirection()));
     }
 
