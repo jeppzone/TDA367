@@ -14,7 +14,7 @@ public enum AnimationState {
 
     public final int xDirection; // -1 moving backwords, 1 moving forward
 
-    private AnimationState(final int xDirection){
+    AnimationState(final int xDirection){
         this.xDirection = xDirection;
     }
 
