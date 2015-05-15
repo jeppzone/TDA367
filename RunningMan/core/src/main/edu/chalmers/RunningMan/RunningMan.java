@@ -8,7 +8,10 @@ import edu.chalmers.RunningMan.gameworld.MainMenuScreen;
 import edu.chalmers.RunningMan.utils.InputProcessor;
 import edu.chalmers.RunningMan.gameworld.GameScreen;
 
-public class RunningMan extends Game {
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class RunningMan extends Game implements PropertyChangeListener {
 
     public static final String TITLE = "RunningMan";
     public static final int SCALE = 2;
@@ -26,8 +29,19 @@ public class RunningMan extends Game {
 
         gameScreen = new GameScreen(this);
         mainMenuScreen = new MainMenuScreen(this);
+        mainMenuScreen.addPropertyChangeListener(this);
 
         setScreen(mainMenuScreen);
 
+
 	}
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("EVEEEENT");
+        String eventName = evt.getPropertyName();
+        if(eventName.equals("game")){
+            setScreen(gameScreen);
+        }
+    }
 }

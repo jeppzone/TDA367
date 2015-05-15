@@ -21,12 +21,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import edu.chalmers.RunningMan.RunningMan;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
  * Created by Kvist1 on 2015-05-14.
  */
 public class MainMenuScreen implements Screen {
 
-    private RunningMan game;
     private Stage stage;
     private TextureAtlas atlas;
     private Skin skin;
@@ -34,10 +36,11 @@ public class MainMenuScreen implements Screen {
     private TextButton buttonPlay, buttonExit;
     private BitmapFont whiteFont, blackFont;
     private Label heading;
+    private PropertyChangeSupport pcs;
 
     public MainMenuScreen(RunningMan game) {
         super();
-        this.game = game;
+        pcs = new PropertyChangeSupport(this);
     }
 
     /**
@@ -91,7 +94,7 @@ public class MainMenuScreen implements Screen {
         buttonExit.pad(20);
 
         // create heading
-        heading = new Label(game.TITLE, new LabelStyle(whiteFont, Color.WHITE));
+        heading = new Label("RunningMan", new LabelStyle(whiteFont, Color.WHITE));
 
         // add to table
         table.add(heading);
@@ -107,6 +110,14 @@ public class MainMenuScreen implements Screen {
         stage.addActor(table);
 
 
+    }
+
+    public void	addPropertyChangeListener(PropertyChangeListener listener){
+        pcs.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener){
+        pcs.removePropertyChangeListener(listener);
     }
 
     /**
@@ -126,7 +137,7 @@ public class MainMenuScreen implements Screen {
 
 
         if(buttonPlay.isPressed()) {
-            game.setScreen(game.gameScreen);
+            pcs.firePropertyChange("game", null, null);
         }
 
 

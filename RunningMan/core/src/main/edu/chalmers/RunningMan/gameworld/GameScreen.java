@@ -13,12 +13,9 @@ import edu.chalmers.RunningMan.utils.InputProcessor;
 public class GameScreen implements Screen {
 
     private GameWorld world;
-    private RunningMan game;
-
     public GameScreen(RunningMan game) {
         //Gdx.app.log("GameScreen", "Attached");
         super();
-        this.game = game;
         world = new GameWorld();
     }
 
