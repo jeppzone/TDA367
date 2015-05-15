@@ -201,7 +201,6 @@ public class Player extends AbstractLivingObject  {
     public void handleCollision(AbstractPhysicalObject apo){
         System.out.println(getVelocityX());
         hasLandedFirsTime = true;
-        isOnGround = true;
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
