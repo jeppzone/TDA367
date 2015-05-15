@@ -14,11 +14,8 @@ import java.beans.PropertyChangeListener;
 public class RunningMan extends Game implements PropertyChangeListener {
 
     public static final String TITLE = "RunningMan";
-    public static final int SCALE = 2;
-
-    public static final float STEP = 1 / 60f;
-    private float accum;
-
+    public static final int SCALE = 3;
+    
     public GameScreen gameScreen;
     public MainMenuScreen mainMenuScreen;
 
@@ -38,7 +35,6 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("EVEEEENT");
         String eventName = evt.getPropertyName();
         if(eventName.equals("game")){
             setScreen(gameScreen);
