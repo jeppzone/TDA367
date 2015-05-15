@@ -5,15 +5,19 @@ package edu.chalmers.RunningMan.entities;
  */
 public class Time {
     private float currentTime;
-    private int maxTime;
+    private float maxTime;
 
-    public Time(int maxTime){
+    public Time(float maxTime){
         this.maxTime = maxTime;
         currentTime = 0;
     }
 
-    public int getMaxTime(){
+    public double getMaxTime(){
         return maxTime;
+    }
+
+    public void resetTime(){
+        currentTime = 0;
     }
 
     public void update(float deltaTime){
@@ -22,6 +26,9 @@ public class Time {
 
     public int getTimeInteger(){
         return (int)currentTime;
+    }
+    public double getTimeFloat(){
+        return currentTime;
     }
 
     @Override

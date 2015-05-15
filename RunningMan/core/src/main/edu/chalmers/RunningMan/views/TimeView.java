@@ -22,7 +22,7 @@ public class TimeView extends Actor {
     public void draw(Batch batch, float deltaTime){
         time.update(deltaTime);
         font = new BitmapFont();
-        stringTime = time.getMaxTime() - time.getTimeInteger() +"";
+        stringTime = (int)time.getMaxTime() - time.getTimeInteger() +"";
         batch.begin();
         font.draw(batch, stringTime, 300, Gdx.graphics.getHeight() - 20);
         batch.end();

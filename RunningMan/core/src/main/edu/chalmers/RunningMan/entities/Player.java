@@ -1,5 +1,7 @@
 package edu.chalmers.RunningMan.entities;
 
+import com.badlogic.gdx.Gdx;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.beans.PropertyChangeSupport;
@@ -18,7 +20,7 @@ public class Player extends AbstractLivingObject  {
     private float velocityX = 120f;
     private float velocityY;
     private float oldX;
-
+    private Time timeSinceJump;
     private boolean finishedLevel = false;
     private boolean isOnGround = false;
     private boolean hasLandedFirsTime = false;
@@ -39,6 +41,7 @@ public class Player extends AbstractLivingObject  {
         facingDirection = LivingState.FACING_RIGHT;
         powerUps = new ArrayList<>();
         propertyChangeSupport = new PropertyChangeSupport(this);
+        timeSinceJump = new Time(0.3f);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -88,8 +91,8 @@ public class Player extends AbstractLivingObject  {
      * Updates the current player state.
      */
     public void update(float deltaTime) {
+        System.out.println(isOnGround);
         checkPowerUpsTime(deltaTime);
-
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
             livingState = LivingState.JUMPING_RIGHT;
@@ -120,7 +123,7 @@ public class Player extends AbstractLivingObject  {
             }
         }
     }
-
+    
     /**
      * Method to make the player move to the left.
      * This can only be done if player is on the ground
@@ -213,14 +216,14 @@ public class Player extends AbstractLivingObject  {
         final float objHeight = objSize.getHeight();
         final float newHeight = objHeight + objY - 1;
 
-        if(playerY <= objY + objHeight && getVelocityY() < 0 ) {
+        if(playerY <= objY && getVelocityY() > 0) {
+            pos.setY(objY - playerHeight);
+            setVelocityY(0f);
+        }else if(playerY <= objY + objHeight && getVelocityY() < 0) {
             pos.setY(newHeight);
             setVelocityY(0f);
             isOnGround = true;
-        }else if(playerY <= objY && getVelocityY() > 0){
-            pos.setY(objY - playerHeight);
-            setVelocityY(0f);
-        }else if((playerX <= objX || playerX + playerWidth >= objX) && playerY < newHeight) {
+        }else if((playerX <= objX || playerX + playerWidth >= objX) && (playerY < newHeight)) {
             pos.setX(oldX);
         }
     }
