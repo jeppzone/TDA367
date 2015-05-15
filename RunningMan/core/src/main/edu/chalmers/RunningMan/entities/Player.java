@@ -62,7 +62,7 @@ public class Player extends AbstractLivingObject  {
 
     public float getVelocityX(){
 
-        if(livingState == LivingState.MOVING_RIGHT || facingDirection == LivingState.FACING_RIGHT ) {
+        if(facingDirection == LivingState.FACING_RIGHT ) {
             return this.velocityX;
         }else{
             return -this.velocityX;
@@ -91,7 +91,6 @@ public class Player extends AbstractLivingObject  {
      * Updates the current player state.
      */
     public void update(float deltaTime) {
-        System.out.println(isOnGround);
         checkPowerUpsTime(deltaTime);
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
@@ -148,12 +147,12 @@ public class Player extends AbstractLivingObject  {
      */
     public void moveRight(float deltaTime){
         if(hasLandedFirsTime) {
+            facingDirection = LivingState.FACING_RIGHT;
             livingState = LivingState.MOVING_RIGHT;
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
             lastMovedDirection = LAST_MOVE_RIGHT;
-            facingDirection = LivingState.FACING_RIGHT;
         }
 
     }
@@ -235,7 +234,7 @@ public class Player extends AbstractLivingObject  {
             powerUp.updateTime(deltaTime);
             if(powerUp.isTimeUp()) {
                 if (powerUp instanceof Steroid) {
-                    setVelocityX(getVelocityX() / 2f);
+                    setVelocityX(this.velocityX / 2f);
 
                     removedPowerUps.add(powerUp);
                 }
@@ -272,7 +271,7 @@ public class Player extends AbstractLivingObject  {
     @Override
     public void visit(Steroid s){
         powerUps.add(s);
-        setVelocityX(2f * getVelocityX());
+        setVelocityX(2f * this.velocityX);
         propertyChangeSupport.firePropertyChange("pickupsteroid", null, null);
     }
 
