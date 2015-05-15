@@ -14,7 +14,7 @@ public class HudFont {
     public void generateFont(){
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 20;
+        parameter.size = 30;
         parameter.color = Color.WHITE;
         font = generator.generateFont(parameter);
     }
