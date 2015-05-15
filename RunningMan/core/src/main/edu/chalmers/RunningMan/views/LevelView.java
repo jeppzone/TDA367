@@ -39,10 +39,10 @@ public class LevelView extends Stage{
 
     private void updateCamera(){
         if(player.getPosition().getX() > 320) {
-            final float lerp = 0.1f;
+            final float lerp = 0.08f;
             Vector3 position = getCamera().position;
-            position.x+= (player.getPosition().getX() - position.x)*lerp;
-            position.y = (Gdx.graphics.getHeight()/2);
+            position.x += (player.getPosition().getX() - position.x) * lerp;
+            position.y = (Gdx.graphics.getHeight() / 2);
         }
         camera.update();
         batch.setProjectionMatrix(camera.combined);
