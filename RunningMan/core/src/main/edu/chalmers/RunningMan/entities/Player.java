@@ -88,7 +88,6 @@ public class Player extends AbstractLivingObject  {
      * Updates the current player state.
      */
     public void update(float deltaTime) {
-        System.out.println(isOnGround);
         checkPowerUpsTime(deltaTime);
 
         // if jumping to the right
@@ -199,7 +198,6 @@ public class Player extends AbstractLivingObject  {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
-        System.out.println(getVelocityX());
         hasLandedFirsTime = true;
         final Position pos = getPosition();
         final float playerX = pos.getX();
