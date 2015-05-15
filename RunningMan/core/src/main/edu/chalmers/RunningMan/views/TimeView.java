@@ -19,9 +19,9 @@ public class TimeView extends HudFont {
 
     public void draw(Batch batch, float deltaTime){
         time.update(deltaTime);
-        stringTime ="Time: "+ ((int)time.getMaxTime() - time.getTimeInteger()) ;
+        stringTime =(int) time.getMaxTime() - time.getTimeInteger() + "";
         batch.begin();
-        font.draw(batch, stringTime, 100, Gdx.graphics.getHeight() - 20);
+        font.draw(batch, "Time: " +stringTime, 100, Gdx.graphics.getHeight() - 20);
         batch.end();
     }
 }

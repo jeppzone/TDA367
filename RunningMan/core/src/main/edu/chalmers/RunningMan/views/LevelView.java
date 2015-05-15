@@ -38,7 +38,7 @@ public class LevelView extends Stage{
     }
 
     private void updateCamera(){
-        if(player.getPosition().getX() > 320) {
+        if(player.getPosition().getX() > Gdx.graphics.getWidth() / 2) {
             final float lerp = 0.08f;
             Vector3 position = getCamera().position;
             position.x += (player.getPosition().getX() - position.x) * lerp;

@@ -6,6 +6,7 @@ package edu.chalmers.RunningMan.entities;
 public class Time {
     private float currentTime;
     private float maxTime;
+    private boolean hasStarted = false;
 
     public Time(float maxTime){
         this.maxTime = maxTime;
@@ -21,7 +22,9 @@ public class Time {
     }
 
     public void update(float deltaTime){
-        currentTime += deltaTime;
+        if(hasStarted) {
+            currentTime += deltaTime;
+        }
     }
 
     public int getTimeInteger(){
@@ -29,6 +32,10 @@ public class Time {
     }
     public double getTimeFloat(){
         return currentTime;
+    }
+
+    public void start(){
+        hasStarted = true;
     }
 
     @Override

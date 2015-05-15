@@ -9,6 +9,9 @@ import edu.chalmers.RunningMan.utils.MapHandler;
 import edu.chalmers.RunningMan.utils.MapHandlerException;
 import edu.chalmers.RunningMan.views.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,7 @@ import java.util.List;
  * Created by JohanTobin on 2015-04-22.
  */
 
-public class GameWorld  {
+public class GameWorld implements PropertyChangeListener {
 
     private BulletController bulletController;
     private BulletView bulletView;
@@ -35,6 +38,7 @@ public class GameWorld  {
     private Factory factory;
     private AudioController audioController;
     private HudView hudView;
+    private PropertyChangeSupport pcs;
 
     public GameWorld() {
         startLevel();
@@ -47,9 +51,16 @@ public class GameWorld  {
         controllers.add(levelController);
         controllers.add(bulletController);
         controllers.add(weaponController);
+        pcs = new PropertyChangeSupport(this);
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener listener){
+        pcs.addPropertyChangeListener(listener);
+    }
 
+    public void removePropertyChangeListener(PropertyChangeListener listener){
+        pcs.removePropertyChangeListener(listener);
+    }
 
     public void update(float deltaTime) {
         //if(/*!player.hasFinishedLevel() &&*/ !player.isDead()) {
@@ -71,6 +82,7 @@ public class GameWorld  {
             mapHandler = new MapHandler("level1");
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
             player.addPropertyChangeListener(audioController);
+            player.addPropertyChangeListener(this);
             weapon = new Weapon(player);
             weapon.addPropertyChangeListener(audioController);
             bulletView = new BulletView(weapon.getBullets());
@@ -80,6 +92,8 @@ public class GameWorld  {
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
             level = new Level(mapObjects,"level1");
+            player.addPropertyChangeListener(level);
+            level.addPropertyChangeListener(this);
             levelController = new LevelController(level,weapon.getBullets());
             playerController = new PlayerController(player, playerView);
             factory = new Factory(mapObjects);
@@ -95,4 +109,13 @@ public class GameWorld  {
         }
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("time")) {
+            if(!level.hasFiredOnce()) {
+                loadLevel();
+            }
+        }
+        pcs.firePropertyChange(evt.getPropertyName(), null, null);
+    }
 }

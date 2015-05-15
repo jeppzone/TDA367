@@ -15,7 +15,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
     public static final String TITLE = "RunningMan";
     public static final int SCALE = 3;
-    
+
     public GameScreen gameScreen;
     public MainMenuScreen mainMenuScreen;
 
@@ -23,21 +23,32 @@ public class RunningMan extends Game implements PropertyChangeListener {
 	public void create () {
 
         Gdx.app.log("RunningMan Game", "created");
-
-        gameScreen = new GameScreen(this);
-        mainMenuScreen = new MainMenuScreen(this);
-        mainMenuScreen.addPropertyChangeListener(this);
+        createGameScreen();
+        createMainMenuScreen();
 
         setScreen(mainMenuScreen);
 
 
 	}
 
+    private void createGameScreen(){
+        gameScreen = new GameScreen();
+        gameScreen.addPropertyChangeListener(this);
+    }
+
+    private void createMainMenuScreen(){
+        mainMenuScreen = new MainMenuScreen();
+        mainMenuScreen.addPropertyChangeListener(this);
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        String eventName = evt.getPropertyName();
+        final String eventName = evt.getPropertyName();
         if(eventName.equals("game")){
             setScreen(gameScreen);
+        }else if(eventName.equals("time")){
+            createMainMenuScreen();
+            setScreen(mainMenuScreen);
         }
     }
 }

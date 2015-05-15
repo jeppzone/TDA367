@@ -38,7 +38,7 @@ public class MainMenuScreen implements Screen {
     private Label heading;
     private PropertyChangeSupport pcs;
 
-    public MainMenuScreen(RunningMan game) {
+    public MainMenuScreen() {
         super();
         pcs = new PropertyChangeSupport(this);
     }

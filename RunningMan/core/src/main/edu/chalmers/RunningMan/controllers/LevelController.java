@@ -35,6 +35,7 @@ public class LevelController implements IEntityController {
             }
         }
         level.checkCollisions(bullets);
+        level.checkTime();
     }
 
 

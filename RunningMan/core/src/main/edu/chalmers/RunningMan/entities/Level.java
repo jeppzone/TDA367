@@ -1,6 +1,9 @@
 package edu.chalmers.RunningMan.entities;
 
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +11,22 @@ import java.util.List;
  * A class to model a level
  * @author Jesper Olsson
  */
-public class Level {
+public class Level implements PropertyChangeListener {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
     private static int enemiesKilled;
     private static final int MAX_TIME = 100;
+    private boolean hasPlayerMovedMoreThanOneTime = false;
+    private boolean hasFiredOnce = false;
     private Time time;
+    private PropertyChangeSupport pcs;
 
     public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
         this.enemiesKilled = 0;
         time = new Time(MAX_TIME);
+        pcs = new PropertyChangeSupport(this);
     }
 
     /**
@@ -39,6 +46,14 @@ public class Level {
                 }
             }
         }
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener){
+        pcs.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener){
+        pcs.removePropertyChangeListener(listener);
     }
 
     /**
@@ -74,10 +89,15 @@ public class Level {
         }
     }
 
-    public void updateLevelTime(float deltaTime){
-        time.update(deltaTime);
+    public boolean hasFiredOnce(){
+        return hasFiredOnce;
     }
-
+    public void checkTime(){
+        if(isTimeUp()){
+            pcs.firePropertyChange("time", null, null);
+            hasFiredOnce = true;
+        }
+    }
     /**
      *
      * @return the time object of this class
@@ -87,7 +107,7 @@ public class Level {
     }
 
     public boolean isTimeUp(){
-        return time.getTimeInteger() >= MAX_TIME;
+            return time.getTimeInteger() >= MAX_TIME;
     }
 
     public static int getEnemiesKilled(){
@@ -115,4 +135,15 @@ public class Level {
         }
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        final String eventName = evt.getPropertyName();
+        if(eventName.equals("moveRight") || eventName.equals("moveLeft") ||
+                eventName.equals("jump")){
+            if(!hasPlayerMovedMoreThanOneTime){
+                time.start();
+            }
+            hasPlayerMovedMoreThanOneTime = true;
+        }
+    }
 }
