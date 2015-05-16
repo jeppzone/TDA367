@@ -114,9 +114,6 @@ public class Player extends AbstractLivingObject  {
      * @param deltaTime the difference in tme
      */
     public void update(float deltaTime) {
-        if(hasFinishedLevel()){
-            propertyChangeSupport.firePropertyChange("finish", null, null);
-        }
         checkPowerUpsTime(deltaTime);
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {

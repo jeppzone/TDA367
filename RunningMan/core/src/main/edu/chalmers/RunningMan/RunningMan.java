@@ -47,8 +47,11 @@ public class RunningMan extends Game implements PropertyChangeListener {
         if(eventName.equals("game")){
             setScreen(gameScreen);
         }else if(eventName.equals("time") || eventName.equals("dead")) {
+            System.out.println("DEATHS");
             createMainMenuScreen();
             setScreen(mainMenuScreen);
+        }else if(eventName.equals("finish")){
+            System.out.println("FINIOIIIISH");
         }
     }
 }

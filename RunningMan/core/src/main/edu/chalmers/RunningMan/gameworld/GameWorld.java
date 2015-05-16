@@ -67,19 +67,23 @@ public class GameWorld implements PropertyChangeListener {
     }
 
     public void update(float deltaTime) {
-        if(!player.isDead()) {
+        if(!player.isDead() && !player.hasFinishedLevel()) {
             for (IEntityController controller : controllers) {
                 controller.update(deltaTime);
             }
         }else{
-        timeSinceDeath.start();
-        timeSinceDeath.update(deltaTime);
-        if(timeSinceDeath.isTimeUp()){
-            pcs.firePropertyChange("dead", null, null);
-            timeSinceDeath.resetTime();
-            startLevel();
+            timeSinceDeath.start();
+            timeSinceDeath.update(deltaTime);
+            if(timeSinceDeath.isTimeUp()){
+                if(player.isDead()){
+                    pcs.firePropertyChange("dead", null, null);
+                }else{
+                    pcs.firePropertyChange("finish", null, null);
+                }
+                timeSinceDeath.resetTime();
+                startLevel();
+                }
             }
-        }
         levelView.draw();
         hudView.draw();
     }
