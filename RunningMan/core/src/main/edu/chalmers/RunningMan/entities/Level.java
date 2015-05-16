@@ -15,7 +15,7 @@ public class Level implements PropertyChangeListener {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
     private static int enemiesKilled;
-    private static final int MAX_TIME = 5;
+    private static final int MAX_TIME = 100;
     private boolean hasPlayerMovedMoreThanOneTime = false;
     private boolean hasFiredOnce = false;
     private Time time;
