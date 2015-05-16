@@ -111,7 +111,7 @@ public class GameWorld implements PropertyChangeListener {
             levelView = new LevelView(views, player, bulletView);
             audioController.playMusic();
             levelController = new LevelController(level, weapon.getBullets());
-            hudView = new HudView(level, player);
+            hudView = new HudView(level);
 
 
         } catch(MapHandlerException e) {

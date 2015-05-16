@@ -13,7 +13,6 @@ public class Player extends AbstractLivingObject  {
 
     private final int LAST_MOVE_LEFT = -1;
     private final int LAST_MOVE_RIGHT = 1;
-    private int score = 0;
 
     private float velocityX = 120f;
     private float velocityY;
@@ -54,18 +53,6 @@ public class Player extends AbstractLivingObject  {
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         this.propertyChangeSupport.removePropertyChangeListener(listener);
-    }
-
-    /**
-     *
-     * @return the number of enemies that the player has killed on this level
-     */
-    public int getKillCount(){
-        return Level.getEnemiesKilled();
-    }
-
-    public int getScore(){
-        return score;
     }
 
     /**

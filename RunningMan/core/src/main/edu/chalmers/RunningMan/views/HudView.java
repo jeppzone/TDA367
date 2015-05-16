@@ -14,13 +14,13 @@ public class HudView extends Stage {
 
     private TimeView timeView;
     private KillCountView killCountView;
-    private Player player;
+    private Level level;
     private OrthographicCamera camera;
     private Batch batch;
 
-    public HudView(Level level, Player player){
+    public HudView(Level level){
         timeView = new TimeView(level.getTime());
-        killCountView = new KillCountView(player);
+        killCountView = new KillCountView(level);
         initCamera();
     }
 

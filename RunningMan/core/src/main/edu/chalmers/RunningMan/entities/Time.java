@@ -16,7 +16,9 @@ public class Time {
     public double getMaxTime(){
         return maxTime;
     }
-
+    public int getTimeLeft(){
+        return (int)getMaxTime() - getTimeInteger();
+    }
     public void resetTime(){
         currentTime = 0;
     }

@@ -14,11 +14,12 @@ import java.util.List;
 public class Level implements PropertyChangeListener {
     private final List<AbstractPhysicalObject> mapObjects;
     private final String levelName;
-    private static int enemiesKilled;
+    private int enemiesKilled;
     private static final int MAX_TIME = 100;
     private boolean hasPlayerMovedMoreThanOneTime = false;
     private boolean hasFiredOnce = false;
     private Time time;
+    private int playerScore;
     private PropertyChangeSupport pcs;
 
     public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
@@ -27,6 +28,7 @@ public class Level implements PropertyChangeListener {
         this.enemiesKilled = 0;
         time = new Time(MAX_TIME);
         pcs = new PropertyChangeSupport(this);
+        playerScore = 0;
     }
 
     /**
@@ -89,9 +91,21 @@ public class Level implements PropertyChangeListener {
         }
     }
 
+    public int getPlayerScore(){
+        return getEnemiesKilled() + getTimeLeft();
+    }
+
+    public int getTimeLeft(){
+        return time.getTimeLeft();
+    }
     public boolean hasFiredOnce(){
         return hasFiredOnce;
     }
+
+    /**
+     * Method to be called continiously to check
+     * it the level time is up
+     */
     public void checkTime(){
         if(isTimeUp()){
             pcs.firePropertyChange("time", null, null);
@@ -106,11 +120,14 @@ public class Level implements PropertyChangeListener {
         return time;
     }
 
+    /**
+     * Method to check if time is up
+     * @return true if getTimeInteger >= getMaxTime
+     */
     public boolean isTimeUp(){
             return time.isTimeUp();
     }
-
-    public static int getEnemiesKilled(){
+    public int getEnemiesKilled(){
         return enemiesKilled;
     }
 
