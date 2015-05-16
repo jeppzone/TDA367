@@ -40,8 +40,9 @@ public class GameWorld implements PropertyChangeListener {
     private HudView hudView;
     private PropertyChangeSupport pcs;
     private Time timeSinceDeath;
+    private HelicopterController helicopterController;
 
-    private static final int DEATH_ANIMATION_TIME = 2;
+    private static final float DEATH_ANIMATION_TIME = 1.15f;
 
     public GameWorld() {
         startLevel();
@@ -56,6 +57,7 @@ public class GameWorld implements PropertyChangeListener {
         controllers.add(weaponController);
         pcs = new PropertyChangeSupport(this);
         timeSinceDeath = new Time(DEATH_ANIMATION_TIME);
+        helicopterController = factory.getHelicopterController();
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -68,12 +70,11 @@ public class GameWorld implements PropertyChangeListener {
 
     public void update(float deltaTime) {
         if(!player.isDead() && !player.hasFinishedLevel()) {
-            for (IEntityController controller : controllers) {
-                controller.update(deltaTime);
-            }
+            updateControllers(deltaTime);
         }else{
             timeSinceDeath.start();
             timeSinceDeath.update(deltaTime);
+            updateRemainingControllers(deltaTime);
             if(timeSinceDeath.isTimeUp()){
                 if(player.isDead()){
                     pcs.firePropertyChange("dead", null, null);
@@ -86,6 +87,18 @@ public class GameWorld implements PropertyChangeListener {
             }
         levelView.draw();
         hudView.draw();
+    }
+
+    private void updateControllers(float deltaTime){
+        for (IEntityController controller : controllers) {
+            controller.update(deltaTime);
+        }
+    }
+
+    private void updateRemainingControllers(float deltaTime){
+        helicopterController.update(deltaTime);
+        playerController.update(deltaTime);
+        levelController.update(deltaTime);
     }
 
     public final void loadLevel() {

@@ -21,6 +21,7 @@ public class Steroid extends AbstractPowerUp {
             visitor.visit(this);
             setPickedUp(true);
             time = new Time(10);
+            time.start();
         }
     }
 

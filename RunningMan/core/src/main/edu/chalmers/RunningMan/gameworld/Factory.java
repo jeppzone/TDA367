@@ -14,12 +14,14 @@ public class Factory {
     private List<Actor> actors;
     private List<IEntityController> controllers;
     private AudioController audioController;
+    private HelicopterController helicopterController;
 
     public Factory(List<AbstractPhysicalObject> mapObjects){
         this.mapObjects = mapObjects;
         actors = new ArrayList<>();
         controllers = new ArrayList<>();
         audioController = new AudioController();
+
         addViewsAndControllers();
     }
 
@@ -56,11 +58,14 @@ public class Factory {
                 helicopter.addPropertyChangeListener(audioController);
                 HelicopterView helicopterView = new HelicopterView(helicopter);
                 actors.add(helicopterView);
-                controllers.add(new HelicopterController(helicopter, helicopterView));
+                helicopterController = new HelicopterController(helicopter, helicopterView);
+                controllers.add(helicopterController);
             }
         }
     }
-
+    public HelicopterController getHelicopterController(){
+       return helicopterController;
+    }
     public List<Actor> getViews(){
         return actors;
     }

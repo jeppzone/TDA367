@@ -29,7 +29,7 @@ public class Time {
         }
     }
     public boolean isTimeUp(){
-        return getTimeInteger() >= getMaxTime();
+        return getTimeFloat() >= getMaxTime();
     }
     public int getTimeInteger(){
         return (int)currentTime;

@@ -52,6 +52,8 @@ public class RunningMan extends Game implements PropertyChangeListener {
             setScreen(mainMenuScreen);
         }else if(eventName.equals("finish")){
             System.out.println("FINIOIIIISH");
+            createMainMenuScreen();
+            setScreen(mainMenuScreen);// change to highscorescreen later
         }
     }
 }
