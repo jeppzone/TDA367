@@ -1,7 +1,5 @@
 package edu.chalmers.RunningMan.gameworld;
 
-import com.badlogic.gdx.Audio;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
@@ -12,7 +10,6 @@ import edu.chalmers.RunningMan.views.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,7 +79,6 @@ public class GameWorld implements PropertyChangeListener {
                     pcs.firePropertyChange("finish", null, null);
                 }
                 timeSinceDeath.resetTime();
-                startLevel();
                 }
             }
         levelView.draw();
@@ -139,10 +135,5 @@ public class GameWorld implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         pcs.firePropertyChange(evt.getPropertyName(), null, null);
-        if(evt.getPropertyName().equals("time")) {
-            if(!level.hasFiredOnce()) {
-                startLevel();
-            }
-        }
     }
 }

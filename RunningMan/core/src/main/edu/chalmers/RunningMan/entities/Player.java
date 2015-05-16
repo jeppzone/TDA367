@@ -17,9 +17,9 @@ public class Player extends AbstractLivingObject  {
     private float velocityX = 120f;
     private float velocityY;
     private float oldX;
-    private boolean finishedLevel = false;
-    private boolean isOnGround = false;
-    private boolean hasLandedFirsTime = false;
+    private boolean finishedLevel;
+    private boolean isOnGround;
+    private boolean hasLandedFirsTime;
 
     private Gravity gravity = new Gravity(-800f);
     private List<AbstractPowerUp> powerUps;
@@ -36,6 +36,9 @@ public class Player extends AbstractLivingObject  {
         powerUps = new ArrayList<>();
         propertyChangeSupport = new PropertyChangeSupport(this);
         isDead = false;
+        finishedLevel = false;
+        hasLandedFirsTime = false;
+        isOnGround = false;
     }
 
     /**
