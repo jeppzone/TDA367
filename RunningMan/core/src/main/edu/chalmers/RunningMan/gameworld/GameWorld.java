@@ -41,6 +41,8 @@ public class GameWorld implements PropertyChangeListener {
     private PropertyChangeSupport pcs;
     private Time timeSinceDeath;
 
+    private static final int DEATH_ANIMATION_TIME = 2;
+
     public GameWorld() {
         startLevel();
     }
@@ -53,7 +55,7 @@ public class GameWorld implements PropertyChangeListener {
         controllers.add(bulletController);
         controllers.add(weaponController);
         pcs = new PropertyChangeSupport(this);
-        timeSinceDeath = new Time(2);
+        timeSinceDeath = new Time(DEATH_ANIMATION_TIME);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
