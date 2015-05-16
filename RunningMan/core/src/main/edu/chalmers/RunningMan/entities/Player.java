@@ -44,7 +44,6 @@ public class Player extends AbstractLivingObject  {
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.propertyChangeSupport.addPropertyChangeListener(listener);
-        System.out.println("Added prop" + listener.getClass());
     }
 
     /**

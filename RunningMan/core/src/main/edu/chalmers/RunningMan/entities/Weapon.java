@@ -63,7 +63,6 @@ public class Weapon implements IBulletCollection{
      * @param pos a value that changes depends on the players facing direction
      */
     private void createBullet(int pos){
-        System.out.println(bullets);
         bullets.add(new Bullet(new Size(10, 10),
                 new Position(player.getPosition().getX() + pos + (player.getSize().getWidth()) / 2,
                         player.getPosition().getY() - 6 + (player.getSize().getHeight()) / 2),

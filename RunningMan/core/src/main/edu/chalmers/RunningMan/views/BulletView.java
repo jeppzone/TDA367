@@ -61,11 +61,9 @@ public class BulletView extends Actor{
         stateTime += Gdx.graphics.getDeltaTime();
 
         if(bullet.getVelocity() > 0){
-            System.out.println("SHOOTING_RIGHT");
             return bulletLeftAnimation.getKeyFrame(stateTime, true);
 
         }else {
-            System.out.println("SHOOTING_LEFT");
             return bulletRightAnimation.getKeyFrame(stateTime, true);
         }
     }
