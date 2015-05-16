@@ -10,17 +10,24 @@ public class Time {
 
     public Time(float maxTime){
         this.maxTime = maxTime;
-        currentTime = 0;
+        resetTime();
     }
 
-    public double getMaxTime(){
+    public float getMaxTime(){
         return maxTime;
     }
-    public int getTimeLeft(){
+
+    public boolean hasStarted(){
+        return hasStarted;
+    }
+    public int getTimeLeftInteger(){
         return (int)getMaxTime() - getTimeInteger();
     }
+    public float getTimeLeftFloat(){
+        return getMaxTime() - getTimeFloat();
+    }
     public void resetTime(){
-        currentTime = 0;
+        currentTime = 0f;
     }
 
     public void update(float deltaTime){
@@ -34,7 +41,7 @@ public class Time {
     public int getTimeInteger(){
         return (int)currentTime;
     }
-    public double getTimeFloat(){
+    public float getTimeFloat(){
         return currentTime;
     }
 

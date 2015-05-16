@@ -4,7 +4,6 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -95,7 +94,7 @@ public class Level implements PropertyChangeListener {
     }
 
     public int getTimeLeft(){
-        return time.getTimeLeft();
+        return time.getTimeLeftInteger();
     }
     public boolean hasFiredOnce(){
         return hasFiredOnce;
