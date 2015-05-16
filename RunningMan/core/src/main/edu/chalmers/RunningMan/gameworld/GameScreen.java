@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chalmers.RunningMan.RunningMan;
+import edu.chalmers.RunningMan.controllers.AudioController;
 import edu.chalmers.RunningMan.gameworld.GameWorld;
 import edu.chalmers.RunningMan.utils.InputProcessor;
 
@@ -17,6 +18,7 @@ import java.beans.PropertyChangeSupport;
 public class GameScreen implements Screen, PropertyChangeListener {
     private PropertyChangeSupport pcs;
     private GameWorld world;
+    private AudioController audioController;
     public GameScreen() {
         //Gdx.app.log("GameScreen", "Attached");
         super();

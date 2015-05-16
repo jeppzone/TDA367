@@ -101,9 +101,11 @@ public class GameWorld implements PropertyChangeListener {
 
         try {
             audioController = new AudioController();
-            audioController.playStartLevel();
+            audioController.playMusic();
             mapHandler = new MapHandler("level1");
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
+            playerView = new PlayerView(player);
+            playerController = new PlayerController(player, playerView);
             player.addPropertyChangeListener(audioController);
             player.addPropertyChangeListener(this);
             weapon = new Weapon(player);
@@ -111,19 +113,16 @@ public class GameWorld implements PropertyChangeListener {
             bulletView = new BulletView(weapon.getBullets());
             bulletController = new BulletController(weapon.getBullets(), bulletView);
             weaponController = new WeaponController(weapon);
-            playerView = new PlayerView(player);
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
-            level = new Level(mapObjects,"level1");
-            player.addPropertyChangeListener(level);
-            level.addPropertyChangeListener(this);
-            levelController = new LevelController(level,weapon.getBullets());
-            playerController = new PlayerController(player, playerView);
             factory = new Factory(mapObjects);
             views = factory.getViews();
-            levelView = new LevelView(views, player, bulletView);
-            audioController.playMusic();
+            level = new Level(mapObjects,"level1");
             levelController = new LevelController(level, weapon.getBullets());
+            levelView = new LevelView(views, player, bulletView);
+            level.addPropertyChangeListener(this);
+            levelController = new LevelController(level,weapon.getBullets());
+            player.addPropertyChangeListener(level);
             hudView = new HudView(level);
 
 

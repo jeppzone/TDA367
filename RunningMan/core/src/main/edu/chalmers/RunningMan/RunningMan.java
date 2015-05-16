@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chalmers.RunningMan.controllers.AudioController;
 import edu.chalmers.RunningMan.gameworld.MainMenuScreen;
 import edu.chalmers.RunningMan.utils.InputProcessor;
 import edu.chalmers.RunningMan.gameworld.GameScreen;
@@ -18,6 +19,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
     public GameScreen gameScreen;
     public MainMenuScreen mainMenuScreen;
+    private AudioController audioController;
 
 	@Override
 	public void create () {
@@ -27,6 +29,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
         createMainMenuScreen();
 
         setScreen(mainMenuScreen);
+        audioController = new AudioController();
 
 
 	}
@@ -46,6 +49,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
         final String eventName = evt.getPropertyName();
         if(eventName.equals("game")){
             setScreen(gameScreen);
+            audioController.playStartLevel();
         }else if(eventName.equals("time") || eventName.equals("dead")) {
             setScreen(mainMenuScreen);
         }else if(eventName.equals("finish")){
