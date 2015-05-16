@@ -16,7 +16,6 @@ public class Level implements PropertyChangeListener {
     private final String levelName;
     private int enemiesKilled;
     private static final int MAX_TIME = 100;
-    private boolean hasPlayerMovedMoreThanOneTime = false;
     private boolean hasFiredOnce = false;
     private Time time;
     private int playerScore;
@@ -157,10 +156,8 @@ public class Level implements PropertyChangeListener {
         final String eventName = evt.getPropertyName();
         if(eventName.equals("moveRight") || eventName.equals("moveLeft") ||
                 eventName.equals("jump")){
-            if(!hasPlayerMovedMoreThanOneTime){
-                time.start();
-            }
-            hasPlayerMovedMoreThanOneTime = true;
+            time.start();
+            pcs.firePropertyChange("startlevel", null, null);
         }
     }
 }

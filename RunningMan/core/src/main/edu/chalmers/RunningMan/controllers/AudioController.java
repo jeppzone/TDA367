@@ -23,10 +23,6 @@ public class AudioController implements PropertyChangeListener {
         audio.playMusic();
     }
 
-    public void playStartLevel(){
-        audio.playStartLevelSound();
-    }
-
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final String propertyName = evt.getPropertyName();
@@ -56,6 +52,9 @@ public class AudioController implements PropertyChangeListener {
         if("helicopter".equals(propertyName) && !hasPlayedHelicopter){
             hasPlayedHelicopter = true;
             audio.playHelicopterSound();
+        }
+        if("startlevel".equals(propertyName)){
+            audio.playStartLevelSound();
         }
     }
 }

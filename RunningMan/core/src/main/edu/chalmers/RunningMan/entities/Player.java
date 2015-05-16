@@ -20,6 +20,7 @@ public class Player extends AbstractLivingObject  {
     private boolean finishedLevel;
     private boolean isOnGround;
     private boolean hasLandedFirsTime;
+    private boolean hasMovedFirstTime;
 
     private Gravity gravity = new Gravity(-800f);
     private List<AbstractPowerUp> powerUps;
@@ -39,6 +40,7 @@ public class Player extends AbstractLivingObject  {
         finishedLevel = false;
         hasLandedFirsTime = false;
         isOnGround = false;
+        hasMovedFirstTime = false;
     }
 
     /**
@@ -154,7 +156,10 @@ public class Player extends AbstractLivingObject  {
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
-            propertyChangeSupport.firePropertyChange("moveLeft," , null, null);
+            if(!hasMovedFirstTime){
+                propertyChangeSupport.firePropertyChange("moveLeft" , null, null);
+                hasMovedFirstTime = true;
+            }
 
         }
     }
@@ -170,7 +175,10 @@ public class Player extends AbstractLivingObject  {
             this.oldX = this.getPosition().getX();
             setNewX(deltaTime, getVelocityX());
             lastTimeMoved = System.currentTimeMillis();
-            propertyChangeSupport.firePropertyChange("moveRight," , null, null);
+            if(!hasMovedFirstTime){
+                propertyChangeSupport.firePropertyChange("moveRight" , null, null);
+                hasMovedFirstTime = true;
+            }
         }
 
     }
@@ -184,7 +192,10 @@ public class Player extends AbstractLivingObject  {
         if(isOnGround) {
             setVelocityY(300f);
             isOnGround = false;
-            propertyChangeSupport.firePropertyChange("jump", null, null);
+            if(!hasMovedFirstTime){
+                propertyChangeSupport.firePropertyChange("jump", null, null);
+                hasMovedFirstTime = true;
+            }
         }
     }
 

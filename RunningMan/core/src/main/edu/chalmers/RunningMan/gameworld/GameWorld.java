@@ -101,7 +101,6 @@ public class GameWorld implements PropertyChangeListener {
 
         try {
             audioController = new AudioController();
-            audioController.playMusic();
             mapHandler = new MapHandler("level1");
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
             playerView = new PlayerView(player);
@@ -121,9 +120,11 @@ public class GameWorld implements PropertyChangeListener {
             levelController = new LevelController(level, weapon.getBullets());
             levelView = new LevelView(views, player, bulletView);
             level.addPropertyChangeListener(this);
+            level.addPropertyChangeListener(audioController);
             levelController = new LevelController(level,weapon.getBullets());
             player.addPropertyChangeListener(level);
             hudView = new HudView(level);
+            audioController.playMusic();
 
 
         } catch(MapHandlerException e) {

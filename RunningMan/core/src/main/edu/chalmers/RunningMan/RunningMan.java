@@ -19,7 +19,6 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
     public GameScreen gameScreen;
     public MainMenuScreen mainMenuScreen;
-    private AudioController audioController;
 
 	@Override
 	public void create () {
@@ -29,7 +28,6 @@ public class RunningMan extends Game implements PropertyChangeListener {
         createMainMenuScreen();
 
         setScreen(mainMenuScreen);
-        audioController = new AudioController();
 
 
 	}
@@ -49,7 +47,6 @@ public class RunningMan extends Game implements PropertyChangeListener {
         final String eventName = evt.getPropertyName();
         if(eventName.equals("game")){
             setScreen(gameScreen);
-            audioController.playStartLevel();
         }else if(eventName.equals("time") || eventName.equals("dead")) {
             setScreen(mainMenuScreen);
         }else if(eventName.equals("finish")){
