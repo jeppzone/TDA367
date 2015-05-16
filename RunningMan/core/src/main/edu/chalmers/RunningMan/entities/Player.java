@@ -36,6 +36,7 @@ public class Player extends AbstractLivingObject  {
         super(size, position, maxHp);
         powerUps = new ArrayList<>();
         propertyChangeSupport = new PropertyChangeSupport(this);
+        isDead = false;
     }
 
     /**
@@ -344,6 +345,7 @@ public class Player extends AbstractLivingObject  {
     @Override
     public void visit(Pit pit) {
         handleCollision(pit);
+        isDead = true;
         isDeadByPitfall = true;
         propertyChangeSupport.firePropertyChange("die", null, null);
     }

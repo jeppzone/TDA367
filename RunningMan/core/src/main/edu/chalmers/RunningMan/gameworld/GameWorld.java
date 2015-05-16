@@ -39,6 +39,7 @@ public class GameWorld implements PropertyChangeListener {
     private AudioController audioController;
     private HudView hudView;
     private PropertyChangeSupport pcs;
+    private Time timeSinceDeath;
 
     public GameWorld() {
         startLevel();
@@ -52,6 +53,7 @@ public class GameWorld implements PropertyChangeListener {
         controllers.add(bulletController);
         controllers.add(weaponController);
         pcs = new PropertyChangeSupport(this);
+        timeSinceDeath = new Time(2);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -63,15 +65,21 @@ public class GameWorld implements PropertyChangeListener {
     }
 
     public void update(float deltaTime) {
-        //if(/*!player.hasFinishedLevel() &&*/ !player.isDead()) {
+        if(!player.isDead()) {
             for (IEntityController controller : controllers) {
                 controller.update(deltaTime);
-           }
-            levelView.draw();
-            hudView.draw();
-        //}else{
-        //    startLevel();
-        //}
+            }
+        }else{
+        timeSinceDeath.start();
+        timeSinceDeath.update(deltaTime);
+        if(timeSinceDeath.isTimeUp()){
+            pcs.firePropertyChange("dead", null, null);
+            timeSinceDeath.resetTime();
+            startLevel();
+            }
+        }
+        levelView.draw();
+        hudView.draw();
     }
 
     public final void loadLevel() {
@@ -111,11 +119,11 @@ public class GameWorld implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        pcs.firePropertyChange(evt.getPropertyName(), null, null);
         if(evt.getPropertyName().equals("time")) {
             if(!level.hasFiredOnce()) {
-                loadLevel();
+                startLevel();
             }
         }
-        pcs.firePropertyChange(evt.getPropertyName(), null, null);
     }
 }

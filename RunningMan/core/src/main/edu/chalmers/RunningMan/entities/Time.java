@@ -26,7 +26,9 @@ public class Time {
             currentTime += deltaTime;
         }
     }
-
+    public boolean isTimeUp(){
+        return getTimeInteger() >= getMaxTime();
+    }
     public int getTimeInteger(){
         return (int)currentTime;
     }
