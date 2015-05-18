@@ -1,100 +1,154 @@
 package edu.chalmers.RunningMan.entities;
 
+import edu.chalmers.RunningMan.RunningMan;
 import org.junit.Assert;
+import static edu.chalmers.RunningMan.utils.Constants.*;
 import org.junit.Before;
 import org.junit.Test;
+
+
 
 /**
  * Created by Armand on 2015-05-14.
  */
 public class BulletTest extends Assert {
-/*
 
-    Testa positionen
-    Testa farten
-    testa setX och setY
-    Om bullet rör sig åt ett viss håll ska player ha en viss state
-    Det ska inte gå att skjuta oftate än weapons delay
-*/
-    private AnimationState animationState;
     private Player player;
     private Position position;
+    private Weapon weapon;
     private Bullet bullet;
     private Size size;
-    private Weapon weapon;
     private float pos;
     private float posY;
     private float posX;
     private static final float DELTATIME = 5f;
     private static final float EPS =0.0001f;
+    private final ISize windowSize = new Size(V_WIDTH * RunningMan.SCALE,V_HEIGHT * RunningMan.SCALE);
+    private Enemy enemy;
 
+    public void setBulletDirRight(){
+
+        player.moveLeft(DELTATIME);
+        player.moveRight(DELTATIME);
+        bullet = new Bullet(size, player.getPosition(), player.getLastMovedDirection(),windowSize);
+    }
+
+    public void setBulletDirLeft(){
+
+        player.moveRight(DELTATIME);
+        player.moveLeft(DELTATIME);
+        bullet = new Bullet(size, player.getPosition(), player.getLastMovedDirection(),windowSize);
+    }
 
     @Before
     public void setUp(){
 
         size = new Size(1,1);
-        position = new Position(10,10);
+        position = new Position(10,0);
         player = new Player(position,size,100);
-        weapon = new Weapon(player);
+        weapon= new Weapon(player,windowSize);
         // Needs to be done to set haslandedFirsttime = true
         Ground g = new Ground(position,size);
         player.handleCollision(g);
+
     }
 
+    @Test
+    public void testSetX(){
 
-    public void setBulletDirRight() {
-
-        player.moveLeft(DELTATIME);
-        player.moveRight(DELTATIME);
-        bullet = new Bullet(size, player.getPosition(), player.getLastMovedDirection());
+        bullet = new Bullet(size,new Position(0f,0f), player.getLastMovedDirection(),windowSize);
+        bullet.setX(position.getX());
+        assertEquals(bullet.getPosition().getX(), position.getX(), 0);
     }
 
-    public void setBulletDirLeft() {
+    @Test
+    public void testSetXNegative(){
 
-        player.moveRight(DELTATIME);
-        player.moveLeft(DELTATIME);
-        bullet = new Bullet(size, player.getPosition(), player.getLastMovedDirection());
+        bullet = new Bullet(size,new Position(0f,0f), player.getLastMovedDirection(),windowSize);
+        bullet.setX(-10f);
+        assertEquals(bullet.getPosition().getX(), 0, 0);
+
     }
 
+    @Test
+    public void testSetY(){
+
+        bullet = new Bullet(size,new Position(0f,20f), player.getLastMovedDirection(),windowSize);
+        bullet.setY(-10f);
+        assertEquals(bullet.getPosition().getY(), 0, 0);
+    }
+
+    @Test
+    public void testSetYNegative(){
+
+        bullet = new Bullet(size,new Position(0f,15f), player.getLastMovedDirection(),windowSize);
+        bullet.setY(-10f);
+        assertEquals(bullet.getPosition().getX(), 0, 0);
+    }
+
+    @Test
+    public void testSetPosition(){
+
+        bullet = new Bullet(size,new Position(20f,20f),player.getLastMovedDirection(),windowSize);
+        bullet.setPosition(position);
+        assertEquals(bullet.getPosition(), position);
+    }
+
+    @Test
+    public void testSetPositionNegative(){
+
+        bullet = new Bullet(size,position,player.getLastMovedDirection(),windowSize);
+        bullet.setPosition(new Position(-200, -200));
+        assertEquals(bullet.getPosition(), new Position(0f, 0f));
+    }
 
     @Test(expected = NullPointerException.class)
-    public void SetBulletNull(){
-        bullet = new Bullet(null,null,0);
+    public void testSetPositionNull(){
+
+        bullet = new Bullet(size,position,player.getLastMovedDirection(),windowSize);
+        bullet.setPosition(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testSetBulletNull(){
+
+        bullet = new Bullet(null,null,0,windowSize);
         bullet.getPosition();
     }
 
     @Test
-    public void BulletPositiveVelocity(){
+    public void testBulletPositiveVelocity(){
 
         setBulletDirRight();
         assertTrue(bullet.getVelocity() > 0);
     }
 
     @Test
-    public void BulletNegativeVelocity(){
+    public void testBulletNegativeVelocity(){
 
         setBulletDirLeft();
         assertTrue(bullet.getVelocity() < 0);
     }
 
     @Test
-    public void BulletVelocityPrecision(){
+    public void testBulletVelocityPrecision(){
 
         setBulletDirRight();
-        bullet = new Bullet(size,player.getPosition(),player.getLastMovedDirection());
+        bullet = new Bullet(size,player.getPosition(),player.getLastMovedDirection(),windowSize);
         assertTrue(Math.abs(400f - bullet.getVelocity()) < EPS);
     }
 
     @Test
-    public void MoveBulletRight(){
+    public void testMoveBulletRight(){
 
         setBulletDirRight();
         pos = bullet.getPosition().getX();
         bullet.moveBullet(DELTATIME);
         assertTrue(bullet.getPosition().getX() > pos);
     }
+
     @Test
-    public void MoveBulletLeft(){
+    public void testMoveBulletLeft(){
 
         setBulletDirLeft();
         pos = bullet.getPosition().getX();
@@ -103,36 +157,59 @@ public class BulletTest extends Assert {
     }
 
     @Test
-    public void MoveBulletLeftFromJump(){
+    public void testMoveBulletLeftFromJump(){
 
+        player.setY(20f);
         setBulletDirLeft();
-        player.jump(DELTATIME);
-        posY = bullet.getPosition().getY();
         posX = bullet.getPosition().getX();
         bullet.moveBullet(DELTATIME);
-        assertTrue(bullet.getPosition().getY() == posY && bullet.getPosition().getX() < posX);
-
+        assertTrue(bullet.getPosition().getX() < posX);
     }
 
     @Test
-    public void MoveBulletRightFromJump(){
+    public void testMoveBulletRightFromJump(){
 
+        player.setY(20f);
         setBulletDirRight();
-        player.jump(DELTATIME);
-        posY = bullet.getPosition().getY();
         posX = bullet.getPosition().getX();
         bullet.moveBullet(DELTATIME);
-        assertTrue(bullet.getPosition().getY() == posY && bullet.getPosition().getX() > posX);
-
+        assertTrue(bullet.getPosition().getX() > posX);
     }
 
+    @Test
+    public void testBulletNotFalling(){
 
-    public void testIsOutOfBounds(){
-
+        player.setY(20f);
+        setBulletDirRight();
+        posY = bullet.getPosition().getY();
+        bullet.moveBullet(DELTATIME);
+        assertEquals(bullet.getPosition().getY(), posY, 0);
     }
 
+    @Test
+    public void testIsOutOfBoundsNegative(){
+
+        bullet = new Bullet(size,position, player.getLastMovedDirection(),windowSize);
+        bullet.setX(-10f);
+        assertTrue(bullet.isOutOfBounds());
+    }
+
+    @Test
+    public void testisOutOfBounds(){
+
+        bullet = new Bullet(size, new Position(0f,0f), player.getLastMovedDirection(),windowSize);
+        bullet.getPosition().setX(V_WIDTH * RunningMan.SCALE + 1);
+        assertTrue(bullet.isOutOfBounds());
+    }
+
+    @Test
     public void testAcceptVisitor()  {
 
+        bullet = new Bullet(size,position,player.getLastMovedDirection(),windowSize);
+        enemy = new Enemy(position,size,100);
+        bullet.acceptVisitor(enemy);
+        assertEquals(enemy.getVelocity(),0,0);
     }
+
 
 }
