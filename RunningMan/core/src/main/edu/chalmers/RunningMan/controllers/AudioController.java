@@ -53,7 +53,9 @@ public class AudioController implements PropertyChangeListener {
         }
         if("helicopter".equals(propertyName) && !hasPlayedHelicopter){
             hasPlayedHelicopter = true;
+            audio.stopMusic();
             audio.playHelicopterSound();
+            audio.playSuccessMusic();
         }
         if("startlevel".equals(propertyName)){
             audio.playStartLevelSound();
