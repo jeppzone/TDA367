@@ -5,6 +5,7 @@ import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.entities.*;
 import edu.chalmers.RunningMan.utils.MapHandler;
 import edu.chalmers.RunningMan.utils.MapHandlerException;
+import edu.chalmers.RunningMan.utils.WindowSize;
 import edu.chalmers.RunningMan.views.*;
 
 import java.beans.PropertyChangeEvent;
@@ -107,7 +108,7 @@ public class GameWorld implements PropertyChangeListener {
             playerController = new PlayerController(player, playerView);
             player.addPropertyChangeListener(audioController);
             player.addPropertyChangeListener(this);
-            weapon = new Weapon(player);
+            weapon = new Weapon(player, new WindowSize());
             weapon.addPropertyChangeListener(audioController);
             bulletView = new BulletView(weapon.getBullets());
             bulletController = new BulletController(weapon.getBullets(), bulletView);
