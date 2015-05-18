@@ -18,6 +18,7 @@ public class AudioHandler {
     private Sound steroid;
     private Sound startLevel;
     private Sound helicopter;
+    private Music failedMusic;
     private Music levelMusic;
 
     public AudioHandler() {
@@ -34,6 +35,7 @@ public class AudioHandler {
             steroid = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.mp3"));
             startLevel = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
             helicopter = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "helicopter.mp3"));
+            failedMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "failed.mp3"));
             levelMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
         }catch (Exception e){
 
@@ -72,8 +74,16 @@ public class AudioHandler {
         helicopter.play();
     }
 
+    public void playFailedMusic(){
+        failedMusic.play();
+    }
+
     public void playMusic(){
         levelMusic.setVolume(0.5f);
         levelMusic.play();
+    }
+
+    public void stopMusic(){
+        levelMusic.stop();
     }
 }

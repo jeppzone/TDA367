@@ -38,10 +38,12 @@ public class AudioController implements PropertyChangeListener {
         if("suicide".equals(propertyName) && !hasPlayedSuicide){
             hasPlayedSuicide = true;
             audio.playShootSound();
+            audio.stopMusic();
         }
         if("die".equals(propertyName) && !hasPlayedDie){
             hasPlayedDie = true;
             audio.playDieSound();
+            audio.stopMusic();
         }
         if("pickupsteroid".equals(propertyName)){
             audio.playSteroidPickUpSound();
