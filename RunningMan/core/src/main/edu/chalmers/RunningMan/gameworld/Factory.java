@@ -15,13 +15,14 @@ public class Factory {
     private List<IEntityController> controllers;
     private AudioController audioController;
     private HelicopterController helicopterController;
+    private String levelName;
 
-    public Factory(List<AbstractPhysicalObject> mapObjects){
+    public Factory(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
         actors = new ArrayList<>();
         controllers = new ArrayList<>();
-        audioController = new AudioController();
-
+        audioController = new AudioController(levelName);
+        this.levelName = levelName;
         addViewsAndControllers();
     }
 
@@ -35,7 +36,7 @@ public class Factory {
                 actors.add(pitView);
             } else if(apo.getClass() == Ground.class) {
                 Ground ground = (Ground) apo;
-                GroundView groundView = new GroundView(ground);
+                GroundView groundView = new GroundView(ground, levelName);
                 controllers.add(new GroundController(ground, groundView));
                 actors.add(groundView);
             } else if(apo.getClass() == Enemy.class) {

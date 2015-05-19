@@ -74,7 +74,7 @@ public class GameWorld implements PropertyChangeListener {
             timeSinceDeath.update(deltaTime);
             updateRemainingControllers(deltaTime);
             if(timeSinceDeath.isTimeUp()){
-                audioController.stopIntroMusic();
+                audioController.stopMusic();
                 if(player.isDead()){
                     pcs.firePropertyChange("dead", null, null);
                 }else{
@@ -104,8 +104,8 @@ public class GameWorld implements PropertyChangeListener {
     public final void loadLevel() {
 
         try {
-            audioController = new AudioController();
-            mapHandler = new MapHandler("level1");
+            audioController = new AudioController("level2");
+            mapHandler = new MapHandler("level2");
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
             playerView = new PlayerView(player);
             playerController = new PlayerController(player, playerView);
@@ -118,18 +118,17 @@ public class GameWorld implements PropertyChangeListener {
             weaponController = new WeaponController(weapon);
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
-            factory = new Factory(mapObjects);
+            factory = new Factory(mapObjects, "level2");
             views = factory.getViews();
-            level = new Level(mapObjects,"level1");
+            level = new Level(mapObjects,"level2");
             levelController = new LevelController(level, weapon.getBullets());
-            levelView = new LevelView(views, player, bulletView,"level1");
+            levelView = new LevelView(views, player, bulletView,"level2");
             level.addPropertyChangeListener(this);
             level.addPropertyChangeListener(audioController);
             levelController = new LevelController(level,weapon.getBullets());
             player.addPropertyChangeListener(level);
             hudView = new HudView(level);
-            audioController.playIntroMusic();
-
+            audioController.playMusic();
 
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");

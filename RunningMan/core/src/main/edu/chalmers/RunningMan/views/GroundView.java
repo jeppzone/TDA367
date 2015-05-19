@@ -15,10 +15,11 @@ public class GroundView extends Actor{
 
     private Ground ground;
     private Texture texture;
+    private final static String TILES_LOCATION = "core/assets/tilesets/";
 
-    public GroundView(Ground ground) {
+    public GroundView(Ground ground, String levelName) {
         this.ground = ground;
-        texture = new Texture(Gdx.files.internal("core/assets/tile_test.png"));
+        texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName +".png"));
     }
 
     public void draw(Batch batch, float deltaTime){

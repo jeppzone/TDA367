@@ -19,7 +19,8 @@ public class AudioHandler {
     private Sound startLevel;
     private Sound helicopter;
     private Music failedMusic;
-    private Music levelMusic;
+    private Music level1Music;
+    private Music level2Music;
     private Music successMusic;
 
     public AudioHandler() {
@@ -38,7 +39,8 @@ public class AudioHandler {
             helicopter = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "helicopter.mp3"));
             failedMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "failed.wav"));
             successMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "success.mp3"));
-            levelMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
+            level1Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
+            level2Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "level2music.mp3"));
         }catch (Exception e){
 
         }
@@ -84,12 +86,21 @@ public class AudioHandler {
         successMusic.play();
     }
 
-    public void playIntroMusic(){
-        levelMusic.setVolume(0.5f);
-        levelMusic.play();
+    public void playMusic(String levelName){
+        if(levelName.equals("level1")) {
+            level1Music.play();
+            level1Music.setVolume(0.5f);
+        }else if(levelName.equals("level2")){
+            level2Music.play();
+            level2Music.setVolume(0.5f);
+        }
     }
 
-    public void stopMusic(){
-        levelMusic.stop();
+    public void stopMusic(String levelName){
+        if(levelName.equals("level1")) {
+            level1Music.stop();
+        }else if(levelName.equals("level2")){
+            level2Music.stop();
+        }
     }
 }

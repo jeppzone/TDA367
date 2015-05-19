@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="blocks" tilewidth="16" tileheight="16">
+  <image source="blocks.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="13" name="tile_test" tilewidth="16" tileheight="16">
+  <image source="../tile_test.png" width="16" height="16"/>
+ </tileset>
+ <tileset firstgid="14" name="pitfall" tilewidth="16" tileheight="16">
+  <image source="../pitfall.png" width="16" height="16"/>
+  <terraintypes>
+   <terrain name="rock" tile="-1"/>
+  </terraintypes>
+ </tileset>
+ <tileset firstgid="15" name="obstacles" tilewidth="16" tileheight="16">
+  <image source="../rockobstacle.png" width="600" height="291"/>
+ </tileset>
+ <layer name="ground" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt1bkJwDAURMFt4PffrnMjgYWMDpiBzTd7CQAAAAAAAAAAAAAAAAAAAOxVuw8AAFMqeg4AN6voOQCcZLTJFT0HgJOMdvndcj0HgH+0GrtyX38BAH0PM78CzA==
+  </data>
+ </layer>
+ <layer name="startPosition" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAMA6Am8+95MtoDFJAAAAAAAAAAAAAAAMCeawcAAAAAAAAAAAAAAAAAAACoeCi/AAQ=
+  </data>
+ </layer>
+ <layer name="enemies" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7Dbv7QpjghbgiUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTNdQAAAAAeWXyoAAI=
+  </data>
+ </layer>
+ <layer name="steroids" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+DG1gAAE=
+  </data>
+ </layer>
+ <layer name="pitfalls" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAIA7ApwL9cFCzh4GyTJgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8mBIAuFvQdgBV
+  </data>
+ </layer>
+ <layer name="finishlevel" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzkEJAAAIBLB72T+yJQ5E2BIsAQAAAAAAAAAAANrmOgAAAAAAAAAAAAAAAAAAAAAA8NQCD/4ABw==
+  </data>
+ </layer>
+ <layer name="obstacles" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7CXtX8FSxwE2RIsAQAAAAAAAAAAAAAAAAAAAAAAAOCDuQ4AAAAAAAAAQMECqRQAZg==
+  </data>
+ </layer>
+</map>

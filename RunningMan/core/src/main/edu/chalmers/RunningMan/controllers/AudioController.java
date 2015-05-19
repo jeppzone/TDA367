@@ -9,22 +9,23 @@ import java.beans.PropertyChangeListener;
  * Created by JohanTobin on 2015-05-06.
  */
 public class AudioController implements PropertyChangeListener {
-
+    private String levelName;
     private AudioHandler audio;
     private boolean hasPlayedHelicopter = false;
     private boolean hasPlayedDie = false;
     private boolean hasPlayedSuicide = false;
 
-    public AudioController(){
+    public AudioController(String levelName){
         audio = new AudioHandler();
+        this.levelName = levelName;
     }
 
-    public void playIntroMusic(){
-        audio.playIntroMusic();
+    public void playMusic(){
+        audio.playMusic(levelName);
     }
 
-    public void stopIntroMusic(){
-        audio.stopMusic();
+    public void stopMusic(){
+        audio.stopMusic(levelName);
     }
 
     @Override
@@ -65,7 +66,7 @@ public class AudioController implements PropertyChangeListener {
         }
         if("time".equals(propertyName)){
             audio.playFailedMusic();
-            audio.stopMusic();
+            audio.stopMusic(levelName);
         }
     }
 }
