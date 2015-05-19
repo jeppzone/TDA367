@@ -64,8 +64,8 @@ public class Player extends AbstractLivingObject  {
      * @return a negative value if player is moving left, positive otherwise
      */
     public float getVelocityX(){
-
         if(lastMovedDirection == LAST_MOVE_RIGHT ) {
+
             return this.velocityX;
         }else{
             return -this.velocityX;
