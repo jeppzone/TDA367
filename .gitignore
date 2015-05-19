@@ -113,6 +113,9 @@ Icon
 .Trashes
 .VolumeIcon.icns
 
+#Build
+RunningMan/core/build
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
