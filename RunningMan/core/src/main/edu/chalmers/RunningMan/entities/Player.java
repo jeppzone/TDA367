@@ -150,16 +150,13 @@ public class Player extends AbstractLivingObject  {
      * @param deltaTime the time difference
      */
     public void moveLeft(float deltaTime){
-        if(hasLandedFirsTime) {
-            lastMovedDirection = LAST_MOVE_LEFT;
-            this.oldX = this.getPosition().getX();
-            setNewX(deltaTime, getVelocityX());
-            lastTimeMoved = System.currentTimeMillis();
-            if(!hasMovedFirstTime){
-                propertyChangeSupport.firePropertyChange("moveLeft" , null, null);
-                hasMovedFirstTime = true;
-            }
-
+        lastMovedDirection = LAST_MOVE_LEFT;
+        this.oldX = this.getPosition().getX();
+        setNewX(deltaTime, getVelocityX());
+        lastTimeMoved = System.currentTimeMillis();
+        if(!hasMovedFirstTime){
+            propertyChangeSupport.firePropertyChange("moveLeft" , null, null);
+            hasMovedFirstTime = true;
         }
     }
     
@@ -169,17 +166,14 @@ public class Player extends AbstractLivingObject  {
      * @param deltaTime the time difference
      */
     public void moveRight(float deltaTime){
-        if(hasLandedFirsTime) {
-            lastMovedDirection = LAST_MOVE_RIGHT;
-            this.oldX = this.getPosition().getX();
-            setNewX(deltaTime, getVelocityX());
-            lastTimeMoved = System.currentTimeMillis();
-            if(!hasMovedFirstTime){
-                propertyChangeSupport.firePropertyChange("moveRight" , null, null);
-                hasMovedFirstTime = true;
-            }
+        lastMovedDirection = LAST_MOVE_RIGHT;
+        this.oldX = this.getPosition().getX();
+        setNewX(deltaTime, getVelocityX());
+        lastTimeMoved = System.currentTimeMillis();
+        if(!hasMovedFirstTime){
+            propertyChangeSupport.firePropertyChange("moveRight" , null, null);
+            hasMovedFirstTime = true;
         }
-
     }
 
     /**
@@ -194,6 +188,11 @@ public class Player extends AbstractLivingObject  {
             propertyChangeSupport.firePropertyChange("jump", null, null);
         }
     }
+
+    public boolean hasLandedFirstTime(){
+        return hasLandedFirsTime;
+    }
+
 
     /**
      * Method to apply gravity force to the player.
