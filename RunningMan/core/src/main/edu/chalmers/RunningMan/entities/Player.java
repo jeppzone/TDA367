@@ -192,10 +192,7 @@ public class Player extends AbstractLivingObject  {
         if(isOnGround) {
             setVelocityY(300f);
             isOnGround = false;
-            if(!hasMovedFirstTime){
-                propertyChangeSupport.firePropertyChange("jump", null, null);
-                hasMovedFirstTime = true;
-            }
+            propertyChangeSupport.firePropertyChange("jump", null, null);
         }
     }
 
