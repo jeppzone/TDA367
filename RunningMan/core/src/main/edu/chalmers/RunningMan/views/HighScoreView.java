@@ -27,11 +27,11 @@ public class HighScoreView extends HudFont {
     }
 
     public void draw(){
-        int counter = 0;
+        int counter = 1;
         batch.begin();
-        font.draw(batch, "HighScore for " + levelName, Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight());
+        font.draw(batch, "HighScore for " + levelName, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() - 50);
         for(Integer score: scores){
-            font.draw(batch , score.toString(), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight() - 50 -  counter*100);
+            font.draw(batch , counter + ")  " +  score.toString(), Gdx.graphics.getWidth()/2 - 50, Gdx.graphics.getHeight() - 125 -  counter*100);
             counter++;
         }
         batch.end();
