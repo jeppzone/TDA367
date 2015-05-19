@@ -24,15 +24,15 @@ public class RunningMan extends Game implements PropertyChangeListener {
 	public void create () {
 
         Gdx.app.log("RunningMan Game", "created");
-        createGameScreen();
+        //createGameScreen();
         createLoadLevelingScreen();
         createMainMenuScreen();
 
         setScreen(mainMenuScreen);
 	}
 
-    private void createGameScreen() {
-        gameScreen = new GameScreen();
+    private void createGameScreen(String level) {
+        gameScreen = new GameScreen(level);
         gameScreen.addPropertyChangeListener(this);
     }
 
@@ -57,22 +57,22 @@ public class RunningMan extends Game implements PropertyChangeListener {
         if(eventName.equals("loadScreen")) {
             setScreen(loadLevelScreen);
 
-        }else if(eventName.equals("time") || eventName.equals("dead")) {
+        } else if(eventName.equals("time") || eventName.equals("dead")) {
             setScreen(mainMenuScreen);
 
-        }else if(eventName.equals("finish")) {
-            setScreen(mainMenuScreen);// change to highscorescreen later
-
         } else if(eventName.equals("level1")) {
-            gameScreen.createWorld("level1");
+            //gameScreen.createWorld("level1");
+            createGameScreen("level1");
             setScreen(gameScreen);
 
         } else if(eventName.equals("level2")) {
-            gameScreen.createWorld("level2");
+            //gameScreen.createWorld("level2");
+            createGameScreen("level2");
             setScreen(gameScreen);
-        }else if(eventName.equals("finish")){
+
+        } else if(eventName.equals("finish")) {
             createHighScoreScreen();
-            setScreen(highScoreScreen);// change to highscorescreen later
+            setScreen(highScoreScreen);
         }
     }
 }

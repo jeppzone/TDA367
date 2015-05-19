@@ -112,7 +112,7 @@ public class GameWorld implements PropertyChangeListener {
 
             audioController = new AudioController(levelName);
             mapHandler = new MapHandler(levelName);
-            player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
+            player = new Player( new Position(60, 1000)/*mapHandler.getPlayerStartPosition()*/, new Size(50,50), 100);
             playerView = new PlayerView(player);
             playerController = new PlayerController(player, playerView);
             player.addPropertyChangeListener(audioController);

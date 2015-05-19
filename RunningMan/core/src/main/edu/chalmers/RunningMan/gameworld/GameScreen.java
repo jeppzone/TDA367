@@ -20,10 +20,14 @@ public class GameScreen implements IScreen, PropertyChangeListener {
     private PropertyChangeSupport pcs;
     private GameWorld world;
     private AudioController audioController;
+    private String level;
 
-    public GameScreen() {
+    public GameScreen(String level) {
         super();
+        this.level = level;
         pcs = new PropertyChangeSupport(this);
+        world = new GameWorld(level);
+        world.addPropertyChangeListener(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -34,10 +38,12 @@ public class GameScreen implements IScreen, PropertyChangeListener {
         pcs.addPropertyChangeListener(this);
     }
 
+    /*
     public void createWorld(String level) {
         world = new GameWorld(level);
         world.addPropertyChangeListener(this);
     }
+    */
 
     @Override
     public void render(float deltaTime) {
@@ -86,7 +92,7 @@ public class GameScreen implements IScreen, PropertyChangeListener {
         pcs.firePropertyChange(evt.getPropertyName(), null, null);
         final String eventName = evt.getPropertyName();
         if (eventName.equals("dead") || eventName.equals("finish") || eventName.equals("time")) {
-            world = new GameWorld("level1");
+            world = new GameWorld(level);
             world.addPropertyChangeListener(this);
         }
     }
