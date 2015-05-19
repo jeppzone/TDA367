@@ -30,13 +30,14 @@ import java.beans.PropertyChangeSupport;
 public class MainMenuScreen implements Screen {
 
     private Stage stage;
-    private TextureAtlas atlas;
+    private TextureAtlas atlas = new TextureAtlas("core/assets/mainmenu/mainmenu_buttonsheet.txt");
     private Skin skin;
     private Table table;
     private TextButton buttonPlay, buttonExit;
     private BitmapFont whiteFont, blackFont;
     private Label heading;
     private PropertyChangeSupport pcs;
+    private TextButtonStyle textButtonPlayStyle, textButtonExitStyle;
 
     public MainMenuScreen() {
         super();
@@ -50,51 +51,21 @@ public class MainMenuScreen implements Screen {
     public void show() {
 
         stage = new Stage();
-
+        // input processor so buttons can be pressed
         Gdx.input.setInputProcessor(stage);
 
-        atlas = new TextureAtlas("core/assets/mainmenu/mainmenu_buttonsheet.txt");
         skin = new Skin(atlas);
 
         table = new Table(skin);
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        // create fonts
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
-        FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 70;
-        parameter.color = Color.BLACK;
-        blackFont = generator.generateFont(parameter); // font size 12 pixels
-        parameter.color = Color.WHITE;
-        whiteFont = generator.generateFont(parameter);
-        generator.dispose();
+        createFonts();
 
-        // create button style
-        TextButtonStyle textButtonPlayStyle = new TextButtonStyle();
-        textButtonPlayStyle.up = skin.getDrawable("buttonup");
-        textButtonPlayStyle.down = skin.getDrawable("buttondown"); // TODO change to buttonExit down picture
-        textButtonPlayStyle.pressedOffsetX = 1;
-        textButtonPlayStyle.pressedOffsetY = -1;
-        textButtonPlayStyle.font = blackFont;
+        createButtonStyle();
 
-        TextButtonStyle textButtonExitStyle = new TextButtonStyle();
-        textButtonExitStyle.up = skin.getDrawable("buttonup");
-        textButtonExitStyle.down = skin.getDrawable("buttonup"); // TODO change to buttonExit down picture
-        textButtonExitStyle.pressedOffsetX = 1;
-        textButtonExitStyle.pressedOffsetY = -1;
-        textButtonExitStyle.font = blackFont;
+        createButtons();
 
-        // create buttons
-        buttonPlay = new TextButton("PLAY", textButtonPlayStyle);
-        buttonPlay.addListener(new ClickListener());
-        buttonPlay.pad(20);
-
-        buttonExit = new TextButton("EXIT", textButtonExitStyle);
-        buttonExit.addListener(new ClickListener());
-        buttonExit.pad(20);
-
-        // create heading
-        heading = new Label("RunningMan", new LabelStyle(whiteFont, Color.WHITE));
+        createHeading();
 
         // add to table
         table.add(heading);
@@ -108,8 +79,59 @@ public class MainMenuScreen implements Screen {
 
         // add to stage
         stage.addActor(table);
+    }
 
+    /**
+     * Create fonts
+     */
+    private void createFonts() {
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
+        FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = 70;
+        parameter.color = Color.BLACK;
+        blackFont = generator.generateFont(parameter); // font size 12 pixels
+        parameter.color = Color.WHITE;
+        whiteFont = generator.generateFont(parameter);
+        generator.dispose();
+    }
 
+    /**
+     * Create button style
+     */
+    private void createButtonStyle() {
+        textButtonPlayStyle = new TextButtonStyle();
+        textButtonPlayStyle.up = skin.getDrawable("buttonup");
+        textButtonPlayStyle.down = skin.getDrawable("buttondown"); // TODO change to buttonExit down picture
+        textButtonPlayStyle.pressedOffsetX = 1;
+        textButtonPlayStyle.pressedOffsetY = -1;
+        textButtonPlayStyle.font = blackFont;
+
+        textButtonExitStyle = new TextButtonStyle();
+        textButtonExitStyle.up = skin.getDrawable("buttonup");
+        textButtonExitStyle.down = skin.getDrawable("buttonup"); // TODO change to buttonExit down picture
+        textButtonExitStyle.pressedOffsetX = 1;
+        textButtonExitStyle.pressedOffsetY = -1;
+        textButtonExitStyle.font = blackFont;
+    }
+
+    /**
+     * Create buttons
+     */
+    private void createButtons() {
+        buttonPlay = new TextButton("PLAY", textButtonPlayStyle);
+        buttonPlay.addListener(new ClickListener());
+        buttonPlay.pad(20);
+
+        buttonExit = new TextButton("EXIT", textButtonExitStyle);
+        buttonExit.addListener(new ClickListener());
+        buttonExit.pad(20);
+    }
+
+    /**
+     * Create heading
+     */
+    private void createHeading() {
+        heading = new Label("RunningMan", new LabelStyle(whiteFont, Color.WHITE));
     }
 
     public void	addPropertyChangeListener(PropertyChangeListener listener){
@@ -127,23 +149,25 @@ public class MainMenuScreen implements Screen {
      */
     @Override
     public void render(float delta) {
-        // clear screen
-        Gdx.gl20.glClearColor(0, 0, 0, 1);
-        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        clearScreen();
 
         if(buttonExit.isPressed()) {
             Gdx.app.exit();
         }
 
-
         if(buttonPlay.isPressed()) {
             pcs.firePropertyChange("game", null, null);
         }
 
-
         stage.act(delta);
 
         stage.draw();
+    }
+
+    private void clearScreen() {
+        Gdx.gl20.glClearColor(0, 0, 0, 1);
+        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
     /**
