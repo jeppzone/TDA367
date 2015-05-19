@@ -99,6 +99,9 @@ buildNumber.properties
 # Icon must end with two \r
 Icon
 
+#HighScore
+.txt
+
 # Thumbnails
 ._*
 
