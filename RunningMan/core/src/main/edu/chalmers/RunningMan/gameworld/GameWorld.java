@@ -110,8 +110,8 @@ public class GameWorld implements PropertyChangeListener {
 
         try {
 
-            audioController = new AudioController("level2");
-            mapHandler = new MapHandler("level2");
+            audioController = new AudioController(levelName);
+            mapHandler = new MapHandler(levelName);
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
             playerView = new PlayerView(player);
             playerController = new PlayerController(player, playerView);
@@ -124,11 +124,11 @@ public class GameWorld implements PropertyChangeListener {
             weaponController = new WeaponController(weapon);
             mapObjects = mapHandler.getPhysicalObjectsList();
             mapObjects.add(player);
-            factory = new Factory(mapObjects, "level2");
+            factory = new Factory(mapObjects, levelName);
             views = factory.getViews();
-            level = new Level(mapObjects,"level2");
+            level = new Level(mapObjects, levelName);
             levelController = new LevelController(level, weapon.getBullets());
-            levelView = new LevelView(views, player, bulletView,"level2");
+            levelView = new LevelView(views, player, bulletView, levelName);
             level.addPropertyChangeListener(this);
             level.addPropertyChangeListener(audioController);
             levelController = new LevelController(level,weapon.getBullets());
