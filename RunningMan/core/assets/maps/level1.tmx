@@ -17,17 +17,17 @@
  </tileset>
  <layer name="ground" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2VtuwzAMBMBeoPe/bg/QByKE4pL1DKDfhJbMpeN8fAAAAAAAt30WLwCgV/UsN8+BBBnEk1XP5WQvea6A59L/PNmN39nmOdBtyrtC+UPCrffmyXfy6V4G+k34/2/Cs8QW9qbWzZlrngNdUlnzah18Z2/qnMzbLXu+vX7g3IQc+w/52WXL3pzOyIrVVecG2+uHyX7ro2R/TcmxihqekldVZzLlPJMzvfO5odv2+mGqv/oo1WMTcqyrhql5dnKN1Wdyax+Ss/xkT7qeGVK21w9dKnMgnX3JHEvU0HWdr3z2T991ep+8U1+19P25tQ9u2F4/dKnMgXQ2bVvvSuZ1cr/S52ZZMNEXTPYt9g==
+   eJzt1jEOgzAQBMB8IP//bnoEBGTjuxUzkpsUYTF4j88HAAAAAHja92ABABmOZrl5DiTRXbzZ2SxPOhPp+YExzj9v9m+Wp5yH9PzAmA4doH+ocmWWJ7yP6fmBMR16TAddZ1/mujrLu+/5NmNafmBMhx6rvn4SezLXnVneec/T8wNjOvRY9fWTpOzJ3Rk5Y63K2dE2V1p+SHJ0jirPV4cem5XhDX0185l0+D6rnukrvxuetJcrKT8kOTtHVWesQ4+tytC1z+7c4+xn0uX7rGqmr/pmqJKeH1aZ2QPV3VfVY1UZVt3nlf/eu9bRb7OzPtHr1e9n4jkYcZYlIT90MLMHqrspbY2q7OvK/ap+bpYFHf0AY9gslw==
   </data>
  </layer>
- <layer name="startPosition" width="500" height="14">
+ <layer name="startPosition" width="500" height="14" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzkEJAAAIBLDD/qENcQ9BtgRLAAAAAAAAAAAA4I+5DgAAAAAAAAAAAAAAAAAAAAAAUFn58AAD
   </data>
  </layer>
  <layer name="enemies" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt3LENACAIBECs3H9jZwCjwXjXQvEl+YIIAADgdXNzDgAAAAAAAAAAAAAAAEDOOLQLAAAAAFBR7SH1lwAA/3IL3tHlL2yXHAAAkLEA7p4AIg==
+   eJzt2LENACAMA7Ay8f/HLDzQSgUk7DlDxigRAAAAAAAAAAAAAAAAAAAAAGSMpiwAAAAAQEX1h/RfAgD8yxY8Y94usL3SAwAAMhaZwwAU
   </data>
  </layer>
  <layer name="steroids" width="500" height="14">
@@ -37,17 +37,17 @@
  </layer>
  <layer name="pitfalls" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0sEJACAMA8BM0P3HdQF9FMV+7iDvhNIEAAAAAAAAAAAAAAAAAAAAAAAAAAAAkpoeAAAAAINqE3p2N+zkR8dN92v+DOBsAa6AAoU=
+   eJzt0sEJADAIA0An6P7jdgH7kIof7yDvQEgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwG4nCTXZhpVMdPx0d/MzgLcLcNECdw==
   </data>
  </layer>
  <layer name="finishlevel" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztziEBAAAIA7Ab+ldGPwGCLcESAAAAAAAAgDbXAQAAAAAAAAAAAAAAAAAAAAAAAADgrQUC9gAG
+   eJztzjENAAAIAzAeTvzbRcZIaBW06rdJBwAAAAAAAOCgTgcAAAAAAAAAAAAAAAAAAAAAAAAAgLcWhCEAEw==
   </data>
  </layer>
  <layer name="obstacles" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt20EKgzAQBdD0ADmCp+mVPZ6CXSh0IxSVmY6+B38ZmEXgk4S0BgAAVDQFrwMAAAAAAAAAAAAAgMr6GgD+0/jJ+5U9xW8i/2j5D5ZrKLIngRrG7AEgUW9553J9DgDX0OdApDl7gAepci/PcX0n0fQ5PM8d+nz6ylnbe/iWK+nzWBlv+Ht9Ht3p+hwAgCwLdk4PNg==
+   eJzt2VEKQEAUhlEWYAlWY8uWR6EoeRKaa2bOqf/ZfVBf0TQAAAAAAAAAAAAAAAAAAFC2bh8A/zSuG9roK+6ZCn1WDlL3vM/knQTyMEYfAIG6y1LScwB4L7LlGz2H+szRB1Qkl+/yPHftuJ4DqZTQ8+m0t47/4ce+pOfl03MAAGq3AAICDGk=
   </data>
  </layer>
 </map>

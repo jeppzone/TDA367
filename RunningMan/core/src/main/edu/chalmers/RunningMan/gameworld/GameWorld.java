@@ -74,6 +74,7 @@ public class GameWorld implements PropertyChangeListener {
             timeSinceDeath.update(deltaTime);
             updateRemainingControllers(deltaTime);
             if(timeSinceDeath.isTimeUp()){
+                audioController.stopIntroMusic();
                 if(player.isDead()){
                     pcs.firePropertyChange("dead", null, null);
                 }else{
@@ -125,7 +126,7 @@ public class GameWorld implements PropertyChangeListener {
             levelController = new LevelController(level,weapon.getBullets());
             player.addPropertyChangeListener(level);
             hudView = new HudView(level);
-            audioController.playMusic();
+            audioController.playIntroMusic();
 
 
         } catch(MapHandlerException e) {

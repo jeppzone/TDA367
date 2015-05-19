@@ -19,8 +19,12 @@ public class AudioController implements PropertyChangeListener {
         audio = new AudioHandler();
     }
 
-    public void playMusic(){
-        audio.playMusic();
+    public void playIntroMusic(){
+        audio.playIntroMusic();
+    }
+
+    public void stopIntroMusic(){
+        audio.stopMusic();
     }
 
     @Override
@@ -37,13 +41,13 @@ public class AudioController implements PropertyChangeListener {
         }
         if("suicide".equals(propertyName) && !hasPlayedSuicide){
             hasPlayedSuicide = true;
+            audio.playFailedMusic();
             audio.playShootSound();
-            audio.stopMusic();
         }
         if("die".equals(propertyName) && !hasPlayedDie){
             hasPlayedDie = true;
+            audio.playFailedMusic();
             audio.playDieSound();
-            audio.stopMusic();
         }
         if("pickupsteroid".equals(propertyName)){
             audio.playSteroidPickUpSound();
@@ -53,12 +57,15 @@ public class AudioController implements PropertyChangeListener {
         }
         if("helicopter".equals(propertyName) && !hasPlayedHelicopter){
             hasPlayedHelicopter = true;
-            audio.stopMusic();
             audio.playHelicopterSound();
             audio.playSuccessMusic();
         }
         if("startlevel".equals(propertyName)){
             audio.playStartLevelSound();
+        }
+        if("time".equals(propertyName)){
+            audio.playFailedMusic();
+            audio.stopMusic();
         }
     }
 }
