@@ -60,6 +60,7 @@ public class HighScoreTest extends Assert {
         highScoreLevel1.loadFromFile();
 
         assertEquals((int)highScoreLevel1.getHighScores().get(0), 4);
+        highScoreLevel1.getHighScores().clear();
     }
 
 

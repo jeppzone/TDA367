@@ -14,7 +14,6 @@ public class HudView extends Stage {
 
     private TimeView timeView;
     private KillCountView killCountView;
-    private Level level;
     private OrthographicCamera camera;
     private Batch batch;
 

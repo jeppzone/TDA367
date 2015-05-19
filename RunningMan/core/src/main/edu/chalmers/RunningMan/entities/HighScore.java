@@ -11,10 +11,12 @@ public class HighScore {
     private List<Integer> highScores;
     private String levelName;
     private Scanner scanner;
+    private boolean isFull;
     private static final int MAX_HIGHSCORES = 5;
 
     public HighScore(String levelName){
         highScores = new ArrayList<>();
+        isFull = false;
         this.levelName = levelName;
     }
 
@@ -23,16 +25,22 @@ public class HighScore {
         if (highScores.size() < MAX_HIGHSCORES){
             return true;
         }
-        while(iterator.hasNext()){
+        isFull = true;
+        int counter = 0;
+        while(iterator.hasNext() && counter < 5){
             if(score > (int)iterator.next()){
                 return true;
             }
+            counter ++;
         }
         return false;
     }
 
     public void addScore(int score){
         if(isHighScore(score)){
+            if(isFull) {
+                highScores.remove(MAX_HIGHSCORES - 1);
+            }
             highScores.add(score);
         }
     }

@@ -40,6 +40,7 @@ public class GameWorld implements PropertyChangeListener {
     private Time timeSinceDeath;
     private HelicopterController helicopterController;
     private String levelName;
+    private static HighScoreView highScoreView;
 
     private static final float DEATH_ANIMATION_TIME = 1.15f;
 
@@ -80,9 +81,10 @@ public class GameWorld implements PropertyChangeListener {
                 if(player.isDead()){
                     pcs.firePropertyChange("dead", null, null);
                 }else{
-                    pcs.firePropertyChange("finish", null, null);
                     level.addScore();
-                    System.out.println(level.getHighScores().get(0));
+                    highScoreView = new HighScoreView(level.getHighScores(), level.getLevelName());
+                    pcs.firePropertyChange("finish", null, null);
+
                 }
                 timeSinceDeath.resetTime();
             }
@@ -102,6 +104,7 @@ public class GameWorld implements PropertyChangeListener {
         playerController.update(deltaTime);
         levelController.update(deltaTime);
     }
+
 
     public final void loadLevel() {
 
@@ -136,6 +139,10 @@ public class GameWorld implements PropertyChangeListener {
         } catch(MapHandlerException e) {
             System.out.println("loadLevel in GameWorld");
         }
+    }
+
+    public static HighScoreView getHighScoreView(){
+        return highScoreView;
     }
 
     @Override

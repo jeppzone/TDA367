@@ -2,12 +2,9 @@ package edu.chalmers.RunningMan;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import edu.chalmers.RunningMan.controllers.AudioController;
 import edu.chalmers.RunningMan.gameworld.LoadLevelScreen;
+import edu.chalmers.RunningMan.gameworld.HighScoreScreen;
 import edu.chalmers.RunningMan.gameworld.MainMenuScreen;
-import edu.chalmers.RunningMan.utils.InputProcessor;
 import edu.chalmers.RunningMan.gameworld.GameScreen;
 
 import java.beans.PropertyChangeEvent;
@@ -17,10 +14,11 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
     public static final String TITLE = "RunningMan";
     public static final int SCALE = 3;
-
-    private GameScreen gameScreen;
-    private MainMenuScreen mainMenuScreen;
+    
     private LoadLevelScreen loadLevelScreen;
+    public GameScreen gameScreen;
+    public MainMenuScreen mainMenuScreen;
+    private HighScoreScreen highScoreScreen;
 
 	@Override
 	public void create () {
@@ -48,6 +46,11 @@ public class RunningMan extends Game implements PropertyChangeListener {
         mainMenuScreen.addPropertyChangeListener(this);
     }
 
+    private void createHighScoreScreen(){
+        highScoreScreen = new HighScoreScreen();
+        highScoreScreen.addPropertyChangeListener(this);
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final String eventName = evt.getPropertyName();
@@ -67,6 +70,9 @@ public class RunningMan extends Game implements PropertyChangeListener {
         } else if(eventName.equals("level2")) {
             gameScreen.createWorld("level2");
             setScreen(gameScreen);
+        }else if(eventName.equals("finish")){
+            createHighScoreScreen();
+            setScreen(highScoreScreen);// change to highscorescreen later
         }
     }
 }
