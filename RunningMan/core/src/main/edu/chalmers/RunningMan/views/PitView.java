@@ -15,10 +15,11 @@ public class PitView extends Actor{
 
     private Pit pit;
     private Texture texture;
+    private final static String TILES_LOCATION = "core/assets/tilesets/";
 
-    public PitView(Pit pit) {
+    public PitView(Pit pit, String levelName) {
         this.pit = pit;
-        texture = new Texture(Gdx.files.internal("core/assets/pitfall.png"));
+        texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName +"pitfall.png"));
     }
 
     public void draw(Batch batch, float deltaTime){

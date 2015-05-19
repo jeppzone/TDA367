@@ -31,7 +31,7 @@ public class Factory {
 
             if(apo.getClass() == Pit.class) {
                 Pit pit = (Pit) apo;
-                PitView pitView = new PitView(pit);
+                PitView pitView = new PitView(pit, levelName);
                 controllers.add(new PitController(pit, pitView));
                 actors.add(pitView);
             } else if(apo.getClass() == Ground.class) {
