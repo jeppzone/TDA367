@@ -79,6 +79,8 @@ public class GameWorld implements PropertyChangeListener {
                     pcs.firePropertyChange("dead", null, null);
                 }else{
                     pcs.firePropertyChange("finish", null, null);
+                    level.addScore();
+                    System.out.println(level.getHighScores().get(0));
                 }
                 timeSinceDeath.resetTime();
                 }

@@ -28,7 +28,7 @@ public class PlayerController implements IEntityController {
 
         }else if(Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.LEFTBTN)){
             player.jump(deltaTime);
-                player.moveLeft(deltaTime);
+            player.moveLeft(deltaTime);
         } else if(Input.isPressed(Input.JUMPBTN)){
             player.jump(deltaTime);
         } else if(Input.isPressed(Input.RIGHTBTN)) {

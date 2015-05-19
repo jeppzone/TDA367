@@ -19,6 +19,7 @@ public class Level implements PropertyChangeListener {
     private Time time;
     private int playerScore;
     private PropertyChangeSupport pcs;
+    private HighScore highScores;
 
     public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
         this.mapObjects = mapObjects;
@@ -27,6 +28,8 @@ public class Level implements PropertyChangeListener {
         time = new Time(MAX_TIME);
         pcs = new PropertyChangeSupport(this);
         playerScore = 0;
+        highScores = new HighScore(levelName);
+        highScores.loadFromFile();
     }
 
     /**
@@ -89,8 +92,8 @@ public class Level implements PropertyChangeListener {
         }
     }
 
-    public int getPlayerScore(){
-        return getEnemiesKilled() + getTimeLeft();
+    public void setPlayerScore(){
+        playerScore = getEnemiesKilled() + getTimeLeft();
     }
 
     public int getTimeLeft(){
@@ -158,5 +161,15 @@ public class Level implements PropertyChangeListener {
             time.start();
             pcs.firePropertyChange("startlevel", null, null);
         }
+    }
+
+    public void addScore(){
+        setPlayerScore();
+        highScores.addScore(playerScore);
+        highScores.saveToFile();
+    }
+
+    public List<Integer> getHighScores(){
+        return highScores.getHighScores();
     }
 }
