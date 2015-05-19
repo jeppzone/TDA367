@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Created by Jesper on 5/17/2015.
+ * @author Jesper Olsson
  */
 public class HighScore {
 
@@ -12,6 +12,9 @@ public class HighScore {
     private String levelName;
     private Scanner scanner;
     private boolean isFull;
+    /**
+     * Constant for the amount of scores on the high score list
+     */
     private static final int MAX_HIGHSCORES = 5;
 
     public HighScore(String levelName){
@@ -20,6 +23,12 @@ public class HighScore {
         this.levelName = levelName;
     }
 
+    /**
+     * Method to check if the given score makes the high score list
+     * @param score the score to check
+     * @return true if the amount of highscores are less than 5
+     * or the score is larger than one of the current scores on the list
+     */
     public boolean isHighScore(int score){
         final Iterator iterator = highScores.iterator();
         if (highScores.size() < MAX_HIGHSCORES){
@@ -36,6 +45,10 @@ public class HighScore {
         return false;
     }
 
+    /**
+     * Add score to the high score list if it's large enough
+     * @param score the score to add
+     */
     public void addScore(int score){
         if(isHighScore(score)){
             if(isFull) {
@@ -49,6 +62,10 @@ public class HighScore {
         return highScores;
     }
 
+    /**
+     * Method to save the current high scores for the given level
+     * to a text file, which can be loaded at any time
+     */
     public void saveToFile(){
         Writer writer = null;
 
@@ -69,6 +86,9 @@ public class HighScore {
         }
     }
 
+    /**
+     * Method to read high scores for the given level from text file
+     */
     public void loadFromFile() {
         try{
             scanner =  new Scanner(new FileReader("HS"+levelName+".txt"));
