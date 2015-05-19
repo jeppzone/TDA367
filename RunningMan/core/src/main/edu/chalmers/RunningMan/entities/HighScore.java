@@ -9,14 +9,12 @@ import java.util.*;
 public class HighScore {
 
     private List<Integer> highScores;
-    private Map<String, List<Integer>> highScoreMap;
     private String levelName;
     private Scanner scanner;
     private static final int MAX_HIGHSCORES = 5;
 
     public HighScore(String levelName){
         highScores = new ArrayList<>();
-        highScoreMap = new HashMap<>();
         this.levelName = levelName;
     }
 
