@@ -109,7 +109,7 @@ public class MapHandler implements IMapHandler {
                     physicalObjects.add(new Obstacle(position, size));
                 } else if(startPositionCell != null && startPositionCell.getTile() != null) {
                     playerStartPosition = position;
-                    playerStartPosition.setY(position.getY() + 10);
+                    playerStartPosition.setY(position.getY() + 1000);
                 }
 
             }

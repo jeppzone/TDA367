@@ -1,42 +1,40 @@
 package edu.chalmers.RunningMan.gameworld;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import edu.chalmers.RunningMan.utils.WindowSize;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- * A screen class which handles the main menu
+ * A screen class which handles the loading level menu
  */
-public class MainMenuScreen implements IScreen {
+public class LoadLevelScreen implements IScreen {
 
     private Stage stage;
+    //private TextureAtlas atlas = new TextureAtlas("core/assetes/loadLevelMenu/loadlevelmenu_buttonsheet");
     private TextureAtlas atlas = new TextureAtlas("core/assets/mainmenu/mainmenu_buttonsheet.txt");
     private Skin skin;
     private Table table;
-    private TextButton buttonPlay, buttonExit;
-    private BitmapFont whiteFont, blackFont;
+    private TextButton buttonLevel1, buttonLevel2;
+    private BitmapFont blackFont, whiteFont;
     private Label heading;
-    private PropertyChangeSupport pcs;
     private TextButtonStyle textButtonStyle;
+    private PropertyChangeSupport pcs;
 
-    public MainMenuScreen() {
+    public LoadLevelScreen() {
         super();
         pcs = new PropertyChangeSupport(this);
     }
@@ -46,7 +44,6 @@ public class MainMenuScreen implements IScreen {
      */
     @Override
     public void show() {
-
         stage = new Stage();
         // input processor so buttons can be pressed
         Gdx.input.setInputProcessor(stage);
@@ -68,10 +65,10 @@ public class MainMenuScreen implements IScreen {
         table.add(heading);
         table.getCell(heading).spaceBottom(30);
         table.row();
-        table.add(buttonPlay);
-        table.getCell(buttonPlay).spaceBottom(15);
+        table.add(buttonLevel1);
+        table.getCell(buttonLevel1).spaceBottom(15);
         table.row();
-        table.add(buttonExit);
+        table.add(buttonLevel2);
         //table.debug();
 
         // add to stage
@@ -83,7 +80,7 @@ public class MainMenuScreen implements IScreen {
      */
     private void createFonts() {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
-        FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 70;
         parameter.color = Color.BLACK;
         blackFont = generator.generateFont(parameter);
@@ -108,28 +105,20 @@ public class MainMenuScreen implements IScreen {
      * Create buttons
      */
     private void createButtons() {
-        buttonPlay = new TextButton("PLAY", textButtonStyle);
-        buttonPlay.addListener(new ClickListener());
-        buttonPlay.pad(20);
+        buttonLevel1 = new TextButton("1", textButtonStyle);
+        buttonLevel1.addListener(new ClickListener());
+        buttonLevel1.pad(20);
 
-        buttonExit = new TextButton("EXIT", textButtonStyle);
-        buttonExit.addListener(new ClickListener());
-        buttonExit.pad(20);
+        buttonLevel2 = new TextButton("2", textButtonStyle);
+        buttonLevel2.addListener(new ClickListener());
+        buttonLevel2.pad(20);
     }
 
     /**
      * Create heading
      */
     private void createHeading() {
-        heading = new Label("RunningMan", new LabelStyle(whiteFont, Color.WHITE));
-    }
-
-    public void	addPropertyChangeListener(PropertyChangeListener listener){
-        pcs.addPropertyChangeListener(listener);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener listener){
-        pcs.removePropertyChangeListener(listener);
+        heading = new Label("Levels", new Label.LabelStyle(whiteFont, Color.WHITE));
     }
 
     /**
@@ -139,15 +128,14 @@ public class MainMenuScreen implements IScreen {
      */
     @Override
     public void render(float delta) {
-
         clearScreen();
 
-        if(buttonExit.isPressed()) {
-            Gdx.app.exit();
+        if(buttonLevel1.isPressed()) {
+            pcs.firePropertyChange("level1", null, null);
         }
 
-        if(buttonPlay.isPressed()) {
-            pcs.firePropertyChange("loadScreen", null, null);
+        if(buttonLevel2.isPressed()) {
+            pcs.firePropertyChange("level2", null, null);
         }
 
         stage.act(delta);
@@ -167,6 +155,7 @@ public class MainMenuScreen implements IScreen {
      */
     @Override
     public void resize(int width, int height) {
+
     }
 
     /**
@@ -198,10 +187,19 @@ public class MainMenuScreen implements IScreen {
      */
     @Override
     public void dispose() {
-        stage.dispose();
-        atlas.dispose();
-        whiteFont.dispose();
-        blackFont.dispose();
-        skin.dispose();
+
     }
+
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        pcs.addPropertyChangeListener(listener);
+
+    }
+
+    @Override
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        pcs.addPropertyChangeListener(listener);
+    }
+
 }
+

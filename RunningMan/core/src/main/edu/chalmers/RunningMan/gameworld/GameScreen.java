@@ -13,18 +13,17 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- * Created by Kvist1 on 2015-04-22.
+ * A screen class which handles the game
  */
-public class GameScreen implements Screen, PropertyChangeListener {
+public class GameScreen implements IScreen, PropertyChangeListener {
+
     private PropertyChangeSupport pcs;
     private GameWorld world;
     private AudioController audioController;
+
     public GameScreen() {
-        //Gdx.app.log("GameScreen", "Attached");
         super();
         pcs = new PropertyChangeSupport(this);
-        world = new GameWorld();
-        world.addPropertyChangeListener(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -33,6 +32,11 @@ public class GameScreen implements Screen, PropertyChangeListener {
 
     public void removePropertyChangeListener(PropertyChangeListener listener){
         pcs.addPropertyChangeListener(this);
+    }
+
+    public void createWorld(String level) {
+        world = new GameWorld(level);
+        world.addPropertyChangeListener(this);
     }
 
     @Override
@@ -75,7 +79,6 @@ public class GameScreen implements Screen, PropertyChangeListener {
 
     @Override
     public void dispose() {
-        // Leave blank
     }
 
     @Override
@@ -83,7 +86,7 @@ public class GameScreen implements Screen, PropertyChangeListener {
         pcs.firePropertyChange(evt.getPropertyName(), null, null);
         final String eventName = evt.getPropertyName();
         if (eventName.equals("dead") || eventName.equals("finish") || eventName.equals("time")) {
-            world = new GameWorld();
+            world = new GameWorld("level1");
             world.addPropertyChangeListener(this);
         }
     }

@@ -39,10 +39,12 @@ public class GameWorld implements PropertyChangeListener {
     private PropertyChangeSupport pcs;
     private Time timeSinceDeath;
     private HelicopterController helicopterController;
+    private String levelName;
 
     private static final float DEATH_ANIMATION_TIME = 1.15f;
 
-    public GameWorld() {
+    public GameWorld(String levelName) {
+        this.levelName = levelName;
         startLevel();
     }
 
@@ -83,8 +85,8 @@ public class GameWorld implements PropertyChangeListener {
                     System.out.println(level.getHighScores().get(0));
                 }
                 timeSinceDeath.resetTime();
-                }
             }
+        }
         levelView.draw();
         hudView.draw();
     }
@@ -104,6 +106,7 @@ public class GameWorld implements PropertyChangeListener {
     public final void loadLevel() {
 
         try {
+
             audioController = new AudioController("level2");
             mapHandler = new MapHandler("level2");
             player = new Player( new Position(mapHandler.getPlayerStartPosition()), new Size(50,50), 100);
