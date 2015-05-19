@@ -20,7 +20,7 @@
    eJzt1jEOgzAQBMB8IP//bnoEBGTjuxUzkpsUYTF4j88HAAAAAHja92ABABmOZrl5DiTRXbzZ2SxPOhPp+YExzj9v9m+Wp5yH9PzAmA4doH+ocmWWJ7yP6fmBMR16TAddZ1/mujrLu+/5NmNafmBMhx6rvn4SezLXnVneec/T8wNjOvRY9fWTpOzJ3Rk5Y63K2dE2V1p+SHJ0jirPV4cem5XhDX0185l0+D6rnukrvxuetJcrKT8kOTtHVWesQ4+tytC1z+7c4+xn0uX7rGqmr/pmqJKeH1aZ2QPV3VfVY1UZVt3nlf/eu9bRb7OzPtHr1e9n4jkYcZYlIT90MLMHqrspbY2q7OvK/ap+bpYFHf0AY9gslw==
   </data>
  </layer>
- <layer name="startPosition" width="500" height="14" visible="0">
+ <layer name="startPosition" width="500" height="14">
   <data encoding="base64" compression="zlib">
    eJztzkEJAAAIBLDD/qENcQ9BtgRLAAAAAAAAAAAA4I+5DgAAAAAAAAAAAAAAAAAAAAAAUFn58AAD
   </data>
@@ -42,7 +42,7 @@
  </layer>
  <layer name="finishlevel" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIAzAeTvzbRcZIaBW06rdJBwAAAAAAAOCgTgcAAAAAAAAAAAAAAAAAAAAAAAAAgLcWhCEAEw==
+   eJztziEBAAAIA7Ab+ldGPwGCLcESAAAAAAAAgDbXAQAAAAAAAAAAAAAAAAAAAAAAAADgrQUC9gAG
   </data>
  </layer>
  <layer name="obstacles" width="500" height="14">
