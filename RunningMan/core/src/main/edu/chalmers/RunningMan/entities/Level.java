@@ -15,7 +15,6 @@ public class Level implements PropertyChangeListener {
     private final String levelName;
     private int enemiesKilled;
     private static final int MAX_TIME = 100;
-    private boolean hasFiredOnce = false;
     private Time time;
     private int playerScore;
     private PropertyChangeSupport pcs;
@@ -98,9 +97,6 @@ public class Level implements PropertyChangeListener {
 
     public int getTimeLeft(){
         return time.getTimeLeftInteger();
-    }
-    public boolean hasFiredOnce(){
-        return hasFiredOnce;
     }
 
     /**
