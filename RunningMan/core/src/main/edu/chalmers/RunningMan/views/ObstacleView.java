@@ -11,14 +11,13 @@ import edu.chalmers.RunningMan.entities.Obstacle;
  * A class to represent the view of obstacle objects.
  */
 public class ObstacleView extends Actor {
-    private final Obstacle obstacle;
-    private final SpriteBatch sb;
-    private final Texture rockObstacle;
+    private Obstacle obstacle;
+    private Texture texture;
+    private final static String TILES_LOCATION = "core/assets/tilesets/";
 
-    public ObstacleView(Obstacle obstacle){
+    public ObstacleView(Obstacle obstacle, String levelName){
         this.obstacle = obstacle;
-        sb = new SpriteBatch();
-        rockObstacle = new Texture(Gdx.files.internal("core/assets/rockobstacle.png"));
+        texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName + "obstacle.png"));
     }
 
     /**
@@ -26,7 +25,7 @@ public class ObstacleView extends Actor {
      */
     public void draw(Batch batch, float deltaTime){
         batch.begin();
-        batch.draw(rockObstacle, obstacle.getPosition().getX(), obstacle.getPosition().getY(), obstacle.getSize().getWidth(), obstacle.getSize().getHeight());
+        batch.draw(texture, obstacle.getPosition().getX(), obstacle.getPosition().getY(), obstacle.getSize().getWidth(), obstacle.getSize().getHeight());
         batch.end();
     }
 }

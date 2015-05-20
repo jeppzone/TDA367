@@ -28,7 +28,6 @@ public class Factory {
 
     private void addViewsAndControllers() {
         for(final AbstractPhysicalObject apo: mapObjects) {
-
             if(apo.getClass() == Pit.class) {
                 Pit pit = (Pit) apo;
                 PitView pitView = new PitView(pit, levelName);
@@ -52,7 +51,7 @@ public class Factory {
                 actors.add(steroidView);
             } else if(apo.getClass() == Obstacle.class) {
                 Obstacle obstacle = (Obstacle) apo;
-                ObstacleView obstacleView = new ObstacleView(obstacle);
+                ObstacleView obstacleView = new ObstacleView(obstacle, levelName);
                 actors.add(obstacleView);
             }else if(apo.getClass() == Helicopter.class){
                 Helicopter helicopter = (Helicopter) apo;
