@@ -1,7 +1,5 @@
 package edu.chalmers.RunningMan.model;
 
-import edu.chalmers.RunningMan.model.level.mapobjects.IVisitable;
-
 import java.awt.*;
 
 /**

@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects;
+package edu.chalmers.RunningMan.model;
 
 import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
 
