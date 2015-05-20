@@ -20,17 +20,26 @@ public class PlayerView extends Actor{
     private TextureRegion jumpRightSprite, jumpLeftSprite;
     private Animation walkRightAnimation, walkLeftAnimation,dieAnimation,dieByPitfallAnimation;
 
-    private final static String SPRITE_WALK_RIGHT_SHEET = "core/assets/walk_right_sheet_soldier.png";
-    private final static String SPRITE_WALK_LEFT_SHEET = "core/assets/walk_left_sheet_soldier.png";
-    private final static String SPRITE_JUMP_RIGHT = "core/assets/jump_right_soldier.png";
-    private final static String SPRITE_JUMP_LEFT = "core/assets/jump_left_soldier.png";
-    private final static String SPRITE_DEAD = "core/assets/soldierdie.png";
-    private final static String SPRITE_DEAD_BY_PITFALL = "core/assets/soldierdiebypitfall.png";
+    private final static String ANIMATION_LOCATION = "core/assets/animations/";
+
+    private static String SPRITE_WALK_RIGHT_SHEET;
+    private static String SPRITE_WALK_LEFT_SHEET;
+    private static String SPRITE_JUMP_RIGHT;
+    private static String SPRITE_JUMP_LEFT;
+    private static String SPRITE_DEAD = "core/assets/soldierdie.png";
+    private static String SPRITE_DEAD_BY_PITFALL = "core/assets/soldierdiebypitfall.png";
 
     private float stateTime,deathTime;
 
-    public PlayerView(Player player){
+    public PlayerView(Player player, String levelName){
         this.player = player;
+
+
+        SPRITE_WALK_RIGHT_SHEET = ANIMATION_LOCATION + levelName + "walk_right_sheet_soldier.png";
+        SPRITE_WALK_LEFT_SHEET = ANIMATION_LOCATION + levelName + "walk_left_sheet_soldier.png";
+        SPRITE_JUMP_RIGHT = ANIMATION_LOCATION + levelName + "jump_right_soldier.png";
+        SPRITE_JUMP_LEFT = ANIMATION_LOCATION + levelName + "jump_left_soldier.png";
+
 
         try {
             walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);

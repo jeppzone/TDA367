@@ -26,7 +26,7 @@ public class LevelView extends Stage {
         this.player = player;
         this.views = views;
         views.add(bulletView);
-        playerView = new PlayerView(player);
+        playerView = new PlayerView(player, levelName);
         initCamera();
         try {
             background = new Texture("core/assets/backgrounds/" + levelName + ".jpg");
