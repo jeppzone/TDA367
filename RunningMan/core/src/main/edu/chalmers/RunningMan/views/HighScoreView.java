@@ -19,8 +19,6 @@ public class HighScoreView extends HudFont {
 
     public HighScoreView(List<Integer> scores, String levelName){
         this.scores = scores;
-        Collections.sort(scores, Collections.reverseOrder());
-        Collections.reverseOrder();
         this.levelName = levelName;
         batch = new SpriteBatch();
         generateFont();

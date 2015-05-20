@@ -59,6 +59,7 @@ public class HighScore {
     }
 
     public List<Integer> getHighScores(){
+        Collections.sort(highScores, Collections.reverseOrder());
         return highScores;
     }
 
