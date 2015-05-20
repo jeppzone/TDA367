@@ -23,10 +23,6 @@ public class LevelController implements IEntityController {
         this.bullets = bullets;
     }
 
-    /**
-     *
-     * @param deltaTime
-     */
 
     public void update(float deltaTime){
         for(int i = 0; i < bullets.size(); i ++ ){

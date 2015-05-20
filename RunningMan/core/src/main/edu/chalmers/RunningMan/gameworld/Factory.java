@@ -31,12 +31,10 @@ public class Factory {
             if(apo.getClass() == Pit.class) {
                 Pit pit = (Pit) apo;
                 PitView pitView = new PitView(pit, levelName);
-                controllers.add(new PitController(pit, pitView));
                 actors.add(pitView);
             } else if(apo.getClass() == Ground.class) {
                 Ground ground = (Ground) apo;
                 GroundView groundView = new GroundView(ground, levelName);
-                controllers.add(new GroundController(ground, groundView));
                 actors.add(groundView);
             } else if(apo.getClass() == Enemy.class) {
                 Enemy enemy = (Enemy) apo;

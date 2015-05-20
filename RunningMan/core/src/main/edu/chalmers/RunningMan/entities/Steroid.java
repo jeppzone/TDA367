@@ -15,8 +15,7 @@ public class Steroid extends AbstractPowerUp {
     }
 
     @Override
-    public void acceptVisitor(IVisitor visitor)
-    {
+    public void acceptVisitor(IVisitor visitor) {
         if(!isPickedUp() && visitor instanceof Player) {
             visitor.visit(this);
             setPickedUp(true);
