@@ -21,6 +21,5 @@ public class EnemyController implements IEntityController {
         if(enemy.getPosition().getX() < 1){
             enemy.changeDirection();
         }
-        //enemyView.draw();
     }
 }
