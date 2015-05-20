@@ -72,7 +72,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
         } else if(eventName.equals("finish")) {
             createHighScoreScreen();
-            setScreen(highScoreScreen);
+            setScreen(mainMenuScreen);
         }
     }
 }

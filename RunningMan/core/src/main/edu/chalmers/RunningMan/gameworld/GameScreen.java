@@ -19,15 +19,14 @@ public class GameScreen implements IScreen, PropertyChangeListener {
 
     private PropertyChangeSupport pcs;
     private GameWorld world;
-    private AudioController audioController;
     private String level;
 
     public GameScreen(String level) {
         super();
         this.level = level;
         pcs = new PropertyChangeSupport(this);
-        world = new GameWorld(level);
-        world.addPropertyChangeListener(this);
+            world = new GameWorld(level);
+            world.addPropertyChangeListener(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -90,10 +89,6 @@ public class GameScreen implements IScreen, PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         pcs.firePropertyChange(evt.getPropertyName(), null, null);
-        final String eventName = evt.getPropertyName();
-        if (eventName.equals("dead") || eventName.equals("finish") || eventName.equals("time")) {
-            world = new GameWorld(level);
-            world.addPropertyChangeListener(this);
-        }
+
     }
 }
