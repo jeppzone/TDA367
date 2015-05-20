@@ -16,7 +16,7 @@ import java.util.List;
 public class WeaponTest extends Assert {
     private float FIRE_DELAY;
     private Position position;
-    private ISize size, windowSize;
+    private ISize size, mockSize;
     private Player player;
     private Weapon weapon;
     private Bullet bullet;
@@ -24,7 +24,7 @@ public class WeaponTest extends Assert {
 
     public Weapon makeWeapon(){
 
-        return new Weapon(player,windowSize);
+        return new Weapon(player, mockSize);
     }
 
     public void placeBullet(){
@@ -39,7 +39,7 @@ public class WeaponTest extends Assert {
         FIRE_DELAY = 500f;
         position = new Position(20,00);
         size = new Size(1,1);
-        windowSize = new WindowSize();
+        mockSize = new MockSize();
         player = new Player(position, size, 100);
     }
 
@@ -60,9 +60,9 @@ public class WeaponTest extends Assert {
     public void testGetBulletList(){
 
         weapon = makeWeapon();
-        weapon.getBullets().add(new Bullet(size,position, player.getLastMovedDirection(),windowSize));
-        weapon.getBullets().add(new Bullet(size,position, player.getLastMovedDirection(),windowSize));
-        weapon.getBullets().add(new Bullet(size,position, player.getLastMovedDirection(),windowSize));
+        weapon.getBullets().add(new Bullet(size,position, player.getLastMovedDirection(), mockSize));
+        weapon.getBullets().add(new Bullet(size,position, player.getLastMovedDirection(), mockSize));
+        weapon.getBullets().add(new Bullet(size,position, player.getLastMovedDirection(), mockSize));
         weapon.getBullets().remove(2);
         assertTrue(weapon.getBullets().size() == 2);
     }
@@ -71,9 +71,9 @@ public class WeaponTest extends Assert {
     public void testGetBulletCorrectBullet(){
 
         weapon = makeWeapon();
-        weapon.getBullets().add(new Bullet(size, position, player.getLastMovedDirection(), windowSize));
-        weapon.getBullets().add(new Bullet(size,new Position(50,50), player.getLastMovedDirection(),windowSize));
-        weapon.getBullets().add(new Bullet(size, position, player.getLastMovedDirection(), windowSize));
+        weapon.getBullets().add(new Bullet(size, position, player.getLastMovedDirection(), mockSize));
+        weapon.getBullets().add(new Bullet(size,new Position(50,50), player.getLastMovedDirection(), mockSize));
+        weapon.getBullets().add(new Bullet(size, position, player.getLastMovedDirection(), mockSize));
         weapon.getBullets().remove(2);
         weapon.getBullets().remove(0);
         assertEquals(new Position(50, 50), weapon.getBullets().get(0).getPosition());
