@@ -17,7 +17,12 @@ public class ObstacleView extends Actor {
 
     public ObstacleView(Obstacle obstacle, String levelName){
         this.obstacle = obstacle;
-        texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName + "obstacle.png"));
+        try {
+            texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName + "obstacle.png"));
+        }catch (Exception e){
+            throw new NullPointerException("Could not load obstacle image in ObstacleView: " + TILES_LOCATION +
+                    levelName + "obstacle.png does not exist");
+        }
     }
 
     /**

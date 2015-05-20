@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created by JohanTobin on 2015-05-06.
  */
@@ -42,7 +44,7 @@ public class AudioHandler {
             level1Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
             level2Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "level2music.mp3"));
         }catch (Exception e){
-
+            throw new NullPointerException("Missing soundfile in AudioHandler");
         }
     }
 

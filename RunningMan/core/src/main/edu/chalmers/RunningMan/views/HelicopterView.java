@@ -23,8 +23,12 @@ public class HelicopterView extends Actor {
 
     public HelicopterView(Helicopter finishObject){
         this.finishObject = finishObject;
+        try{
+            chopperHover = new Texture(SPRITE_CHOPPERHOVER);
+        }catch (Exception e){
+            throw new NullPointerException("Could not find core/assets/chopperhover.png in HelicopterView");
+        }
 
-        chopperHover = new Texture(SPRITE_CHOPPERHOVER);
         chopperHoverSprites = TextureRegion.split(chopperHover, 95, 62)[0];
         chopperHoverAnimation = new Animation(1/8f, chopperHoverSprites);
 

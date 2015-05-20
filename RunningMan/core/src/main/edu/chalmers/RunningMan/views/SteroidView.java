@@ -14,7 +14,12 @@ public class SteroidView extends Actor {
 
     public SteroidView(Steroid steroid){
         this.steroid = steroid;
-        texture = new Texture(Gdx.files.internal("core/assets/spruta.png"));
+        try {
+            texture = new Texture(Gdx.files.internal("core/assets/spruta.png"));
+        }catch (Exception e){
+            throw new NullPointerException("Could not find steroid image in SteroidView: core/assets/spruta.png " +
+                    "does not exist");
+        }
     }
 
     public void draw(Batch batch, float deltaTime){
