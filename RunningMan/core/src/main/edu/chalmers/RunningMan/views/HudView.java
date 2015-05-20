@@ -5,20 +5,19 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import edu.chalmers.RunningMan.entities.Level;
-import edu.chalmers.RunningMan.entities.Player;
 
 /**
  * Created by Jesper on 5/14/2015.
  */
 public class HudView extends Stage {
 
-    private TimeView timeView;
+    private TimerView timerView;
     private KillCountView killCountView;
     private OrthographicCamera camera;
     private Batch batch;
 
     public HudView(Level level){
-        timeView = new TimeView(level.getTime());
+        timerView = new TimerView(level.getTimer());
         killCountView = new KillCountView(level);
         initCamera();
     }
@@ -38,7 +37,7 @@ public class HudView extends Stage {
     public void draw(){
         final float deltaTime = Gdx.graphics.getDeltaTime();
         batch = getBatch();
-        timeView.draw(batch, deltaTime);
+        timerView.draw(batch, deltaTime);
         killCountView.draw(batch, deltaTime);
         updateCamera();
     }

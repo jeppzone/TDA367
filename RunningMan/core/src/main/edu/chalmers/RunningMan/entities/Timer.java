@@ -3,12 +3,12 @@ package edu.chalmers.RunningMan.entities;
 /**
  * Created by Jesper on 5/14/2015.
  */
-public class Time {
+public class Timer {
     private float currentTime;
     private float maxTime;
     private boolean hasStarted = false;
 
-    public Time(float maxTime){
+    public Timer(float maxTime){
         this.maxTime = maxTime;
         resetTime();
     }

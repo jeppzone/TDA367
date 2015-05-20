@@ -20,7 +20,7 @@ public abstract class AbstractPowerUp extends AbstractPhysicalObject implements 
 
     public abstract boolean isTimeUp();
 
-    public abstract Time getTime();
+    public abstract Timer getTimer();
     abstract public void acceptVisitor(IVisitor visitor);
 
 }

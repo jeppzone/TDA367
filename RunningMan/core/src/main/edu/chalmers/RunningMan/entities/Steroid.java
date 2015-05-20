@@ -8,7 +8,7 @@ package edu.chalmers.RunningMan.entities;
 public class Steroid extends AbstractPowerUp {
 
     private static final int MAX_TIME = 10;
-    private Time time;
+    private Timer timer;
 
     public Steroid(Position position, Size size){
         super(size, position);
@@ -20,20 +20,20 @@ public class Steroid extends AbstractPowerUp {
         if(!isPickedUp() && visitor instanceof Player) {
             visitor.visit(this);
             setPickedUp(true);
-            time = new Time(10);
-            time.start();
+            timer = new Timer(10);
+            timer.start();
         }
     }
 
     public void updateTime(float deltaTime){
-        time.update(deltaTime);
+        timer.update(deltaTime);
     }
 
-    public Time getTime(){
-        return time;
+    public Timer getTimer(){
+        return timer;
     }
 
     public boolean isTimeUp(){
-        return getTime().getTimeInteger() >= MAX_TIME;
+        return getTimer().getTimeInteger() >= MAX_TIME;
     }
 }

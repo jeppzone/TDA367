@@ -37,17 +37,17 @@ public class GameWorld implements PropertyChangeListener {
     private AudioController audioController;
     private HudView hudView;
     private PropertyChangeSupport pcs;
-    private Time timeSinceDeath;
+    private Timer timerSinceDeath;
     private HelicopterController helicopterController;
     private String levelName;
     private static HighScoreView highScoreView;
-    private Time loadTimer;
+    private Timer loadTimer;
 
     private static final float DEATH_ANIMATION_TIME = 1.15f;
 
     public GameWorld(String levelName) {
         this.levelName = levelName;
-        loadTimer = new Time(3);
+        loadTimer = new Timer(3);
         loadTimer.start();
         startLevel();
     }
@@ -60,7 +60,7 @@ public class GameWorld implements PropertyChangeListener {
         controllers.add(bulletController);
         controllers.add(weaponController);
         pcs = new PropertyChangeSupport(this);
-        timeSinceDeath = new Time(DEATH_ANIMATION_TIME);
+        timerSinceDeath = new Timer(DEATH_ANIMATION_TIME);
         helicopterController = factory.getHelicopterController();
     }
 
@@ -78,10 +78,10 @@ public class GameWorld implements PropertyChangeListener {
             if (!player.isDead() && !player.hasFinishedLevel()) {
                 updateControllers(deltaTime);
             } else {
-                timeSinceDeath.start();
-                timeSinceDeath.update(deltaTime);
+                timerSinceDeath.start();
+                timerSinceDeath.update(deltaTime);
                 updateRemainingControllers(deltaTime);
-                if (timeSinceDeath.isTimeUp()) {
+                if (timerSinceDeath.isTimeUp()) {
                     audioController.stopMusic();
                     if (player.isDead()) {
                         pcs.firePropertyChange("dead", null, null);
@@ -91,7 +91,7 @@ public class GameWorld implements PropertyChangeListener {
                         pcs.firePropertyChange("finish", null, null);
 
                     }
-                    timeSinceDeath.resetTime();
+                    timerSinceDeath.resetTime();
                 }
             }
             levelView.draw();

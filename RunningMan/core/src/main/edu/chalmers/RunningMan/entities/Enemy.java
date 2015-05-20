@@ -30,7 +30,8 @@ public class Enemy extends AbstractLivingObject {
     }
 
     /**
-     * Enum to represent the different movement states a enemy can be in
+     * Returns the current state of the enemy, so that the view
+     * will know which animation to use
      */
 
     public AnimationState getEnemyState(){
@@ -67,14 +68,25 @@ public class Enemy extends AbstractLivingObject {
         }
     }
 
+    /**
+     * Method to check if enemy is shot in back, for audio purposes
+     * @return true if the bullet hits enemy from behind, false otherwise
+     */
     public boolean isShotInback(){
         return this.isShotInback;
     }
 
+    /**
+     * Method to check if enemy is shot in fron, for audio purposes
+     * @return true if the bullet hits in front of enemy, false otherwise
+     */
     public boolean isShotInFront(){
         return this.isShotInFront;
     }
 
+    /**
+     * @return the current X-velocity of the enemy
+     */
     public float getVelocity(){
         return this.velocity;
     }
@@ -110,8 +122,7 @@ public class Enemy extends AbstractLivingObject {
             isShotInback = true;
             propertyChangeSupport.firePropertyChange("enemyshotinback", null, null);
         }
-        velocity = 0;
-       // bullet disappears after hitting an enemy
+        this.velocity = 0;
     }
 
     @Override

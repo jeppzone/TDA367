@@ -15,7 +15,7 @@ public class Level implements PropertyChangeListener {
     private final String levelName;
     private int enemiesKilled;
     private static final int MAX_TIME = 100;
-    private Time time;
+    private Timer timer;
     private int playerScore;
     private PropertyChangeSupport pcs;
     private HighScore highScores;
@@ -24,7 +24,7 @@ public class Level implements PropertyChangeListener {
         this.mapObjects = mapObjects;
         this.levelName = levelName;
         this.enemiesKilled = 0;
-        time = new Time(MAX_TIME);
+        timer = new Timer(MAX_TIME);
         pcs = new PropertyChangeSupport(this);
         playerScore = 0;
         highScores = new HighScore(levelName);
@@ -96,32 +96,32 @@ public class Level implements PropertyChangeListener {
     }
 
     public int getTimeLeft(){
-        return time.getTimeLeftInteger();
+        return timer.getTimeLeftInteger();
     }
 
     /**
      * Method to be called continiously to check
-     * it the level time is up
+     * it the level timer is up
      */
     public void checkTime(){
         if(isTimeUp()){
-            pcs.firePropertyChange("time", null, null);
+            pcs.firePropertyChange("timer", null, null);
         }
     }
     /**
      *
-     * @return the time object of this class
+     * @return the timer object of this class
      */
-    public Time getTime(){
-        return time;
+    public Timer getTimer(){
+        return timer;
     }
 
     /**
-     * Method to check if time is up
+     * Method to check if timer is up
      * @return true if getTimeInteger >= getMaxTime
      */
     public boolean isTimeUp(){
-            return time.isTimeUp();
+            return timer.isTimeUp();
     }
     public int getEnemiesKilled(){
         return enemiesKilled;
@@ -152,7 +152,7 @@ public class Level implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         final String eventName = evt.getPropertyName();
         if(eventName.equals("moveRight") || eventName.equals("moveLeft")){
-            time.start();
+            timer.start();
             pcs.firePropertyChange("startlevel", null, null);
         }
     }
