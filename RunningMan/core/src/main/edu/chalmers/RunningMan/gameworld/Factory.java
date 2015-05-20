@@ -1,9 +1,15 @@
 package edu.chalmers.RunningMan.gameworld;
 
-import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
-import edu.chalmers.RunningMan.entities.*;
+import edu.chalmers.RunningMan.model.*;
+import edu.chalmers.RunningMan.model.level.mapobjects.Ground;
+import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
+import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
+import edu.chalmers.RunningMan.model.level.mapobjects.Pit;
+import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
+import edu.chalmers.RunningMan.utils.audio.AudioController;
 import edu.chalmers.RunningMan.views.*;
 
 import java.util.ArrayList;

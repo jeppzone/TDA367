@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.entities.Weapon;
-import edu.chalmers.RunningMan.utils.Input;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Weapon;
+import edu.chalmers.RunningMan.utils.input.Input;
 
 /**
  * Created by Armand on 2015-05-14.

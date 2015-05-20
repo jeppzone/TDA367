@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.entities.Helicopter;
+import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
 
 /**
  * Created by Jesper on 5/7/2015.

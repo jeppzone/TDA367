@@ -4,9 +4,8 @@ package edu.chalmers.RunningMan.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.entities.Steroid;
+import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
 
 public class SteroidView extends Actor {
     private Steroid steroid;

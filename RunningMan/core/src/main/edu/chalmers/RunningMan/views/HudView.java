@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import edu.chalmers.RunningMan.entities.Level;
+import edu.chalmers.RunningMan.model.level.Level;
 
 /**
  * Created by Jesper on 5/14/2015.

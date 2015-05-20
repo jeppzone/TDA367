@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.entities.Helicopter;
+import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
 import edu.chalmers.RunningMan.views.HelicopterView;
 
 /**

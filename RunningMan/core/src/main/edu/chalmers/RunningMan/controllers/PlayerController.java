@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.entities.Player;
-import edu.chalmers.RunningMan.utils.Input;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
+import edu.chalmers.RunningMan.utils.input.Input;
 import edu.chalmers.RunningMan.views.PlayerView;
 
 

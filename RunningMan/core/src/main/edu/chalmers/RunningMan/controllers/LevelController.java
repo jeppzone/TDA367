@@ -1,12 +1,7 @@
 package edu.chalmers.RunningMan.controllers;
 
-import com.badlogic.gdx.Gdx;
-import edu.chalmers.RunningMan.entities.Bullet;
-import edu.chalmers.RunningMan.entities.Level;
-import edu.chalmers.RunningMan.entities.Player;
-import edu.chalmers.RunningMan.views.LevelView;
-
-import java.util.List;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
+import edu.chalmers.RunningMan.model.level.Level;
 
 import java.util.List;
 

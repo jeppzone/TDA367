@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.entities.Player;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 
 /**
- * A class to represent the view of the Player.
+ * A class to represent the view of the objects.
  */
 public class PlayerView extends Actor{
 

@@ -2,10 +2,10 @@ package edu.chalmers.RunningMan;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import edu.chalmers.RunningMan.gameworld.LoadLevelScreen;
-import edu.chalmers.RunningMan.gameworld.HighScoreScreen;
-import edu.chalmers.RunningMan.gameworld.MainMenuScreen;
-import edu.chalmers.RunningMan.gameworld.GameScreen;
+import edu.chalmers.RunningMan.screens.LoadLevelScreen;
+import edu.chalmers.RunningMan.screens.HighScoreScreen;
+import edu.chalmers.RunningMan.screens.MainMenuScreen;
+import edu.chalmers.RunningMan.screens.GameScreen;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

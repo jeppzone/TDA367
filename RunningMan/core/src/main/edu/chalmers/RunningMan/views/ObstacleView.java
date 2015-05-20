@@ -3,9 +3,8 @@ package edu.chalmers.RunningMan.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.entities.Obstacle;
+import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
 
 /**
  * A class to represent the view of obstacle objects.

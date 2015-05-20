@@ -2,10 +2,7 @@ package edu.chalmers.RunningMan.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import edu.chalmers.RunningMan.entities.HighScore;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**

@@ -2,10 +2,15 @@ package edu.chalmers.RunningMan.gameworld;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
-import edu.chalmers.RunningMan.entities.*;
-import edu.chalmers.RunningMan.utils.MapHandler;
-import edu.chalmers.RunningMan.utils.MapHandlerException;
+import edu.chalmers.RunningMan.model.*;
+import edu.chalmers.RunningMan.model.level.Level;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Weapon;
+import edu.chalmers.RunningMan.utils.map.MapHandler;
+import edu.chalmers.RunningMan.utils.map.MapHandlerException;
+import edu.chalmers.RunningMan.model.Timer;
 import edu.chalmers.RunningMan.utils.WindowSize;
+import edu.chalmers.RunningMan.utils.audio.AudioController;
 import edu.chalmers.RunningMan.views.*;
 
 import java.beans.PropertyChangeEvent;

@@ -6,10 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.entities.Bullet;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * A class to represent the view of the bullet.

@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.utils;
 
 import com.badlogic.gdx.Gdx;
-import edu.chalmers.RunningMan.entities.ISize;
+import edu.chalmers.RunningMan.model.ISize;
 
 /**
  * Created by Armand on 2015-05-18.
