@@ -30,11 +30,14 @@ public class EnemyView extends Actor{
     public EnemyView(Enemy enemy){
         this.enemy = enemy;
 
-        enemyWalkingleft = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_LEFT_SHEET));
-        enemyWalkingright = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_RIGHT_SHEET));
-        enemyShotInBack = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_BACK));
-        enemyShotInFront = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_FRONT));
-
+        try {
+            enemyWalkingleft = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_LEFT_SHEET));
+            enemyWalkingright = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_RIGHT_SHEET));
+            enemyShotInBack = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_BACK));
+            enemyShotInFront = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_FRONT));
+        }catch (Exception e){
+            throw new NullPointerException("Could not load enemy image in EnemyView");
+        }
         enemyWalkLeftSprites = TextureRegion.split(enemyWalkingleft, 63, 90)[0];
         enemyWalkRightSprites = TextureRegion.split(enemyWalkingright,63,90)[0];
         enemyShotInBackSprite = TextureRegion.split(enemyShotInBack,63,90)[0];

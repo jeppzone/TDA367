@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.entities.Bullet;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * A class to represent the view of the bullet.
@@ -29,10 +30,12 @@ public class BulletView extends Actor{
 
     public BulletView(List<Bullet> bullets){
         this.bullets = bullets;
-
-        bulletLeft = new Texture(Gdx.files.internal(SPRITE_BULLET_LEFT));
-        bulletRight = new Texture(Gdx.files.internal(SPRITE_BULLET_RIGHT));
-
+        try {
+            bulletLeft = new Texture(Gdx.files.internal(SPRITE_BULLET_LEFT));
+            bulletRight = new Texture(Gdx.files.internal(SPRITE_BULLET_RIGHT));
+        }catch (Exception e){
+            throw new NullPointerException("could not load bullet image in BulletView");
+        }
         bulletLeftSprites = TextureRegion.split(bulletLeft, 20, 10)[0];
         bulletRightSprites = TextureRegion.split(bulletRight,20,10)[0];
 

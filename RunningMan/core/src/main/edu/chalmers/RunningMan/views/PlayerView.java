@@ -32,12 +32,16 @@ public class PlayerView extends Actor{
     public PlayerView(Player player){
         this.player = player;
 
-        walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
-        walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
-        jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
-        jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
-        deadTexture = new Texture(SPRITE_DEAD);
-        deadByPitfallTexture = new Texture(SPRITE_DEAD_BY_PITFALL);
+        try {
+            walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
+            walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
+            jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
+            jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
+            deadTexture = new Texture(SPRITE_DEAD);
+            deadByPitfallTexture = new Texture(SPRITE_DEAD_BY_PITFALL);
+        }catch (Exception e){
+            throw new NullPointerException("could not load the player image in PlayerView");
+        }
 
         // TODO how to decide height and width on sprites without hard code it?
         walkRightSprites = TextureRegion.split(walkRightSheet, 58, 60)[0];
