@@ -25,14 +25,24 @@ public class Steroid extends AbstractPowerUp {
         }
     }
 
+    /**
+     * Updates the timer of the steroid
+     * @param deltaTime the time to increment with
+     */
     public void updateTime(float deltaTime){
         timer.update(deltaTime);
     }
 
+    /**
+     * @return the steroid's timer object
+     */
     public Timer getTimer(){
         return timer;
     }
 
+    /**
+     * @return true if the timer has run out of time, false otherwise
+     */
     public boolean isTimeUp(){
         return getTimer().getTimeInteger() >= MAX_TIME;
     }
