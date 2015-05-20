@@ -8,15 +8,15 @@ import java.awt.*;
  */
 public abstract class AbstractPhysicalObject implements IVisitable {
 
-    private Size size;
+    private ISize size;
     private Position position;
 
-    public AbstractPhysicalObject(Size size, Position position){
+    public AbstractPhysicalObject(ISize size, Position position){
         this.size = size;
         this.position = position;
     }
 
-    public Size getSize(){
+    public ISize getSize(){
         return this.size;
     }
 

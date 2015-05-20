@@ -10,7 +10,7 @@ public abstract class AbstractLivingObject extends AbstractPhysicalObject implem
     private int maxHp;
     protected boolean isDead;
 
-    public AbstractLivingObject(Size size, Position position, int maxHp) {
+    public AbstractLivingObject(ISize size, Position position, int maxHp) {
         super(size, position);
         this.hp = maxHp;
         isDead = false;

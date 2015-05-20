@@ -32,7 +32,7 @@ public class Player extends AbstractLivingObject  {
 
     private final PropertyChangeSupport propertyChangeSupport;
 
-    public Player(Position position, Size size, int maxHp) {
+    public Player(Position position, ISize size, int maxHp) {
         super(size, position, maxHp);
         powerUps = new ArrayList<>();
         propertyChangeSupport = new PropertyChangeSupport(this);
@@ -239,14 +239,14 @@ public class Player extends AbstractLivingObject  {
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();
-        final Size size = getSize();
+        final ISize size = getSize();
         final float playerWidth = size.getWidth();
         final float playerHeight = size.getHeight();
 
         final Position objPos = apo.getPosition();
         final float objX = objPos.getX();
         final float objY = objPos.getY();
-        final Size objSize = apo.getSize();
+        final ISize objSize = apo.getSize();
         final float objHeight = objSize.getHeight();
         final float newHeight = objHeight + objY - 1;
 

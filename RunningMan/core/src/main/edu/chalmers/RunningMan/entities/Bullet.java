@@ -14,7 +14,7 @@ public class Bullet extends AbstractPhysicalObject{
     private float initialXPosition = getPosition().getX();
     private ISize windowSize;
 
-    public Bullet(Size size, Position position, int lastMovedDirection,ISize windowSize){
+    public Bullet(ISize size, Position position, int lastMovedDirection,ISize windowSize){
         super(size,position);
         this.lastMovedDirection = lastMovedDirection;
         this.windowSize = windowSize;
