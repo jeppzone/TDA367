@@ -26,8 +26,8 @@ public class PlayerView extends Actor{
     private static String SPRITE_WALK_LEFT_SHEET;
     private static String SPRITE_JUMP_RIGHT;
     private static String SPRITE_JUMP_LEFT;
-    private static String SPRITE_DEAD = "core/assets/soldierdie.png";
-    private static String SPRITE_DEAD_BY_PITFALL = "core/assets/soldierdiebypitfall.png";
+    private static String SPRITE_DEAD;
+    private static String SPRITE_DEAD_BY_PITFALL;
 
     private float stateTime,deathTime;
 
@@ -39,8 +39,8 @@ public class PlayerView extends Actor{
         SPRITE_WALK_LEFT_SHEET = ANIMATION_LOCATION + levelName + "walk_left_sheet_soldier.png";
         SPRITE_JUMP_RIGHT = ANIMATION_LOCATION + levelName + "jump_right_soldier.png";
         SPRITE_JUMP_LEFT = ANIMATION_LOCATION + levelName + "jump_left_soldier.png";
-
-
+        SPRITE_DEAD = ANIMATION_LOCATION + levelName + "soldierdie.png";
+        SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + levelName + "soldierdiebypitfall.png";
         try {
             walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
             walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
