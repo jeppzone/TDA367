@@ -4,7 +4,7 @@ import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
 
 /**
- * Created by Jesper on 5/7/2015.
+ * A class to represent the clear level object helicopter.
  */
 public class Helicopter extends AbstractPhysicalObject {
 
@@ -16,6 +16,8 @@ public class Helicopter extends AbstractPhysicalObject {
         super(size, position);
         propertyChangeSupport = new PropertyChangeSupport(this);
     }
+
+
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor. visit(this);
@@ -30,6 +32,10 @@ public class Helicopter extends AbstractPhysicalObject {
         this.propertyChangeSupport.removePropertyChangeListener(listener);
     }
 
+    /**
+     * Makes the helicopter move by updating its position to the right
+     * @param  delta the time difference
+     */
     public void move(float delta){
         float velocity = 200;
         setX(getPosition().getX() + velocity*delta);

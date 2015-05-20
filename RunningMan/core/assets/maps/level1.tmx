@@ -47,7 +47,7 @@
  </layer>
  <layer name="obstacles" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2VEKQEAUhlEWYAlWY8uWR6EoeRKaa2bOqf/ZfVBf0TQAAAAAAAAAAAAAAAAAAFC2bh8A/zSuG9roK+6ZCn1WDlL3vM/knQTyMEYfAIG6y1LScwB4L7LlGz2H+szRB1Qkl+/yPHftuJ4DqZTQ8+m0t47/4ce+pOfl03MAAGq3AAICDGk=
+   eJzt2UEKgzAURdG4AJfgatxuhy5PoS1UEEel0fwmOQfe2D8QLmhKAAAAAAAAAAAAAAAAAADQtvEzAP7T8to8RF/xnbXRZ9WgdM+nSt5JoA5L9AEQaDytJD0HgHyRLX/Tc+jPFn1AR2r5Ls/vzh3Xc6CUFnq+HpZr/x++70p6fo9H9AEHeg4AQO+e0esNFQ==
   </data>
  </layer>
 </map>
