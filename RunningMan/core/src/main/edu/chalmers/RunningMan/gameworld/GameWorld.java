@@ -47,7 +47,7 @@ public class GameWorld implements PropertyChangeListener {
 
     public GameWorld(String levelName) {
         this.levelName = levelName;
-        loadTimer = new Timer(3);
+        loadTimer = new Timer(4);
         loadTimer.start();
         startLevel();
     }
