@@ -1,5 +1,8 @@
 package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
 
+import edu.chalmers.RunningMan.model.ISize;
+import edu.chalmers.RunningMan.model.Position;
+import edu.chalmers.RunningMan.model.Size;
 import edu.chalmers.RunningMan.utils.WindowSize;
 import org.junit.Assert;
 import org.junit.Before;
