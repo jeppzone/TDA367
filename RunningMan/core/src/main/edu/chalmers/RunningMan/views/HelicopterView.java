@@ -26,7 +26,8 @@ public class HelicopterView extends Actor {
         try{
             chopperHover = new Texture(SPRITE_CHOPPERHOVER);
         }catch (Exception e){
-            throw new NullPointerException("Could not find core/assets/chopperhover.png in HelicopterView");
+            throw new NullPointerException("Could not find core/assets/chopperhover.png in in "
+                    + this.getClass().toString());
         }
 
         chopperHoverSprites = TextureRegion.split(chopperHover, 95, 62)[0];
