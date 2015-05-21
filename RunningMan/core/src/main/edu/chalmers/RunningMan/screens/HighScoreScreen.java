@@ -33,7 +33,7 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener){
-        pcs.addPropertyChangeListener(this);
+        pcs.removePropertyChangeListener(this);
     }
 
     @Override
