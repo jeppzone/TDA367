@@ -95,7 +95,7 @@ public class GameWorld implements PropertyChangeListener {
                         pcs.firePropertyChange("restartLevel", null, null);
                     } else {
                         setHighScores();
-                        pcs.firePropertyChange("showHighscore", null, null);
+                        pcs.firePropertyChange("showHighScore", null, null);
 
                     }
                     timerSinceDeath.resetTime();
