@@ -19,13 +19,23 @@ public class Enemy extends AbstractLivingObject {
     private AnimationState enemyState = AnimationState.MOVING_LEFT;
     private boolean isShotInback, isShotInFront;
     private static final int DAMAGE = 100;
+    private boolean isBoss = false;
 
     private final PropertyChangeSupport propertyChangeSupport;
 
     public Enemy(Position position, Size size, int maxHp){
         super(size, position, maxHp);
+
+        if(maxHp > 150){
+            isBoss = true;
+        }
+
         velocity = -100f;
         propertyChangeSupport = new PropertyChangeSupport(this);
+    }
+
+    public boolean isBoss(){
+        return isBoss;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
