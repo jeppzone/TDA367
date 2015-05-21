@@ -161,7 +161,7 @@ public class Player extends AbstractLivingObject {
         setNewX(deltaTime, getVelocityX());
         lastTimeMoved = System.currentTimeMillis();
         if(!hasMovedFirstTime){
-            propertyChangeSupport.firePropertyChange("moveLeft" , null, null);
+            propertyChangeSupport.firePropertyChange("startTimer" , null, null);
             hasMovedFirstTime = true;
         }
     }
@@ -177,7 +177,7 @@ public class Player extends AbstractLivingObject {
         setNewX(deltaTime, getVelocityX());
         lastTimeMoved = System.currentTimeMillis();
         if(!hasMovedFirstTime){
-            propertyChangeSupport.firePropertyChange("moveRight" , null, null);
+            propertyChangeSupport.firePropertyChange("startTimer" , null, null);
             hasMovedFirstTime = true;
         }
     }
@@ -188,7 +188,7 @@ public class Player extends AbstractLivingObject {
      * @param deltaTime the time difference
      */
     public void jump(float deltaTime){
-        if(isOnGround) {
+        if(isOnGround && hasMovedFirstTime){
             setVelocityY(300f);
             isOnGround = false;
             propertyChangeSupport.firePropertyChange("jump", null, null);

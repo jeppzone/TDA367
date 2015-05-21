@@ -189,9 +189,9 @@ public class Level implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final String eventName = evt.getPropertyName();
-        if (eventName.equals("moveRight") || eventName.equals("moveLeft")) {
+        if (eventName.equals("startTimer")){
             timer.start();
-            pcs.firePropertyChange("startlevel", null, null);
+            pcs.firePropertyChange(eventName, null, null);
         }
     }
 
