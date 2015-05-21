@@ -97,7 +97,7 @@ public class Level implements PropertyChangeListener {
                 if (isColliding(enemy.getHitbox(), bullet.getHitbox())) {
                     bullet.acceptVisitor(enemy);
                     bulletIterator.remove();
-                    if (enemy.getHp() <= 0) {
+                    if (enemy.isDead()) {
                         enemyIterator.remove();
                     }
                 }

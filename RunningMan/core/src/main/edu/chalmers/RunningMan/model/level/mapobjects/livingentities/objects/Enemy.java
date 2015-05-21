@@ -18,7 +18,7 @@ public class Enemy extends AbstractLivingObject {
     private float velocity;
     private AnimationState enemyState = AnimationState.MOVING_LEFT;
     private boolean isShotInback, isShotInFront;
-    private int hp;
+    private static final int DAMAGE = 100;
 
     private final PropertyChangeSupport propertyChangeSupport;
 
@@ -26,7 +26,6 @@ public class Enemy extends AbstractLivingObject {
         super(size, position, maxHp);
         velocity = -100f;
         propertyChangeSupport = new PropertyChangeSupport(this);
-        hp = maxHp;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -110,11 +109,6 @@ public class Enemy extends AbstractLivingObject {
             changeDirection();
         }
     }
-
-    public int getHp(){
-        return hp;
-    }
-
     @Override
     public void visit(Obstacle g){
         changeDirection();
@@ -126,8 +120,8 @@ public class Enemy extends AbstractLivingObject {
     }
     @Override
     public void visit(Bullet b) {
-        hp -= 100;
-        if (hp <= 0) {
+       takeDamage(DAMAGE);
+        if (isDead()) {
             if (b.getVelocity() * velocity < 0) {
                 isShotInFront = true;
                 propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
