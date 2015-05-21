@@ -33,7 +33,7 @@ public class BulletView extends Actor{
             bulletLeft = new Texture(Gdx.files.internal(SPRITE_BULLET_LEFT));
             bulletRight = new Texture(Gdx.files.internal(SPRITE_BULLET_RIGHT));
         }catch (Exception e){
-            throw new NullPointerException("could not load bullet image in BulletView");
+            throw new NullPointerException("could not load bullet image in" + this.getClass().toString());
         }
         bulletLeftSprites = TextureRegion.split(bulletLeft, 20, 10)[0];
         bulletRightSprites = TextureRegion.split(bulletRight,20,10)[0];
