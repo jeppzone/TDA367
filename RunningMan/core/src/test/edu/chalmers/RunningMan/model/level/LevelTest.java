@@ -3,6 +3,7 @@ package edu.chalmers.RunningMan.model.level;
 import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
+import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
 import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
@@ -24,6 +25,7 @@ public class LevelTest extends Assert {
     private Player player;
     private final String name = "Beach";
     private List<AbstractPhysicalObject> mapObjects;
+    private List<Enemy> enemies;
     private List<Bullet> bullets;   //OBS bullets are not being tested yet
 
 
@@ -31,13 +33,14 @@ public class LevelTest extends Assert {
     public void setUp(){
         this.player = new Player( new Position(400, 0), new Size(50,50),100);
         mapObjects = new ArrayList<>();
-        this.level = new Level(mapObjects, name);
+        enemies = new ArrayList<>();
+        this.level = new Level(player, mapObjects, enemies, name);
         bullets = new ArrayList<>();
     }
 
     @Test
     public void testGetName(){
-        final Level level = new Level(mapObjects, name);
+        final Level level = new Level(player, mapObjects, enemies, name);
         assertEquals(name, level.getLevelName());
     }
 
@@ -74,9 +77,10 @@ public class LevelTest extends Assert {
         final float velocityBeforeCollision = enemy.getVelocity();
         final Obstacle obstacle = new Obstacle(new Position(0, 0), new Size(15, 15));
         final List<AbstractPhysicalObject> mapObjects1 = new ArrayList<>();
+        final List<Enemy> enemies1 = new ArrayList<>();
         mapObjects1.add(obstacle);
-        mapObjects1.add(enemy);
-        final Level level1 = new Level(mapObjects1,name);
+        enemies1.add(enemy);
+        final Level level1 = new Level(player, mapObjects1, enemies1, name);
         level1.checkCollisions(bullets);
 
         assertNotEquals(velocityBeforeCollision, enemy.getVelocity());
@@ -88,9 +92,10 @@ public class LevelTest extends Assert {
         final float velocityBeforeCollision = enemy.getVelocity();
         final Obstacle obstacle = new Obstacle(new Position(100, 100), new Size(15, 15));
         final List<AbstractPhysicalObject> mapObjects1 = new ArrayList<>();
+        final List<Enemy> enemies1 = new ArrayList<>();
         mapObjects1.add(obstacle);
-        mapObjects1.add(enemy);
-        final Level level1 = new Level(mapObjects1, name);
+        enemies1.add(enemy);
+        final Level level1 = new Level(player, mapObjects1, enemies1, name);
         level1.checkCollisions(bullets);
 
         assertEquals(velocityBeforeCollision, enemy.getVelocity(), 0);

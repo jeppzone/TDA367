@@ -7,10 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.Ground;
-import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
-import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
-import edu.chalmers.RunningMan.model.level.mapobjects.Pit;
+import edu.chalmers.RunningMan.model.level.mapobjects.*;
 import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
 
@@ -30,6 +27,7 @@ public class MapHandler implements IMapHandler {
 
     private Position playerStartPosition;
     private List<AbstractPhysicalObject> physicalObjects;
+    private List<Enemy> enemies;
     private int tilePixelSize, mapWidth, mapHeight;
 
     public MapHandler(String levelName)throws MapHandlerException {
@@ -52,7 +50,8 @@ public class MapHandler implements IMapHandler {
         tilePixelSize = (Integer) tileMap.getProperties().get("tilewidth");
         mapHeight = (Integer) tileMap.getProperties().get("height");
         mapWidth = (Integer) tileMap.getProperties().get("width");
-        physicalObjects = new ArrayList<AbstractPhysicalObject>();
+        physicalObjects = new ArrayList<>();
+        enemies = new ArrayList<>();
         createObjectList();
 
     }
@@ -69,6 +68,13 @@ public class MapHandler implements IMapHandler {
      */
     public List<AbstractPhysicalObject> getPhysicalObjectsList() {
         return physicalObjects;
+    }
+
+    /**
+     * @return A list of the present enemies in the map
+     */
+    public List<Enemy> getEnemies(){
+        return enemies;
     }
 
     /**
@@ -108,7 +114,7 @@ public class MapHandler implements IMapHandler {
                 } else if(finishCell != null && finishCell.getTile() != null){
                     physicalObjects.add(new Helicopter(position,new Size(60,62)));
                 } else if(enemyCell != null && enemyCell.getTile() != null) {
-                    physicalObjects.add(new Enemy(position, new Size(45, 55), 100));
+                    enemies.add(new Enemy(position, new Size(45, 55), 100));
                 } else if(steroidCell != null && steroidCell.getTile() != null) {
                     physicalObjects.add(new Steroid(position, size));
                 } else if(obstacleCell != null && obstacleCell.getTile() != null) {
@@ -122,13 +128,4 @@ public class MapHandler implements IMapHandler {
         }
     }
 
-    /**
-     * Render the map
-     */
-    public void renderMap(){
-
-        tiledMapRenderer = new OrthoCachedTiledMapRenderer(tileMap);
-        tiledMapRenderer.render();
-
-    }
 }

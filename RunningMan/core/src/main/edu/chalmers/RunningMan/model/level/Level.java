@@ -8,11 +8,13 @@ import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
 import edu.chalmers.RunningMan.model.HighScore;
 import edu.chalmers.RunningMan.model.Timer;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -21,6 +23,7 @@ import java.util.List;
  */
 public class Level implements PropertyChangeListener {
     private final List<AbstractPhysicalObject> mapObjects;
+    private List<Enemy> enemies;
     private final String levelName;
     private int enemiesKilled;
     private static final int MAX_TIME = 100;
@@ -28,11 +31,14 @@ public class Level implements PropertyChangeListener {
     private int playerScore;
     private PropertyChangeSupport pcs;
     private HighScore highScores;
+    private Player player;
 
-    public Level(List<AbstractPhysicalObject> mapObjects, String levelName){
+    public Level(Player player, List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies , String levelName){
         this.mapObjects = mapObjects;
         this.levelName = levelName;
+        this.enemies = enemies;
         this.enemiesKilled = 0;
+        this.player = player;
         timer = new Timer(MAX_TIME);
         pcs = new PropertyChangeSupport(this);
         playerScore = 0;
@@ -47,13 +53,15 @@ public class Level implements PropertyChangeListener {
 
     public void checkCollisions(List<Bullet> bullets) {
         checkBulletCollisions(bullets);
-        for(AbstractPhysicalObject thisApo: mapObjects){
-            if(thisApo instanceof IVisitor){
-                for(AbstractPhysicalObject otherApo: mapObjects){
-                    if(isColliding(thisApo.getHitbox(), otherApo.getHitbox())){
-                        IVisitor visitor = (IVisitor) thisApo;
-                        otherApo.acceptVisitor(visitor);
-                    }
+        for(Enemy enemy: enemies){
+            for(AbstractPhysicalObject otherObject: mapObjects){
+                if(isColliding(enemy.getHitbox(), otherObject.getHitbox())){
+                    otherObject.acceptVisitor(enemy);
+                }else if(isColliding(enemy.getHitbox(), player.getHitbox())){
+                    enemy.acceptVisitor(player);
+                    System.out.println("Enemy visiting player");
+                }else if(isColliding(player.getHitbox(), otherObject.getHitbox())){
+                    otherObject.acceptVisitor(player);
                 }
             }
         }
@@ -72,30 +80,29 @@ public class Level implements PropertyChangeListener {
      * any objects
      * @param bullets
      */
-    public void checkBulletCollisions(List<Bullet> bullets){
+    public void checkBulletCollisions(List<Bullet> bullets) {
         int bulletSize = bullets.size();
-        int objectSize = mapObjects.size();
-        for (int i = 0; i < bulletSize; i++) {
-            for (int j = 0; j < objectSize; j++) {
-                if (bulletSize > i && objectSize > j) {
-                    final Bullet bullet = bullets.get(i);
-                    final AbstractPhysicalObject object = mapObjects.get(j);
-                    if (isColliding(bullet.getHitbox(), object.getHitbox())) {
-                        if (object instanceof Enemy) {
-                            final Enemy enemy = (Enemy) object;
-                            enemy.visit(bullet);
-                            bullets.remove(bullet);
-                            if(enemy.getHp() <= 0) {
-                                mapObjects.remove(enemy);
-                            }
-                            bulletSize--;
-                            objectSize--;
-                            enemiesKilled++;
-                        } else if (object.getClass() == Ground.class ||
-                                object.getClass() == Obstacle.class) {
-                            bullets.remove(bullet);
-                            bulletSize--;
-                        }
+        int enemySize = enemies.size();
+        Iterator<Bullet> bulletIterator = bullets.iterator();
+        Iterator<AbstractPhysicalObject> objectIterator = mapObjects.iterator();
+        Iterator<Enemy> enemyIterator = enemies.iterator();
+        while (bulletIterator.hasNext() && bulletSize > 0) {
+            final Bullet bullet = bulletIterator.next();
+            while (objectIterator.hasNext()) {
+                final AbstractPhysicalObject object = objectIterator.next();
+                if (isColliding(bullet.getHitbox(), object.getHitbox())) {
+                    bulletIterator.remove();
+                    bulletSize--;
+                }
+            }
+            while (enemyIterator.hasNext() && enemySize > 0) {
+                final Enemy enemy = (Enemy) enemyIterator.next();
+                if (isColliding(enemy.getHitbox(), bullet.getHitbox())) {
+                    bullet.acceptVisitor(enemy);
+                    bulletIterator.remove();
+                    if (enemy.getHp() <= 0) {
+                        enemyIterator.remove();
+                        enemySize--;
                     }
                 }
             }

@@ -22,14 +22,17 @@ public class Factory {
     private AudioController audioController;
     private HelicopterController helicopterController;
     private String levelName;
+    private List<Enemy> enemies;
 
-    public Factory(List<AbstractPhysicalObject> mapObjects, String levelName){
+    public Factory(List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies, String levelName){
         this.mapObjects = mapObjects;
+        this.enemies = enemies;
         actors = new ArrayList<>();
         controllers = new ArrayList<>();
         audioController = new AudioController(levelName);
         this.levelName = levelName;
         addViewsAndControllers();
+        addEnemyViewsAndControllers();
     }
 
     private void addViewsAndControllers() {
@@ -42,12 +45,6 @@ public class Factory {
                 Ground ground = (Ground) apo;
                 GroundView groundView = new GroundView(ground, levelName);
                 actors.add(groundView);
-            } else if(apo.getClass() == Enemy.class) {
-                Enemy enemy = (Enemy) apo;
-                enemy.addPropertyChangeListener(audioController);
-                EnemyView enemyView = new EnemyView(enemy);
-                controllers.add(new EnemyController(enemy, enemyView));
-                actors.add(enemyView);
             } else if(apo.getClass() == Steroid.class) {
                 Steroid steroid = (Steroid) apo;
                 SteroidView steroidView = new SteroidView(steroid);
@@ -65,6 +62,14 @@ public class Factory {
                 helicopterController = new HelicopterController(helicopter, helicopterView);
                 controllers.add(helicopterController);
             }
+        }
+    }
+
+    private void addEnemyViewsAndControllers(){
+        for(final Enemy enemy: enemies){
+            EnemyView enemyView = new EnemyView(enemy);
+            actors.add(enemyView);
+            controllers.add(new EnemyController(enemy, enemyView));
         }
     }
     public HelicopterController getHelicopterController(){

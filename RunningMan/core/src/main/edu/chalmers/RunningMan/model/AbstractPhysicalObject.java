@@ -6,7 +6,7 @@ import java.awt.*;
  * Abstract class for physical objects
  * @author Jesper Olsson
  */
-public abstract class AbstractPhysicalObject implements IVisitable {
+public abstract class AbstractPhysicalObject implements IVisitable, IPhysicalObject {
 
     private ISize size;
     private Position position;

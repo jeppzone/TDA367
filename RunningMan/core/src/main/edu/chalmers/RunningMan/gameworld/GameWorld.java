@@ -4,6 +4,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.model.*;
 import edu.chalmers.RunningMan.model.level.Level;
+import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Weapon;
 import edu.chalmers.RunningMan.utils.map.MapHandler;
@@ -47,6 +49,7 @@ public class GameWorld implements PropertyChangeListener {
     private String levelName;
     private static HighScoreView highScoreView;
     private Timer loadTimer;
+    private List<Enemy> enemies;
 
     private static final float DEATH_ANIMATION_TIME = 1.15f;
 
@@ -134,10 +137,10 @@ public class GameWorld implements PropertyChangeListener {
             bulletController = new BulletController(weapon.getBullets(), bulletView);
             weaponController = new WeaponController(weapon);
             mapObjects = mapHandler.getPhysicalObjectsList();
-            mapObjects.add(player);
-            factory = new Factory(mapObjects, levelName);
+            enemies = mapHandler.getEnemies();
+            factory = new Factory(mapObjects, enemies, levelName);
             views = factory.getViews();
-            level = new Level(mapObjects, levelName);
+            level = new Level(player, mapObjects, enemies, levelName);
             levelController = new LevelController(level, weapon.getBullets());
             levelView = new LevelView(views, player, bulletView, levelName);
             level.addPropertyChangeListener(this);
