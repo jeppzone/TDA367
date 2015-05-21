@@ -61,13 +61,11 @@ public class RunningMan extends Game implements PropertyChangeListener {
             setScreen(mainMenuScreen);
 
         } else if(eventName.equals("level1")) {
-            //gameScreen.createWorld("level1");
-            createGameScreen("level1");
+            createGameScreen(eventName);
             setScreen(gameScreen);
 
         } else if(eventName.equals("level2")) {
-            //gameScreen.createWorld("level2");
-            createGameScreen("level2");
+            createGameScreen(eventName);
             setScreen(gameScreen);
 
         } else if(eventName.equals("showHighScore")) {

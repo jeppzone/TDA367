@@ -4,8 +4,10 @@ package edu.chalmers.RunningMan.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import edu.chalmers.RunningMan.gameworld.Factory;
 import edu.chalmers.RunningMan.gameworld.GameWorld;
-import edu.chalmers.RunningMan.views.HighScoreView;
+import edu.chalmers.RunningMan.utils.HighScore.HighScore;
+import edu.chalmers.RunningMan.utils.HighScore.HighScoreView;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -14,12 +16,15 @@ import java.util.List;
 
 public class HighScoreScreen implements Screen, PropertyChangeListener {
     private PropertyChangeSupport pcs;
-    private List<Integer> list;
+    private HighScore highScore;
     private HighScoreView highScoreView;
 
     public HighScoreScreen() {
         super();
-        highScoreView = GameWorld.getHighScoreView();
+        highScore = Factory.getHighScore();
+        highScore.loadFromFile();
+        highScore.addCurrentScore();
+        highScoreView = new HighScoreView(highScore);
         pcs = new PropertyChangeSupport(this);
     }
 
@@ -33,12 +38,9 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
 
     @Override
     public void render(float deltaTime) {
-
         // clear screen
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
         highScoreView.draw();
-
-
     }
 
     @Override
@@ -53,6 +55,7 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
 
     @Override
     public void hide() {
+        highScore.saveToFile();
         Gdx.app.log("GameScreen", "hide called");
     }
 

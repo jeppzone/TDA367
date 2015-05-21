@@ -3,13 +3,18 @@ package edu.chalmers.RunningMan.gameworld;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.model.*;
+import edu.chalmers.RunningMan.model.level.Level;
 import edu.chalmers.RunningMan.model.level.mapobjects.Ground;
 import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
 import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
 import edu.chalmers.RunningMan.model.level.mapobjects.Pit;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Weapon;
 import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
 import edu.chalmers.RunningMan.audio.AudioController;
+import edu.chalmers.RunningMan.utils.HighScore.HighScore;
+import edu.chalmers.RunningMan.utils.WindowSize;
 import edu.chalmers.RunningMan.views.*;
 
 import java.util.ArrayList;
@@ -19,10 +24,18 @@ public class Factory {
     private List<AbstractPhysicalObject> mapObjects;
     private List<Actor> actors;
     private List<IEntityController> controllers;
-    private AudioController audioController;
     private HelicopterController helicopterController;
     private String levelName;
     private List<Enemy> enemies;
+    private Player player;
+    private Weapon weapon;
+    private BulletView bulletView;
+    private AudioController audioController;
+    private LevelView levelView;
+    private Level level;
+    private PlayerController playerController;
+    private LevelController levelController;
+    private static HighScore highScore;
 
     public Factory(List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies, String levelName){
         this.mapObjects = mapObjects;
@@ -31,11 +44,16 @@ public class Factory {
         controllers = new ArrayList<>();
         audioController = new AudioController(levelName);
         this.levelName = levelName;
-        addViewsAndControllers();
-        addEnemyViewsAndControllers();
+        addMapObjects();
+        addEnemies();
+        addPlayer();
+        addWeaponAndBullets();
+        addLevel();
+        addAudioController();
+        highScore = new HighScore(level);
     }
 
-    private void addViewsAndControllers() {
+    private void addMapObjects() {
         for(final AbstractPhysicalObject apo: mapObjects) {
             if(apo.getClass() == Pit.class) {
                 Pit pit = (Pit) apo;
@@ -65,20 +83,78 @@ public class Factory {
         }
     }
 
-    private void addEnemyViewsAndControllers(){
+    private void addEnemies(){
         for(final Enemy enemy: enemies){
             EnemyView enemyView = new EnemyView(enemy);
             actors.add(enemyView);
             controllers.add(new EnemyController(enemy, enemyView));
         }
     }
+
+    private void addWeaponAndBullets(){
+        weapon = new Weapon(player, new WindowSize());
+        WeaponController weaponController = new WeaponController(weapon);
+        bulletView = new BulletView(weapon.getBullets());
+        BulletController bulletController = new BulletController(weapon.getBullets(), bulletView);
+        controllers.add(bulletController);
+        controllers.add(weaponController);
+    }
+
+    private void addPlayer(){
+        player = new Player(new Position(60, 1000)/*mapHandler.getPlayerStartPosition()*/, new Size(50, 50), 100);
+        PlayerView playerView = new PlayerView(player, levelName);
+        playerController = new PlayerController(player, playerView);
+        actors.add(playerView);
+        controllers.add(playerController);
+    }
+
+    private void addLevel(){
+        level = new Level(player, mapObjects, enemies, levelName);
+        levelController = new LevelController(level, weapon.getBullets());
+        levelView = new LevelView(actors, player, bulletView, levelName);
+        controllers.add(levelController);
+    }
+
+    private void addAudioController(){
+        audioController = new AudioController(levelName);
+        player.addPropertyChangeListener(audioController);
+        weapon.addPropertyChangeListener(audioController);
+        level.addPropertyChangeListener(audioController);
+    }
+
     public HelicopterController getHelicopterController(){
        return helicopterController;
     }
-    public List<Actor> getViews(){
-        return actors;
-    }
+
     public List<IEntityController> getControllers(){
         return controllers;
+    }
+
+    public LevelView getLevelView(){
+        return levelView;
+    }
+
+    public AudioController getAudioController(){
+        return audioController;
+    }
+
+    public Level getLevel(){
+        return level;
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+    public PlayerController getPlayerController(){
+        return playerController;
+    }
+
+    public LevelController getLevelController(){
+        return levelController;
+    }
+
+    public static HighScore getHighScore(){
+        return highScore;
     }
 }

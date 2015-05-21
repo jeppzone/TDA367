@@ -1,4 +1,6 @@
-package edu.chalmers.RunningMan.model;
+package edu.chalmers.RunningMan.utils.HighScore;
+
+import edu.chalmers.RunningMan.model.level.Level;
 
 import java.io.*;
 import java.util.*;
@@ -9,6 +11,7 @@ import java.util.*;
 public class HighScore {
 
     private List<Integer> highScores;
+    private Level level;
     private String levelName;
     private Scanner scanner;
     private boolean isFull;
@@ -17,11 +20,11 @@ public class HighScore {
      */
     private static final int MAX_HIGHSCORES = 5;
 
-    public HighScore(String levelName){
+    public HighScore(Level level){
+        this.level = level;
+        this.levelName = level.getLevelName();
         highScores = new ArrayList<>();
         isFull = false;
-        this.levelName = levelName;
-        loadFromFile();
     }
 
     /**
@@ -48,9 +51,10 @@ public class HighScore {
 
     /**
      * Add score to the high score list if it's large enough
-     * @param score the score to add
      */
-    public void addScore(int score){
+    public void addCurrentScore(){
+        level.setPlayerScore();
+        final int score = level.getPlayerScore();
         if(isHighScore(score)){
             if(isFull) {
                 highScores.remove(MAX_HIGHSCORES - 1);
@@ -76,11 +80,7 @@ public class HighScore {
                     new FileOutputStream("HS"+levelName+".txt"), "utf-8"));
             final Iterator<Integer> iterator = getHighScores().iterator();
             while(iterator.hasNext()){
-                writer.write(iterator.next()+" ");
-            }
-            final Iterator<Integer> it = getHighScores().iterator();
-            while(it.hasNext()){
-                System.out.println("Saved score: " + it.next());
+                writer.write(iterator.next() + " ");
             }
         } catch (IOException ex) {
         } finally {
@@ -99,13 +99,10 @@ public class HighScore {
             }
         }catch(FileNotFoundException exception){
 
-        }finally{
-            if(scanner != null){
+        }finally {
+            if (scanner != null) {
                 scanner.close();
             }
-            Iterator<Integer> it = highScores.iterator();
-            while(it.hasNext())
-                System.out.println("Added score: " + it.next());
         }
     }
 

@@ -1,8 +1,9 @@
-package edu.chalmers.RunningMan.views;
+package edu.chalmers.RunningMan.utils.HighScore;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import edu.chalmers.RunningMan.model.HighScore;
+import edu.chalmers.RunningMan.utils.HighScore.HighScore;
+import edu.chalmers.RunningMan.views.HudFont;
 
 import java.util.List;
 
