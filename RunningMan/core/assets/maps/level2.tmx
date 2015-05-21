@@ -17,12 +17,12 @@
  </tileset>
  <layer name="ground" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2FsOwiAUQEE2wP63a4x/VStQeVw6k/RLbZESTjUldpRnDwAAuCQnPQeAyHLScwCILCc9B4DIji3XcwCI5VPL9RwA4vjWcl0HgHfHPq7QyZKWrzBOXtwLYFe77W8jW1ra8t3mOCr3AthV6/72q1Nnr1/5bO3Yeu7fNS2f0ZDasfz7fauJNl6AUq372+jfvrPPcXbeVXs+8poR+hjx+QO4p1FNnt2pWj3G2NLykfM0+ppR1kCUNQvcV+0+deV/1Wh7Y2t7exwjzLrmqiKuWSC2FVuzUqdazZ7Xknna7RkiwtHj+wI8PQAOTBQd
+   eJzt1ksOwyAMQEEuwP2vW2XbjwSkGExmpOyqQgnyaymcqK7eAABwSy16DgCZ1aLnAJBZLXoOAJm9t1zPASCXby3XcwDI41fLdR0APu3YxpaW77bnJ/MugFOdNt8iW9ra8tPOOCvvAjjV6Hxr6VTrd/97xka1tKflKxrSu/6dz2eQbb8ArUbn2+pO9Zi1x96WR59T5Jq734FLpjsLPFdkk1d3qteMPY60PPKcotfMcgey3FnguXrnVOt8261TI0bbO+OJsGrNXWW8s0BuO7Zmp06NWn2uLed02n+IDM+M3wtweQHtPRNn
   </data>
  </layer>
  <layer name="startPosition" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAMA6Am8+95MtoDFJAAAAAAAAAAAAAAAMCeawcAAAAAAAAAAAAAAAAAAACoeCi/AAQ=
+   eJztyrENAAAMAiCT/v9zXzDOMJN0rnwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACrB7UXAAQ=
   </data>
  </layer>
  <layer name="enemies" width="500" height="14">
@@ -37,7 +37,7 @@
  </layer>
  <layer name="pitfalls" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0DEKACAIQFFP4P2P29LYEARl+B78UVAjAAAAAAAAAAAAAOrKGQAAAAAAAAAAAAAAAAAAwA9y0clslSp5sWO3H+/qdi9wzwAGowUJ
+   eJzt2rsNACAIBUAnYP9xbSwtTPwRvUteSQI0NJQCAAAAAAAAAAAAkFe0AAAAAAAAAAAAwCz/aADwBjd9H7sFAABYIzqZqc2STG70+NuOR/02L3BOBf9YBTM=
   </data>
  </layer>
  <layer name="finishlevel" width="500" height="14">
@@ -47,7 +47,7 @@
  </layer>
  <layer name="obstacles" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzkENACAMBDAwgjvUYZAnJkYuWVoFHQMAAAAAAAAAAAAAAAAAAAAAAACADnY6AADw2UkHAIDWbjpQYM30AAAAoMYDLYUCKA==
+   eJztzjEKwCAQRFFzEW+X0xk8n6VNSsHGMBDea5aFKX4pAAAAAAAAAAAAAAAAAAAAAAAAAPzBnQ4AAPhYe+8TrQCAtb75d3vyRjrggHqlCwAAAM6YPCcE3g==
   </data>
  </layer>
  <layer name="boss" width="500" height="14">

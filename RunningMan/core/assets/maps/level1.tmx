@@ -17,7 +17,7 @@
  </tileset>
  <layer name="ground" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1jEOgzAQBMB8IP//bnoEBGTjuxUzkpsUYTF4j88HAAAAAHja92ABABmOZrl5DiTRXbzZ2SxPOhPp+YExzj9v9m+Wp5yH9PzAmA4doH+ocmWWJ7yP6fmBMR16TAddZ1/mujrLu+/5NmNafmBMhx6rvn4SezLXnVneec/T8wNjOvRY9fWTpOzJ3Rk5Y63K2dE2V1p+SHJ0jirPV4cem5XhDX0185l0+D6rnukrvxuetJcrKT8kOTtHVWesQ4+tytC1z+7c4+xn0uX7rGqmr/pmqJKeH1aZ2QPV3VfVY1UZVt3nlf/eu9bRb7OzPtHr1e9n4jkYcZYlIT90MLMHqrspbY2q7OvK/ap+bpYFHf0AY9gslw==
+   eJzt1kESwyAIAMB+oP//bu+dJNVGBczujLdOAxggrxcAAAAAMNv75AAANZztcvscqMTs4smudnnVnqgeP9Bvl/kF//i1yyv2ww45AH0yzDCzhygtu7za+7hLHkC7DHPM7GmnLmO17vLsNf+OsXIuQL8Mcyz6+ZWoyVg9uzxzzXvzyJ4P0CdD30c/v4pKNfl3t9w5q+LM6DuuHXKCrM56JrKXMvT8qBh2n02j7yTD91n0Tl/53TDTUVw75AUZXfVLVC9l6PdVMWSdW605zriTWXWI3OU9NVn1zRBl59xgpJG9Ej37ono9KoZVebb899Gzjn4zI9YZszv6/azYB3dcxfIr/qj8MteTZxo5B6JnU7VzV+S8jqxX9L05TtbDs30AHQUwTA==
   </data>
  </layer>
  <layer name="startPosition" width="500" height="14">
@@ -27,7 +27,7 @@
  </layer>
  <layer name="enemies" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2LENACAMA7Ay8f/HLDzQSgUk7DlDxigRAAAAAAAAAAAAAAAAAAAAAGSMpiwAAAAAQEX1h/RfAgD8yxY8Y94usL3SAwAAMhaZwwAU
+   eJzt2LsNACAIBUCs3H9jRzDiL8a7FkJeQUGIAAAAAAAAAAAAAAAAAAAAAGBE2dQLAAAAAJCR/UP6XwIA/MsteEa9HaBjJt+KHerNmK0DAPC2BsG/ABg=
   </data>
  </layer>
  <layer name="steroids" width="500" height="14">
@@ -37,17 +37,17 @@
  </layer>
  <layer name="pitfalls" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0sEJADAIA0An6P7jdgH7kIof7yDvQEgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwG4nCTXZhpVMdPx0d/MzgLcLcNECdw==
+   eJzt1TEKwDAIBVBP4P2Pm7lDJKnSLu/BnxURjQAAAAAAAAAAAAAAAAAAAAAAAAAAAACgI/9uAKApwy2bUs3xZsZZpNMDAHtvbi5P1f86yRc1OrWn2TOAvQVBFwMt
   </data>
  </layer>
  <layer name="finishlevel" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztziEBAAAIA7Ab+ldGPwGCLcESAAAAAAAAgDbXAQAAAAAAAAAAAAAAAAAAAAAAAADgrQUC9gAG
+   eJztzjEBAAAMAiCf9a+8GHpAAhIAAIAd1w4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVD1EqAAY=
   </data>
  </layer>
  <layer name="obstacles" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2UEKgzAURdG4AJfgatxuhy5PoS1UEEel0fwmOQfe2D8QLmhKAAAAAAAAAAAAAAAAAADQtvEzAP7T8to8RF/xnbXRZ9WgdM+nSt5JoA5L9AEQaDytJD0HgHyRLX/Tc+jPFn1AR2r5Ls/vzh3Xc6CUFnq+HpZr/x++70p6fo9H9AEHeg4AQO+e0esNFQ==
+   eJzt2UEKgzAQQFE9gCeQnqbXLW0XHs9CuzAQXIkGpzHvwWzNLAIfYtcBAAAAAAAAAAAAAAAAAMC1DcsA8J+m39z76C22mS96Vg3O7vmtkjsJ1GGKXgACDas5y9jrOQCUENlyPYc2faIXaMBrmVre5dlv3fEze55arufQpiv0fM7mqPQ/PE1JW773LHtkEx7RC2T29HwscM/yltfc83f0AgAAHPYFDxoRBQ==
   </data>
  </layer>
  <layer name="boss" width="500" height="14">

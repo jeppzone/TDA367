@@ -9,7 +9,7 @@ import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
 import edu.chalmers.RunningMan.model.level.mapobjects.Pit;
 import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
-import edu.chalmers.RunningMan.utils.audio.AudioController;
+import edu.chalmers.RunningMan.audio.AudioController;
 import edu.chalmers.RunningMan.views.*;
 
 import java.util.ArrayList;

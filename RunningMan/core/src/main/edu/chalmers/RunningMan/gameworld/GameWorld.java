@@ -10,7 +10,7 @@ import edu.chalmers.RunningMan.utils.map.MapHandler;
 import edu.chalmers.RunningMan.utils.map.MapHandlerException;
 import edu.chalmers.RunningMan.model.Timer;
 import edu.chalmers.RunningMan.utils.WindowSize;
-import edu.chalmers.RunningMan.utils.audio.AudioController;
+import edu.chalmers.RunningMan.audio.AudioController;
 import edu.chalmers.RunningMan.views.*;
 
 import java.beans.PropertyChangeEvent;
