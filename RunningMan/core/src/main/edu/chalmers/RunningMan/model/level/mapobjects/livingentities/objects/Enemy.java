@@ -18,6 +18,7 @@ public class Enemy extends AbstractLivingObject {
     private float velocity;
     private AnimationState enemyState = AnimationState.MOVING_LEFT;
     private boolean isShotInback, isShotInFront;
+    private int hp;
 
     private final PropertyChangeSupport propertyChangeSupport;
 
@@ -25,6 +26,7 @@ public class Enemy extends AbstractLivingObject {
         super(size, position, maxHp);
         velocity = -100f;
         propertyChangeSupport = new PropertyChangeSupport(this);
+        hp = maxHp;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -109,6 +111,10 @@ public class Enemy extends AbstractLivingObject {
         }
     }
 
+    public int getHp(){
+        return hp;
+    }
+
     @Override
     public void visit(Obstacle g){
         changeDirection();
@@ -119,16 +125,19 @@ public class Enemy extends AbstractLivingObject {
         //Nothing should happen with the enemy in this case
     }
     @Override
-    public void visit(Bullet b){
-
-        if(b.getVelocity()*velocity < 0){
-            isShotInFront = true;
-            propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
-        }else{
-            isShotInback = true;
-            propertyChangeSupport.firePropertyChange("enemyshotinback", null, null);
+    public void visit(Bullet b) {
+        hp -= 100;
+        if (hp <= 0) {
+            if (b.getVelocity() * velocity < 0) {
+                isShotInFront = true;
+                propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
+            } else {
+                isShotInback = true;
+                propertyChangeSupport.firePropertyChange("enemyshotinback", null, null);
+            }
+            this.velocity = 0;
         }
-        this.velocity = 0;
+
     }
 
     @Override

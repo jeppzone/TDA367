@@ -85,7 +85,9 @@ public class Level implements PropertyChangeListener {
                             final Enemy enemy = (Enemy) object;
                             enemy.visit(bullet);
                             bullets.remove(bullet);
-                            mapObjects.remove(enemy);
+                            if(enemy.getHp() <= 0) {
+                                mapObjects.remove(enemy);
+                            }
                             bulletSize--;
                             objectSize--;
                             enemiesKilled++;
