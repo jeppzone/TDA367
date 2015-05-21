@@ -28,6 +28,14 @@ public class MainMenuScreen implements Screen {
     }
 
     /**
+     * Removes a PropertyChangeListener from the player
+     * @param listener
+     */
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        mainMenuController.removePropertyChangeListener(listener);
+    }
+
+    /**
      * Called when this screen becomes the current screen for a {@link Game}.
      */
     @Override

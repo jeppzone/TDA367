@@ -22,8 +22,8 @@ public class GameScreen implements IScreen, PropertyChangeListener {
         super();
         this.level = level;
         pcs = new PropertyChangeSupport(this);
-            world = new GameWorld(level);
-            world.addPropertyChangeListener(this);
+        world = new GameWorld(level);
+        world.addPropertyChangeListener(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
