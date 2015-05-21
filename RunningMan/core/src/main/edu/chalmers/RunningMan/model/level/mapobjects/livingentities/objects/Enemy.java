@@ -115,9 +115,7 @@ public class Enemy extends AbstractLivingObject {
 
     @Override
     public void visit(Enemy e){
-        if(this != e) {
-            changeDirection();
-        }
+        //Nothing should happen here
     }
     @Override
     public void visit(Obstacle g){
