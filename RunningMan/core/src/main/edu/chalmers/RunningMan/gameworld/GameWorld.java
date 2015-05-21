@@ -93,10 +93,10 @@ public class GameWorld implements PropertyChangeListener {
                 if (timerSinceDeath.isTimeUp()) {
                     audioController.stopMusic();
                     if (player.isDead()) {
-                        pcs.firePropertyChange("dead", null, null);
+                        pcs.firePropertyChange("restartLevel", null, null);
                     } else {
                         setHighScores();
-                        pcs.firePropertyChange("finish", null, null);
+                        pcs.firePropertyChange("showHighscore", null, null);
 
                     }
                     timerSinceDeath.resetTime();

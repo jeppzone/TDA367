@@ -57,7 +57,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
         if(eventName.equals("loadScreen")) {
             setScreen(loadLevelScreen);
 
-        } else if(eventName.equals("time") || eventName.equals("dead")) {
+        } else if(eventName.equals("restartLevel")) {
             setScreen(mainMenuScreen);
 
         } else if(eventName.equals("level1")) {
@@ -70,7 +70,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
             createGameScreen("level2");
             setScreen(gameScreen);
 
-        } else if(eventName.equals("finish")) {
+        } else if(eventName.equals("showHighScore")) {
             createHighScoreScreen();
             setScreen(highScoreScreen);
         }
