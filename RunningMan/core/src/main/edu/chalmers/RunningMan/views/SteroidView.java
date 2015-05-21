@@ -16,7 +16,8 @@ public class SteroidView extends Actor {
         try {
             texture = new Texture(Gdx.files.internal("core/assets/spruta.png"));
         }catch (Exception e){
-            throw new NullPointerException("Could not find steroid image in SteroidView: core/assets/spruta.png " +
+            throw new NullPointerException("Could not find steroid image in "+ this.getClass().toString()
+                    +": core/assets/spruta.png " +
                     "does not exist");
         }
     }
