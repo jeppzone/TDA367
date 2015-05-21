@@ -16,10 +16,18 @@ public class EnemyView extends Actor{
 
     private final Texture enemyWalkingleft, enemyWalkingright, enemyShotInBack,enemyShotInFront;
 
-    private final static String SPRITE_ENEMY_WALK_LEFT_SHEET = "core/assets/enemyleft.png";
-    private final static String SPRITE_ENEMY_WALK_RIGHT_SHEET = "core/assets/enemyright.png";
-    private final static String SPRITE_ENEMY_SHOT_IN_BACK = "core/assets/enemyshotinback.png";
-    private final static String SPRITE_ENEMY_SHOT_IN_FRONT = "core/assets/enemyshotinfront.png";
+    private String enemyType;
+    private float animationSpeed;
+    private int textureRegionWidth;
+    private int textureRegionHeight;
+    private int textureRegionShotInFrontWidth;
+
+    private final static String ANIMATION_LOCATION = "core/assets/animations/";
+
+    private String SPRITE_ENEMY_WALK_LEFT_SHEET;
+    private String SPRITE_ENEMY_WALK_RIGHT_SHEET;
+    private String SPRITE_ENEMY_SHOT_IN_BACK;
+    private String SPRITE_ENEMY_SHOT_IN_FRONT;
 
     private TextureRegion[] enemyWalkLeftSprites,enemyWalkRightSprites, enemyShotInFrontSprite,enemyShotInBackSprite;
     private Animation enemyWalkLeftAnimation,enemyWalkRightAnimation,enemyShotInBackAnimation,enemyShotInFrontAnimation;
@@ -29,21 +37,42 @@ public class EnemyView extends Actor{
     public EnemyView(Enemy enemy){
         this.enemy = enemy;
 
-        try {
-            enemyWalkingleft = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_LEFT_SHEET));
-            enemyWalkingright = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_RIGHT_SHEET));
-            enemyShotInBack = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_BACK));
-            enemyShotInFront = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_FRONT));
-        }catch (Exception e){
-            throw new NullPointerException("Could not load enemy image in " + this.getClass().toString());
+        if(enemy.isBoss()){
+            enemyType = "boss";
+            animationSpeed = 1/6f;
+            textureRegionWidth = 83;
+            textureRegionHeight = 124;
+            textureRegionShotInFrontWidth = 83;
+         }else{
+            enemyType = "enemy";
+            animationSpeed = 1/12f;
+            textureRegionWidth = 63;
+            textureRegionHeight = 90;
+            textureRegionShotInFrontWidth = 70;
         }
-        enemyWalkLeftSprites = TextureRegion.split(enemyWalkingleft, 63, 90)[0];
-        enemyWalkRightSprites = TextureRegion.split(enemyWalkingright,63,90)[0];
-        enemyShotInBackSprite = TextureRegion.split(enemyShotInBack,63,90)[0];
-        enemyShotInFrontSprite = TextureRegion.split(enemyShotInFront,70,90)[0];
 
-        enemyWalkLeftAnimation = new Animation(1/12f, enemyWalkLeftSprites);
-        enemyWalkRightAnimation = new Animation(1/12f, enemyWalkRightSprites);
+        try {
+
+            SPRITE_ENEMY_WALK_LEFT_SHEET = ANIMATION_LOCATION + enemyType + "left.png";
+            SPRITE_ENEMY_WALK_RIGHT_SHEET = ANIMATION_LOCATION + enemyType + "right.png";
+            SPRITE_ENEMY_SHOT_IN_BACK = ANIMATION_LOCATION + enemyType + "shotinback.png";
+            SPRITE_ENEMY_SHOT_IN_FRONT = ANIMATION_LOCATION + enemyType + "shotinfront.png";
+        }catch (Exception e){
+            throw new NullPointerException("Could not load " + enemyType + " image in " + this.getClass().toString());
+        }
+
+        enemyWalkingleft = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_LEFT_SHEET));
+        enemyWalkingright = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_RIGHT_SHEET));
+        enemyShotInBack = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_BACK));
+        enemyShotInFront = new Texture(Gdx.files.internal(SPRITE_ENEMY_SHOT_IN_FRONT));
+
+        enemyWalkLeftSprites = TextureRegion.split(enemyWalkingleft, textureRegionWidth, textureRegionHeight)[0];
+        enemyWalkRightSprites = TextureRegion.split(enemyWalkingright,textureRegionWidth,textureRegionHeight)[0];
+        enemyShotInBackSprite = TextureRegion.split(enemyShotInBack,textureRegionWidth,textureRegionHeight)[0];
+        enemyShotInFrontSprite = TextureRegion.split(enemyShotInFront,textureRegionShotInFrontWidth,textureRegionHeight)[0];
+
+        enemyWalkLeftAnimation = new Animation(animationSpeed, enemyWalkLeftSprites);
+        enemyWalkRightAnimation = new Animation(animationSpeed, enemyWalkRightSprites);
         enemyShotInBackAnimation = new Animation(1/6f, enemyShotInBackSprite);
         enemyShotInFrontAnimation = new Animation(1/6f, enemyShotInFrontSprite);
 
