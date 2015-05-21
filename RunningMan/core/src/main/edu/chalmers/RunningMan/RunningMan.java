@@ -2,10 +2,7 @@ package edu.chalmers.RunningMan;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import edu.chalmers.RunningMan.screens.LoadLevelScreen;
-import edu.chalmers.RunningMan.screens.HighScoreScreen;
-import edu.chalmers.RunningMan.screens.MainMenuScreen;
-import edu.chalmers.RunningMan.screens.GameScreen;
+import edu.chalmers.RunningMan.screens.*;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -16,9 +13,10 @@ public class RunningMan extends Game implements PropertyChangeListener {
     public static final int SCALE = 3;
     
     private LoadLevelScreen loadLevelScreen;
-    public GameScreen gameScreen;
-    public MainMenuScreen mainMenuScreen;
+    private GameScreen gameScreen;
     private HighScoreScreen highScoreScreen;
+
+    private MainMenuScreen mainMenuScreen;
 
 	@Override
 	public void create () {
