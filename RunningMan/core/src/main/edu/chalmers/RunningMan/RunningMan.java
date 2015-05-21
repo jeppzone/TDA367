@@ -12,7 +12,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
     public static final String TITLE = "RunningMan";
     public static final int SCALE = 3;
     
-    private LoadLevelScreen loadLevelScreen;
+    private LoadLevelMenuScreen loadLevelMenuScreen;
     private GameScreen gameScreen;
     private HighScoreScreen highScoreScreen;
 
@@ -23,7 +23,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
 
         Gdx.app.log("RunningMan Game", "created");
         //createGameScreen();
-        createLoadLevelingScreen();
+        createLoadLevelMenuScreen();
         createMainMenuScreen();
 
         setScreen(mainMenuScreen);
@@ -34,9 +34,9 @@ public class RunningMan extends Game implements PropertyChangeListener {
         gameScreen.addPropertyChangeListener(this);
     }
 
-    private void createLoadLevelingScreen() {
-        loadLevelScreen = new LoadLevelScreen();
-        loadLevelScreen.addPropertyChangeListener(this);
+    private void createLoadLevelMenuScreen() {
+        loadLevelMenuScreen = new LoadLevelMenuScreen();
+        loadLevelMenuScreen.addPropertyChangeListener(this);
     }
 
     private void createMainMenuScreen() {
@@ -53,7 +53,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
         final String eventName = evt.getPropertyName();
         if(eventName.equals("loadScreen")) {
-            setScreen(loadLevelScreen);
+            setScreen(loadLevelMenuScreen);
 
         } else if(eventName.equals("restartLevel")) {
             setScreen(mainMenuScreen);
