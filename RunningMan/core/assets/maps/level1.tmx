@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="500" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="373" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="blocks" tilewidth="16" tileheight="16">
   <image source="blocks.png" width="96" height="32"/>
  </tileset>
@@ -15,44 +15,44 @@
  <tileset firstgid="15" name="obstacles" tilewidth="16" tileheight="16">
   <image source="../rockobstacle.png" width="600" height="291"/>
  </tileset>
- <layer name="ground" width="500" height="14">
+ <layer name="ground" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1kESwyAIAMB+oP//bu+dJNVGBczujLdOAxggrxcAAAAAMNv75AAANZztcvscqMTs4smudnnVnqgeP9Bvl/kF//i1yyv2ww45AH0yzDCzhygtu7za+7hLHkC7DHPM7GmnLmO17vLsNf+OsXIuQL8Mcyz6+ZWoyVg9uzxzzXvzyJ4P0CdD30c/v4pKNfl3t9w5q+LM6DuuHXKCrM56JrKXMvT8qBh2n02j7yTD91n0Tl/53TDTUVw75AUZXfVLVC9l6PdVMWSdW605zriTWXWI3OU9NVn1zRBl59xgpJG9Ej37ono9KoZVebb899Gzjn4zI9YZszv6/azYB3dcxfIr/qj8MteTZxo5B6JnU7VzV+S8jqxX9L05TtbDs30AHQUwTA==
+   eJzt1ckNwzAMRFE3kP7bzd2QbO0zpP8DdAsibqKvCwAAAAAAnParHABALLV9zk5HRMwvvuxpn0d9E9Hjx7gsMwyMeNvnEd9DhhwwxmGOmT+otOzzaPOYJQ/0c5hl5q8ddVmrdZ+71/weY+RcMM5hltX3R0JN1urZ5841783DPR+Mcei9+v4oItVkdL/MnFNxOrrHlSEnd7W6Kevp0PdVMWSfz9U9cfhGq/f6yW/HTqW4MuTl7Klmqno69PxUDK6z25rjjp7sqoNyn/fU5NR3QyVzbjusrJd6/lX9VsVwKs+W/y7dVfrNjlh3vF/1fEZ8BzOeYnmLX5Wfaz1XzoJ6PqOdWco3q6yXum8cjvP5A7C5MFk=
   </data>
  </layer>
- <layer name="startPosition" width="500" height="14">
+ <layer name="startPosition" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzkEJAAAIBLDD/qENcQ9BtgRLAAAAAAAAAAAA4I+5DgAAAAAAAAAAAAAAAAAAAAAAUFn58AAD
+   eJztzgENAAAIA6DP/qGNcTchAQkAAAAAAADAP9MOAAAAAAAAAAAAAAAAACcsunAAAw==
   </data>
  </layer>
- <layer name="enemies" width="500" height="14">
+ <layer name="enemies" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2LsNACAIBUCs3H9jRzDiL8a7FkJeQUGIAAAAAAAAAAAAAAAAAAAAAGBE2dQLAAAAAJCR/UP6XwIA/MsteEa9HaBjJt+KHerNmK0DAPC2BsG/ABg=
+   eJzt17ENACAIBECs3H9jRyBRxMK7moQvvoAIAAAAAAAAAAAAAAAAOo1LswAAAFBp9yf1ywIA7oEe83WAxEm+jg5lO/QY4C8LMJ8AFw==
   </data>
  </layer>
- <layer name="steroids" width="500" height="14">
+ <layer name="steroids" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7A9fPjXiwwCaRU0AQAAAPittgMAAAAAAAAAAAAAAAAAAAAAAAAAwBm9HQAAADLGfgAS
+   eJztziEBAAAIAzAMjv55CUAAxLcEqwIAAMjS3wEAAAAAAAAAAAAAAAAAACDWfAcAgGMBBAYAEg==
   </data>
  </layer>
- <layer name="pitfalls" width="500" height="14">
+ <layer name="pitfalls" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1TEKwDAIBVBP4P2Pm7lDJKnSLu/BnxURjQAAAAAAAAAAAAAAAAAAAAAAAAAAAACgI/9uAKApwy2bUs3xZsZZpNMDAHtvbi5P1f86yRc1OrWn2TOAvQVBFwMt
+   eJzt1LENwDAIBEAmYP9xU6fBsY1iF3fS1yAERAAAAAAAAAAAAAAAAAAAAAAAN8rTDUCTDPvcpZrjzIyzyE4PwNjK3fFW/bAv+aPGTu1u9gzGHlSXAy0=
   </data>
  </layer>
- <layer name="finishlevel" width="500" height="14">
+ <layer name="finishlevel" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjEBAAAMAiCf9a+8GHpAAhIAAIAd1w4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVD1EqAAY=
+   eJztzjENAAAIA7A9+LeMjJHQKmgCAAD3TDsAAAAAAAAAAAAAAAAAAAAAAMALC7RXAAY=
   </data>
  </layer>
- <layer name="obstacles" width="500" height="14">
+ <layer name="obstacles" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2UEKgzAUBFA9gCeQHqWrXre0XXg8C3URQVyJBn9j3oPZmlkEBmLTAAAAAAAAAAAAAAAAAADAtXUpAPynYcqjjW6xzXjRs0pw9p7fCrmTQBmG6AIQqFvlLH1rzwEgh8gtt+dQp290gQq8U0p5l2e/9Y6fuefzlttzqNMV9nxc5Kj5f/icnLZ875X3yCo8p9yjSyR79rzPcM+WW17ynn+iCwAAcNgP02QRQg==
+   eJzt2DEKgzAYBWA9gCeQHqVTr1vaDh7PQh0iiHQQG/wb833w1uQN4Q1pGgAAAAAAAAAAAAAAvulSgP82TLm10S22GU96VwmO3vRLIW+SsgzRBSBQt8pR+tamA+QUuec2vW7v6AIVeKaU8kfDfustP3LT5z236XU7w6aPi/xq/h+fk9OW8x55r6zCfco1ukSyZ9P7DO9sueclb/orugAA2X0AlR4RQg==
   </data>
  </layer>
- <layer name="boss" width="500" height="14">
+ <layer name="boss" width="373" height="14">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+DG1gAAE=
+   eJztzjEJAAAMA7B+8+94MkohUZAEAAAAAAAAAAAAAAAAAAAAAAAA9l07AMCkB31YAAg=
   </data>
  </layer>
 </map>
