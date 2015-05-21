@@ -42,7 +42,8 @@ public class Level implements PropertyChangeListener {
 
     /**
      * Method to be called continuously to check for
-     * collisions all over the level
+     * collisions all over the level between mapbjects and player,
+     * player and enemies, enemies and mapobjects.
      */
 
     public void checkCollisions(List<Bullet> bullets) {
@@ -71,8 +72,8 @@ public class Level implements PropertyChangeListener {
 
     /**
      * Method to check whether bullets are colliding with
-     * any objects
-     *
+     * any objects. The bullet should disappear if it collides with another
+     * object. If it collides with an enemy, the enemy should disappear as well.
      * @param bullets
      */
     public void checkBulletCollisions(List<Bullet> bullets) {
@@ -104,20 +105,31 @@ public class Level implements PropertyChangeListener {
         }
     }
 
+    /**
+     * Calculates the total player score for this level
+     */
     public void setPlayerScore() {
         playerScore = getEnemiesKilled() + getTimeLeft();
     }
 
+    /**
+     *
+     * @return the total player score for this level
+     */
     public int getPlayerScore() {
         return playerScore;
     }
 
+    /**
+     * Metod used by the HUD to display the amount of time that is left
+     * @return the amount of time that is left for this level
+     */
     public int getTimeLeft() {
         return timer.getTimeLeftInteger();
     }
 
     /**
-     * Method to be called continiously to check
+     * Method to be called y to check
      * it the level timer is up
      */
     public void checkTime() {
@@ -135,24 +147,30 @@ public class Level implements PropertyChangeListener {
 
     /**
      * Method to check if timer is up
-     *
      * @return true if getTimeInteger >= getMaxTime
      */
     public boolean isTimeUp() {
         return timer.isTimeUp();
     }
 
+    /**
+     * Method used by the hud to display the current kill count for the player
+     * @return the total number of enemies killed
+     */
+
     public int getEnemiesKilled() {
         return enemiesKilled;
     }
 
+    /**
+     * @return the name of this level
+     */
     public String getLevelName() {
         return levelName;
     }
 
     /**
-     * Method to checck whether two objects are colliding or not
-     *
+     * Method to check whether two objects are colliding or not
      * @param thisObject  the first object
      * @param otherObject the other object
      * @return true if the two objects hitboxes are intersecting
