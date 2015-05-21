@@ -10,9 +10,14 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
  */
 public class HudFont {
     protected BitmapFont font;
+    FreeTypeFontGenerator generator;
 
     public void generateFont(){
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
+        try {
+             generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
+        }catch (Exception e){
+            throw new NullPointerException("Could not find font in HudFont");
+        }
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 30;
         parameter.color = Color.WHITE;
