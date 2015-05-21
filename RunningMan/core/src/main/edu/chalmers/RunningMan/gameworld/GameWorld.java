@@ -110,6 +110,7 @@ public class GameWorld implements PropertyChangeListener {
     private void setHighScores(){
         level.setPlayerScore();
         highScore = new HighScore(level.getLevelName());
+        highScore.addScore(level.getPlayerScore());
         highScore.saveToFile();
         highScoreView = new HighScoreView(highScore);
     }

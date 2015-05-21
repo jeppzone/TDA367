@@ -53,9 +53,10 @@ public class Level implements PropertyChangeListener {
                     otherObject.acceptVisitor(enemy);
                 } else if (isColliding(enemy.getHitbox(), player.getHitbox())) {
                     enemy.acceptVisitor(player);
-                } else if (isColliding(player.getHitbox(), otherObject.getHitbox())) {
-                    otherObject.acceptVisitor(player);
                 }
+            }
+            if(isColliding(player.getHitbox(), otherObject.getHitbox())){
+                otherObject.acceptVisitor(player);
             }
         }
     }
@@ -76,8 +77,6 @@ public class Level implements PropertyChangeListener {
      */
     public void checkBulletCollisions(List<Bullet> bullets) {
         boolean hasRemoved; // Want to make sure that the iterator doesn't call remove twice
-        //int bulletSize = bullets.size();
-        //int enemySize = enemies.size();
         Iterator<Bullet> bulletIterator = bullets.iterator();
         Iterator<AbstractPhysicalObject> objectIterator = mapObjects.iterator();
         Iterator<Enemy> enemyIterator = enemies.iterator();
@@ -89,7 +88,6 @@ public class Level implements PropertyChangeListener {
                 if (isColliding(bullet.getHitbox(), object.getHitbox()) && !hasRemoved) {
                     bulletIterator.remove();
                     hasRemoved = true;
-
                 }
             }
             while (enemyIterator.hasNext()) {
@@ -99,6 +97,7 @@ public class Level implements PropertyChangeListener {
                     bulletIterator.remove();
                     if (enemy.isDead()) {
                         enemyIterator.remove();
+                        enemiesKilled++;
                     }
                 }
             }
