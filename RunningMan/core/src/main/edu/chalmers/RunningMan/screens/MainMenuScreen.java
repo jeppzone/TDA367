@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
@@ -15,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -26,14 +23,21 @@ import java.beans.PropertyChangeSupport;
 public class MainMenuScreen implements IScreen {
 
     private Stage stage;
-    private TextureAtlas atlas = new TextureAtlas("core/assets/mainmenu/mainmenu_buttonsheet.txt");
+    private TextureAtlas atlas;
     private Skin skin;
     private Table table;
     private TextButton buttonPlay, buttonExit;
     private BitmapFont whiteFont, blackFont;
     private Label heading;
     private PropertyChangeSupport pcs;
-    private TextButtonStyle textButtonStyle;
+
+    private BitmapFontManager bitmapFontManager = new BitmapFontManager();
+    private MenuButtonGenerator menuButtonGenerator;
+
+    private static final String ATLAS_PATH = "core/assets/mainmenu/mainmenu_buttonsheet.txt";
+
+    // only for debugging
+    private static final boolean DEBUG = false;
 
     public MainMenuScreen() {
         super();
@@ -47,8 +51,11 @@ public class MainMenuScreen implements IScreen {
     public void show() {
 
         stage = new Stage();
-        // input processor so buttons can be pressed
+
+        // set input processor so buttons can be pressed by cursor click
         Gdx.input.setInputProcessor(stage);
+
+        atlas = new TextureAtlas(ATLAS_PATH);
 
         skin = new Skin(atlas);
 
@@ -56,8 +63,6 @@ public class MainMenuScreen implements IScreen {
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         createFonts();
-
-        createButtonStyle();
 
         createButtons();
 
@@ -71,49 +76,34 @@ public class MainMenuScreen implements IScreen {
         table.getCell(buttonPlay).spaceBottom(15);
         table.row();
         table.add(buttonExit);
-        //table.debug();
+
+        if (DEBUG) {
+            table.debug();
+        }
 
         // add to stage
         stage.addActor(table);
     }
 
     /**
-     * Create fonts
-     */
-    private void createFonts() {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
-        FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 70;
-        parameter.color = Color.BLACK;
-        blackFont = generator.generateFont(parameter);
-        parameter.color = Color.WHITE;
-        whiteFont = generator.generateFont(parameter);
-        generator.dispose();
-    }
-
-    /**
-     * Create button style
-     */
-    private void createButtonStyle() {
-        textButtonStyle = new TextButtonStyle();
-        textButtonStyle.up = skin.getDrawable("buttonup");
-        textButtonStyle.down = skin.getDrawable("buttondown");
-        textButtonStyle.pressedOffsetX = 1;
-        textButtonStyle.pressedOffsetY = -1;
-        textButtonStyle.font = blackFont;
-    }
-
-    /**
      * Create buttons
      */
     private void createButtons() {
-        buttonPlay = new TextButton("PLAY", textButtonStyle);
-        buttonPlay.addListener(new ClickListener());
-        buttonPlay.pad(20);
+        menuButtonGenerator = new MenuButtonGenerator("", blackFont);
+        buttonPlay = menuButtonGenerator.createNewTextButton();
+        buttonPlay.setText("PLAY");
+        buttonExit = menuButtonGenerator.createNewTextButton();
+        buttonExit.setText("EXIT");
+    }
 
-        buttonExit = new TextButton("EXIT", textButtonStyle);
-        buttonExit.addListener(new ClickListener());
-        buttonExit.pad(20);
+    /**
+     * Create bitmap fonts
+     */
+    private void createFonts() {
+        blackFont = bitmapFontManager.createNewMenuButtonFontBlack();
+        blackFont.setColor(Color.BLACK);
+        whiteFont = bitmapFontManager.createNewMenuButtonFontWhite();
+        whiteFont.setColor(Color.WHITE);
     }
 
     /**

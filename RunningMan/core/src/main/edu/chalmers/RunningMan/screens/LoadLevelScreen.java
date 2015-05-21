@@ -23,15 +23,18 @@ import java.beans.PropertyChangeSupport;
 public class LoadLevelScreen implements IScreen {
 
     private Stage stage;
-    //private TextureAtlas atlas = new TextureAtlas("core/assetes/loadLevelMenu/loadlevelmenu_buttonsheet");
-    private TextureAtlas atlas = new TextureAtlas("core/assets/mainmenu/mainmenu_buttonsheet.txt");
+    private TextureAtlas atlas;
     private Skin skin;
     private Table table;
     private TextButton buttonLevel1, buttonLevel2;
     private BitmapFont blackFont, whiteFont;
     private Label heading;
-    private TextButtonStyle textButtonStyle;
     private PropertyChangeSupport pcs;
+
+    private BitmapFontManager bitmapFontManager = new BitmapFontManager();
+    private MenuButtonGenerator menuButtonGenerator;
+
+    private static final String ATLAS_PATH = "core/assets/mainmenu/mainmenu_buttonsheet.txt";
 
     public LoadLevelScreen() {
         super();
@@ -43,9 +46,13 @@ public class LoadLevelScreen implements IScreen {
      */
     @Override
     public void show() {
+
         stage = new Stage();
+
         // input processor so buttons can be pressed
         Gdx.input.setInputProcessor(stage);
+
+        atlas = new TextureAtlas(ATLAS_PATH);
 
         skin = new Skin(atlas);
 
@@ -53,8 +60,6 @@ public class LoadLevelScreen implements IScreen {
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         createFonts();
-
-        createButtonStyle();
 
         createButtons();
 
@@ -78,39 +83,21 @@ public class LoadLevelScreen implements IScreen {
      * Create fonts
      */
     private void createFonts() {
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 70;
-        parameter.color = Color.BLACK;
-        blackFont = generator.generateFont(parameter);
-        parameter.color = Color.WHITE;
-        whiteFont = generator.generateFont(parameter);
-        generator.dispose();
-    }
-
-    /**
-     * Create button style
-     */
-    private void createButtonStyle() {
-        textButtonStyle = new TextButtonStyle();
-        textButtonStyle.up = skin.getDrawable("buttonup");
-        textButtonStyle.down = skin.getDrawable("buttondown");
-        textButtonStyle.pressedOffsetX = 1;
-        textButtonStyle.pressedOffsetY = -1;
-        textButtonStyle.font = blackFont;
+        blackFont = bitmapFontManager.createNewMenuButtonFontBlack();
+        blackFont.setColor(Color.BLACK);
+        whiteFont = bitmapFontManager.createNewMenuButtonFontWhite();
+        whiteFont.setColor(Color.WHITE);
     }
 
     /**
      * Create buttons
      */
     private void createButtons() {
-        buttonLevel1 = new TextButton("1", textButtonStyle);
-        buttonLevel1.addListener(new ClickListener());
-        buttonLevel1.pad(20);
-
-        buttonLevel2 = new TextButton("2", textButtonStyle);
-        buttonLevel2.addListener(new ClickListener());
-        buttonLevel2.pad(20);
+        menuButtonGenerator = new MenuButtonGenerator("", blackFont);
+        buttonLevel1 = menuButtonGenerator.createNewTextButton();
+        buttonLevel1.setText("1");
+        buttonLevel2 = menuButtonGenerator.createNewTextButton();
+        buttonLevel2.setText("2");
     }
 
     /**
