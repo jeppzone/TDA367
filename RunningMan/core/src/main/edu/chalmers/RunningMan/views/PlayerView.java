@@ -49,7 +49,7 @@ public class PlayerView extends Actor{
             deadTexture = new Texture(SPRITE_DEAD);
             deadByPitfallTexture = new Texture(SPRITE_DEAD_BY_PITFALL);
         }catch (Exception e){
-            throw new NullPointerException("could not load the player image in PlayerView");
+            throw new NullPointerException("could not load the player image in"+ this.getClass().toString());
         }
 
         // TODO how to decide height and width on sprites without hard code it?
