@@ -14,7 +14,7 @@ public class Helicopter extends AbstractPhysicalObject {
 
     private final PropertyChangeSupport propertyChangeSupport;
 
-    private final static float xVelocity = 200;
+    private final static float X_VELOCITY = 200;
 
     private boolean shouldFlyAway;
     private float chopperXPosition;
@@ -49,7 +49,7 @@ public class Helicopter extends AbstractPhysicalObject {
         chopperXPosition = getPosition().getX();
 
         //sets a new x coordinate for the helicopter
-        setX(chopperXPosition + xVelocity*delta);
+        setX(chopperXPosition + X_VELOCITY*delta);
         propertyChangeSupport.firePropertyChange("helicopter", null, null);
     }
 
