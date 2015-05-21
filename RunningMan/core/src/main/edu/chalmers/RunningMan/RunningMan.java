@@ -21,7 +21,6 @@ public class RunningMan extends Game implements PropertyChangeListener {
 	@Override
 	public void create () {
 
-        Gdx.app.log("RunningMan Game", "created");
         //createGameScreen();
         createLoadLevelMenuScreen();
         createMainMenuScreen();

@@ -51,7 +51,6 @@ public class LoadLevelMenuScreen implements Screen {
     @Override
     public void render(float delta) {
 
-        System.out.println("LoadScreen");
         // clear screen
         Gdx.gl20.glClearColor(0, 0, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);

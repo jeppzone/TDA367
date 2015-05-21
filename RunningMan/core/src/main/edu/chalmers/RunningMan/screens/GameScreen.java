@@ -54,29 +54,24 @@ public class GameScreen implements IScreen, PropertyChangeListener {
 
     @Override
     public void resize(int width, int height) {
-        Gdx.app.log("GameScreen", "resizing");
     }
 
     @Override
     public void show() {
-        Gdx.app.log("GameScreen", "show called");
         Gdx.input.setInputProcessor(new InputProcessor());
 
     }
 
     @Override
     public void hide() {
-        Gdx.app.log("GameScreen", "hide called");
     }
 
     @Override
     public void pause() {
-        Gdx.app.log("GameScreen", "pause called");
     }
 
     @Override
     public void resume() {
-        Gdx.app.log("GameScreen", "resume called");
     }
 
     @Override
