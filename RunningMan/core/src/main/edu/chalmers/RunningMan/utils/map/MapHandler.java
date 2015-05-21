@@ -90,6 +90,7 @@ public class MapHandler implements IMapHandler {
         TiledMapTileLayer pitLayer = (TiledMapTileLayer) tileMap.getLayers().get("pitfalls");
         TiledMapTileLayer obstacleLayer = (TiledMapTileLayer) tileMap.getLayers().get("obstacles");
         TiledMapTileLayer finishLayer = (TiledMapTileLayer) tileMap.getLayers().get("finishlevel");
+        TiledMapTileLayer bossLayer = (TiledMapTileLayer) tileMap.getLayers().get("boss");
 
         // go through all the cells in all the layers (all map cells)
         for(int row = 0; row < mapHeight; row++) {
@@ -105,6 +106,7 @@ public class MapHandler implements IMapHandler {
                 TiledMapTileLayer.Cell pitCell = pitLayer.getCell(col, row);
                 TiledMapTileLayer.Cell finishCell = finishLayer.getCell(col, row);
                 TiledMapTileLayer.Cell obstacleCell = obstacleLayer.getCell(col,row);
+                TiledMapTileLayer.Cell bossCell = bossLayer.getCell(col,row);
 
                 // check if cell exists
                 if(pitCell != null && pitCell.getTile() != null) {
@@ -115,6 +117,8 @@ public class MapHandler implements IMapHandler {
                     physicalObjects.add(new Helicopter(position,new Size(60,62)));
                 } else if(enemyCell != null && enemyCell.getTile() != null) {
                     enemies.add(new Enemy(position, new Size(45, 55), 100));
+                } else if(bossCell != null && bossCell.getTile() != null) {
+                    enemies.add(new Enemy(position, new Size(90, 110), 700));
                 } else if(steroidCell != null && steroidCell.getTile() != null) {
                     physicalObjects.add(new Steroid(position, size));
                 } else if(obstacleCell != null && obstacleCell.getTile() != null) {
