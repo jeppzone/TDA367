@@ -133,7 +133,6 @@ public class Enemy extends AbstractLivingObject {
         }
 
     }
-
     @Override
     public void visit(Steroid s){
         //Nothing should happen with the enemy in this case
@@ -151,6 +150,6 @@ public class Enemy extends AbstractLivingObject {
 
     @Override
     public void visit(Pit pit) {
-        // enemy dies
+        changeDirection();
     }
 }
