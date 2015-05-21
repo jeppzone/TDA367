@@ -47,7 +47,7 @@
  </layer>
  <layer name="obstacles" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2UEKgzAQQFE9gCeQnqbXLW0XHs9CuzAQXIkGpzHvwWzNLAIfYtcBAAAAAAAAAAAAAAAAAMC1DcsA8J+m39z76C22mS96Vg3O7vmtkjsJ1GGKXgACDas5y9jrOQCUENlyPYc2faIXaMBrmVre5dlv3fEze55arufQpiv0fM7mqPQ/PE1JW773LHtkEx7RC2T29HwscM/yltfc83f0AgAAHPYFDxoRBQ==
+   eJzt2UEKgzAUBFA9gCeQHqWrXre0XXg8C3URQVyJBn9j3oPZmlkEBmLTAAAAAAAAAAAAAAAAAADAtXUpAPynYcqjjW6xzXjRs0pw9p7fCrmTQBmG6AIQqFvlLH1rzwEgh8gtt+dQp290gQq8U0p5l2e/9Y6fuefzlttzqNMV9nxc5Kj5f/icnLZ875X3yCo8p9yjSyR79rzPcM+WW17ynn+iCwAAcNgP02QRQg==
   </data>
  </layer>
  <layer name="boss" width="500" height="14">
