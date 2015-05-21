@@ -4,7 +4,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.model.*;
 import edu.chalmers.RunningMan.model.level.Level;
-import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Weapon;

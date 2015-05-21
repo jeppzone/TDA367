@@ -3,7 +3,6 @@ package edu.chalmers.RunningMan.model.level;
 import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
 import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;

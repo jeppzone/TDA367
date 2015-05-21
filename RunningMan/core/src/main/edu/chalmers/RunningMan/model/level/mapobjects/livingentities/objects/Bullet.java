@@ -3,8 +3,7 @@ package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
 import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.ISize;
 import edu.chalmers.RunningMan.model.Position;
-import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
+import edu.chalmers.RunningMan.model.IVisitor;
 
 /**
  * A class to represent the bullet

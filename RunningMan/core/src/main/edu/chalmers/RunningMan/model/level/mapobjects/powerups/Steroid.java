@@ -3,7 +3,7 @@ package edu.chalmers.RunningMan.model.level.mapobjects.powerups;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
 import edu.chalmers.RunningMan.model.Timer;
-import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
+import edu.chalmers.RunningMan.model.IVisitor;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 
 /**
