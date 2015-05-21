@@ -16,7 +16,7 @@ public class HelicopterController implements IEntityController{
     }
 
     public void update(float deltaTime){
-        if(helicopter.getFlyaway()){
+        if(helicopter.shouldFlyAway()){
             helicopter.move(deltaTime);
         }
     }

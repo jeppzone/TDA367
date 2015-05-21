@@ -14,7 +14,10 @@ public class Helicopter extends AbstractPhysicalObject {
 
     private final PropertyChangeSupport propertyChangeSupport;
 
-    private boolean flyaway;
+    private final static float xVelocity = 200;
+
+    private boolean shouldFlyAway;
+    private float chopperXPosition;
 
     public Helicopter(Position position, Size size){
         super(size, position);
@@ -24,8 +27,10 @@ public class Helicopter extends AbstractPhysicalObject {
 
     @Override
     public void acceptVisitor(IVisitor visitor) {
-        visitor. visit(this);
-        flyaway = true;
+        visitor.visit(this);
+
+        //if a player visits the helicopter shouldFlyAway will be set to true
+        shouldFlyAway = true;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -41,12 +46,14 @@ public class Helicopter extends AbstractPhysicalObject {
      * @param  delta the time difference
      */
     public void move(float delta){
-        float velocity = 200;
-        setX(getPosition().getX() + velocity*delta);
+        chopperXPosition = getPosition().getX();
+
+        //sets a new x coordinate for the helicopter
+        setX(chopperXPosition + xVelocity*delta);
         propertyChangeSupport.firePropertyChange("helicopter", null, null);
     }
 
-    public boolean getFlyaway(){
-        return flyaway;
+    public boolean shouldFlyAway(){
+        return shouldFlyAway;
     }
 }

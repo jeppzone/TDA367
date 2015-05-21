@@ -50,4 +50,9 @@
    eJzt2UEKgzAURdG4AJfgatxuhy5PoS1UEEel0fwmOQfe2D8QLmhKAAAAAAAAAAAAAAAAAADQtvEzAP7T8to8RF/xnbXRZ9WgdM+nSt5JoA5L9AEQaDytJD0HgHyRLX/Tc+jPFn1AR2r5Ls/vzh3Xc6CUFnq+HpZr/x++70p6fo9H9AEHeg4AQO+e0esNFQ==
   </data>
  </layer>
+ <layer name="boss" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+DG1gAAE=
+  </data>
+ </layer>
 </map>

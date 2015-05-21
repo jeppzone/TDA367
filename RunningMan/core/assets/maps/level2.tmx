@@ -47,7 +47,12 @@
  </layer>
  <layer name="obstacles" width="500" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzgENAAAEADBlpVNSCmz2J3gEAAAAAAAAAAAAAAAAAAAAAAAAAB/kdQAAYFhdBwAAAAAAWNFmpQER
+   eJztzkENACAMBDAwgjvUYZAnJkYuWVoFHQMAAAAAAAAAAAAAAAAAAAAAAACADnY6AADw2UkHAIDWbjpQYM30AAAAoMYDLYUCKA==
+  </data>
+ </layer>
+ <layer name="boss" width="500" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7Dh/0cvFvhISKugCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsNV1PQAAAPhtAF+fAJg=
   </data>
  </layer>
 </map>
