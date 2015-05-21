@@ -54,8 +54,8 @@ public class Level implements PropertyChangeListener {
 
     public void checkCollisions(List<Bullet> bullets) {
         checkBulletCollisions(bullets);
-        for(Enemy enemy: enemies){
-            for(AbstractPhysicalObject otherObject: mapObjects){
+        for(AbstractPhysicalObject otherObject: mapObjects){
+            for(Enemy enemy: enemies){
                 if(isColliding(enemy.getHitbox(), otherObject.getHitbox())){
                     otherObject.acceptVisitor(enemy);
                 }else if(isColliding(enemy.getHitbox(), player.getHitbox())){
@@ -81,13 +81,13 @@ public class Level implements PropertyChangeListener {
      * @param bullets
      */
     public void checkBulletCollisions(List<Bullet> bullets) {
-        boolean hasRemoved;
-        int bulletSize = bullets.size();
-        int enemySize = enemies.size();
+        boolean hasRemoved; // Want to make sure that the iterator doesn't call remove twice
+        //int bulletSize = bullets.size();
+        //int enemySize = enemies.size();
         Iterator<Bullet> bulletIterator = bullets.iterator();
         Iterator<AbstractPhysicalObject> objectIterator = mapObjects.iterator();
         Iterator<Enemy> enemyIterator = enemies.iterator();
-        while (bulletIterator.hasNext() && bulletSize > 0) {
+        while (bulletIterator.hasNext()) {
             hasRemoved = false;
             final Bullet bullet = bulletIterator.next();
             while (objectIterator.hasNext()) {
@@ -98,14 +98,13 @@ public class Level implements PropertyChangeListener {
 
                 }
             }
-            while (enemyIterator.hasNext() && enemySize > 0) {
-                final Enemy enemy = (Enemy) enemyIterator.next();
+            while (enemyIterator.hasNext()) {
+                final Enemy enemy = enemyIterator.next();
                 if (isColliding(enemy.getHitbox(), bullet.getHitbox())) {
                     bullet.acceptVisitor(enemy);
                     bulletIterator.remove();
                     if (enemy.getHp() <= 0) {
                         enemyIterator.remove();
-                        enemySize--;
                     }
                 }
             }
