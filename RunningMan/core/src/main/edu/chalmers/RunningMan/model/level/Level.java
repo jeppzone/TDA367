@@ -1,12 +1,8 @@
 package edu.chalmers.RunningMan.model.level;
 
 import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.Ground;
-import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
-import edu.chalmers.RunningMan.model.level.mapobjects.IVisitor;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
-import edu.chalmers.RunningMan.model.HighScore;
 import edu.chalmers.RunningMan.model.Timer;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 
@@ -30,10 +26,9 @@ public class Level implements PropertyChangeListener {
     private Timer timer;
     private int playerScore;
     private PropertyChangeSupport pcs;
-    private HighScore highScores;
     private Player player;
 
-    public Level(Player player, List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies , String levelName){
+    public Level(Player player, List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies, String levelName) {
         this.mapObjects = mapObjects;
         this.levelName = levelName;
         this.enemies = enemies;
@@ -43,8 +38,6 @@ public class Level implements PropertyChangeListener {
         timer = new Timer(MAX_TIME);
         pcs = new PropertyChangeSupport(this);
         playerScore = 0;
-        highScores = new HighScore(levelName);
-        highScores.loadFromFile();
     }
 
     /**
@@ -54,30 +47,31 @@ public class Level implements PropertyChangeListener {
 
     public void checkCollisions(List<Bullet> bullets) {
         checkBulletCollisions(bullets);
-        for(AbstractPhysicalObject otherObject: mapObjects){
-            for(Enemy enemy: enemies){
-                if(isColliding(enemy.getHitbox(), otherObject.getHitbox())){
+        for (AbstractPhysicalObject otherObject : mapObjects) {
+            for (Enemy enemy : enemies) {
+                if (isColliding(enemy.getHitbox(), otherObject.getHitbox())) {
                     otherObject.acceptVisitor(enemy);
-                }else if(isColliding(enemy.getHitbox(), player.getHitbox())){
+                } else if (isColliding(enemy.getHitbox(), player.getHitbox())) {
                     enemy.acceptVisitor(player);
-                }else if(isColliding(player.getHitbox(), otherObject.getHitbox())){
+                } else if (isColliding(player.getHitbox(), otherObject.getHitbox())) {
                     otherObject.acceptVisitor(player);
                 }
             }
         }
     }
 
-    public void addPropertyChangeListener(PropertyChangeListener listener){
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener){
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
         pcs.removePropertyChangeListener(listener);
     }
 
     /**
      * Method to check whether bullets are colliding with
      * any objects
+     *
      * @param bullets
      */
     public void checkBulletCollisions(List<Bullet> bullets) {
@@ -111,11 +105,15 @@ public class Level implements PropertyChangeListener {
         }
     }
 
-    public void setPlayerScore(){
+    public void setPlayerScore() {
         playerScore = getEnemiesKilled() + getTimeLeft();
     }
 
-    public int getTimeLeft(){
+    public int getPlayerScore() {
+        return playerScore;
+    }
+
+    public int getTimeLeft() {
         return timer.getTimeLeftInteger();
     }
 
@@ -123,47 +121,50 @@ public class Level implements PropertyChangeListener {
      * Method to be called continiously to check
      * it the level timer is up
      */
-    public void checkTime(){
-        if(isTimeUp()){
+    public void checkTime() {
+        if (isTimeUp()) {
             pcs.firePropertyChange("timer", null, null);
         }
     }
+
     /**
-     *
      * @return the timer object of this class
      */
-    public Timer getTimer(){
+    public Timer getTimer() {
         return timer;
     }
 
     /**
      * Method to check if timer is up
+     *
      * @return true if getTimeInteger >= getMaxTime
      */
-    public boolean isTimeUp(){
-            return timer.isTimeUp();
+    public boolean isTimeUp() {
+        return timer.isTimeUp();
     }
-    public int getEnemiesKilled(){
+
+    public int getEnemiesKilled() {
         return enemiesKilled;
     }
 
-    public String getLevelName(){
+    public String getLevelName() {
         return levelName;
     }
 
     /**
      * Method to checck whether two objects are colliding or not
-     * @param thisObject the first object
+     *
+     * @param thisObject  the first object
      * @param otherObject the other object
      * @return true if the two objects hitboxes are intersecting
      * and they are not the same object, false otherwise
      */
-    public boolean isColliding(Rectangle thisObject, Rectangle otherObject){
-        if(thisObject == null ||otherObject == null){
+    public boolean isColliding(Rectangle thisObject, Rectangle otherObject) {
+        if (thisObject == null || otherObject == null) {
             return false;
-        }else if(thisObject.equals(otherObject)){
+        } else if (thisObject.equals(otherObject)) {
             return false;
-        }else{
+        } else {
             return thisObject.intersects(otherObject);
         }
     }
@@ -171,19 +172,10 @@ public class Level implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final String eventName = evt.getPropertyName();
-        if(eventName.equals("moveRight") || eventName.equals("moveLeft")){
+        if (eventName.equals("moveRight") || eventName.equals("moveLeft")) {
             timer.start();
             pcs.firePropertyChange("startlevel", null, null);
         }
     }
 
-    public void addScore(){
-        setPlayerScore();
-        highScores.addScore(playerScore);
-        highScores.saveToFile();
-    }
-
-    public List<Integer> getHighScores(){
-        return highScores.getHighScores();
-    }
 }

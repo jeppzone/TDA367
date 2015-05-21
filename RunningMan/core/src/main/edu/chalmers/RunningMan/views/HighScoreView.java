@@ -2,6 +2,7 @@ package edu.chalmers.RunningMan.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import edu.chalmers.RunningMan.model.HighScore;
 
 import java.util.List;
 
@@ -12,11 +13,11 @@ public class HighScoreView extends HudFont {
 
     private List<Integer> scores;
     private SpriteBatch batch;
-    private String levelName;
+    private HighScore highScore;
 
-    public HighScoreView(List<Integer> scores, String levelName){
-        this.scores = scores;
-        this.levelName = levelName;
+    public HighScoreView(HighScore highScore){
+        this.highScore = highScore;
+        scores = highScore.getHighScores();
         batch = new SpriteBatch();
         generateFont();
     }
@@ -24,7 +25,7 @@ public class HighScoreView extends HudFont {
     public void draw(){
         int counter = 1;
         batch.begin();
-        font.draw(batch, "HighScore for " + levelName, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() - 50);
+        font.draw(batch, "HighScore for " + highScore.getLevelName(), Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() - 50);
         for(Integer score: scores){
             font.draw(batch , counter + ")  " +  score.toString(), Gdx.graphics.getWidth()/2 - 50, Gdx.graphics.getHeight() - 125 -  counter*100);
             counter++;

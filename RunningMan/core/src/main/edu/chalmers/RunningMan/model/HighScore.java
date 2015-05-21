@@ -21,6 +21,7 @@ public class HighScore {
         highScores = new ArrayList<>();
         isFull = false;
         this.levelName = levelName;
+        loadFromFile();
     }
 
     /**
@@ -106,6 +107,10 @@ public class HighScore {
             while(it.hasNext())
                 System.out.println("Added score: " + it.next());
         }
+    }
+
+    public String getLevelName(){
+        return levelName;
     }
 
 }

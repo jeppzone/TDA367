@@ -50,6 +50,7 @@ public class GameWorld implements PropertyChangeListener {
     private static HighScoreView highScoreView;
     private Timer loadTimer;
     private List<Enemy> enemies;
+    private HighScore highScore;
 
     private static final float DEATH_ANIMATION_TIME = 1.15f;
 
@@ -94,8 +95,7 @@ public class GameWorld implements PropertyChangeListener {
                     if (player.isDead()) {
                         pcs.firePropertyChange("dead", null, null);
                     } else {
-                        level.addScore();
-                        highScoreView = new HighScoreView(level.getHighScores(), level.getLevelName());
+                        setHighScores();
                         pcs.firePropertyChange("finish", null, null);
 
                     }
@@ -105,6 +105,13 @@ public class GameWorld implements PropertyChangeListener {
             levelView.draw();
             hudView.draw();
         }
+    }
+
+    private void setHighScores(){
+        level.setPlayerScore();
+        highScore = new HighScore(level.getLevelName());
+        highScore.saveToFile();
+        highScoreView = new HighScoreView(highScore);
     }
 
     private void updateControllers(float deltaTime){
