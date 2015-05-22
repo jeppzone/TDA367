@@ -44,12 +44,12 @@ public class GameWorld implements PropertyChangeListener {
 
     public GameWorld(String levelName) {
         this.levelName = levelName;
-        loadTimer = new Timer(4);
-        loadTimer.start();
         startLevel();
     }
 
-    public void startLevel(){
+    private void startLevel(){
+        loadTimer = new Timer(4);
+        loadTimer.start();
         loadLevel();
         controllers = factory.getControllers();
         pcs = new PropertyChangeSupport(this);
@@ -57,12 +57,26 @@ public class GameWorld implements PropertyChangeListener {
         helicopterController = factory.getHelicopterController();
     }
 
-    public void addPropertyChangeListener(PropertyChangeListener listener){
-        pcs.addPropertyChangeListener(listener);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener listener){
-        pcs.removePropertyChangeListener(listener);
+    private final void loadLevel() {
+        try {
+            mapHandler = new MapHandler(levelName);
+            mapObjects = mapHandler.getPhysicalObjectsList();
+            enemies = mapHandler.getEnemies();
+            factory = new Factory(mapObjects, enemies, levelName);
+            audioController = factory.getAudioController();
+            player = factory.getPlayer();
+            player.addPropertyChangeListener(this);
+            playerController = factory.getPlayerController();
+            level = factory.getLevel();
+            levelView = factory.getLevelView();
+            levelController = factory.getLevelController();
+            level.addPropertyChangeListener(this);
+            player.addPropertyChangeListener(level);
+            hudView = new HudView(level);
+            audioController.playMusic();
+        } catch (MapHandlerException e) {
+            System.out.println("loadLevel in GameWorld");
+        }
     }
 
     public void update(float deltaTime) {
@@ -91,10 +105,6 @@ public class GameWorld implements PropertyChangeListener {
         }
     }
 
-    private void setHighScores(){
-        level.setPlayerScore();
-    }
-
     private void updateControllers(float deltaTime){
         for (IEntityController controller : controllers) {
             controller.update(deltaTime);
@@ -112,26 +122,17 @@ public class GameWorld implements PropertyChangeListener {
         levelController.update(deltaTime);
     }
 
-    public final void loadLevel() {
-        try {
-            mapHandler = new MapHandler(levelName);
-            mapObjects = mapHandler.getPhysicalObjectsList();
-            enemies = mapHandler.getEnemies();
-            factory = new Factory(mapObjects, enemies, levelName);
-            audioController = factory.getAudioController();
-            player = factory.getPlayer();
-            player.addPropertyChangeListener(this);
-            playerController = factory.getPlayerController();
-            level = factory.getLevel();
-            levelView = factory.getLevelView();
-            levelController = factory.getLevelController();
-            level.addPropertyChangeListener(this);
-            player.addPropertyChangeListener(level);
-            hudView = new HudView(level);
-            audioController.playMusic();
-        } catch (MapHandlerException e) {
-            System.out.println("loadLevel in GameWorld");
-        }
+    private void setHighScores(){
+        level.setPlayerScore();
+    }
+
+
+    public void addPropertyChangeListener(PropertyChangeListener listener){
+        pcs.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener){
+        pcs.removePropertyChangeListener(listener);
     }
 
     @Override

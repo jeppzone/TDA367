@@ -45,11 +45,11 @@ public class Factory {
         audioController = new AudioController(levelName);
         this.levelName = levelName;
         addMapObjects();
-        addEnemies();
         addPlayer();
         addWeaponAndBullets();
         addLevel();
         addAudioController();
+        addEnemies();
         highScore = new HighScore(level);
     }
 
@@ -85,6 +85,7 @@ public class Factory {
 
     private void addEnemies(){
         for(final Enemy enemy: enemies){
+            enemy.addPropertyChangeListener(audioController);
             EnemyView enemyView = new EnemyView(enemy);
             actors.add(enemyView);
             controllers.add(new EnemyController(enemy, enemyView));
