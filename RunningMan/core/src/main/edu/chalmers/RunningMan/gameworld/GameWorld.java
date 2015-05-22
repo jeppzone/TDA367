@@ -47,6 +47,24 @@ public class GameWorld implements PropertyChangeListener {
         startLevel();
     }
 
+    /**
+     * Updates all controllers accordin
+     * @param deltaTime
+     */
+    public void update(float deltaTime) {
+        loadTimer.update(deltaTime); // Check to see if the game is done loading
+        if(loadTimer.isTimeUp()) {
+            if (!player.isDead() && !player.hasFinishedLevel()) {
+                updateControllers(deltaTime);
+            } else {
+                updateDeathTimer(deltaTime);
+                checkDeathTimer();
+                updateRemainingControllers(deltaTime);
+            }
+            drawViews();
+        }
+    }
+
     private void startLevel(){
         loadTimer = new Timer(4);
         loadTimer.start();
@@ -57,7 +75,7 @@ public class GameWorld implements PropertyChangeListener {
         helicopterController = factory.getHelicopterController();
     }
 
-    private final void loadLevel() {
+    private void loadLevel() {
         try {
             mapHandler = new MapHandler(levelName);
             mapObjects = mapHandler.getPhysicalObjectsList();
@@ -79,36 +97,34 @@ public class GameWorld implements PropertyChangeListener {
         }
     }
 
-    public void update(float deltaTime) {
-        loadTimer.update(deltaTime);
-        if(loadTimer.isTimeUp()) {
-            if (!player.isDead() && !player.hasFinishedLevel()) {
-                updateControllers(deltaTime);
-            } else {
-                timerSinceDeath.start();
-                timerSinceDeath.update(deltaTime);
-                updateRemainingControllers(deltaTime);
-                if (timerSinceDeath.isTimeUp()) {
-                    audioController.stopMusic();
-                    if (player.isDead()) {
-                        pcs.firePropertyChange("restartLevel", null, null);
-                    } else {
-                        setHighScores();
-                        pcs.firePropertyChange("showHighScore", null, null);
-
-                    }
-                    timerSinceDeath.resetTime();
-                }
-            }
-            levelView.draw();
-            hudView.draw();
-        }
-    }
-
     private void updateControllers(float deltaTime){
         for (IEntityController controller : controllers) {
             controller.update(deltaTime);
         }
+    }
+
+    private void updateDeathTimer(float deltaTime){
+        timerSinceDeath.start();
+        timerSinceDeath.update(deltaTime);
+    }
+
+    private void checkDeathTimer(){
+        if (timerSinceDeath.isTimeUp()) {
+            audioController.stopMusic();
+            if (player.isDead()) {
+                pcs.firePropertyChange("restartLevel", null, null);
+            } else {
+                setHighScores();
+                pcs.firePropertyChange("showHighScore", null, null);
+
+            }
+            timerSinceDeath.resetTime();
+        }
+    }
+
+    private void drawViews(){
+        levelView.draw();
+        hudView.draw();
     }
 
     /**
