@@ -100,7 +100,7 @@ buildNumber.properties
 Icon
 
 #HighScore
-.txt
+*.txt
 
 # Thumbnails
 ._*
