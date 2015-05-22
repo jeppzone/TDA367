@@ -20,6 +20,9 @@ import edu.chalmers.RunningMan.views.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Factory that provides models, views and controllers
+ */
 public class Factory {
     private List<AbstractPhysicalObject> mapObjects;
     private List<Actor> actors;

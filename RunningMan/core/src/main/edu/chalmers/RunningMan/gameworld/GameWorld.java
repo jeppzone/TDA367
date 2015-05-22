@@ -145,7 +145,7 @@ public class GameWorld implements PropertyChangeListener {
             timerSinceDeath.resetTime();
         }
     }
-    
+
     private void drawViews(){
         levelView.draw();
         hudView.draw();
