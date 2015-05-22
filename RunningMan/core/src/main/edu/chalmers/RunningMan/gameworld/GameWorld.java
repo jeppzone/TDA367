@@ -17,7 +17,7 @@ import java.beans.PropertyChangeSupport;
 import java.util.List;
 
 /**
- * Created by JohanTobin on 2015-04-22.
+ * The class that controls the flow of the game
  */
 
 public class GameWorld implements PropertyChangeListener {
@@ -48,8 +48,8 @@ public class GameWorld implements PropertyChangeListener {
     }
 
     /**
-     * Updates all controllers accordin
-     * @param deltaTime
+     * Updates the game
+     * @param deltaTime the difference in time
      */
     public void update(float deltaTime) {
         loadTimer.update(deltaTime); // Check to see if the game is done loading
@@ -97,17 +97,41 @@ public class GameWorld implements PropertyChangeListener {
         }
     }
 
+    /**
+     * Updates all controllers in the game
+     * @param deltaTime the time difference
+     */
     private void updateControllers(float deltaTime){
         for (IEntityController controller : controllers) {
             controller.update(deltaTime);
         }
     }
 
+    /**
+     * The controllers that should be updated after
+     * the level is finished/player is dead/time is up
+     * @param deltaTime the time difference
+     */
+    private void updateRemainingControllers(float deltaTime){
+        helicopterController.update(deltaTime);
+        playerController.update(deltaTime);
+        levelController.update(deltaTime);
+    }
+
+    /**
+     * Updates the time since the player died or finished the level. During this timer the
+     * death animation or finish animation will be played
+     * @param deltaTime the time difference
+     */
     private void updateDeathTimer(float deltaTime){
         timerSinceDeath.start();
         timerSinceDeath.update(deltaTime);
     }
 
+    /**
+     * Checks if the timer since the player's death or since the player finished
+     * the level is up. If it is, change screens accordingly
+     */
     private void checkDeathTimer(){
         if (timerSinceDeath.isTimeUp()) {
             audioController.stopMusic();
@@ -121,21 +145,10 @@ public class GameWorld implements PropertyChangeListener {
             timerSinceDeath.resetTime();
         }
     }
-
+    
     private void drawViews(){
         levelView.draw();
         hudView.draw();
-    }
-
-    /**
-     * The controllers that should be updated after
-     * the level is finished/player is dead/time is up
-     * @param deltaTime the time difference
-     */
-    private void updateRemainingControllers(float deltaTime){
-        helicopterController.update(deltaTime);
-        playerController.update(deltaTime);
-        levelController.update(deltaTime);
     }
 
     private void setHighScores(){
