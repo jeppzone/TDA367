@@ -36,7 +36,7 @@ public class WeaponTest extends Assert {
     public void setUp(){
 
         FIRE_DELAY = 500f;
-        position = new Position(20,00);
+        position = new Position(40,00);
         size = new Size(1,1);
         mockSize = new MockSize();
         player = new Player(position, size, 100);
@@ -100,6 +100,6 @@ public class WeaponTest extends Assert {
         weapon.placeBullet();
         weapon.getPlayer().moveLeft(0);
         weapon.placeBullet();
-        assertEquals(weapon.getBullets().get(0).getPosition().getX(), weapon.getBullets().get(1).getPosition().getX() + 50,0);
+        assertEquals(weapon.getBullets().get(0).getPosition().getX(), weapon.getBullets().get(1).getPosition().getX() + 58,0);
     }
 }

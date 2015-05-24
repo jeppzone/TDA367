@@ -94,7 +94,7 @@ public class EnemyView extends Actor{
     private TextureRegion getCurrentSprite() {
         stateTime += Gdx.graphics.getDeltaTime();
 
-        if(enemy.isShotInback()){
+        if(enemy.isShotInBack()){
             stateTime = 0;
             deathTime += Gdx.graphics.getDeltaTime();
             return enemyShotInBackAnimation.getKeyFrame(deathTime, false);

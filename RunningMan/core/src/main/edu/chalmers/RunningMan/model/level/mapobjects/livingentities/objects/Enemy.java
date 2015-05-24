@@ -17,7 +17,7 @@ public class Enemy extends AbstractLivingObject {
 
     private float velocity;
     private AnimationState enemyState = AnimationState.MOVING_LEFT;
-    private boolean isShotInback, isShotInFront;
+    private boolean isShotInBack, isShotInFront;
     private static final int DAMAGE = 100;
     private boolean isBoss = false;
 
@@ -32,10 +32,6 @@ public class Enemy extends AbstractLivingObject {
 
         velocity = -100f;
         propertyChangeSupport = new PropertyChangeSupport(this);
-    }
-
-    public boolean isBoss(){
-        return isBoss;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -86,11 +82,19 @@ public class Enemy extends AbstractLivingObject {
     }
 
     /**
+     * Method to check if enemy is a boss
+     * @return true if the enemy is a boss
+     */
+    public boolean isBoss(){
+        return isBoss;
+    }
+
+    /**
      * Method to check if enemy is shot in back, for audio purposes
      * @return true if the bullet hits enemy from behind, false otherwise
      */
-    public boolean isShotInback(){
-        return this.isShotInback;
+    public boolean isShotInBack(){
+        return this.isShotInBack;
     }
 
     /**
@@ -134,7 +138,7 @@ public class Enemy extends AbstractLivingObject {
                 isShotInFront = true;
                 propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
             } else {
-                isShotInback = true;
+                isShotInBack = true;
                 propertyChangeSupport.firePropertyChange("enemyshotinback", null, null);
             }
             this.velocity = 0;

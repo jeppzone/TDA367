@@ -1,12 +1,18 @@
 package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
 
+import edu.chalmers.RunningMan.RunningMan;
+import edu.chalmers.RunningMan.model.ISize;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.AnimationState;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+
+import static edu.chalmers.RunningMan.utils.Constants.V_HEIGHT;
+import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
 
 public class EnemyTest extends Assert {
 
@@ -15,6 +21,8 @@ public class EnemyTest extends Assert {
     private Position position = new Position(10,10);
     private static final float DELTATIME = 2f;
     private final Size size = new Size(10f, 10f);
+    private Bullet bullet;
+    private final ISize windowSize = new Size(V_WIDTH * RunningMan.SCALE,V_HEIGHT * RunningMan.SCALE);
 
     @Before
     public void setUp(){
@@ -35,9 +43,9 @@ public class EnemyTest extends Assert {
     }
 
     @Test
-    public void testChangeDirection(){
+    public void testChangeVelocity(){
         enemy.changeDirection();
-        assertEquals(enemy.getVelocity(),velocity*-1, 0);
+        assertEquals(enemy.getVelocity(), velocity * -1, 0);
     }
 
     @Test
@@ -73,8 +81,63 @@ public class EnemyTest extends Assert {
 
     @Test
     public void testGetHitbox(){
-        final Rectangle rec = new Rectangle((int)position.getX(), (int)position.getY(),
-                (int)size.getWidth(), (int)size.getHeight());
+        final Rectangle rec = new Rectangle((int)position.getX(),
+                (int)position.getY(),
+                (int)size.getWidth(),
+                (int)size.getHeight());
         assertEquals(rec, enemy.getHitbox());
+    }
+    @Test
+    public void isBoss(){
+        enemy = new Enemy(position,size,151);
+        assertTrue(enemy.isBoss());
+    }
+
+    @Test
+    public void isNormal(){
+        enemy = new Enemy(position,size,150);
+        assertFalse(enemy.isBoss());
+    }
+
+    @Test
+    public void changeDirectionToRight(){
+        enemy.changeDirection();
+        assertTrue(enemy.getEnemyState() == AnimationState.MOVING_RIGHT);
+    }
+
+    @Test
+    public void changeDirectionToLeft(){
+        enemy.changeDirection();
+        enemy.changeDirection();
+        assertTrue(enemy.getEnemyState() == AnimationState.MOVING_LEFT);
+    }
+
+    @Test
+    public void DeadEnemyNotMoving(){
+        bullet = new Bullet(new Size(1,1),new Position(0,10),1,windowSize);
+        enemy.visit(bullet);
+        enemy.changeDirection();
+        assertTrue(enemy.getEnemyState() == AnimationState.STANDING);
+    }
+
+    @Test
+    public void isDead(){
+        bullet = new Bullet(new Size(1,1),new Position(0,10),1,windowSize);
+        enemy.visit(bullet);
+        assertTrue(enemy.isDead());
+    }
+
+    @Test
+    public void IsShotInFront(){
+        bullet = new Bullet(new Size(1,1),new Position(0,10),1,windowSize);
+        enemy.visit(bullet);
+        assertTrue(enemy.isShotInFront());
+    }
+
+    @Test
+    public void IsShotInBack(){
+        bullet = new Bullet(new Size(1,1),new Position(0,10),-1,windowSize);
+        enemy.visit(bullet);
+        assertTrue(enemy.isShotInBack());
     }
 }
