@@ -4,6 +4,9 @@ import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
 import edu.chalmers.RunningMan.model.level.mapobjects.Ground;
 import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
+import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
+import edu.chalmers.RunningMan.model.level.mapobjects.Pit;
+import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.AnimationState;
 import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
 import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.Gravity;
 import org.junit.Assert;
@@ -22,6 +25,7 @@ public class PlayerTest extends Assert{
     private Weapon weapon;
     private static final float DELTATIME = 2f;
     private int killCount;
+    private Obstacle obstacle;
 
     @Before
     public void setUp(){
@@ -191,6 +195,70 @@ public class PlayerTest extends Assert{
         player.visit(helicopter);
         float newX = player.getPosition().getX();
         assertTrue(newX > initialX);
+    }
+
+    @Test
+    public void testPlayerStateJmpRight(){
+        player.setOnGround(true);
+        player.moveRight(1);
+        player.jump(100);
+        player.update(10);
+        assertTrue(player.getAnimationState() == AnimationState.JUMPING_RIGHT);
+    }
+    @Test
+    public void testPlayerStateJmpLeft(){
+        player.setOnGround(true);
+        player.moveLeft(1);
+        player.jump(100);
+        player.update(10);
+        assertTrue(player.getAnimationState() == AnimationState.JUMPING_LEFT);
+    }
+    @Test
+    public void testPlayerStateMoveRight(){
+        player.setOnGround(true);
+        player.moveRight(1);
+        player.update(10);
+        assertTrue(player.getAnimationState() == AnimationState.MOVING_RIGHT);
+    }
+    @Test
+    public void testPlayerStateMoveLeft(){
+        player.setOnGround(true);
+        player.moveLeft(1);
+        player.update(10);
+        assertTrue(player.getAnimationState() == AnimationState.MOVING_LEFT );
+    }
+    @Test
+    public void testCollisionJmpUpToObj(){
+        obstacle = new Obstacle(new Position(50,30),size);
+        player.setOnGround(true);
+        player.moveRight(0);
+        player.jump(10);
+        player.handleCollision(obstacle);
+        assertTrue(player.getPosition().getY()== 20 && player.getVelocityY() == 0);
+    }
+
+    @Test
+    public void testCollisionJmpDwnToObj(){
+        obstacle = new Obstacle(new Position(50,10),size);
+        player.setVelocityY(-1);
+        player.handleCollision(obstacle);
+        assertTrue(player.getPosition().getY() == 19);
+    }
+
+    @Test
+    public void testFrontCollisionWithObj(){
+        obstacle = new Obstacle(new Position(40,12),size);
+        player.moveRight(0);
+        player.setX(75);
+        player.handleCollision(obstacle);
+        assertTrue(player.getPosition().getX() == 50);
+    }
+
+    @Test
+    public void testFallingDown(){
+        player.visit(new Pit(position,size));
+        assertTrue(player.isDeadByPitfall() && player.isDead());
+        
     }
 
 }
