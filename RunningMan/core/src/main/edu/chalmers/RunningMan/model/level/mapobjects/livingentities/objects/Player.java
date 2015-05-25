@@ -25,7 +25,7 @@ public class Player extends AbstractLivingObject {
     private float oldX;
     private boolean finishedLevel;
     private boolean isOnGround;
-    private boolean hasLandedFirsTime;
+    private boolean hasLandedFirstTime;
     private boolean hasMovedFirstTime;
 
     private Gravity gravity = new Gravity(-800f);
@@ -44,7 +44,7 @@ public class Player extends AbstractLivingObject {
         propertyChangeSupport = new PropertyChangeSupport(this);
         isDead = false;
         finishedLevel = false;
-        hasLandedFirsTime = false;
+        hasLandedFirstTime = false;
         isOnGround = false;
         hasMovedFirstTime = false;
     }
@@ -196,7 +196,7 @@ public class Player extends AbstractLivingObject {
     }
 
     public boolean hasLandedFirstTime(){
-        return hasLandedFirsTime;
+        return hasLandedFirstTime;
     }
 
 
@@ -241,7 +241,7 @@ public class Player extends AbstractLivingObject {
      * @param apo the object to collide with
      */
     public void handleCollision(AbstractPhysicalObject apo){
-        hasLandedFirsTime = true;
+        hasLandedFirstTime = true;
         final Position pos = getPosition();
         final float playerX = pos.getX();
         final float playerY = pos.getY();

@@ -87,6 +87,17 @@ public class PlayerTest extends Assert{
     }
 
     @Test
+    public void testSetHpOverMax(){
+        player.setHp(1000);
+        assertTrue(player.getHp() == 100);
+    }
+    @Test
+    public void testSetHpUnderMax(){
+        player.setHp(50);
+        assertTrue(player.getHp() == 50);
+    }
+
+    @Test
     public void testMoveLeftVelocity(){
         player.moveLeft(DELTATIME);
         assertTrue(player.getVelocityX() < 0);
@@ -128,6 +139,7 @@ public class PlayerTest extends Assert{
     public void testJumpVelocity(){
         final float velocityY = player.getVelocityY();
         player.setOnGround(true);
+        player.moveLeft(1f);
         player.jump(DELTATIME);
         assertTrue(player.getVelocityY() > velocityY);
     }
