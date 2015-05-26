@@ -34,13 +34,13 @@ public class PlayerView extends Actor{
     public PlayerView(Player player, String levelName){
         this.player = player;
 
-
         SPRITE_WALK_RIGHT_SHEET = ANIMATION_LOCATION + levelName + "walk_right_sheet_soldier.png";
         SPRITE_WALK_LEFT_SHEET = ANIMATION_LOCATION + levelName + "walk_left_sheet_soldier.png";
         SPRITE_JUMP_RIGHT = ANIMATION_LOCATION + levelName + "jump_right_soldier.png";
         SPRITE_JUMP_LEFT = ANIMATION_LOCATION + levelName + "jump_left_soldier.png";
         SPRITE_DEAD = ANIMATION_LOCATION + levelName + "soldierdie.png";
         SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + levelName + "soldierdiebypitfall.png";
+
         try {
             walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
             walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
@@ -85,16 +85,15 @@ public class PlayerView extends Actor{
     private TextureRegion getCurrentSprite() {
         stateTime += Gdx.graphics.getDeltaTime();
 
-        if (player.isDead()) {
-            stateTime = 0;
-            deathTime += Gdx.graphics.getDeltaTime();
-            return dieAnimation.getKeyFrame(deathTime, false);
-
-        } else if(player.isDeadByPitfall()){
+        if(player.isDeadByPitfall()){
             stateTime = 0;
             deathTime += Gdx.graphics.getDeltaTime();
             return dieByPitfallAnimation.getKeyFrame(deathTime,false);
             
+        }else if (player.isDead()) {
+            stateTime = 0;
+            deathTime += Gdx.graphics.getDeltaTime();
+            return dieAnimation.getKeyFrame(deathTime, false);
         }
 
         switch (player.getAnimationState()) {

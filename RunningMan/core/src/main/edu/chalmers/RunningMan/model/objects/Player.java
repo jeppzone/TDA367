@@ -298,7 +298,7 @@ public class Player extends AbstractLivingObject {
 
     @Override
     public void visit(Enemy e){
-        isDead = true;
+        isDeadByPitfall = true;
         propertyChangeSupport.firePropertyChange("suicide", null, null);
     }
 
@@ -339,8 +339,8 @@ public class Player extends AbstractLivingObject {
     @Override
     public void visit(Pit pit) {
         handleCollision(pit);
-        isDead = true;
         isDeadByPitfall = true;
+        isDead = true;
         propertyChangeSupport.firePropertyChange("die", null, null);
     }
 }

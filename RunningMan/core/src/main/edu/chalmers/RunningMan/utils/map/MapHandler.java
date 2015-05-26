@@ -26,6 +26,9 @@ public class MapHandler implements IMapHandler {
     private List<Enemy> enemies;
     private int tilePixelSize, mapWidth, mapHeight;
 
+    private float FIX_COLPOSITION = 0.5f;
+    private float FIX_ROWPOSITION = 0.5f;
+
     private float STEROID_HEIGHT = 40;
     private float STEROID_WIDTH = 40;
     private int ENEMY_HP = 100;
@@ -103,8 +106,9 @@ public class MapHandler implements IMapHandler {
         // go through all the cells in all the layers (all map cells)
         for(int row = 0; row < mapHeight; row++) {
             for(int col = 0; col < mapWidth; col++) {
-                Position position = new Position((col + 0.5f) * tilePixelSize, (row + 0.5f) * tilePixelSize);
+                Position position = new Position((col + FIX_COLPOSITION) * tilePixelSize, (row + FIX_ROWPOSITION) * tilePixelSize);
                 Size size = new Size(tilePixelSize);
+
 
                 // get cell
                 TiledMapTileLayer.Cell groundCell = groundLayer.getCell(col, row);
