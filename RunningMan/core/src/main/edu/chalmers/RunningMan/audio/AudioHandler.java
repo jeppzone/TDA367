@@ -5,22 +5,22 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
 /**
- * Created by JohanTobin on 2015-05-06.
+ * A class which handles the music
  */
 public class AudioHandler {
     private final static String AUDIO_LOCATION = "core/assets/audio/";
 
-    private Sound jump;
-    private Sound shoot;
-    private Sound die;
-    private Sound enemyShotInFront;
-    private Sound enemyShotInBack;
-    private Sound bossShotInFront;
-    private Sound bossShotInBack;
-    private Sound bossIsHitByBullet;
-    private Sound steroid;
-    private Sound startLevel;
-    private Sound helicopter;
+    private Sound jumpSound;
+    private Sound shootSound;
+    private Sound dieSound;
+    private Sound enemyShotInFrontSound;
+    private Sound enemyShotInBackSound;
+    private Sound bossShotInFrontSound;
+    private Sound bossShotInBackSound;
+    private Sound bossIsHitByBulletSound;
+    private Sound steroidSound;
+    private Sound startLevelSound;
+    private Sound helicopterSound;
     private Music failedMusic;
     private Music level1Music;
     private Music level2Music;
@@ -30,19 +30,22 @@ public class AudioHandler {
         loadAudio();
     }
 
+    /*
+    *   Loads specific audio
+     */
     private void loadAudio() {
         try {
-            jump = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "jump.wav"));
-            shoot = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "shoot.mp3"));
-            die = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "die.mp3"));
-            enemyShotInFront = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinfront.mp3"));
-            enemyShotInBack = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinback.mp3"));
-            bossShotInFront = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossshotinfront.wav"));
-            bossShotInBack = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossshotinback.wav"));
-            bossIsHitByBullet = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossishitbybullet.wav"));
-            steroid = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.mp3"));
-            startLevel = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
-            helicopter = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "helicopter.mp3"));
+            jumpSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "jump.wav"));
+            shootSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "shoot.mp3"));
+            dieSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "die.mp3"));
+            enemyShotInFrontSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinfront.mp3"));
+            enemyShotInBackSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "enemyshotinback.mp3"));
+            bossShotInFrontSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossshotinfront.wav"));
+            bossShotInBackSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossshotinback.wav"));
+            bossIsHitByBulletSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossishitbybullet.wav"));
+            steroidSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.mp3"));
+            startLevelSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
+            helicopterSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "helicopter.mp3"));
             failedMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "failed.wav"));
             successMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "success.wav"));
             level1Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
@@ -53,47 +56,47 @@ public class AudioHandler {
     }
 
     public void playJumpSound() {
-        jump.play();
+        jumpSound.play();
     }
 
     public void playShootSound() {
-        shoot.play();
+        shootSound.play();
     }
 
     public void playDieSound() {
-        die.play();
+        dieSound.play();
     }
 
     public void playEnemyShotInFrontSound() {
-        enemyShotInFront.play();
+        enemyShotInFrontSound.play();
     }
 
     public void playEnemyShotInBackSound(){
-        enemyShotInBack.play();
+        enemyShotInBackSound.play();
     }
 
     public void playBossShotInBackSound(){
-        bossShotInBack.play();
+        bossShotInBackSound.play();
     }
 
     public void playBossShotInFrontSound(){
-        bossShotInFront.play();
+        bossShotInFrontSound.play();
     }
 
     public void playBossIsHitByBulletSound(){
-        bossIsHitByBullet.play();
+        bossIsHitByBulletSound.play();
     }
 
     public void  playSteroidPickUpSound (){
-        steroid.play();
+        steroidSound.play();
     }
 
     public void playStartLevelSound() {
-        startLevel.play();
+        startLevelSound.play();
     }
 
     public void playHelicopterSound(){
-        helicopter.play();
+        helicopterSound.play();
     }
 
     public void playFailedMusic(){
