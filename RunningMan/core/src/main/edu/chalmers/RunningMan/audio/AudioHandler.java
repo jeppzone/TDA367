@@ -51,7 +51,7 @@ public class AudioHandler {
             level1Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "music.mp3"));
             level2Music = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "level2music.mp3"));
         }catch (Exception e){
-            throw new NullPointerException("Missing soundfile in AudioHandler");
+            e.printStackTrace();
         }
     }
 
