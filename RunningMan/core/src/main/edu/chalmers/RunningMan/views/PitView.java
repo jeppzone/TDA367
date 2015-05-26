@@ -20,6 +20,7 @@ public class PitView extends Actor{
         try {
             texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName +"pitfall.png"));
         }catch (Exception e){
+            texture = new Texture(Gdx.files.internal(TILES_LOCATION  +"pitfall.png"));
             e.printStackTrace();
         }
 
