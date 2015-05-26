@@ -18,7 +18,6 @@ import java.util.List;
 public class MapHandler implements IMapHandler {
 
     private TiledMap tileMap;
-    private TiledMapRenderer tiledMapRenderer;
 
     private final static String MAP_LOCATION = "core/assets/maps/";
 
@@ -26,6 +25,18 @@ public class MapHandler implements IMapHandler {
     private List<AbstractPhysicalObject> physicalObjects;
     private List<Enemy> enemies;
     private int tilePixelSize, mapWidth, mapHeight;
+
+    private float STEROID_HEIGHT = 40;
+    private float STEROID_WIDTH = 40;
+    private int ENEMY_HP = 100;
+    private int BOSS_HP = 900;
+    private float HELICOPTER_HEIGHT = 62;
+    private float HELICOPTER_WIDTH = 60;
+    private float ENEMY_HEIGHT = 55;
+    private float ENEMY_WIDTH = 45;
+    private float BOSS_HEIGHT = 110;
+    private float BOSS_WIDTH = 90;
+    private int PLAYER_STARTPOSITION_ADDITIONAL_HEIGHT = 1000;
 
     public MapHandler(String levelName)throws MapHandlerException {
         try{
@@ -111,18 +122,18 @@ public class MapHandler implements IMapHandler {
                 } else if(groundCell != null && groundCell.getTile() != null) {
                     physicalObjects.add(new Ground(position, size));
                 } else if(finishCell != null && finishCell.getTile() != null){
-                    physicalObjects.add(new Helicopter(position,new Size(60,62)));
+                    physicalObjects.add(new Helicopter(position,new Size(HELICOPTER_WIDTH,HELICOPTER_HEIGHT)));
                 } else if(enemyCell != null && enemyCell.getTile() != null) {
-                    enemies.add(new Enemy(position, new Size(45, 55), 100));
+                    enemies.add(new Enemy(position, new Size(ENEMY_WIDTH, ENEMY_HEIGHT), ENEMY_HP));
                 } else if(bossCell != null && bossCell.getTile() != null) {
-                    enemies.add(new Enemy(position, new Size(90, 110), 700));
+                    enemies.add(new Enemy(position, new Size(BOSS_WIDTH, BOSS_HEIGHT), BOSS_HP));
                 } else if(steroidCell != null && steroidCell.getTile() != null) {
-                    physicalObjects.add(new Steroid(position, size));
+                    physicalObjects.add(new Steroid(position, new Size(STEROID_WIDTH,STEROID_HEIGHT)));
                 } else if(obstacleCell != null && obstacleCell.getTile() != null) {
                     physicalObjects.add(new Obstacle(position, size));
                 } else if(startPositionCell != null && startPositionCell.getTile() != null) {
                     playerStartPosition = position;
-                    playerStartPosition.setY(position.getY() + 1000);
+                    playerStartPosition.setY(position.getY() + PLAYER_STARTPOSITION_ADDITIONAL_HEIGHT);
                 }
 
             }
