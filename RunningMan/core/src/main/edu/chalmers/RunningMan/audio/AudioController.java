@@ -4,7 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 /**
- * Created by JohanTobin on 2015-05-06.
+ * A class which controls the audio based on property change event
  */
 public class AudioController implements PropertyChangeListener {
     private String levelName;
@@ -18,14 +18,24 @@ public class AudioController implements PropertyChangeListener {
         this.levelName = levelName;
     }
 
+    /*
+    *   Plays the music depending on the levelname
+     */
     public void playMusic(){
         audio.playMusic(levelName);
     }
 
+    /*
+    *   Stops the music depending on the levelname
+     */
     public void stopMusic(){
         audio.stopMusic(levelName);
     }
 
+
+    /*
+    *   Depending on different events the audiocontroller will play the specified sound or music
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         final String propertyName = evt.getPropertyName();
