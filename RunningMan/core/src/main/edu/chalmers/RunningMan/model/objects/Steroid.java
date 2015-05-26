@@ -1,10 +1,8 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.powerups;
+package edu.chalmers.RunningMan.model.objects;
 
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
 import edu.chalmers.RunningMan.model.Timer;
-import edu.chalmers.RunningMan.model.IVisitor;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 
 /**
  * A class to represent the power up steroid

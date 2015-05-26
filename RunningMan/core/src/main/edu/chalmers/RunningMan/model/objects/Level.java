@@ -1,10 +1,6 @@
-package edu.chalmers.RunningMan.model.level;
+package edu.chalmers.RunningMan.model.objects;
 
-import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
 import edu.chalmers.RunningMan.model.Timer;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
 
 import java.awt.*;
 import java.beans.PropertyChangeEvent;

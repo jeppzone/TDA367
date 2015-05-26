@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.utils.HighScore;
 
-import edu.chalmers.RunningMan.model.level.Level;
+import edu.chalmers.RunningMan.model.objects.Level;
 
 import java.io.*;
 import java.util.*;

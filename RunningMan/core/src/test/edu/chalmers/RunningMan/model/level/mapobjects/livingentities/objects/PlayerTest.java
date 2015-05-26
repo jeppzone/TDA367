@@ -1,14 +1,10 @@
 package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
 
+import edu.chalmers.RunningMan.model.LivingState;
+import edu.chalmers.RunningMan.model.Gravity;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.level.mapobjects.Ground;
-import edu.chalmers.RunningMan.model.level.mapobjects.Helicopter;
-import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
-import edu.chalmers.RunningMan.model.level.mapobjects.Pit;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.AnimationState;
-import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.Gravity;
+import edu.chalmers.RunningMan.model.objects.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -203,7 +199,7 @@ public class PlayerTest extends Assert{
         player.moveRight(1);
         player.jump(100);
         player.update(10);
-        assertTrue(player.getAnimationState() == AnimationState.JUMPING_RIGHT);
+        assertTrue(player.getAnimationState() == LivingState.JUMPING_RIGHT);
     }
     @Test
     public void testPlayerStateJmpLeft(){
@@ -211,21 +207,21 @@ public class PlayerTest extends Assert{
         player.moveLeft(1);
         player.jump(100);
         player.update(10);
-        assertTrue(player.getAnimationState() == AnimationState.JUMPING_LEFT);
+        assertTrue(player.getAnimationState() == LivingState.JUMPING_LEFT);
     }
     @Test
     public void testPlayerStateMoveRight(){
         player.setOnGround(true);
         player.moveRight(1);
         player.update(10);
-        assertTrue(player.getAnimationState() == AnimationState.MOVING_RIGHT);
+        assertTrue(player.getAnimationState() == LivingState.MOVING_RIGHT);
     }
     @Test
     public void testPlayerStateMoveLeft(){
         player.setOnGround(true);
         player.moveLeft(1);
         player.update(10);
-        assertTrue(player.getAnimationState() == AnimationState.MOVING_LEFT );
+        assertTrue(player.getAnimationState() == LivingState.MOVING_LEFT );
     }
     @Test
     public void testCollisionJmpUpToObj(){

@@ -1,10 +1,6 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
+package edu.chalmers.RunningMan.model.objects;
 
 import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.AbstractLivingObject;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.AnimationState;
 
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
@@ -16,7 +12,7 @@ import java.beans.PropertyChangeListener;
 public class Enemy extends AbstractLivingObject {
 
     private float velocity;
-    private AnimationState enemyState = AnimationState.MOVING_LEFT;
+    private LivingState enemyState = LivingState.MOVING_LEFT;
     private boolean isShotInBack, isShotInFront;
     private static final int DAMAGE = 100;
     private boolean isBoss = false;
@@ -47,7 +43,7 @@ public class Enemy extends AbstractLivingObject {
      * will know which animation to use
      */
 
-    public AnimationState getEnemyState(){
+    public LivingState getEnemyState(){
         return enemyState;
     }
 

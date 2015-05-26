@@ -1,4 +1,8 @@
-package edu.chalmers.RunningMan.model;
+package edu.chalmers.RunningMan.model.objects;
+
+import edu.chalmers.RunningMan.model.IPhysicalObject;
+import edu.chalmers.RunningMan.model.ISize;
+import edu.chalmers.RunningMan.model.Position;
 
 import java.awt.*;
 

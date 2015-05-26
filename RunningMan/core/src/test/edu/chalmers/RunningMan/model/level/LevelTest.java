@@ -1,14 +1,10 @@
 package edu.chalmers.RunningMan.model.level;
 
 import edu.chalmers.RunningMan.RunningMan;
-import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.ISize;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.level.mapobjects.Obstacle;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
+import edu.chalmers.RunningMan.model.objects.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

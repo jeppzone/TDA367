@@ -1,9 +1,7 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities;
+package edu.chalmers.RunningMan.model.objects;
 
-import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.ISize;
 import edu.chalmers.RunningMan.model.Position;
-import edu.chalmers.RunningMan.model.IVisitor;
 
 /**
  * Abstract class for Living Objects

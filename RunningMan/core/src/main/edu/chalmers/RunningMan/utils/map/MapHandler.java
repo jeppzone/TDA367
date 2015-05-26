@@ -5,11 +5,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Enemy;
+import edu.chalmers.RunningMan.model.objects.*;
 
 import java.io.File;
 import java.util.ArrayList;

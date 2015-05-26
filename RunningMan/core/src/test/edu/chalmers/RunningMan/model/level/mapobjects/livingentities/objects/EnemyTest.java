@@ -4,7 +4,9 @@ import edu.chalmers.RunningMan.RunningMan;
 import edu.chalmers.RunningMan.model.ISize;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.AnimationState;
+import edu.chalmers.RunningMan.model.LivingState;
+import edu.chalmers.RunningMan.model.objects.Bullet;
+import edu.chalmers.RunningMan.model.objects.Enemy;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -102,14 +104,14 @@ public class EnemyTest extends Assert {
     @Test
     public void changeDirectionToRight(){
         enemy.changeDirection();
-        assertTrue(enemy.getEnemyState() == AnimationState.MOVING_RIGHT);
+        assertTrue(enemy.getEnemyState() == LivingState.MOVING_RIGHT);
     }
 
     @Test
     public void changeDirectionToLeft(){
         enemy.changeDirection();
         enemy.changeDirection();
-        assertTrue(enemy.getEnemyState() == AnimationState.MOVING_LEFT);
+        assertTrue(enemy.getEnemyState() == LivingState.MOVING_LEFT);
     }
 
     @Test
@@ -117,7 +119,7 @@ public class EnemyTest extends Assert {
         bullet = new Bullet(new Size(1,1),new Position(0,10),1,windowSize);
         enemy.visit(bullet);
         enemy.changeDirection();
-        assertTrue(enemy.getEnemyState() == AnimationState.STANDING);
+        assertTrue(enemy.getEnemyState() == LivingState.STANDING);
     }
 
     @Test

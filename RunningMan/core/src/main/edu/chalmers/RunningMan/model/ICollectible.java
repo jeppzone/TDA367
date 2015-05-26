@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.powerups;
+package edu.chalmers.RunningMan.model;
 
 /**
  * @author Jesper

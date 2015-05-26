@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities;
+package edu.chalmers.RunningMan.model;
 
 /**
  * A class to represent the Gravity Force

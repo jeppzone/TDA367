@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.utils.map;
 
-import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
+import edu.chalmers.RunningMan.model.objects.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.Position;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Bullet;
-import edu.chalmers.RunningMan.model.level.Level;
+import edu.chalmers.RunningMan.model.objects.Bullet;
+import edu.chalmers.RunningMan.model.objects.Level;
 
 import java.util.List;
 

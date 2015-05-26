@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects.Player;
+import edu.chalmers.RunningMan.model.objects.Player;
 
 /**
  * A class to represent the view of the objects.

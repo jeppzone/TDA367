@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
+package edu.chalmers.RunningMan.model.objects;
 
 /**
  * Created by Armand on 2015-05-04.

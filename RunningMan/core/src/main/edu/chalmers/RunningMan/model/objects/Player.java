@@ -1,10 +1,6 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
+package edu.chalmers.RunningMan.model.objects;
 
 import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.*;
-import edu.chalmers.RunningMan.model.level.mapobjects.powerups.AbstractPowerUp;
-import edu.chalmers.RunningMan.model.level.mapobjects.powerups.Steroid;
-import edu.chalmers.RunningMan.model.level.mapobjects.livingentities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +27,7 @@ public class Player extends AbstractLivingObject {
     private Gravity gravity = new Gravity(-800f);
     private List<AbstractPowerUp> powerUps;
 
-    private AnimationState animationState = AnimationState.FACING_RIGHT;
+    private LivingState animationState = LivingState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
     public boolean isDeadByPitfall;
@@ -114,7 +110,7 @@ public class Player extends AbstractLivingObject {
      * @return the current state of the player so that the view will know
      * what animation to use
      */
-    public AnimationState getAnimationState(){
+    public LivingState getAnimationState(){
         return animationState;
     }
 
@@ -126,26 +122,26 @@ public class Player extends AbstractLivingObject {
         checkPowerUpsTime(deltaTime);
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
-            animationState = AnimationState.JUMPING_RIGHT;
+            animationState = LivingState.JUMPING_RIGHT;
         }
         // if jumping to the left
         else if(!isOnGround() && lastMovedDirection == LAST_MOVE_LEFT) {
-            animationState = AnimationState.JUMPING_LEFT;
+            animationState = LivingState.JUMPING_LEFT;
         }
         // if player does move
         else if(lastTimeMoved + 150 >= System.currentTimeMillis()){
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
-                animationState = AnimationState.MOVING_RIGHT;
+                animationState = LivingState.MOVING_RIGHT;
             } else {
-                animationState = AnimationState.MOVING_LEFT;
+                animationState = LivingState.MOVING_LEFT;
             }
         }
         // if player standing still
         else {
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
-                animationState = AnimationState.FACING_RIGHT;
+                animationState = LivingState.FACING_RIGHT;
             } else {
-                animationState = AnimationState.FACING_LEFT;
+                animationState = LivingState.FACING_LEFT;
             }
         }
     }

@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model;
+package edu.chalmers.RunningMan.model.objects;
 
 /**
  * Interface for all entities that can be collided with

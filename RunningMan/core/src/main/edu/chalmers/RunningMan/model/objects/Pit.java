@@ -1,7 +1,5 @@
-package edu.chalmers.RunningMan.model.level.mapobjects;
+package edu.chalmers.RunningMan.model.objects;
 
-import edu.chalmers.RunningMan.model.AbstractPhysicalObject;
-import edu.chalmers.RunningMan.model.IVisitor;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
 
