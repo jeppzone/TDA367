@@ -143,7 +143,7 @@ public class BulletTest extends Assert {
 
         setBulletDirRight();
         bullet = new Bullet(size,player.getPosition(),player.getLastMovedDirection(),windowSize);
-        assertTrue(Math.abs(400f - bullet.getVelocity()) < EPS);
+        assertTrue(Math.abs(1000f - bullet.getVelocity()) < EPS);
     }
 
     @Test

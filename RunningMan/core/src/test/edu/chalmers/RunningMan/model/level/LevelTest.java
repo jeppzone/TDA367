@@ -117,7 +117,7 @@ public class LevelTest extends Assert {
         enemies.add(enemy);
         level = new Level(player,mapObjects,enemies,name);
         level.checkBulletCollisions(bullets);
-
+        
         assertTrue(enemies.isEmpty() && bullets.isEmpty()
                 && level.getEnemiesKilled() == 1);
 

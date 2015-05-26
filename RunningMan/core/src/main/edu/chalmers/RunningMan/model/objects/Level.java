@@ -74,9 +74,9 @@ public class Level implements PropertyChangeListener {
      */
     public void checkBulletCollisions(List<Bullet> bullets) {
         boolean hasRemoved; // Want to make sure that the iterator doesn't call remove twice
-        Iterator<Bullet> bulletIterator = bullets.iterator();
-        Iterator<AbstractPhysicalObject> objectIterator = mapObjects.iterator();
-        Iterator<Enemy> enemyIterator = enemies.iterator();
+        final Iterator<Bullet> bulletIterator = bullets.iterator();
+        final Iterator<AbstractPhysicalObject> objectIterator = mapObjects.iterator();
+        final Iterator<Enemy> enemyIterator = enemies.iterator();
         while (bulletIterator.hasNext()) {
             hasRemoved = false;
             final Bullet bullet = bulletIterator.next();
@@ -87,15 +87,17 @@ public class Level implements PropertyChangeListener {
                     hasRemoved = true;
                 }
             }
-            while (enemyIterator.hasNext()) {
-                final Enemy enemy = enemyIterator.next();
-                if (isColliding(enemy.getHitbox(), bullet.getHitbox()) && !hasRemoved) {
-                    bullet.acceptVisitor(enemy);
-                    bulletIterator.remove();
-                    hasRemoved = true;
-                    if (enemy.isDead()) {
-                        enemyIterator.remove();
-                        enemiesKilled++;
+            if(!hasRemoved) {
+                while (enemyIterator.hasNext()) {
+                    final Enemy enemy = enemyIterator.next();
+                    if (isColliding(enemy.getHitbox(), bullet.getHitbox()) && !hasRemoved) {
+                        bullet.acceptVisitor(enemy);
+                        bulletIterator.remove();
+                        hasRemoved = true;
+                        if (enemy.isDead()) {
+                            enemyIterator.remove();
+                            enemiesKilled++;
+                        }
                     }
                 }
             }
