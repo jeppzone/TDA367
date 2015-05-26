@@ -13,6 +13,7 @@ public class DesktopLauncher {
         config.title = RunningMan.TITLE;
         config.width = V_WIDTH * RunningMan.SCALE;
         config.height = V_HEIGHT * RunningMan.SCALE;
+        config.resizable = false;
 		new LwjglApplication(new RunningMan(), config);
 
 
