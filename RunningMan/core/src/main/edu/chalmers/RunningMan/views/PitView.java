@@ -20,8 +20,7 @@ public class PitView extends Actor{
         try {
             texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName +"pitfall.png"));
         }catch (Exception e){
-            throw new NullPointerException("Could not load pitfall image in " + this.getClass().toString() + ": "
-                    +TILES_LOCATION + levelName+"pitfall.png does not exist");
+            e.printStackTrace();
         }
 
     }
