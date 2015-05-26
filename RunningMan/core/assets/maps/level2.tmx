@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="313" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="450" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="blocks" tilewidth="16" tileheight="16">
   <image source="blocks.png" width="96" height="32"/>
  </tileset>
@@ -15,44 +15,44 @@
  <tileset firstgid="15" name="obstacles" tilewidth="16" tileheight="16">
   <image source="../rockobstacle.png" width="600" height="291"/>
  </tileset>
- <layer name="ground" width="313" height="14">
+ <layer name="ground" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1EEOwyAMRFEuwP2vG3XXTRKDwR6T/yR2VbDGU1rDiXr2AACwSW+8cQDO1BtvHOb1mwMooJfwuHvf6BIU0Et4PL1vdAnZ6CU83t43uoRM9BMelv7QoW9Q3DX9rEVtF9b+qM1dyWnZRXaDftaito+R/qjMXM1sdpbcrd9evb+obqj3c/R+z+8rUNjJv9H+ZM9b0Wx2lXLfNaN6PyPvVO/Aj8peLPOozaog8p2qlvuOGdX7GX1nlQ4o7MY6j8KcSkYzsGZ3Qu6ePq0+EbLuVKW+H8UO7aL4/zsh9+xcLTll3LlSdq5fOpVdO90cVw==
+   eJzt1UGSBCEIRFEv4P2vO1sXPRUqCgn+F+Guo4tKCmwNFfXoAgAACNIb9yCgoLf9eWSOgT2WuQP6wsG3lSzJGjiD2YEF+/mck3cgWQNzmBtYsJ/PuXEHkjXwjZmBBfv5nJt3IFkDvzE3sHhhP3vV6nEHKueM+hS/QeYmF7VevLKjPer0ugNVMx5lrDlStXw8+19pbl6g1o+X9vTtGj3vQMV8R1nrjrKbzUyus/99uj9evVefm9XnW36fgUJPRlV2tUJ93ndg9LfzJXPtEXZzyZTprRrV58Z7D6pT6ctMPdn2dcQdpHAUZa/fYue9djPJlueNGtXnxvuZWb4Bhd7M1lNxZ0ffWxUzHVV4B4vV95rNo0KW0bPinVPUM1Wp9yfT92f9j+j5U8vzpCrvo9jTTPn9JzrXmZyyz2p0rhy/YxFdO+deb0/5A+SPQEs=
   </data>
  </layer>
- <layer name="startPosition" width="313" height="14">
+ <layer name="startPosition" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJztyqENAAAMAjCS/f/zXkAiWt2kc+UDAAAAAAAAAAAAAAAAAAAAAPY9EXcABA==
+   eJztyqENAAAMAjCS/f/zXsDgWt2kc+UDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABg6wGJVwAE
   </data>
  </layer>
- <layer name="enemies" width="313" height="14">
+ <layer name="enemies" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt0rENADAIwDDY+v/FvEAnkLAvyJAIAAAAAAAAAAAAAAAAALjlTQcALTkdwHndB39f9TYAWxTLDAAN
+   eJzt21EKQBEQBVDvz/5XbAOE5GE650upaZifm5ISAADAfrmxBgAAAAAAAAAAAAAAaPlONwAAgfjbBwDA32RQgBi81cfx6ixH+5493+776NVf3b9BLe/JgHcyFwCIrQCl4ABC
   </data>
  </layer>
- <layer name="steroids" width="313" height="14">
+ <layer name="steroids" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2jENADAMBLFfOpU/3zBIx0ipjeAAXMIPznQAAAAAAAAAAAAAT3c6gJYXDwAAAAAAgG0KU5UAFg==
+   eJzt2zENADAMBLFfOpU/3zBIx0SqjeAIXMIPznQAAAAAAAAAAAAAAAAAADzc6QBaXkUAAAAAAAAAAADYpQDU9AAW
   </data>
  </layer>
- <layer name="pitfalls" width="313" height="14">
+ <layer name="pitfalls" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2LsJADAIBUAncP9x06RMqhDM5w5eKYighREAAAAAAAAwlz0AAAAAAMD9/PyB17lz+5gtANTJQVZqT8lJKnr8bcavq96nlTTW8wbz
+   eJzt2ckJACAMBEArsP9yRfDpT+KVGdinEIJHwFIAAAAAAAAAAADeVUcAAAAAAAAAICv/5rCP8wZAdt7COHoLAJCH2e8/dZKVtbfkJidqzNZjYtkn/zp9V/c0gAsHHQ==
   </data>
  </layer>
- <layer name="finishlevel" width="313" height="14">
+ <layer name="finishlevel" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7Bd+JeMhR0kPK2CJgC9+Q4AAAAAAAAAAAAAAAAAAAAAJxbGHwAH
+   eJztzjENAAAIA7Bd+JeMiSUctAqaAAAAAAAAAABAx1wHAAAAAAAAAAAAAAAAAAAA4IkF4dcABw==
   </data>
  </layer>
- <layer name="obstacles" width="313" height="14">
+ <layer name="obstacles" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzrEJACEQRFGvEbuzuhPru/AScxGEAXkvWRYm+KUAAAAAAAAAAAAAAADcoaUDAIh55+3RCmDXWPyrPXlfOuCA+qQLACDnB21OBN4=
+   eJztzrEJgEAMhtFzEbdzOg93cRotbezTHPwH914TAgl8rQEAAAAAAAAAAAAAAAAAAMzhTgcAACzuSAcAANM6/9mjFQCMdhV7dU/emw4YYN/SBVSe0C8AALUP8NwHnQ==
   </data>
  </layer>
- <layer name="boss" width="313" height="14">
+ <layer name="boss" width="450" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6Dbv7Qx7iYkIAEAAAAAAAAAAAAAAAAAAOCTaQcAOGEBSogAAg==
+   eJztzjEBAAAMAiDP9U+8GHpAAhIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAllw7AADMe6PwAAk=
   </data>
  </layer>
 </map>
