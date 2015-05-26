@@ -19,6 +19,7 @@ public class ObstacleView extends Actor {
         try {
             texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName + "obstacle.png"));
         }catch (Exception e){
+            texture = new Texture(Gdx.files.internal(TILES_LOCATION + "obstacle.png"));
             e.printStackTrace();
         }
     }
