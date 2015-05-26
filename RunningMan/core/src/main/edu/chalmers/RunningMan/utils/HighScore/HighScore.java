@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.utils.HighScore;
+package edu.chalmers.RunningMan.utils.highscore;
 
 import edu.chalmers.RunningMan.model.objects.Level;
 

@@ -5,14 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chalmers.RunningMan.gameworld.Factory;
-import edu.chalmers.RunningMan.gameworld.GameWorld;
-import edu.chalmers.RunningMan.utils.HighScore.HighScore;
-import edu.chalmers.RunningMan.utils.HighScore.HighScoreView;
+import edu.chalmers.RunningMan.utils.highscore.HighScore;
+import edu.chalmers.RunningMan.utils.highscore.HighScoreView;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.List;
 
 public class HighScoreScreen implements Screen, PropertyChangeListener {
     private PropertyChangeSupport pcs;
