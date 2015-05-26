@@ -298,7 +298,7 @@ public class Player extends AbstractLivingObject {
 
     @Override
     public void visit(Enemy e){
-        isDeadByPitfall = true;
+        isDead = true;
         propertyChangeSupport.firePropertyChange("suicide", null, null);
     }
 
