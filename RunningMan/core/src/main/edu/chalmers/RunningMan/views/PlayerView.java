@@ -34,23 +34,24 @@ public class PlayerView extends Actor{
     public PlayerView(Player player, String levelName){
         this.player = player;
 
-        SPRITE_WALK_RIGHT_SHEET = ANIMATION_LOCATION + levelName + "walk_right_sheet_soldier.png";
-        SPRITE_WALK_LEFT_SHEET = ANIMATION_LOCATION + levelName + "walk_left_sheet_soldier.png";
-        SPRITE_JUMP_RIGHT = ANIMATION_LOCATION + levelName + "jump_right_soldier.png";
-        SPRITE_JUMP_LEFT = ANIMATION_LOCATION + levelName + "jump_left_soldier.png";
-        SPRITE_DEAD = ANIMATION_LOCATION + levelName + "soldierdie.png";
-        SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + levelName + "soldierdiebypitfall.png";
-
+        //loads the sprites depending on the level
         try {
-            walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
-            walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
-            jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
-            jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
-            deadTexture = new Texture(SPRITE_DEAD);
-            deadByPitfallTexture = new Texture(SPRITE_DEAD_BY_PITFALL);
+            SPRITE_WALK_RIGHT_SHEET = ANIMATION_LOCATION + levelName + "walk_right_sheet_soldier.png";
+            SPRITE_WALK_LEFT_SHEET = ANIMATION_LOCATION + levelName + "walk_left_sheet_soldier.png";
+            SPRITE_JUMP_RIGHT = ANIMATION_LOCATION + levelName + "jump_right_soldier.png";
+            SPRITE_JUMP_LEFT = ANIMATION_LOCATION + levelName + "jump_left_soldier.png";
+            SPRITE_DEAD = ANIMATION_LOCATION + levelName + "soldierdie.png";
+            SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + levelName + "soldierdiebypitfall.png";
         }catch (Exception e){
             throw new NullPointerException("could not load the player image in"+ this.getClass().toString());
         }
+
+        walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
+        walkLeftSheet = new Texture(SPRITE_WALK_LEFT_SHEET);
+        jumpRightTexture = new Texture(SPRITE_JUMP_RIGHT);
+        jumpLeftTexture = new Texture(SPRITE_JUMP_LEFT);
+        deadTexture = new Texture(SPRITE_DEAD);
+        deadByPitfallTexture = new Texture(SPRITE_DEAD_BY_PITFALL);
 
         // TODO how to decide height and width on sprites without hard code it?
         walkRightSprites = TextureRegion.split(walkRightSheet, 58, 60)[0];
