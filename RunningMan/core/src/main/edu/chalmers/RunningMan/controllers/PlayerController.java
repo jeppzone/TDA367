@@ -45,4 +45,8 @@ public class PlayerController implements IEntityController {
         //playerView.draw();
 
     }
+
+    public void reset(){
+        Input.resetKeys();
+    }
 }

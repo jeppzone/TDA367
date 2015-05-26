@@ -60,6 +60,7 @@ public class GameWorld implements PropertyChangeListener {
                 updateDeathTimer(deltaTime);
                 checkDeathTimer();
                 updateRemainingControllers(deltaTime);
+                playerController.reset();
             }
             drawViews();
         }

@@ -39,5 +39,12 @@ public class Input {
     public static boolean isPressed(int i) {
         return keys[i] && !pkeys[i];
     }
+
+    public static void resetKeys(){
+        setKey(Input.LEFTBTN, false);
+        setKey(Input.RIGHTBTN, false);
+        setKey(Input.JUMPBTN, false);
+        setKey(Input.SHOOTBTN, false);
+    }
 }
 
