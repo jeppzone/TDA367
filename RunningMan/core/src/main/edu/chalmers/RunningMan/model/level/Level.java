@@ -81,10 +81,9 @@ public class Level implements PropertyChangeListener {
         Iterator<Bullet> bulletIterator = bullets.iterator();
         Iterator<AbstractPhysicalObject> objectIterator = mapObjects.iterator();
         Iterator<Enemy> enemyIterator = enemies.iterator();
-        Bullet bullet;
         while (bulletIterator.hasNext()) {
             hasRemoved = false;
-            bullet = bulletIterator.next();
+            final Bullet bullet = bulletIterator.next();
             while (objectIterator.hasNext()) {
                 final AbstractPhysicalObject object = objectIterator.next();
                 if (isColliding(bullet.getHitbox(), object.getHitbox()) && !hasRemoved) {
@@ -92,9 +91,8 @@ public class Level implements PropertyChangeListener {
                     hasRemoved = true;
                 }
             }
-            while (enemyIterator.hasNext() && bulletIterator.hasNext()) {
+            while (enemyIterator.hasNext()) {
                 final Enemy enemy = enemyIterator.next();
-                bullet = bulletIterator.next();
                 if (isColliding(enemy.getHitbox(), bullet.getHitbox())) {
                     bullet.acceptVisitor(enemy);
                     bulletIterator.remove();
