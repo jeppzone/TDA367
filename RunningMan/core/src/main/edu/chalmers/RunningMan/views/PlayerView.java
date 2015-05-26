@@ -43,7 +43,7 @@ public class PlayerView extends Actor{
             SPRITE_DEAD = ANIMATION_LOCATION + levelName + "soldierdie.png";
             SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + levelName + "soldierdiebypitfall.png";
         }catch (Exception e){
-            throw new NullPointerException("could not load the player image in"+ this.getClass().toString());
+            e.printStackTrace();
         }
 
         walkRightSheet = new Texture(SPRITE_WALK_RIGHT_SHEET);
