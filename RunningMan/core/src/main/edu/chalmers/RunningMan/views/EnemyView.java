@@ -58,7 +58,7 @@ public class EnemyView extends Actor{
             SPRITE_ENEMY_SHOT_IN_BACK = ANIMATION_LOCATION + enemyType + "shotinback.png";
             SPRITE_ENEMY_SHOT_IN_FRONT = ANIMATION_LOCATION + enemyType + "shotinfront.png";
         }catch (Exception e){
-            throw new NullPointerException("Could not load " + enemyType + " image in " + this.getClass().toString());
+            e.printStackTrace();
         }
 
         enemyWalkingleft = new Texture(Gdx.files.internal(SPRITE_ENEMY_WALK_LEFT_SHEET));
