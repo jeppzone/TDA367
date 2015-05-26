@@ -31,8 +31,8 @@ public class LevelView extends Stage {
         try {
             background = new Texture("core/assets/backgrounds/" + levelName + ".jpg");
         } catch (Exception e) {
-            throw new NullPointerException("Could not load obstacle baxckground image in "+ this.getClass().toString() +
-                    ": core/assets/backgrounds/" + levelName + ".jpg does not exist");
+            background = new Texture("core/assets/backgrounds/level1.jpg");
+            e.getStackTrace();
         }
     }
 
