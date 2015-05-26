@@ -43,6 +43,12 @@ public class PlayerView extends Actor{
             SPRITE_DEAD = ANIMATION_LOCATION + levelName + "soldierdie.png";
             SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + levelName + "soldierdiebypitfall.png";
         }catch (Exception e){
+            SPRITE_WALK_RIGHT_SHEET = ANIMATION_LOCATION + "walk_right_sheet_soldier.png";
+            SPRITE_WALK_LEFT_SHEET = ANIMATION_LOCATION + "walk_left_sheet_soldier.png";
+            SPRITE_JUMP_RIGHT = ANIMATION_LOCATION + "jump_right_soldier.png";
+            SPRITE_JUMP_LEFT = ANIMATION_LOCATION + "jump_left_soldier.png";
+            SPRITE_DEAD = ANIMATION_LOCATION + "soldierdie.png";
+            SPRITE_DEAD_BY_PITFALL = ANIMATION_LOCATION + "soldierdiebypitfall.png";
             e.printStackTrace();
         }
 
