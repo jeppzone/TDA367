@@ -20,8 +20,7 @@ public class GroundView extends Actor{
         try {
             texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName + "ground.png"));
         }catch (Exception e){
-            throw new NullPointerException("could not load ground image in in "+ this.getClass().toString()+":"
-                    + TILES_LOCATION + levelName + "ground.png");
+            e.printStackTrace();
         }
     }
 
