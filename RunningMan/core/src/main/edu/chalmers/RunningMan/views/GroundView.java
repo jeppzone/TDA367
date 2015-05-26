@@ -20,7 +20,8 @@ public class GroundView extends Actor{
         try {
             texture = new Texture(Gdx.files.internal(TILES_LOCATION + levelName + "ground.png"));
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println("Couldn't find " + TILES_LOCATION + levelName + "ground.png");
+            texture = new Texture(Gdx.files.internal(TILES_LOCATION + "ground.png"));
         }
     }
 
