@@ -129,7 +129,17 @@ public class Enemy extends AbstractLivingObject {
     @Override
     public void visit(Bullet b) {
        takeDamage(DAMAGE);
-        if (isDead()) {
+        if (isDead()&& isBoss) {
+            if (b.getVelocity() * velocity < 0) {
+                isShotInFront = true;
+                propertyChangeSupport.firePropertyChange("bossshotinfront", null, null);
+            } else {
+                isShotInBack = true;
+                propertyChangeSupport.firePropertyChange("bossshotinback", null, null);
+            }
+            this.velocity = 0;
+
+        }else if(isDead()){
             if (b.getVelocity() * velocity < 0) {
                 isShotInFront = true;
                 propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
@@ -139,7 +149,9 @@ public class Enemy extends AbstractLivingObject {
             }
             this.velocity = 0;
         }
-
+        if(isBoss){
+            propertyChangeSupport.firePropertyChange("bosshitbybullet", null, null);
+        }
     }
     @Override
     public void visit(Steroid s){

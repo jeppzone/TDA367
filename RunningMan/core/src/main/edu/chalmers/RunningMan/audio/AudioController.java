@@ -35,6 +35,15 @@ public class AudioController implements PropertyChangeListener {
         if("enemyshotinback".equals(propertyName)){
             audio.playEnemyShotInBackSound();
         }
+        if("bossshotinback".equals(propertyName)){
+            audio.playBossShotInBackSound();
+        }
+        if("bossshotinfront".equals(propertyName)){
+            audio.playBossShotInFrontSound();
+        }
+        if("bosshitbybullet".equals(propertyName)){
+            audio.playBossIsHitByBulletSound();
+        }
         if("jump".equals(propertyName)){
             audio.playJumpSound();
         }
