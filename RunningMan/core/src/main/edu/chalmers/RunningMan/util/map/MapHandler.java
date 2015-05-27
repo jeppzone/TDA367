@@ -25,20 +25,20 @@ public class MapHandler implements IMapHandler {
     private List<Enemy> enemies;
     private int tilePixelSize, mapWidth, mapHeight;
 
-    private float FIX_COLPOSITION = 0.5f;
-    private float FIX_ROWPOSITION = 0.5f;
+    private static final float FIX_COLPOSITION = 0.5f;
+    private static final float FIX_ROWPOSITION = 0.5f;
 
-    private float STEROID_HEIGHT = 40;
-    private float STEROID_WIDTH = 40;
-    private int ENEMY_HP = 100;
-    private int BOSS_HP = 900;
-    private float HELICOPTER_HEIGHT = 62;
-    private float HELICOPTER_WIDTH = 60;
-    private float ENEMY_HEIGHT = 55;
-    private float ENEMY_WIDTH = 45;
-    private float BOSS_HEIGHT = 110;
-    private float BOSS_WIDTH = 90;
-    private int PLAYER_STARTPOSITION_ADDITIONAL_HEIGHT = 1000;
+    private static final float STEROID_HEIGHT = 40;
+    private static final float STEROID_WIDTH = 40;
+    private static int ENEMY_HP = 100;
+    private static int BOSS_HP = 900;
+    private static float HELICOPTER_HEIGHT = 62;
+    private static float HELICOPTER_WIDTH = 60;
+    private static float ENEMY_HEIGHT = 55;
+    private static float ENEMY_WIDTH = 45;
+    private static float BOSS_HEIGHT = 110;
+    private static float BOSS_WIDTH = 90;
+    private static final int PLAYER_STARTPOSITION_ADDITIONAL_HEIGHT = 1000;
 
     public MapHandler(String levelName)throws MapHandlerException {
         try{
