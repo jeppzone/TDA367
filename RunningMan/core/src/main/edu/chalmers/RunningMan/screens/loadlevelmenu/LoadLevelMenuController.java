@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.screens;
+package edu.chalmers.RunningMan.screens.loadlevelmenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -9,29 +9,29 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- * A controller class which controls the view and handles its input
+ * A controller class which controls the load level menu view and handles its input
  */
-public class MainMenuController extends ClickListener {
+public class LoadLevelMenuController extends ClickListener {
 
-    private MainMenuView mainMenuView;
+    private LoadLevelMenuView loadLevelMenuView;
 
     private PropertyChangeSupport propertyChangeSupport;
 
-    public MainMenuController(MainMenuView mainMenuView) {
-        this.mainMenuView = mainMenuView;
+    public LoadLevelMenuController(LoadLevelMenuView loadLevelMenuView) {
+        this.loadLevelMenuView = loadLevelMenuView;
 
         propertyChangeSupport = new PropertyChangeSupport(this);
 
-        mainMenuView.addListener(this);
+        loadLevelMenuView.addListener(this);
     }
 
     public void update(float delta) {
 
         // set input processor so buttons can be pressed by cursor click
-        Gdx.input.setInputProcessor(mainMenuView);
+        Gdx.input.setInputProcessor(loadLevelMenuView);
 
         // make the view render itself
-        mainMenuView.render(delta);
+        loadLevelMenuView.render(delta);
     }
 
     @Override
@@ -46,10 +46,10 @@ public class MainMenuController extends ClickListener {
         }
 
         // if play button is pressed, change to load level screen
-        if (buttonText.equals("PLAY")) {
-            propertyChangeSupport.firePropertyChange("loadScreen", null, null);
-        } else if (buttonText.equals("EXIT")) {
-            Gdx.app.exit();
+        if (buttonText.equals("1")) {
+            propertyChangeSupport.firePropertyChange("level1", null, null);
+        } else if (buttonText.equals("2")) {
+            propertyChangeSupport.firePropertyChange("level2", null, null);
         }
     }
 

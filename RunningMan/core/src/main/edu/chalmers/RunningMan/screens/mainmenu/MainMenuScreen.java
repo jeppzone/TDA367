@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.screens;
+package edu.chalmers.RunningMan.screens.mainmenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -9,14 +9,14 @@ import java.beans.PropertyChangeListener;
 /**
  * Created by Kvist1 on 2015-05-21.
  */
-public class LoadLevelMenuScreen implements Screen {
+public class MainMenuScreen implements Screen {
 
-    private LoadLevelMenuView loadLevelMenuView;
-    private LoadLevelMenuController loadLevelMenuController;
+    private MainMenuView mainMenuView;
+    private MainMenuController mainMenuController;
 
-    public LoadLevelMenuScreen() {
-        loadLevelMenuView = new LoadLevelMenuView();
-        loadLevelMenuController = new LoadLevelMenuController(loadLevelMenuView);
+    public MainMenuScreen() {
+        mainMenuView = new MainMenuView();
+        mainMenuController = new MainMenuController(mainMenuView);
     }
 
     /**
@@ -24,7 +24,7 @@ public class LoadLevelMenuScreen implements Screen {
      * @param listener
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-        loadLevelMenuController.addPropertyChangeListener(listener);
+        mainMenuController.addPropertyChangeListener(listener);
     }
 
     /**
@@ -32,7 +32,7 @@ public class LoadLevelMenuScreen implements Screen {
      * @param listener
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-        loadLevelMenuController.removePropertyChangeListener(listener);
+        mainMenuController.removePropertyChangeListener(listener);
     }
 
     /**
@@ -55,7 +55,7 @@ public class LoadLevelMenuScreen implements Screen {
         Gdx.gl20.glClearColor(0, 0, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        loadLevelMenuController.update(delta);
+        mainMenuController.update(delta);
     }
 
     /**
@@ -97,6 +97,6 @@ public class LoadLevelMenuScreen implements Screen {
      */
     @Override
     public void dispose() {
-        loadLevelMenuView.dispose();
+        mainMenuView.dispose();
     }
 }

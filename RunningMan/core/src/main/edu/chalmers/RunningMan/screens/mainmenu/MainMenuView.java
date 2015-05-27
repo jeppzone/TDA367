@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.screens;
+package edu.chalmers.RunningMan.screens.mainmenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import edu.chalmers.RunningMan.screens.BitmapFontManager;
+import edu.chalmers.RunningMan.screens.MenuButtonGenerator;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -18,7 +20,7 @@ import java.beans.PropertyChangeSupport;
 /**
  * A class for the main menu view
  */
-public class LoadLevelMenuView extends Stage {
+public class MainMenuView extends Stage {
 
     private TextureAtlas atlas;
     private Skin skin;
@@ -35,7 +37,7 @@ public class LoadLevelMenuView extends Stage {
     // only for debugging
     private static final boolean DEBUG = false;
 
-    public LoadLevelMenuView() {
+    public MainMenuView () {
 
         atlas = new TextureAtlas(ATLAS_PATH);
 
@@ -74,9 +76,9 @@ public class LoadLevelMenuView extends Stage {
     private void createButtons() {
         menuButtonGenerator = new MenuButtonGenerator("", blackFont);
         buttonPlay = menuButtonGenerator.createNewTextButton();
-        buttonPlay.setText("1");
+        buttonPlay.setText("PLAY");
         buttonExit = menuButtonGenerator.createNewTextButton();
-        buttonExit.setText("2");
+        buttonExit.setText("EXIT");
     }
 
     /**
@@ -93,7 +95,7 @@ public class LoadLevelMenuView extends Stage {
      * Create heading
      */
     private void createHeading() {
-        heading = new Label("Levels", new Label.LabelStyle(whiteFont, Color.WHITE));
+        heading = new Label("RunningMan", new Label.LabelStyle(whiteFont, Color.WHITE));
     }
 
     public void render(float delta) {

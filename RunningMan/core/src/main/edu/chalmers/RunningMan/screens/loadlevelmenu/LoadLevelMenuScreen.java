@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.screens;
+package edu.chalmers.RunningMan.screens.loadlevelmenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -9,14 +9,14 @@ import java.beans.PropertyChangeListener;
 /**
  * Created by Kvist1 on 2015-05-21.
  */
-public class MainMenuScreen implements Screen {
+public class LoadLevelMenuScreen implements Screen {
 
-    private MainMenuView mainMenuView;
-    private MainMenuController mainMenuController;
+    private LoadLevelMenuView loadLevelMenuView;
+    private LoadLevelMenuController loadLevelMenuController;
 
-    public MainMenuScreen() {
-        mainMenuView = new MainMenuView();
-        mainMenuController = new MainMenuController(mainMenuView);
+    public LoadLevelMenuScreen() {
+        loadLevelMenuView = new LoadLevelMenuView();
+        loadLevelMenuController = new LoadLevelMenuController(loadLevelMenuView);
     }
 
     /**
@@ -24,7 +24,7 @@ public class MainMenuScreen implements Screen {
      * @param listener
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
-        mainMenuController.addPropertyChangeListener(listener);
+        loadLevelMenuController.addPropertyChangeListener(listener);
     }
 
     /**
@@ -32,7 +32,7 @@ public class MainMenuScreen implements Screen {
      * @param listener
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
-        mainMenuController.removePropertyChangeListener(listener);
+        loadLevelMenuController.removePropertyChangeListener(listener);
     }
 
     /**
@@ -55,7 +55,7 @@ public class MainMenuScreen implements Screen {
         Gdx.gl20.glClearColor(0, 0, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        mainMenuController.update(delta);
+        loadLevelMenuController.update(delta);
     }
 
     /**
@@ -97,6 +97,6 @@ public class MainMenuScreen implements Screen {
      */
     @Override
     public void dispose() {
-        mainMenuView.dispose();
+        loadLevelMenuView.dispose();
     }
 }
