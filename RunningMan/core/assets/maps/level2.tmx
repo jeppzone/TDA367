@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="450" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="700" height="14" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="blocks" tilewidth="16" tileheight="16">
   <image source="blocks.png" width="96" height="32"/>
  </tileset>
@@ -15,44 +15,44 @@
  <tileset firstgid="15" name="obstacles" tilewidth="16" tileheight="16">
   <image source="../rockobstacle.png" width="600" height="291"/>
  </tileset>
- <layer name="ground" width="450" height="14">
+ <layer name="ground" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1UGSBCEIRFEv4P2vO1sXPRUqCgn+F+Guo4tKCmwNFfXoAgAACNIb9yCgoLf9eWSOgT2WuQP6wsG3lSzJGjiD2YEF+/mck3cgWQNzmBtYsJ/PuXEHkjXwjZmBBfv5nJt3IFkDvzE3sHhhP3vV6nEHKueM+hS/QeYmF7VevLKjPer0ugNVMx5lrDlStXw8+19pbl6g1o+X9vTtGj3vQMV8R1nrjrKbzUyus/99uj9evVefm9XnW36fgUJPRlV2tUJ93ndg9LfzJXPtEXZzyZTprRrV58Z7D6pT6ctMPdn2dcQdpHAUZa/fYue9djPJlueNGtXnxvuZWb4Bhd7M1lNxZ0ffWxUzHVV4B4vV95rNo0KW0bPinVPUM1Wp9yfT92f9j+j5U8vzpCrvo9jTTPn9JzrXmZyyz2p0rhy/YxFdO+deb0/5A+SPQEs=
+   eJzt1kGSwyAMRFFfwPe/bhbZUOXExoCklvivit1MLFoY6zhQ0RldAAAAAGDkPJh3AQXnMf4+8h4DAPDbzPcVOF8s3HuTJVkDANCHbyRmMIets3LWJWtkwJkG4IG7BDOYw9axmHXJGso4zwA8cJdgBnPYOpazLllDEWcZ/9BjrMSdghk7zGFetXrMuso541m1/nGW8Q89zkuxd9wpuaj1YpdZzKNOr1lXNeNWxpo9VMtih7OMMfT4qloWnu8zd0ouav3YaR6zrtFz1lXMt5W1bmvVctjhLGMMPb4azaInx97fXt0Pr/dZ/U55+/yZv89AoSetKjOZQn0eWSqdnTuZa7dULYMdzjLG0OOr0Swy5WhVo/qd4j3vqFPpS0892eayiFlTYSnKXr+Vavvf4Sw/md3X3d/M/v9dndYq9fiXkf2MZpEtR4sa1e8U72dmOQMKvemtp+L3LGLf1TNtVdiDhWp73+EsP8m6L+u6MmUx6u2eerPIeqZa0d9E75yinqlKvT+Zzt/sb0S/f2p5rlRtP6tU2+8OZ/lJ5n1Z1pYpC8W7O+uZakXn2pNTxDNXis6V5bdmRNfOYrWrV3SdLPseeyGLrw8641j5
   </data>
  </layer>
- <layer name="startPosition" width="450" height="14">
+ <layer name="startPosition" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJztyqENAAAMAjCS/f/zXsDgWt2kc+UDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABg6wGJVwAE
+   eJztyqENAAAMAjCS/f/zXkAiWt2kc+UDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPY9ZCYABA==
   </data>
  </layer>
- <layer name="enemies" width="450" height="14">
+ <layer name="enemies" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt21EKQBEQBVDvz/5XbAOE5GE650upaZifm5ISAADAfrmxBgAAAAAAAAAAAAAAaPlONwAAgfjbBwDA32RQgBi81cfx6ixH+5493+776NVf3b9BLe/JgHcyFwCIrQCl4ABC
+   eJzt3EkKwCAMAEB76/9f3A90SWpFU2ZOgiLRoKCIrQEAAAD02y/KAAAAAAAAAAAAAAAAAAAAAAAAwHvb7AAAAKAQf+MCAAAAkOVOCQCgBm/p/qNqLqNxZ8c3ej6e+u+tX8HZuc5Zr18m99G2s/ISie+uzZfrf9ReAquwJwMAQG0HSwkAWg==
   </data>
  </layer>
- <layer name="steroids" width="450" height="14">
+ <layer name="steroids" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2zENADAMBLFfOpU/3zBIx0SqjeAIXMIPznQAAAAAAAAAAAAAAAAAADzc6QBaXkUAAAAAAAAAAADYpQDU9AAW
+   eJzt2iESACAQAsArl/z/f80arOi4W6hkhip+0OkCAAAAAAAAAAAAAAAAAb0lAAAAAAAAAADA7Ua6AEf+aAAAAADvs/EAAAAAAAAAAAAAAKwmclQAJQ==
   </data>
  </layer>
- <layer name="pitfalls" width="450" height="14">
+ <layer name="pitfalls" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt2ckJACAMBEArsP9yRfDpT+KVGdinEIJHwFIAAAAAAAAAAADeVUcAAAAAAAAAICv/5rCP8wZAdt7COHoLAJCH2e8/dZKVtbfkJidqzNZjYtkn/zp9V/c0gAsHHQ==
+   eJzt2jEKwCAMBVBP4P2P69Khg05Wksb34I+ChoARbA0AAAAAAAAAAAAAAAAAYK0/AQAAAAAAAAAAAACAKP61A8B33KsAAFRn5j1HbQEAAOrwxgP4nz7JztosySRij7fVmLP0CVXo2/qi549MvRR99ncG8vwJvQ==
   </data>
  </layer>
- <layer name="finishlevel" width="450" height="14">
+ <layer name="finishlevel" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7Bd+JeMiSUctAqaAAAAAAAAAABAx1wHAAAAAAAAAAAAAAAAAAAA4IkF4dcABw==
+   eJztziEBAAAIA7Ab+ldGvgGYLcESAAAAAAAAAICa7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHBiAfViAAY=
   </data>
  </layer>
- <layer name="obstacles" width="450" height="14">
+ <layer name="obstacles" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzrEJgEAMhtFzEbdzOg93cRotbezTHPwH914TAgl8rQEAAAAAAAAAAAAAAAAAAMzhTgcAACzuSAcAANM6/9mjFQCMdhV7dU/emw4YYN/SBVSe0C8AALUP8NwHnQ==
+   eJztzsEJgEAMRcG1EbuzuhV7sRo97sV7EISvOHMJgQReawAAAAAAAAAAAAAAAAAAAAAAAAAAAADAW+zpAAAAAICPW9IBAABATL/mGq0AAOCurdire/LOdMAD5ildQOUI/QIAAAD8wQCxkwed
   </data>
  </layer>
- <layer name="boss" width="450" height="14">
+ <layer name="boss" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzjEBAAAMAiDP9U+8GHpAAhIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAllw7AADMe6PwAAk=
+   eJztzgENAAAIA6Dbv7QxPh0kIAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAH6YdAAAAOGQBpmQAAg==
   </data>
  </layer>
 </map>
