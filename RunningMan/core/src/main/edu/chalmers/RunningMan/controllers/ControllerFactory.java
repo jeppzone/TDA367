@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.gameworld;
+package edu.chalmers.RunningMan.controllers;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.controllers.*;
@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Factory that provides models, views and controllers
+ * ControllerFactory that provides models, views and controllers
  */
-public class Factory {
+public class ControllerFactory {
     private List<AbstractPhysicalObject> mapObjects;
     private List<Actor> actors;
     private List<IEntityController> controllers;
@@ -32,7 +32,7 @@ public class Factory {
     private LevelController levelController;
     private static HighScore highScore;
 
-    public Factory(List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies, String levelName){
+    public ControllerFactory(List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies, String levelName){
         this.mapObjects = mapObjects;
         this.enemies = enemies;
         actors = new ArrayList<>();

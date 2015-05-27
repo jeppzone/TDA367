@@ -2,7 +2,7 @@ package edu.chalmers.RunningMan.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import edu.chalmers.RunningMan.gameworld.GameWorld;
+import edu.chalmers.RunningMan.controllers.GameController;
 import edu.chalmers.RunningMan.utils.input.InputProcessor;
 
 import java.beans.PropertyChangeEvent;
@@ -15,14 +15,14 @@ import java.beans.PropertyChangeSupport;
 public class GameScreen implements IScreen, PropertyChangeListener {
 
     private PropertyChangeSupport pcs;
-    private GameWorld world;
+    private GameController world;
     private String level;
 
     public GameScreen(String level) {
         super();
         this.level = level;
         pcs = new PropertyChangeSupport(this);
-        world = new GameWorld(level);
+        world = new GameController(level);
         world.addPropertyChangeListener(this);
     }
 
@@ -36,7 +36,7 @@ public class GameScreen implements IScreen, PropertyChangeListener {
 
     /*
     public void createWorld(String level) {
-        world = new GameWorld(level);
+        world = new GameController(level);
         world.addPropertyChangeListener(this);
     }
     */

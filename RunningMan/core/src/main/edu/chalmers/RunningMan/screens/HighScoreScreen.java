@@ -4,7 +4,7 @@ package edu.chalmers.RunningMan.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import edu.chalmers.RunningMan.gameworld.Factory;
+import edu.chalmers.RunningMan.controllers.ControllerFactory;
 import edu.chalmers.RunningMan.utils.highscore.HighScore;
 import edu.chalmers.RunningMan.utils.highscore.HighScoreView;
 
@@ -19,7 +19,7 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
 
     public HighScoreScreen() {
         super();
-        highScore = Factory.getHighScore();
+        highScore = ControllerFactory.getHighScore();
         highScore.loadFromFile();
         highScore.addCurrentScore();
         highScoreView = new HighScoreView(highScore);

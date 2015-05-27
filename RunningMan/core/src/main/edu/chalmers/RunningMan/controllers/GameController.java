@@ -1,6 +1,5 @@
-package edu.chalmers.RunningMan.gameworld;
+package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.model.objects.AbstractPhysicalObject;
 import edu.chalmers.RunningMan.model.objects.Level;
 import edu.chalmers.RunningMan.model.objects.Enemy;
@@ -20,7 +19,7 @@ import java.util.List;
  * The class that controls the flow of the game
  */
 
-public class GameWorld implements PropertyChangeListener {
+public class GameController implements PropertyChangeListener {
 
     private Player player;
     private Level level;
@@ -28,7 +27,7 @@ public class GameWorld implements PropertyChangeListener {
     private MapHandler mapHandler;
     private List<AbstractPhysicalObject> mapObjects;
     private LevelView levelView;
-    private Factory factory;
+    private ControllerFactory factory;
     private AudioController audioController;
     private HudView hudView;
     private PropertyChangeSupport pcs;
@@ -42,7 +41,7 @@ public class GameWorld implements PropertyChangeListener {
 
     private static final float DEATH_ANIMATION_TIME = 1.15f;
 
-    public GameWorld(String levelName) {
+    public GameController(String levelName) {
         this.levelName = levelName;
         startLevel();
     }
@@ -81,7 +80,7 @@ public class GameWorld implements PropertyChangeListener {
             mapHandler = new MapHandler(levelName);
             mapObjects = mapHandler.getPhysicalObjectsList();
             enemies = mapHandler.getEnemies();
-            factory = new Factory(mapObjects, enemies, levelName);
+            factory = new ControllerFactory(mapObjects, enemies, levelName);
             audioController = factory.getAudioController();
             player = factory.getPlayer();
             player.addPropertyChangeListener(this);
@@ -94,7 +93,7 @@ public class GameWorld implements PropertyChangeListener {
             hudView = new HudView(level);
             audioController.playMusic();
         } catch (MapHandlerException e) {
-            System.out.println("loadLevel in GameWorld");
+            System.out.println("loadLevel in GameController");
         }
     }
 
