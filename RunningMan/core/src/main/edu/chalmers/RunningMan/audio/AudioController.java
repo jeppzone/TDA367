@@ -78,7 +78,7 @@ public class AudioController implements PropertyChangeListener {
             audio.playHelicopterSound();
             audio.playSuccessMusic();
         }
-        if("startlevel".equals(propertyName)){
+        if("startTimer".equals(propertyName)){
             audio.playStartLevelSound();
         }
         if("time".equals(propertyName)){
