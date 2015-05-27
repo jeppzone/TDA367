@@ -54,7 +54,7 @@ public class MainMenuController extends ClickListener {
     }
 
     /**
-     * Adds a Property change listener to the player
+     * Adds a Property change listener to the main menu
      * @param listener
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -62,7 +62,7 @@ public class MainMenuController extends ClickListener {
     }
 
     /**
-     * Removes a PropertyChangeListener from the player
+     * Removes a PropertyChangeListener from the main menu
      * @param listener
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {

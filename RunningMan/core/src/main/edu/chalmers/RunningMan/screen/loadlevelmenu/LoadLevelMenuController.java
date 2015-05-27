@@ -54,7 +54,7 @@ public class LoadLevelMenuController extends ClickListener {
     }
 
     /**
-     * Adds a Property change listener to the player
+     * Adds a Property change listener to the load level menu
      * @param listener
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -62,7 +62,7 @@ public class LoadLevelMenuController extends ClickListener {
     }
 
     /**
-     * Removes a PropertyChangeListener from the player
+     * Removes a PropertyChangeListener from the load level menu
      * @param listener
      */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
