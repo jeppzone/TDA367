@@ -3,7 +3,7 @@ package edu.chalmers.RunningMan.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import edu.chalmers.RunningMan.model.gameobjects.Level;
+import edu.chalmers.RunningMan.model.gameobject.Level;
 
 /**
  * @author Jesper

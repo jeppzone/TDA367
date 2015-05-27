@@ -5,7 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import edu.chalmers.RunningMan.model.*;
-import edu.chalmers.RunningMan.model.gameobjects.*;
+import edu.chalmers.RunningMan.model.gameobject.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class MapHandler implements IMapHandler {
     }
 
     /**
-     * @return A list of all physical gameobjects in the map
+     * @return A list of all physical gameobject in the map
      */
     public List<AbstractPhysicalObject> getPhysicalObjectsList() {
         return physicalObjects;
@@ -88,11 +88,11 @@ public class MapHandler implements IMapHandler {
     }
 
     /**
-     * Creates a list of all the map gameobjects
+     * Creates a list of all the map gameobject
      */
     private void createObjectList(){
 
-        // retrieve and store each type of gameobjects from the map in respective layer
+        // retrieve and store each type of gameobject from the map in respective layer
         TiledMapTileLayer groundLayer = (TiledMapTileLayer) tileMap.getLayers().get("ground");
         TiledMapTileLayer enemiesLayer = (TiledMapTileLayer) tileMap.getLayers().get("enemies");
         TiledMapTileLayer steroidsLayer = (TiledMapTileLayer) tileMap.getLayers().get("steroids");

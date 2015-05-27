@@ -2,7 +2,7 @@ package edu.chalmers.RunningMan.model.level.mapobjects;
 
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.gameobjects.Obstacle;
+import edu.chalmers.RunningMan.model.gameobject.Obstacle;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

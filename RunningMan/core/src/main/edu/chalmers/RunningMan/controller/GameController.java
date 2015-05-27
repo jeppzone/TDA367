@@ -1,9 +1,9 @@
 package edu.chalmers.RunningMan.controller;
 
-import edu.chalmers.RunningMan.model.gameobjects.AbstractPhysicalObject;
-import edu.chalmers.RunningMan.model.gameobjects.Level;
-import edu.chalmers.RunningMan.model.gameobjects.Enemy;
-import edu.chalmers.RunningMan.model.gameobjects.Player;
+import edu.chalmers.RunningMan.model.gameobject.AbstractPhysicalObject;
+import edu.chalmers.RunningMan.model.gameobject.Level;
+import edu.chalmers.RunningMan.model.gameobject.Enemy;
+import edu.chalmers.RunningMan.model.gameobject.Player;
 import edu.chalmers.RunningMan.util.map.MapHandler;
 import edu.chalmers.RunningMan.util.map.MapHandlerException;
 import edu.chalmers.RunningMan.model.Timer;

@@ -4,7 +4,7 @@ import edu.chalmers.RunningMan.model.LivingState;
 import edu.chalmers.RunningMan.model.Gravity;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.gameobjects.*;
+import edu.chalmers.RunningMan.model.gameobject.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

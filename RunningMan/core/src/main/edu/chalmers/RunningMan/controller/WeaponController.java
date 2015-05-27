@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.controller;
 
-import edu.chalmers.RunningMan.model.gameobjects.Weapon;
+import edu.chalmers.RunningMan.model.gameobject.Weapon;
 import edu.chalmers.RunningMan.util.input.Input;
 
 /**

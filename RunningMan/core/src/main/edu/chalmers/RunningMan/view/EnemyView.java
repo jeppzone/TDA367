@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.model.gameobjects.Enemy;
+import edu.chalmers.RunningMan.model.gameobject.Enemy;
 
 /**
  * A class to represent the view of the enemy.

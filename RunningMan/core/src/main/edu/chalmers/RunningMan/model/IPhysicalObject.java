@@ -3,7 +3,7 @@ package edu.chalmers.RunningMan.model;
 import java.awt.*;
 
 /**
- * Interface for physical gameobjects
+ * Interface for physical gameobject
  * @author Jesper
  */
 public interface IPhysicalObject {

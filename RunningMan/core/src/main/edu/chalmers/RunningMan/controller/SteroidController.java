@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.controller;
 
-import edu.chalmers.RunningMan.model.gameobjects.Steroid;
+import edu.chalmers.RunningMan.model.gameobject.Steroid;
 import edu.chalmers.RunningMan.view.SteroidView;
 
 /**

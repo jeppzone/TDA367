@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.gameobjects;
+package edu.chalmers.RunningMan.model.gameobject;
 
 import edu.chalmers.RunningMan.model.IPhysicalObject;
 import edu.chalmers.RunningMan.model.ISize;
@@ -7,7 +7,7 @@ import edu.chalmers.RunningMan.model.Position;
 import java.awt.*;
 
 /**
- * Abstract class for physical gameobjects
+ * Abstract class for physical gameobject
  * @author Jesper Olsson
  */
 public abstract class AbstractPhysicalObject implements IVisitable, IPhysicalObject {
@@ -39,7 +39,7 @@ public abstract class AbstractPhysicalObject implements IVisitable, IPhysicalObj
     /**
      * A Method to fetch the hitbox of a physical object
      * @return a rectangle that represents the area of an object
-     * that may collide with other gameobjects
+     * that may collide with other gameobject
      */
     public Rectangle getHitbox(){
         return new Rectangle(Math.round(position.getX()), Math.round(position.getY()),

@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.gameobjects;
+package edu.chalmers.RunningMan.model.gameobject;
 
 /**
  * Created by Armand on 2015-05-04.

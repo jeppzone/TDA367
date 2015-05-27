@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.model.gameobjects.Bullet;
+import edu.chalmers.RunningMan.model.gameobject.Bullet;
 
 import java.util.List;
 

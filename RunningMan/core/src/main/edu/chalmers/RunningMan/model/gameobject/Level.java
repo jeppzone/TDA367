@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.gameobjects;
+package edu.chalmers.RunningMan.model.gameobject;
 
 import edu.chalmers.RunningMan.model.Timer;
 
@@ -68,7 +68,7 @@ public class Level implements PropertyChangeListener {
 
     /**
      * Method to check whether bullets are colliding with
-     * any gameobjects. The bullet should disappear if it collides with another
+     * any gameobject. The bullet should disappear if it collides with another
      * object. If it collides with an enemy, the enemy should disappear as well.
      * @param bullets
      */
@@ -169,10 +169,10 @@ public class Level implements PropertyChangeListener {
     }
 
     /**
-     * Method to check whether two gameobjects are colliding or not
+     * Method to check whether two gameobject are colliding or not
      * @param thisObject  the first object
      * @param otherObject the other object
-     * @return true if the two gameobjects hitboxes are intersecting
+     * @return true if the two gameobject hitboxes are intersecting
      * and they are not the same object, false otherwise
      */
     public boolean isColliding(Rectangle thisObject, Rectangle otherObject) {
