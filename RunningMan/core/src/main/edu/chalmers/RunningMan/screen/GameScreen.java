@@ -16,11 +16,9 @@ public class GameScreen implements IScreen, PropertyChangeListener {
 
     private PropertyChangeSupport pcs;
     private GameController world;
-    private String level;
 
     public GameScreen(String level) {
         super();
-        this.level = level;
         pcs = new PropertyChangeSupport(this);
         world = new GameController(level);
         world.addPropertyChangeListener(this);
@@ -33,13 +31,6 @@ public class GameScreen implements IScreen, PropertyChangeListener {
     public void removePropertyChangeListener(PropertyChangeListener listener){
         pcs.addPropertyChangeListener(this);
     }
-
-    /*
-    public void createWorld(String level) {
-        world = new GameController(level);
-        world.addPropertyChangeListener(this);
-    }
-    */
 
     @Override
     public void render(float deltaTime) {
