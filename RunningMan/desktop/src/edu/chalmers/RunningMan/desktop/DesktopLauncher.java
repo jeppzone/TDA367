@@ -3,8 +3,8 @@ package edu.chalmers.RunningMan.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import edu.chalmers.RunningMan.RunningMan;
-import static edu.chalmers.RunningMan.utils.Constants.V_HEIGHT;
-import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
+import static edu.chalmers.RunningMan.util.Constants.V_HEIGHT;
+import static edu.chalmers.RunningMan.util.Constants.V_WIDTH;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {

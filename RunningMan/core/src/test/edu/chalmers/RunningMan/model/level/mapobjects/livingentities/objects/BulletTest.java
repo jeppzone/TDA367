@@ -10,7 +10,7 @@ import edu.chalmers.RunningMan.model.gameobjects.Player;
 import edu.chalmers.RunningMan.model.gameobjects.Weapon;
 import edu.chalmers.RunningMan.model.gameobjects.Ground;
 import org.junit.Assert;
-import static edu.chalmers.RunningMan.utils.Constants.*;
+import static edu.chalmers.RunningMan.util.Constants.*;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -13,8 +13,8 @@ import org.junit.Test;
 
 import java.awt.*;
 
-import static edu.chalmers.RunningMan.utils.Constants.V_HEIGHT;
-import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
+import static edu.chalmers.RunningMan.util.Constants.V_HEIGHT;
+import static edu.chalmers.RunningMan.util.Constants.V_WIDTH;
 
 public class EnemyTest extends Assert {
 

@@ -13,8 +13,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static edu.chalmers.RunningMan.utils.Constants.V_HEIGHT;
-import static edu.chalmers.RunningMan.utils.Constants.V_WIDTH;
+import static edu.chalmers.RunningMan.util.Constants.V_HEIGHT;
+import static edu.chalmers.RunningMan.util.Constants.V_WIDTH;
 
 /**
  * @author Jesper Olsson
