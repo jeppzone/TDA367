@@ -1,10 +1,9 @@
 package edu.chalmers.RunningMan.controllers;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.controllers.*;
 import edu.chalmers.RunningMan.model.*;
 import edu.chalmers.RunningMan.audio.AudioController;
-import edu.chalmers.RunningMan.model.objects.*;
+import edu.chalmers.RunningMan.model.gameobjects.*;
 import edu.chalmers.RunningMan.utils.highscore.HighScore;
 import edu.chalmers.RunningMan.utils.WindowSize;
 import edu.chalmers.RunningMan.views.*;

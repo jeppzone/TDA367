@@ -1,6 +1,6 @@
 package edu.chalmers.RunningMan.controllers;
 
-import edu.chalmers.RunningMan.model.objects.Bullet;
+import edu.chalmers.RunningMan.model.gameobjects.Bullet;
 import edu.chalmers.RunningMan.views.BulletView;
 
 import java.util.List;

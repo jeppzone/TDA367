@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import edu.chalmers.RunningMan.model.objects.Ground;
+import edu.chalmers.RunningMan.model.gameobjects.Ground;
 
 /**
  * Created by Kvist1 on 2015-05-04.

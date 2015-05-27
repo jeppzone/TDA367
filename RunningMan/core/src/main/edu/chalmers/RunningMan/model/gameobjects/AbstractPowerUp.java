@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.objects;
+package edu.chalmers.RunningMan.model.gameobjects;
 
 import edu.chalmers.RunningMan.model.ICollectible;
 import edu.chalmers.RunningMan.model.Position;
@@ -6,7 +6,7 @@ import edu.chalmers.RunningMan.model.Size;
 import edu.chalmers.RunningMan.model.Timer;
 
 /**
- * Abstract class for collectible objects
+ * Abstract class for collectible gameobjects
  * @author Jesper Olsson
  */
 public abstract class AbstractPowerUp extends AbstractPhysicalObject implements ICollectible {
