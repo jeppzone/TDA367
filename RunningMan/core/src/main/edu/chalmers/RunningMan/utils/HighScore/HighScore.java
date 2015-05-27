@@ -93,7 +93,7 @@ public class HighScore {
      */
     public void loadFromFile() {
         try{
-            scanner =  new Scanner(new FileReader("HS"+levelName+".txt"));
+            scanner =  new Scanner(new FileReader("HS"+"level1"+".txt"));
             while(scanner.hasNext()){
                 highScores.add(new Integer(scanner.nextInt()));
             }

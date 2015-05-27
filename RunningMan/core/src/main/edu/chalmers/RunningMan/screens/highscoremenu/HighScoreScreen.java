@@ -1,5 +1,5 @@
 
-package edu.chalmers.RunningMan.screens;
+package edu.chalmers.RunningMan.screens.highscoremenu;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -16,6 +16,7 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
     private PropertyChangeSupport pcs;
     private HighScore highScore;
     private HighScoreView highScoreView;
+    private HighScoreMenuController highScoreMenuController;
 
     public HighScoreScreen() {
         super();
@@ -23,22 +24,23 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
         highScore.loadFromFile();
         highScore.addCurrentScore();
         highScoreView = new HighScoreView(highScore);
-        pcs = new PropertyChangeSupport(this);
+        highScoreMenuController = new HighScoreMenuController(highScoreView);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
-        pcs.addPropertyChangeListener(listener);
+        highScoreMenuController.addPropertyChangeListener(listener);
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener){
-        pcs.removePropertyChangeListener(this);
+        highScoreMenuController.removePropertyChangeListener(this);
     }
 
     @Override
     public void render(float deltaTime) {
         // clear screen
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        highScoreView.draw();
+        highScoreView.draw(deltaTime);
+        highScoreMenuController.update(deltaTime);
     }
 
     @Override

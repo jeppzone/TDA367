@@ -133,7 +133,7 @@ public class Level implements PropertyChangeListener {
      */
     public void checkTime() {
         if (isTimeUp()) {
-            pcs.firePropertyChange("restartLevel", null, null);
+            pcs.firePropertyChange("mainMenu", null, null);
         }
     }
 

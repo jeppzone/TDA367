@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.screens;
+package edu.chalmers.RunningMan.utils;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

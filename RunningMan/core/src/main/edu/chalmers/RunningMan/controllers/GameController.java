@@ -136,7 +136,7 @@ public class GameController implements PropertyChangeListener {
         if (timerSinceDeath.isTimeUp()) {
             audioController.stopMusic();
             if (player.isDead()) {
-                pcs.firePropertyChange("restartLevel", null, null);
+                pcs.firePropertyChange("mainMenu", null, null);
             } else {
                 setHighScores();
                 pcs.firePropertyChange("showHighScore", null, null);

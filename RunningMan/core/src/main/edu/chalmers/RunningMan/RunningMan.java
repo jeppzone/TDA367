@@ -1,7 +1,9 @@
 package edu.chalmers.RunningMan;
 
 import com.badlogic.gdx.Game;
+import edu.chalmers.RunningMan.controllers.GameController;
 import edu.chalmers.RunningMan.screens.*;
+import edu.chalmers.RunningMan.screens.highscoremenu.HighScoreScreen;
 import edu.chalmers.RunningMan.screens.loadlevelmenu.LoadLevelMenuScreen;
 import edu.chalmers.RunningMan.screens.mainmenu.MainMenuScreen;
 
@@ -55,7 +57,7 @@ public class RunningMan extends Game implements PropertyChangeListener {
         if(eventName.equals("loadScreen")) {
             setScreen(loadLevelMenuScreen);
 
-        } else if(eventName.equals("restartLevel")) {
+        } else if(eventName.equals("mainMenu")) {
             setScreen(mainMenuScreen);
 
         } else if(eventName.equals("level1")) {
