@@ -1,6 +1,7 @@
 package edu.chalmers.RunningMan.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import edu.chalmers.RunningMan.controller.GameController;
 import edu.chalmers.RunningMan.util.input.InputProcessor;
@@ -12,7 +13,7 @@ import java.beans.PropertyChangeSupport;
 /**
  * A screen class which handles the game
  */
-public class GameScreen implements IScreen, PropertyChangeListener {
+public class GameScreen implements Screen, PropertyChangeListener {
 
     private PropertyChangeSupport pcs;
     private GameController world;
