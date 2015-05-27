@@ -1,9 +1,10 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
+package edu.chalmers.RunningMan.model.gameobject;
 
 import edu.chalmers.RunningMan.model.ISize;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
 import edu.chalmers.RunningMan.model.gameobject.Bullet;
+import edu.chalmers.RunningMan.model.gameobject.MockSize;
 import edu.chalmers.RunningMan.model.gameobject.Player;
 import edu.chalmers.RunningMan.model.gameobject.Weapon;
 import org.junit.Assert;

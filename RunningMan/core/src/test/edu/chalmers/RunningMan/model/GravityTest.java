@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities;
+package edu.chalmers.RunningMan.model;
 
 import edu.chalmers.RunningMan.model.Gravity;
 import org.junit.Assert;

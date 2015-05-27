@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects;
+package edu.chalmers.RunningMan.model.gameobject;
 
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;

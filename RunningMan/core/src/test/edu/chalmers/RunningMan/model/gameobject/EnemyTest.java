@@ -1,4 +1,4 @@
-package edu.chalmers.RunningMan.model.level.mapobjects.livingentities.objects;
+package edu.chalmers.RunningMan.model.gameobject;
 
 import edu.chalmers.RunningMan.RunningMan;
 import edu.chalmers.RunningMan.model.ISize;
