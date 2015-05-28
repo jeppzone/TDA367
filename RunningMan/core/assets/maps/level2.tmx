@@ -27,7 +27,7 @@
  </layer>
  <layer name="enemies" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt3EkKwCAMAEB76/9f3A90SWpFU2ZOgiLRoKCIrQEAAAD02y/KAAAAAAAAAAAAAAAAAAAAAAAAwHvb7AAAAKAQf+MCAAAAkOVOCQCgBm/p/qNqLqNxZ8c3ej6e+u+tX8HZuc5Zr18m99G2s/ISie+uzZfrf9ReAquwJwMAQG0HSwkAWg==
+   eJzt3DEKwCAMAEC79f8vdi6UYqhtjNzNgokxgyK2BgAAAPDemR0AAAAAAAAAAAAAAAAAAAAAAAAAbOjIDgAAAArxTy4AAAAAUe6UAABq8JZuH1VrORp3NL/s9ciefwbnum9E9sbo2JVr9ZTDzP6v3HOVY+c/d32+cu8DAABXHUZuAEc=
   </data>
  </layer>
  <layer name="steroids" width="700" height="14">
@@ -47,7 +47,7 @@
  </layer>
  <layer name="obstacles" width="700" height="14">
   <data encoding="base64" compression="zlib">
-   eJztzsEJgEAMRcG1EbuzuhV7sRo97sV7EISvOHMJgQReawAAAAAAAAAAAAAAAAAAAAAAAAAAAADAW+zpAAAAAICPW9IBAABATL/mGq0AAOCurdire/LOdMAD5ildQOUI/QIAAAD8wQCxkwed
+   eJztzsEJgEAMRcG1EbuzE7tRther0aMX70EQvgszlxBI4LUGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPzFkQ4AAAAAGNySDgAAAGK2Z+7RCgAA3urFXt2Td6UDPjBP6QIqZ+gXRramAwAAABjGDQ0bCCE=
   </data>
  </layer>
  <layer name="boss" width="700" height="14">
