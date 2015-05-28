@@ -29,9 +29,9 @@ public class LevelView extends Stage {
         playerView = new PlayerView(player, levelName);
         initCamera();
         try {
-            background = new Texture("core/assets/backgrounds/" + levelName + ".jpg");
+            background = new Texture("backgrounds/" + levelName + ".jpg");
         } catch (Exception e) {
-            background = new Texture("core/assets/backgrounds/level1.jpg");
+            background = new Texture("backgrounds/level1.jpg");
             e.getStackTrace();
         }
     }

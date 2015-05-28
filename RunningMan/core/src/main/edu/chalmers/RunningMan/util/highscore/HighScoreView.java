@@ -27,7 +27,7 @@ public class HighScoreView extends Stage {
     private BitmapFont whiteFont;
     private BitmapFontManager bitmapFontManager = new BitmapFontManager();
     private MenuButtonGenerator menuButtonGenerator;
-    private static final String ATLAS_PATH = "core/assets/mainmenu/mainmenu_buttonsheet.txt";
+    private static final String ATLAS_PATH = "mainmenu/mainmenu_buttonsheet.txt";
     private List<Integer> scores;
     private HighScore highScore;
     private Batch batch;

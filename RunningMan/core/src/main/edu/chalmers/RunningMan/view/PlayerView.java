@@ -20,7 +20,7 @@ public class PlayerView extends Actor{
     private TextureRegion jumpRightSprite, jumpLeftSprite;
     private Animation walkRightAnimation, walkLeftAnimation,dieAnimation,dieByPitfallAnimation;
 
-    private final static String ANIMATION_LOCATION = "core/assets/animations/";
+    private final static String ANIMATION_LOCATION = "animations/";
 
     private static String SPRITE_WALK_RIGHT_SHEET;
     private static String SPRITE_WALK_LEFT_SHEET;

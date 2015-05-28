@@ -13,7 +13,7 @@ public class GroundView extends Actor{
 
     private Ground ground;
     private Texture texture;
-    private final static String TILES_LOCATION = "core/assets/tilesets/";
+    private final static String TILES_LOCATION = "tilesets/";
 
     public GroundView(Ground ground, String levelName) {
         this.ground = ground;

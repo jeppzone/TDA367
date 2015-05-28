@@ -28,7 +28,7 @@ public class LoadLevelMenuView extends Stage {
     private BitmapFontManager bitmapFontManager = new BitmapFontManager();
     private MenuButtonGenerator menuButtonGenerator;
 
-    private static final String ATLAS_PATH = "core/assets/mainmenu/mainmenu_buttonsheet.txt";
+    private static final String ATLAS_PATH = "mainmenu/mainmenu_buttonsheet.txt";
 
     // only for debugging
     private static final boolean DEBUG = false;

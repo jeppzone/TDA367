@@ -12,7 +12,7 @@ import edu.chalmers.RunningMan.model.gameobject.Obstacle;
 public class ObstacleView extends Actor {
     private Obstacle obstacle;
     private Texture texture;
-    private final static String TILES_LOCATION = "core/assets/tilesets/";
+    private final static String TILES_LOCATION = "tilesets/";
 
     public ObstacleView(Obstacle obstacle, String levelName){
         this.obstacle = obstacle;

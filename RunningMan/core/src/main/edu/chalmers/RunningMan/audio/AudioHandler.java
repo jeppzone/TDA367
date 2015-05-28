@@ -8,7 +8,7 @@ import com.badlogic.gdx.audio.Sound;
  * A class which handles the music
  */
 public class AudioHandler {
-    private final static String AUDIO_LOCATION = "core/assets/audio/";
+    private final static String AUDIO_LOCATION = "audio/";
 
     private Sound jumpSound;
     private Sound shootSound;

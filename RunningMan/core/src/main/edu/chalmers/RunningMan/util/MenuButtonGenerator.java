@@ -22,7 +22,7 @@ public class MenuButtonGenerator {
     private TextButtonStyle textButtonStyle;
     private TextButton textButton;
 
-    private static final String ATLAS_PATH = "core/assets/mainmenu/mainmenu_buttonsheet.txt";
+    private static final String ATLAS_PATH = "mainmenu/mainmenu_buttonsheet.txt";
 
     public MenuButtonGenerator(String text, BitmapFont bitmapFont) {
 

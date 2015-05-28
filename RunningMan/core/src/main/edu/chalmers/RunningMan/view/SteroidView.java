@@ -14,7 +14,7 @@ public class SteroidView extends Actor {
     public SteroidView(Steroid steroid){
         this.steroid = steroid;
         try {
-            texture = new Texture(Gdx.files.internal("core/assets/spruta.png"));
+            texture = new Texture(Gdx.files.internal("spruta.png"));
         }catch (Exception e){
             e.printStackTrace();
         }

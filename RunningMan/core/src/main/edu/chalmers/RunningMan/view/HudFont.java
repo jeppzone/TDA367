@@ -14,7 +14,7 @@ public class HudFont {
 
     public void generateFont(){
         try {
-             generator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/fonts/StarFont.TTF"));
+             generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/StarFont.TTF"));
         }catch (Exception e){
             throw new NullPointerException("Could not find font in HudFont");
         }

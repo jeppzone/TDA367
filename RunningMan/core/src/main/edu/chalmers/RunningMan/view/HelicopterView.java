@@ -19,14 +19,14 @@ public class HelicopterView extends Actor {
     private final Texture chopperHover;
     private TextureRegion[] chopperHoverSprites;
     private Animation chopperHoverAnimation;
-    private final static String SPRITE_CHOPPERHOVER = "core/assets/chopperhover.png";
+    private final static String SPRITE_CHOPPERHOVER = "chopperhover.png";
 
     public HelicopterView(Helicopter finishObject){
         this.finishObject = finishObject;
         try{
             chopperHover = new Texture(SPRITE_CHOPPERHOVER);
         }catch (Exception e){
-            throw new NullPointerException("Could not find core/assets/chopperhover.png in in "
+            throw new NullPointerException("Could not find chopperhover.png in in "
                     + this.getClass().toString());
         }
 

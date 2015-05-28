@@ -22,7 +22,7 @@ public class EnemyView extends Actor{
     private int textureRegionHeight;
     private int textureRegionShotInFrontWidth;
 
-    private final static String ANIMATION_LOCATION = "core/assets/animations/";
+    private final static String ANIMATION_LOCATION = "animations/";
 
     private String SPRITE_ENEMY_WALK_LEFT_SHEET;
     private String SPRITE_ENEMY_WALK_RIGHT_SHEET;

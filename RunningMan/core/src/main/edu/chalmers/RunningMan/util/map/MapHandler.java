@@ -18,7 +18,7 @@ public class MapHandler implements IMapHandler {
 
     private TiledMap tileMap;
 
-    private final static String MAP_LOCATION = "core/assets/maps/";
+    private final static String MAP_LOCATION = "maps/";
 
     private Position playerStartPosition;
     private List<AbstractPhysicalObject> physicalObjects;
@@ -56,7 +56,7 @@ public class MapHandler implements IMapHandler {
     public final void loadLevel(String levelName) throws MapHandlerException {
         File file = new File(MAP_LOCATION + levelName + ".tmx");
         if(!file.exists()) throw new MapHandlerException();
-        tileMap = new TmxMapLoader().load("core/assets/maps/" + levelName + ".tmx");
+        tileMap = new TmxMapLoader().load("maps/" + levelName + ".tmx");
         tilePixelSize = (Integer) tileMap.getProperties().get("tilewidth");
         mapHeight = (Integer) tileMap.getProperties().get("height");
         mapWidth = (Integer) tileMap.getProperties().get("width");

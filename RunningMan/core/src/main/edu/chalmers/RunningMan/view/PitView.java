@@ -13,7 +13,7 @@ public class PitView extends Actor{
 
     private Pit pit;
     private Texture texture;
-    private final static String TILES_LOCATION = "core/assets/tilesets/";
+    private final static String TILES_LOCATION = "tilesets/";
 
     public PitView(Pit pit, String levelName) {
         this.pit = pit;
