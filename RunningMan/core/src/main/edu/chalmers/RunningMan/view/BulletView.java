@@ -19,8 +19,8 @@ public class BulletView extends Actor{
 
     private final Texture bulletLeft, bulletRight;
 
-    private final static String SPRITE_BULLET_LEFT = "core/assets/bulletleft.png";
-    private final static String SPRITE_BULLET_RIGHT = "core/assets/bulletright.png";
+    private final static String SPRITE_BULLET_RIGHT = "core/assets/bulletleft.png";
+    private final static String SPRITE_BULLET_LEFT = "core/assets/bulletright.png";
 
     private TextureRegion[] bulletLeftSprites,bulletRightSprites;
     private Animation bulletLeftAnimation, bulletRightAnimation;
