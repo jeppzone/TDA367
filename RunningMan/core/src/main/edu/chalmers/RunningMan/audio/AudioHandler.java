@@ -44,7 +44,7 @@ public class AudioHandler {
             bossShotInBackSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossshotinback.wav"));
             bossIsHitByBulletSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "bossishitbybullet.wav"));
             steroidSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "steroid.mp3"));
-            startLevelSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startLevel.mp3"));
+            startLevelSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "startlevel.mp3"));
             helicopterSound = Gdx.audio.newSound(Gdx.files.internal(AUDIO_LOCATION + "helicopter.mp3"));
             failedMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "failed.wav"));
             successMusic = Gdx.audio.newMusic(Gdx.files.internal(AUDIO_LOCATION + "success.wav"));

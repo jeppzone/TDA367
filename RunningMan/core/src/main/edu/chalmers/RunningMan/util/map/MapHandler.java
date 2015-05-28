@@ -54,8 +54,6 @@ public class MapHandler implements IMapHandler {
      * @throws MapHandlerException if level file doesn't exist
      */
     public final void loadLevel(String levelName) throws MapHandlerException {
-        File file = new File(MAP_LOCATION + levelName + ".tmx");
-        if(!file.exists()) throw new MapHandlerException();
         tileMap = new TmxMapLoader().load("maps/" + levelName + ".tmx");
         tilePixelSize = (Integer) tileMap.getProperties().get("tilewidth");
         mapHeight = (Integer) tileMap.getProperties().get("height");
