@@ -45,7 +45,6 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
 
     @Override
     public void resize(int width, int height) {
-        Gdx.app.log("GameScreen", "resizing");
     }
 
     @Override
@@ -56,7 +55,6 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
     @Override
     public void hide() {
         highScore.saveToFile();
-        Gdx.app.log("GameScreen", "hide called");
     }
 
     @Override
