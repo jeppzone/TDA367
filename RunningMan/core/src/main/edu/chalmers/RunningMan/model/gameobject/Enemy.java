@@ -129,7 +129,9 @@ public class Enemy extends AbstractLivingObject {
     @Override
     public void visit(Bullet b) {
        takeDamage(DAMAGE);
+        //if the boss is killed
         if (isDead()&& isBoss) {
+            //checks the direction of the bullet 
             if (b.getVelocity() * velocity < 0) {
                 isShotInFront = true;
                 propertyChangeSupport.firePropertyChange("bossshotinfront", null, null);
@@ -138,8 +140,9 @@ public class Enemy extends AbstractLivingObject {
                 propertyChangeSupport.firePropertyChange("bossshotinback", null, null);
             }
             this.velocity = 0;
-
+        //if the enemy is killed
         }else if(isDead()){
+            //checks the direction of the bullet
             if (b.getVelocity() * velocity < 0) {
                 isShotInFront = true;
                 propertyChangeSupport.firePropertyChange("enemyshotinfront", null, null);
@@ -149,6 +152,8 @@ public class Enemy extends AbstractLivingObject {
             }
             this.velocity = 0;
         }
+
+        //if the boss is hit but not killed
         if(isBoss){
             propertyChangeSupport.firePropertyChange("bosshitbybullet", null, null);
         }
