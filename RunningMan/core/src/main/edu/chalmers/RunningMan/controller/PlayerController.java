@@ -11,11 +11,9 @@ import edu.chalmers.RunningMan.view.PlayerView;
 public class PlayerController implements IEntityController {
 
     private Player player;
-    private PlayerView playerView;
 
-    public PlayerController(Player player, PlayerView playerView){
+    public PlayerController(Player player){
         this.player = player;
-        this.playerView = playerView;
     }
 
     public void handleKeyboardInput(float deltaTime){

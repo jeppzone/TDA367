@@ -60,7 +60,7 @@ public class ControllerFactory {
             } else if(apo.getClass() == Steroid.class) {
                 Steroid steroid = (Steroid) apo;
                 SteroidView steroidView = new SteroidView(steroid);
-                controllers.add(new SteroidController(steroid, steroidView));
+                controllers.add(new SteroidController(steroid));
                 actors.add(steroidView);
             } else if(apo.getClass() == Obstacle.class) {
                 Obstacle obstacle = (Obstacle) apo;
@@ -71,7 +71,7 @@ public class ControllerFactory {
                 helicopter.addPropertyChangeListener(audioController);
                 HelicopterView helicopterView = new HelicopterView(helicopter);
                 actors.add(helicopterView);
-                helicopterController = new HelicopterController(helicopter, helicopterView);
+                helicopterController = new HelicopterController(helicopter);
                 controllers.add(helicopterController);
             }
         }
@@ -98,7 +98,7 @@ public class ControllerFactory {
     private void addPlayer(){
         player = new Player(new Position(60, 1000)/*mapHandler.getPlayerStartPosition()*/, new Size(50, 50), 100);
         PlayerView playerView = new PlayerView(player, levelName);
-        playerController = new PlayerController(player, playerView);
+        playerController = new PlayerController(player);
         actors.add(playerView);
         controllers.add(playerController);
     }

@@ -166,7 +166,6 @@ public class GameController implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-
         pcs.firePropertyChange(evt.getPropertyName(), null, null);
     }
 }

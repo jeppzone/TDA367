@@ -8,11 +8,9 @@ import edu.chalmers.RunningMan.view.HelicopterView;
  */
 public class HelicopterController implements IEntityController{
     private Helicopter helicopter;
-    private HelicopterView helicopterView;
 
-    public HelicopterController(Helicopter helicopter, HelicopterView helicopterView){
+    public HelicopterController(Helicopter helicopter){
         this.helicopter = helicopter;
-        this.helicopterView = helicopterView;
     }
 
     public void update(float deltaTime){

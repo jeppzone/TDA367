@@ -9,11 +9,9 @@ import edu.chalmers.RunningMan.view.SteroidView;
  */
 public class SteroidController implements IEntityController {
     private Steroid steroid;
-    private SteroidView steroidView;
 
-    public SteroidController(Steroid steroid, SteroidView steroidView){
+    public SteroidController(Steroid steroid){
         this.steroid = steroid;
-        this.steroidView = steroidView;
     }
 
     public void update(float deltaTime){
