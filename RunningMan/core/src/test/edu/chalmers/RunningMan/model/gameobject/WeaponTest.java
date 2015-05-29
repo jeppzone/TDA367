@@ -30,11 +30,6 @@ public class WeaponTest extends Assert {
         return new Weapon(player, mockSize);
     }
 
-    public void placeBullet(){
-
-
-    }
-
 
     @Before
     public void setUp(){
