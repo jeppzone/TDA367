@@ -334,6 +334,7 @@ public class Player extends AbstractLivingObject {
         setX(f.getPosition().getX());
         setY(f.getPosition().getY() - 20);
         finishedLevel = true;
+        propertyChangeSupport.firePropertyChange("finishedLevel", null, null);
     }
 
     @Override
