@@ -7,11 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.model.gameobject.Pit;
 
 /**
- * Created by Kvist1 on 2015-05-12.
+ * View for the pit fall
  */
 public class PitView extends Actor{
 
-    private Pit pit;
+    private final Pit pit;
     private Texture texture;
     private final static String TILES_LOCATION = "tilesets/";
 
