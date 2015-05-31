@@ -2,8 +2,6 @@ package edu.chalmers.RunningMan.controller;
 
 import edu.chalmers.RunningMan.model.gameobject.Player;
 import edu.chalmers.RunningMan.util.input.Input;
-import edu.chalmers.RunningMan.view.PlayerView;
-
 
 /**
  * A class for controlling the player
