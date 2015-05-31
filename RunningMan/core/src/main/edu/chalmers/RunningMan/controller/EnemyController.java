@@ -5,11 +5,11 @@ import edu.chalmers.RunningMan.model.gameobject.Enemy;
 import edu.chalmers.RunningMan.view.EnemyView;
 /**
  * A class for controlling enemies
- * @Author Jesper Olsson
+ * @author Jesper Olsson
  */
 public class EnemyController implements IEntityController {
-    private Enemy enemy;
-    private EnemyView enemyView;
+    private final Enemy enemy;
+    private final EnemyView enemyView;
 
     public EnemyController(Enemy enemy, EnemyView enemyView){
         this.enemy = enemy;
