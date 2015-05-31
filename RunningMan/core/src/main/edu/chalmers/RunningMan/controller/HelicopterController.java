@@ -4,10 +4,10 @@ import edu.chalmers.RunningMan.model.gameobject.Helicopter;
 import edu.chalmers.RunningMan.view.HelicopterView;
 
 /**
- * Created by JohanTobin on 2015-05-12.
+ * A class for controlling the helicopter
  */
 public class HelicopterController implements IEntityController{
-    private Helicopter helicopter;
+    private final Helicopter helicopter;
 
     public HelicopterController(Helicopter helicopter){
         this.helicopter = helicopter;
