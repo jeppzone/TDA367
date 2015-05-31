@@ -111,7 +111,7 @@ public class PlayerView extends Actor{
             return dieAnimation.getKeyFrame(deathTime, false);
         }
 
-        switch (player.getAnimationState()) {
+        switch (player.getLivingState()) {
 
             case MOVING_RIGHT:
                 return walkRightAnimation.getKeyFrame(stateTime, true);

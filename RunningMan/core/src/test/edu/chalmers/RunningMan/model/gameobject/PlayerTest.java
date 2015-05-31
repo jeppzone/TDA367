@@ -4,7 +4,6 @@ import edu.chalmers.RunningMan.model.LivingState;
 import edu.chalmers.RunningMan.model.Gravity;
 import edu.chalmers.RunningMan.model.Position;
 import edu.chalmers.RunningMan.model.Size;
-import edu.chalmers.RunningMan.model.gameobject.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -199,7 +198,7 @@ public class PlayerTest extends Assert{
         player.moveRight(1);
         player.jump(100);
         player.update(10);
-        assertTrue(player.getAnimationState() == LivingState.JUMPING_RIGHT);
+        assertTrue(player.getLivingState() == LivingState.JUMPING_RIGHT);
     }
     @Test
     public void testPlayerStateJmpLeft(){
@@ -207,21 +206,21 @@ public class PlayerTest extends Assert{
         player.moveLeft(1);
         player.jump(100);
         player.update(10);
-        assertTrue(player.getAnimationState() == LivingState.JUMPING_LEFT);
+        assertTrue(player.getLivingState() == LivingState.JUMPING_LEFT);
     }
     @Test
     public void testPlayerStateMoveRight(){
         player.setOnGround(true);
         player.moveRight(1);
         player.update(10);
-        assertTrue(player.getAnimationState() == LivingState.MOVING_RIGHT);
+        assertTrue(player.getLivingState() == LivingState.MOVING_RIGHT);
     }
     @Test
     public void testPlayerStateMoveLeft(){
         player.setOnGround(true);
         player.moveLeft(1);
         player.update(10);
-        assertTrue(player.getAnimationState() == LivingState.MOVING_LEFT );
+        assertTrue(player.getLivingState() == LivingState.MOVING_LEFT );
     }
     @Test
     public void testCollisionJmpUpToObj(){

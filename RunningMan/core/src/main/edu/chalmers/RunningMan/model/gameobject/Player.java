@@ -27,7 +27,7 @@ public class Player extends AbstractLivingObject {
     private final Gravity gravity = new Gravity(-800f);
     private final List<AbstractPowerUp> powerUps;
 
-    private LivingState animationState = LivingState.FACING_RIGHT;
+    private LivingState livingState = LivingState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
     private boolean isDeadByPitfall;
@@ -110,8 +110,8 @@ public class Player extends AbstractLivingObject {
      * @return the current state of the player so that the view will know
      * what animation to use
      */
-    public LivingState getAnimationState(){
-        return animationState;
+    public LivingState getLivingState(){
+        return livingState;
     }
 
     /**
@@ -122,26 +122,26 @@ public class Player extends AbstractLivingObject {
         checkPowerUpsTime(deltaTime);
         // if jumping to the right
         if(!isOnGround() && lastMovedDirection == LAST_MOVE_RIGHT) {
-            animationState = LivingState.JUMPING_RIGHT;
+            livingState = LivingState.JUMPING_RIGHT;
         }
         // if jumping to the left
         else if(!isOnGround() && lastMovedDirection == LAST_MOVE_LEFT) {
-            animationState = LivingState.JUMPING_LEFT;
+            livingState = LivingState.JUMPING_LEFT;
         }
         // if player does move
         else if(lastTimeMoved + 150 >= System.currentTimeMillis()){
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
-                animationState = LivingState.MOVING_RIGHT;
+                livingState = LivingState.MOVING_RIGHT;
             } else {
-                animationState = LivingState.MOVING_LEFT;
+                livingState = LivingState.MOVING_LEFT;
             }
         }
         // if player standing still
         else {
             if(lastMovedDirection == LAST_MOVE_RIGHT) {
-                animationState = LivingState.FACING_RIGHT;
+                livingState = LivingState.FACING_RIGHT;
             } else {
-                animationState = LivingState.FACING_LEFT;
+                livingState = LivingState.FACING_LEFT;
             }
         }
     }
