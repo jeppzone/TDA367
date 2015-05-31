@@ -15,14 +15,14 @@ import java.beans.PropertyChangeSupport;
  */
 public class GameScreen implements Screen, PropertyChangeListener {
 
-    private PropertyChangeSupport pcs;
-    private GameController world;
+    private final PropertyChangeSupport pcs;
+    private final GameController gameController;
 
     public GameScreen(String level) {
         super();
         pcs = new PropertyChangeSupport(this);
-        world = new GameController(level);
-        world.addPropertyChangeListener(this);
+        gameController = new GameController(level);
+        gameController.addPropertyChangeListener(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -30,17 +30,15 @@ public class GameScreen implements Screen, PropertyChangeListener {
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener){
-        pcs.addPropertyChangeListener(this);
+        pcs.removePropertyChangeListener(listener);
     }
 
     @Override
     public void render(float deltaTime) {
-
         // clear screen
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         // update world
-        world.update(deltaTime);
+        gameController.update(deltaTime);
 
     }
 
