@@ -14,18 +14,18 @@ import edu.chalmers.RunningMan.util.BitmapFontManager;
 import edu.chalmers.RunningMan.util.MenuButtonGenerator;
 
 /**
- * A class for the main menu view
+ * A class for the load level view
  */
 public class LoadLevelMenuView extends Stage {
 
-    private TextureAtlas atlas;
-    private Skin skin;
-    private Table table;
+    private final TextureAtlas atlas;
+    private final Skin skin;
+    private final Table table;
     private TextButton buttonPlay, buttonExit;
     private BitmapFont whiteFont, blackFont;
     private Label heading;
 
-    private BitmapFontManager bitmapFontManager = new BitmapFontManager();
+    private final BitmapFontManager bitmapFontManager = new BitmapFontManager();
     private MenuButtonGenerator menuButtonGenerator;
 
     private static final String ATLAS_PATH = "mainmenu/mainmenu_buttonsheet.txt";
@@ -43,9 +43,7 @@ public class LoadLevelMenuView extends Stage {
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         createFonts();
-
         createButtons();
-
         createHeading();
 
         // add to table
@@ -60,10 +58,8 @@ public class LoadLevelMenuView extends Stage {
         if (DEBUG) {
             table.debug();
         }
-
         // add to stage
         this.addActor(table);
-
     }
 
     /**

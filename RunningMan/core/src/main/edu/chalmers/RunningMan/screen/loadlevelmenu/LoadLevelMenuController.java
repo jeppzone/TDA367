@@ -13,38 +13,30 @@ import java.beans.PropertyChangeSupport;
  */
 public class LoadLevelMenuController extends ClickListener {
 
-    private LoadLevelMenuView loadLevelMenuView;
-
-    private PropertyChangeSupport propertyChangeSupport;
+    private final LoadLevelMenuView loadLevelMenuView;
+    private final PropertyChangeSupport propertyChangeSupport;
 
     public LoadLevelMenuController(LoadLevelMenuView loadLevelMenuView) {
         this.loadLevelMenuView = loadLevelMenuView;
-
         propertyChangeSupport = new PropertyChangeSupport(this);
-
         loadLevelMenuView.addListener(this);
     }
 
     public void update(float delta) {
-
         // set input processor so buttons can be pressed by cursor click
         Gdx.input.setInputProcessor(loadLevelMenuView);
-
         // make the view render itself
         loadLevelMenuView.render(delta);
     }
 
     @Override
     public void clicked(InputEvent event, float x, float y) {
-
         String buttonText = "";
-
         // when pressing a (text) button it's the label which gets stored as target Actor in the event reference
         if (event.getTarget() instanceof Label) {
             // get the string of the button
             buttonText = ((Label) event.getTarget()).getText().toString();
         }
-
         // if play button is pressed, change to load level screen
         if (buttonText.equals("1")) {
             propertyChangeSupport.firePropertyChange("level1", null, null);

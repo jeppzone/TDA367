@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.GL20;
 import java.beans.PropertyChangeListener;
 
 /**
- * Created by Kvist1 on 2015-05-21.
+ * Screen for the load level menu
  */
 public class LoadLevelMenuScreen implements Screen {
 
-    private LoadLevelMenuView loadLevelMenuView;
-    private LoadLevelMenuController loadLevelMenuController;
+    private final LoadLevelMenuView loadLevelMenuView;
+    private final LoadLevelMenuController loadLevelMenuController;
 
     public LoadLevelMenuScreen() {
         loadLevelMenuView = new LoadLevelMenuView();
