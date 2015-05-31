@@ -10,8 +10,8 @@ import java.util.List;
  * @author Jesper Olsson
  */
 public class LevelController implements IEntityController {
-    private Level level;
-    private List<Bullet> bullets;
+    private final Level level;
+    private final List<Bullet> bullets;
 
     public LevelController(Level level, List<Bullet> bullets){
         this.level = level;
