@@ -16,11 +16,11 @@ public class EnemyView extends Actor{
 
     private final Texture enemyWalkingleft, enemyWalkingright, enemyShotInBack,enemyShotInFront;
 
-    private String enemyType;
-    private float animationSpeed;
-    private int textureRegionWidth;
-    private int textureRegionHeight;
-    private int textureRegionShotInFrontWidth;
+    private final String enemyType;
+    private final float animationSpeed;
+    private final int textureRegionWidth;
+    private final int textureRegionHeight;
+    private final int textureRegionShotInFrontWidth;
 
     private final static String ANIMATION_LOCATION = "animations/";
 
@@ -29,8 +29,14 @@ public class EnemyView extends Actor{
     private String SPRITE_ENEMY_SHOT_IN_BACK;
     private String SPRITE_ENEMY_SHOT_IN_FRONT;
 
-    private TextureRegion[] enemyWalkLeftSprites,enemyWalkRightSprites, enemyShotInFrontSprite,enemyShotInBackSprite;
-    private Animation enemyWalkLeftAnimation,enemyWalkRightAnimation,enemyShotInBackAnimation,enemyShotInFrontAnimation;
+    private final TextureRegion[] enemyWalkLeftSprites;
+    private final TextureRegion[] enemyWalkRightSprites;
+    private final TextureRegion[] enemyShotInFrontSprite;
+    private final TextureRegion[] enemyShotInBackSprite;
+    private final Animation enemyWalkLeftAnimation;
+    private final Animation enemyWalkRightAnimation;
+    private final Animation enemyShotInBackAnimation;
+    private final Animation enemyShotInFrontAnimation;
 
     private float stateTime, deathTime;
 
