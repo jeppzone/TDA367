@@ -7,12 +7,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import edu.chalmers.RunningMan.model.gameobject.Level;
 
 /**
- * Created by Jesper on 5/14/2015.
+ * The view for the HUD.
+ * @author Jesper Olsson
  */
 public class HudView extends Stage {
 
-    private TimerView timerView;
-    private KillCountView killCountView;
+    private final TimerView timerView;
+    private final KillCountView killCountView;
     private OrthographicCamera camera;
     private Batch batch;
 

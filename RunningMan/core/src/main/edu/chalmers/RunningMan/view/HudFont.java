@@ -6,11 +6,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 /**
- * Created by Jesper on 5/15/2015.
+ * Font that are used by the HUD
+ * @author Jesper Olsson
  */
 public class HudFont {
     protected BitmapFont font;
-    FreeTypeFontGenerator generator;
+    private FreeTypeFontGenerator generator;
 
     public void generateFont(){
         try {
