@@ -6,11 +6,12 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import edu.chalmers.RunningMan.model.gameobject.Level;
 
 /**
+ * View for the kill count
  * @author Jesper
  */
 public class KillCountView extends HudFont {
 
-    private Level level;
+    private final Level level;
     private CharSequence stringKillCount;
 
     public KillCountView(Level level){
