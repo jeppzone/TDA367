@@ -10,10 +10,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.model.gameobject.Helicopter;
 
 /**
- * Created by Jesper on 5/7/2015.
+ * A view for the helicopter
  */
 public class HelicopterView extends Actor {
-    private Helicopter finishObject;
+    private final Helicopter finishObject;
     private float stateTime;
     private final SpriteBatch sb;
     private final Texture chopperHover;
@@ -43,7 +43,7 @@ public class HelicopterView extends Actor {
         batch.end();
     }
 
-    public TextureRegion getCurrentSprite(){
+    private TextureRegion getCurrentSprite(){
         stateTime += Gdx.graphics.getDeltaTime();
         return chopperHoverAnimation.getKeyFrame(stateTime, true);
     }
