@@ -12,15 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ControllerFactory that provides models, view and controller
+ * ControllerFactory provides controllers, views and models
  */
 public class ControllerFactory {
-    private List<AbstractPhysicalObject> mapObjects;
-    private List<Actor> actors;
-    private List<IEntityController> controllers;
+    private final List<AbstractPhysicalObject> mapObjects;
+    private final List<Actor> actors;
+    private final List<IEntityController> controllers;
     private HelicopterController helicopterController;
-    private String levelName;
-    private List<Enemy> enemies;
+    private final String levelName;
+    private final List<Enemy> enemies;
     private Player player;
     private Weapon weapon;
     private BulletView bulletView;
@@ -117,38 +117,65 @@ public class ControllerFactory {
         level.addPropertyChangeListener(audioController);
     }
 
+    /**
+     * @return the controller for the Helicopter"
+     */
     public HelicopterController getHelicopterController(){
        return helicopterController;
     }
 
+    /**
+     * @return the list of entitycontrollers
+     */
     public List<IEntityController> getControllers(){
         return controllers;
     }
 
+    /**
+     * @return the view of the level
+     */
     public LevelView getLevelView(){
         return levelView;
     }
 
+    /**
+     * @return the audiocontroller for the game
+     */
     public AudioController getAudioController(){
         return audioController;
     }
 
+    /**
+     * @return the level model
+     */
     public Level getLevel(){
         return level;
     }
 
+    /**
+     * @return the player model
+    */
     public Player getPlayer(){
         return player;
     }
 
+    /**
+     * @return the playercontroller
+     */
     public PlayerController getPlayerController(){
         return playerController;
     }
 
+    /**
+     * @return the levelcontroller
+     */
     public LevelController getLevelController(){
         return levelController;
     }
 
+    /**
+     * @return the highscore object
+     */
     public static HighScore getHighScore(){
         return highScore;
     }
