@@ -12,11 +12,15 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+/**
+ * Screen for the highscore
+ * @author Jesper Olsson
+ */
 public class HighScoreScreen implements Screen, PropertyChangeListener {
-    private PropertyChangeSupport pcs;
-    private HighScore highScore;
-    private HighScoreView highScoreView;
-    private HighScoreMenuController highScoreMenuController;
+    private final PropertyChangeSupport pcs;
+    private final HighScore highScore;
+    private final HighScoreView highScoreView;
+    private final HighScoreMenuController highScoreMenuController;
 
     public HighScoreScreen() {
         super();
@@ -25,6 +29,7 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
         highScore.addCurrentScore();
         highScoreView = new HighScoreView(highScore);
         highScoreMenuController = new HighScoreMenuController(highScoreView);
+        pcs = new PropertyChangeSupport(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -32,7 +37,7 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener){
-        highScoreMenuController.removePropertyChangeListener(this);
+        highScoreMenuController.removePropertyChangeListener(listener);
     }
 
     @Override
@@ -75,7 +80,6 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         pcs.firePropertyChange(evt.getPropertyName(), null, null);
-        final String eventName = evt.getPropertyName();
     }
 }
 

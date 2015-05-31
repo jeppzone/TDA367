@@ -10,12 +10,13 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 /**
- * Created by Jesper on 5/27/2015.
+ * Controller for the highscore menu
+ * @author Jesper Olsson
  */
 public class HighScoreMenuController extends ClickListener {
 
-    private HighScoreView highScoreView;
-    private PropertyChangeSupport pcs;
+    private final HighScoreView highScoreView;
+    private final PropertyChangeSupport pcs;
 
     public HighScoreMenuController(HighScoreView highScoreView){
         this.highScoreView = highScoreView;
