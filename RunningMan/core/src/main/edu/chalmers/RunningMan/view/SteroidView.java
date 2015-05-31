@@ -7,8 +7,11 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.model.gameobject.Steroid;
 
+/**
+ * The view for the steroid
+ */
 public class SteroidView extends Actor {
-    private Steroid steroid;
+    private final Steroid steroid;
     private Texture texture;
 
     public SteroidView(Steroid steroid){

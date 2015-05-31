@@ -6,10 +6,11 @@ import edu.chalmers.RunningMan.model.Timer;
 
 
 /**
- * Created by Jesper on 5/14/2015.
+ * The view for the timer
+ * @author Jesper Olsson
  */
 public class TimerView extends HudFont {
-    private Timer timer;
+    private final Timer timer;
     private CharSequence stringTime;
 
     public TimerView(Timer timer){
