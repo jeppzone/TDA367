@@ -12,14 +12,15 @@ import edu.chalmers.RunningMan.model.gameobject.Player;
 import java.util.List;
 
 /**
- * Created by Jesper on 5/12/2015.
+ * A view that draws all the other views in the level
+ * @author Jesper Olsson
  */
 public class LevelView extends Stage {
-    private List<Actor> views;
+    private final List<Actor> views;
     private Batch batch;
-    private Player player;
+    private final Player player;
     private OrthographicCamera camera;
-    private PlayerView playerView;
+    private final PlayerView playerView;
     private Texture background;
 
     public LevelView(List<Actor> views, Player player, BulletView bulletView, String levelName) {
