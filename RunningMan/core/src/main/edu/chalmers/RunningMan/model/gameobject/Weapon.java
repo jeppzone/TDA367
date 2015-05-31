@@ -12,13 +12,13 @@ import java.beans.PropertyChangeListener;
 
 public class Weapon implements IBulletCollection{
 
-    private Player player;
-    private List<Bullet> bullets;
+    private final Player player;
+    private final List<Bullet> bullets;
     private final float FIRE_DELAY = 500f;
     private boolean hasShot = false;
     private static float passedTime = 0;
     private final PropertyChangeSupport propertyChangeSupport;
-    private ISize windowSize;
+    private final ISize windowSize;
 
     public Weapon(Player player, ISize windowSize){
 
@@ -94,17 +94,13 @@ public class Weapon implements IBulletCollection{
     }
 
     public void update(float deltaTime) {
-
         if(hasShot){
-
             passedTime += 1000*deltaTime;
-
             if(passedTime >= getfireDelay()){
 
                 hasShot = false;
                 passedTime = 0;
             }
-
         }
     }
 }
