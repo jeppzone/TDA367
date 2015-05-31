@@ -6,17 +6,17 @@ import edu.chalmers.RunningMan.view.PlayerView;
 
 
 /**
- * A class for controlling player
+ * A class for controlling the player
  */
 public class PlayerController implements IEntityController {
 
-    private Player player;
+    private final Player player;
 
     public PlayerController(Player player){
         this.player = player;
     }
 
-    public void handleKeyboardInput(float deltaTime){
+    private void handleKeyboardInput(float deltaTime){
         if(player.hasLandedFirstTime()) {
             if (Input.isPressed(Input.JUMPBTN) && Input.isPressed(Input.RIGHTBTN)) {
                 player.jump(deltaTime);
@@ -35,8 +35,7 @@ public class PlayerController implements IEntityController {
 
         player.applyForce(deltaTime);
     }
-
-
+    
     public void update(float deltaTime) {
         handleKeyboardInput(deltaTime);
         player.update(deltaTime);
