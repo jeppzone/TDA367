@@ -7,8 +7,8 @@ import java.beans.PropertyChangeListener;
  * A class which controls the audio based on property change event
  */
 public class AudioController implements PropertyChangeListener {
-    private String levelName;
-    private AudioHandler audio;
+    private final String levelName;
+    private final AudioHandler audio;
     private boolean hasPlayedHelicopter = false;
     private boolean hasPlayedDie = false;
     private boolean hasPlayedSuicide = false;
