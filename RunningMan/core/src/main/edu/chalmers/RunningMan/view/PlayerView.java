@@ -9,16 +9,24 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import edu.chalmers.RunningMan.model.gameobject.Player;
 
 /**
- * A class to represent the view of the gameobject.
+ * A class to represent the view of the player
  */
 public class PlayerView extends Actor{
 
     private final Player player;
 
-    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture, jumpLeftTexture, deadTexture,deadByPitfallTexture;
-    private TextureRegion[] walkRightSprites, walkLeftSprites,deathSprite,deathByPitfallSprite;
-    private TextureRegion jumpRightSprite, jumpLeftSprite;
-    private Animation walkRightAnimation, walkLeftAnimation,dieAnimation,dieByPitfallAnimation;
+    private final Texture walkRightSheet, walkLeftSheet, jumpRightTexture,
+            jumpLeftTexture, deadTexture,deadByPitfallTexture;
+    private final TextureRegion[] walkRightSprites;
+    private final TextureRegion[] walkLeftSprites;
+    private final TextureRegion[] deathSprite;
+    private final TextureRegion[] deathByPitfallSprite;
+    private final TextureRegion jumpRightSprite;
+    private final TextureRegion jumpLeftSprite;
+    private final Animation walkRightAnimation;
+    private final Animation walkLeftAnimation;
+    private final Animation dieAnimation;
+    private final Animation dieByPitfallAnimation;
 
     private final static String ANIMATION_LOCATION = "animations/";
 
