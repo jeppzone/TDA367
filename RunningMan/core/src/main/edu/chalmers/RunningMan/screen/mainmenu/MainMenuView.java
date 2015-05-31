@@ -18,14 +18,14 @@ import edu.chalmers.RunningMan.util.MenuButtonGenerator;
  */
 public class MainMenuView extends Stage {
 
-    private TextureAtlas atlas;
-    private Skin skin;
-    private Table table;
+    private final TextureAtlas atlas;
+    private final Skin skin;
+    private final Table table;
     private TextButton buttonPlay, buttonExit;
     private BitmapFont whiteFont, blackFont;
     private Label heading;
 
-    private BitmapFontManager bitmapFontManager = new BitmapFontManager();
+    private final BitmapFontManager bitmapFontManager = new BitmapFontManager();
     private MenuButtonGenerator menuButtonGenerator;
 
     private static final String ATLAS_PATH = "mainmenu/mainmenu_buttonsheet.txt";
