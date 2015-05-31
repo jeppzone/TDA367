@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class BulletController implements IEntityController {
 
-    private BulletView bulletView;
-    List<Bullet> bullets;
+    private final BulletView bulletView;
+    private final List<Bullet> bullets;
 
     public BulletController(List<Bullet> bullets, BulletView bulletView){
         this.bullets = bullets;
