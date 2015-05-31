@@ -4,10 +4,10 @@ import edu.chalmers.RunningMan.model.gameobject.Weapon;
 import edu.chalmers.RunningMan.util.input.Input;
 
 /**
- * Created by Armand on 2015-05-14.
+ * A class for controlling the weapon
  */
 public class WeaponController implements IEntityController {
-    private Weapon weapon;
+    private final Weapon weapon;
 
     public WeaponController(Weapon weapon){
         this.weapon = weapon;
