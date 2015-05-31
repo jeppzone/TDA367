@@ -5,10 +5,10 @@ package edu.chalmers.RunningMan.util.input;
  */
 public class Input {
 
-    public static boolean[] keys;
-    public static boolean[] pkeys;
+    private static final boolean[] keys;
+    private static final boolean[] pkeys;
 
-    public static final int NUM_KEYS = 4;
+    private static final int NUM_KEYS = 4;
     public static final int LEFTBTN = 0;
     public static final int RIGHTBTN = 1;
     public static final int JUMPBTN = 2;
@@ -20,9 +20,7 @@ public class Input {
     }
 
     public static void update() {
-        for(int i = 0; i < NUM_KEYS; i++) {
-            pkeys[i] = keys[i];
-        }
+        System.arraycopy(keys, 0, pkeys, 0, NUM_KEYS);
     }
 
     // set key which is pressed
