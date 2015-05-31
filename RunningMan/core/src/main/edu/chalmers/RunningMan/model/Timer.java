@@ -1,7 +1,8 @@
 package edu.chalmers.RunningMan.model;
 
 /**
- * Created by Jesper on 5/14/2015.
+ * A class to represent a timer
+ * @author Jesper Olsson
  */
 public class Timer {
     private float currentTime;
