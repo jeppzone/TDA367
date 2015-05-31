@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import edu.chalmers.RunningMan.model.ISize;
 
 /**
- * Created by Armand on 2015-05-18.
+ * A class to get the size of the window
  */
 public final class WindowSize implements ISize {
 

@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 public class BitmapFontManager {
 
     private static BitmapFont menuButtonFontBlack, menuButtonFontWhite;
-    private int fontSize = 50;
+    private final int fontSize = 50;
 
     public BitmapFontManager() {
         createFonts();
