@@ -17,6 +17,7 @@ import java.beans.PropertyChangeSupport;
  * @author Jesper Olsson
  */
 public class HighScoreScreen implements Screen, PropertyChangeListener {
+    
     private final PropertyChangeSupport pcs;
     private final HighScore highScore;
     private final HighScoreView highScoreView;
@@ -54,7 +55,6 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
 
     @Override
     public void show() {
-
     }
 
     @Override
@@ -74,7 +74,6 @@ public class HighScoreScreen implements Screen, PropertyChangeListener {
 
     @Override
     public void dispose() {
-        // Leave blank
     }
 
     @Override
