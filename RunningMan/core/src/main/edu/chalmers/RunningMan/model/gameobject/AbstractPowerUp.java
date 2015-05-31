@@ -10,7 +10,8 @@ import edu.chalmers.RunningMan.model.Timer;
  * @author Jesper Olsson
  */
 public abstract class AbstractPowerUp extends AbstractPhysicalObject implements ICollectible {
-    protected boolean pickedUp;
+    private boolean pickedUp;
+
     public AbstractPowerUp(Size size, Position position){
         super(size ,position);
         setPickedUp(false);

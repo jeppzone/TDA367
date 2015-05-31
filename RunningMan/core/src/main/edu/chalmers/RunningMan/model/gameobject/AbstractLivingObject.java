@@ -10,7 +10,7 @@ import edu.chalmers.RunningMan.model.Position;
 public abstract class AbstractLivingObject extends AbstractPhysicalObject implements IVisitor {
 
     private int hp;
-    private int maxHp;
+    private final int maxHp;
     protected boolean isDead;
 
     public AbstractLivingObject(ISize size, Position position, int maxHp) {

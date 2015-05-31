@@ -1,6 +1,9 @@
 package edu.chalmers.RunningMan.model;
 
-
+/**
+ * Enum for representing the different states a living
+ * entity can be in
+ */
 public enum LivingState {
 
     FACING_RIGHT(1),
@@ -11,8 +14,7 @@ public enum LivingState {
     JUMPING_LEFT(-1),
     STANDING(0);
 
-
-    public final int xDirection; // -1 moving backwords, 1 moving forward
+    private final int xDirection; // -1 moving backwords, 1 moving forward
 
     LivingState(final int xDirection){
         this.xDirection = xDirection;

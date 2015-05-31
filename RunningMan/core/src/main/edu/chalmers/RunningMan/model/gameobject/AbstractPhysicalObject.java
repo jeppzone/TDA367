@@ -12,8 +12,8 @@ import java.awt.*;
  */
 public abstract class AbstractPhysicalObject implements IVisitable, IPhysicalObject {
 
-    private ISize size;
-    private Position position;
+    private final ISize size;
+    private final Position position;
 
     public AbstractPhysicalObject(ISize size, Position position){
         this.size = size;
