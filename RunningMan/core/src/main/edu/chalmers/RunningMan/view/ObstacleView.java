@@ -10,7 +10,7 @@ import edu.chalmers.RunningMan.model.gameobject.Obstacle;
  * A class to represent the view of obstacle gameobject.
  */
 public class ObstacleView extends Actor {
-    private Obstacle obstacle;
+    private final Obstacle obstacle;
     private Texture texture;
     private final static String TILES_LOCATION = "tilesets/";
 
