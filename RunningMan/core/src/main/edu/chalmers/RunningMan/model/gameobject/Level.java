@@ -15,14 +15,14 @@ import java.util.List;
  */
 public class Level implements PropertyChangeListener {
     private final List<AbstractPhysicalObject> mapObjects;
-    private List<Enemy> enemies;
+    private final List<Enemy> enemies;
     private final String levelName;
     private int enemiesKilled;
     private static final int MAX_TIME = 100;
-    private Timer timer;
+    private final Timer timer;
     private int playerScore;
-    private PropertyChangeSupport pcs;
-    private Player player;
+    private final PropertyChangeSupport pcs;
+    private final Player player;
 
     public Level(Player player, List<AbstractPhysicalObject> mapObjects, List<Enemy> enemies, String levelName) {
         this.mapObjects = mapObjects;
@@ -123,7 +123,7 @@ public class Level implements PropertyChangeListener {
      * Metod used by the HUD to display the amount of time that is left
      * @return the amount of time that is left for this level
      */
-    public int getTimeLeft() {
+    private int getTimeLeft() {
         return timer.getTimeLeftInteger();
     }
 
@@ -148,7 +148,7 @@ public class Level implements PropertyChangeListener {
      * Method to check if timer is up
      * @return true if getTimeInteger >= getMaxTime
      */
-    public boolean isTimeUp() {
+    private boolean isTimeUp() {
         return timer.isTimeUp();
     }
 
@@ -176,13 +176,7 @@ public class Level implements PropertyChangeListener {
      * and they are not the same object, false otherwise
      */
     public boolean isColliding(Rectangle thisObject, Rectangle otherObject) {
-        if (thisObject == null || otherObject == null) {
-            return false;
-        } else if (thisObject.equals(otherObject)) {
-            return false;
-        } else {
-            return thisObject.intersects(otherObject);
-        }
+        return !thisObject.equals(otherObject) && thisObject.intersects(otherObject);
     }
 
     @Override
