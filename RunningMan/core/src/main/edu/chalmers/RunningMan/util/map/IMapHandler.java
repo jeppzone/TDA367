@@ -10,10 +10,10 @@ import java.util.List;
  */
 public interface IMapHandler {
 
-    public List<AbstractPhysicalObject> getPhysicalObjectsList();
+    List<AbstractPhysicalObject> getPhysicalObjectsList();
 
-    public Position getPlayerStartPosition();
+    Position getPlayerStartPosition();
 
-    public void loadLevel(String levelName) throws MapHandlerException;
+    void loadLevel(String levelName) throws MapHandlerException;
 
 }

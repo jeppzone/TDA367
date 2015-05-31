@@ -7,7 +7,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import edu.chalmers.RunningMan.model.*;
 import edu.chalmers.RunningMan.model.gameobject.*;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +29,14 @@ public class MapHandler implements IMapHandler {
 
     private static final float STEROID_HEIGHT = 40;
     private static final float STEROID_WIDTH = 40;
-    private static int ENEMY_HP = 100;
-    private static int BOSS_HP = 900;
-    private static float HELICOPTER_HEIGHT = 62;
-    private static float HELICOPTER_WIDTH = 60;
-    private static float ENEMY_HEIGHT = 55;
-    private static float ENEMY_WIDTH = 45;
-    private static float BOSS_HEIGHT = 110;
-    private static float BOSS_WIDTH = 90;
+    private static final int ENEMY_HP = 100;
+    private static final int BOSS_HP = 900;
+    private static final float HELICOPTER_HEIGHT = 62;
+    private static final float HELICOPTER_WIDTH = 60;
+    private static final float ENEMY_HEIGHT = 55;
+    private static final float ENEMY_WIDTH = 45;
+    private static final float BOSS_HEIGHT = 110;
+    private static final float BOSS_WIDTH = 90;
     private static final int PLAYER_STARTPOSITION_ADDITIONAL_HEIGHT = 1000;
 
     public MapHandler(String levelName)throws MapHandlerException {
@@ -105,7 +104,6 @@ public class MapHandler implements IMapHandler {
             for(int col = 0; col < mapWidth; col++) {
                 Position position = new Position((col + FIX_COLPOSITION) * tilePixelSize, (row + FIX_ROWPOSITION) * tilePixelSize);
                 Size size = new Size(tilePixelSize);
-
 
                 // get cell
                 TiledMapTileLayer.Cell groundCell = groundLayer.getCell(col, row);
