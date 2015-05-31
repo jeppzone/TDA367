@@ -33,7 +33,7 @@ public class GameController implements PropertyChangeListener {
     private PropertyChangeSupport pcs;
     private Timer timerSinceDeath;
     private HelicopterController helicopterController;
-    private String levelName;
+    private final String levelName;
     private Timer loadTimer;
     private List<Enemy> enemies;
     private LevelController levelController;
