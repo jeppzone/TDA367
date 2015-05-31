@@ -24,13 +24,13 @@ public class Player extends AbstractLivingObject {
     private boolean hasLandedFirstTime;
     private boolean hasMovedFirstTime;
 
-    private Gravity gravity = new Gravity(-800f);
-    private List<AbstractPowerUp> powerUps;
+    private final Gravity gravity = new Gravity(-800f);
+    private final List<AbstractPowerUp> powerUps;
 
     private LivingState animationState = LivingState.FACING_RIGHT;
     private int lastMovedDirection = LAST_MOVE_RIGHT;
     private long lastTimeMoved;
-    public boolean isDeadByPitfall;
+    private boolean isDeadByPitfall;
 
     private final PropertyChangeSupport propertyChangeSupport;
 
@@ -93,7 +93,7 @@ public class Player extends AbstractLivingObject {
      *
      * @return true if player is on ground, false otherwise
      */
-    public boolean isOnGround() {
+    private boolean isOnGround() {
         return isOnGround;
     }
 
