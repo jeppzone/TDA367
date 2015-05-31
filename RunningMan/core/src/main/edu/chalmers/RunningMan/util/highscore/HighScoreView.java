@@ -15,22 +15,23 @@ import edu.chalmers.RunningMan.util.MenuButtonGenerator;
 import java.util.List;
 
 /**
+ * A class for visualizing the high score list
  * @author Jesper Olsson
  */
 public class HighScoreView extends Stage {
 
-    private TextureAtlas atlas;
-    private Skin skin;
+    private final TextureAtlas atlas;
+    private final Skin skin;
     private Table table;
     private TextButton restartButton;
     private TextButton mainMenuButton;
     private BitmapFont whiteFont;
-    private BitmapFontManager bitmapFontManager = new BitmapFontManager();
+    private final BitmapFontManager bitmapFontManager = new BitmapFontManager();
     private MenuButtonGenerator menuButtonGenerator;
     private static final String ATLAS_PATH = "mainmenu/mainmenu_buttonsheet.txt";
-    private List<Integer> scores;
-    private HighScore highScore;
-    private Batch batch;
+    private final List<Integer> scores;
+    private final HighScore highScore;
+    private final Batch batch;
 
     public HighScoreView(HighScore highScore) {
         this.highScore = highScore;

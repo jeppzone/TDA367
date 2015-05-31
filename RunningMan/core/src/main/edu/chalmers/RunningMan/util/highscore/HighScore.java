@@ -6,13 +6,14 @@ import java.io.*;
 import java.util.*;
 
 /**
+ * A class to represent a list of highscores
  * @author Jesper Olsson
  */
 public class HighScore {
 
-    private List<Integer> highScores;
-    private Level level;
-    private String levelName;
+    private final List<Integer> highScores;
+    private final Level level;
+    private final String levelName;
     private Scanner scanner;
     private boolean isFull;
     /**
@@ -33,7 +34,7 @@ public class HighScore {
      * @return true if the amount of highscores are less than 5
      * or the score is larger than one of the current scores on the list
      */
-    public boolean isHighScore(int score){
+    private boolean isHighScore(int score){
         final Iterator iterator = highScores.iterator();
         if (highScores.size() < MAX_HIGHSCORES){
             return true;
@@ -78,13 +79,15 @@ public class HighScore {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream("HS"+levelName+".txt"), "utf-8"));
-            final Iterator<Integer> iterator = getHighScores().iterator();
-            while(iterator.hasNext()){
-                writer.write(iterator.next() + " ");
+            for (Integer integer : getHighScores()) {
+                writer.write(integer + " ");
             }
         } catch (IOException ex) {
+            System.out.println("HighScore: saveToFile()");
         } finally {
-            try {writer.close();} catch (Exception ex) {}
+            try {writer.close();} catch (Exception ex) {
+                System.out.println("HighScore: saveToFile(): writer");
+            }
         }
     }
 
@@ -95,10 +98,10 @@ public class HighScore {
         try{
             scanner =  new Scanner(new FileReader("HS"+"level1"+".txt"));
             while(scanner.hasNext()){
-                highScores.add(new Integer(scanner.nextInt()));
+                highScores.add(scanner.nextInt());
             }
         }catch(FileNotFoundException exception){
-
+            System.out.println("HighScore: loadFromFile()");
         }finally {
             if (scanner != null) {
                 scanner.close();
